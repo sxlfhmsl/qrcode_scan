@@ -1,31 +1,22 @@
 <template>
 	<view>
+		<!-- nav bar -->
 		<cu-custom bgColor="bg-gradual-blue" :isBack="false">
 			<block slot="content">{{this.defaultTitle}}</block>
 		</cu-custom>
+		
+		<!-- content pages -->
 		<worktable v-if="PageCur == 'worktable'"></worktable>
 		<personal v-if="PageCur == 'personal'"></personal>
-		<!-- <view class="cu-bar tabbar bg-white shadow foot">
-			<view class="action" @click="NavChange" data-cur="basics">
-				<view class="cuIcon-cu-image"><image :src="'/static/tabbar/basics' + [PageCur == 'basics' ? '_cur' : ''] + '.png'"></image></view>
-				<view :class="PageCur == 'basics' ? 'text-green' : 'text-gray'">元素</view>
-			</view>
-			<view class="action" @click="NavChange" data-cur="component">
-				<view class="cuIcon-cu-image"><image :src="'/static/tabbar/component' + [PageCur == 'component' ? '_cur' : ''] + '.png'"></image></view>
-				<view :class="PageCur == 'component' ? 'text-green' : 'text-gray'">组件</view>
-			</view>
-			<view class="action" @click="NavChange" data-cur="plugin">
-				<view class="cuIcon-cu-image"><image :src="'/static/tabbar/plugin' + [PageCur == 'plugin' ? '_cur' : ''] + '.png'"></image></view>
-				<view :class="PageCur == 'plugin' ? 'text-green' : 'text-gray'">扩展</view>
-			</view>
-		</view> -->
+		
+		<!-- foot bar -->
 		<view class="cu-bar tabbar bg-white shadow foot">
 			<view :class="PageCur == 'worktable'? 'action text-green': 'action text-gray'" @click="NavChange" data-cur="worktable">
 				<view class="cuIcon-homefill"></view>
 				工作台
 			</view>
 			<view class="action text-gray add-action">
-				<button class="cu-btn cuIcon-add bg-green shadow"></button>
+				<button class="cu-btn cuIcon-add bg-green shadow" @click="ScanQrCode"></button>
 				扫描
 			</view>
 			<view :class="PageCur == 'personal'? 'action text-green': 'action text-gray'" @click="NavChange" data-cur="personal">
@@ -46,6 +37,17 @@ export default {
 	methods: {
 		NavChange: function(e) {
 			this.PageCur = e.currentTarget.dataset.cur;
+		},
+		ScanQrCode: function(e) {
+			// scan qrcode
+			uni.scanCode({
+			    onlyFromCamera: true,
+				scanType: ['qrCode'],
+			    success: function (res) {
+			        console.log('条码类型：' + res.scanType);
+			        console.log('条码内容：' + res.result);
+			    }
+			});
 		}
 	}
 };
