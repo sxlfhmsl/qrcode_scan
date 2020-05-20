@@ -103,6 +103,12 @@
 					color: '#ffffff'
 				},
 			];
+			
+			// #ifdef APP-PLUS || APP-PLUS-NVUE
+			// 锁定屏幕为竖向
+			plus.screen.lockOrientation('portrait-primary');
+			// #endif
+			
 			console.log('App Launch');
 		},
 		onShow: function() {
