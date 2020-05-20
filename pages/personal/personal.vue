@@ -1,6 +1,14 @@
-<template  name="personal">
+<template name="personal">
 	<view>
-		personal
+		<cu-custom bgColor="bg-gradual-blue" :isBack="false">
+			<block slot="content">
+				个人信息
+			</block>
+			<block slot="right">
+				<button class="cu-btn cuIcon-settingsfill lg round text-white" style="background-color: rgba(255,255,255,0);"></button>
+				<button class="cu-btn alicon-icon-poweroff lg round text-white" style="background-color: rgba(255,255,255,0);"></button>
+			</block>
+		</cu-custom>
 	</view>
 </template>
 
@@ -9,7 +17,6 @@
 		name: "personal",
 		data() {
 			return {
-				
 			}
 		},
 		methods: {

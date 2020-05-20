@@ -1,16 +1,5 @@
 <template>
 	<view>
-		<!-- nav bar -->
-		<cu-custom bgColor="bg-gradual-blue" :isBack="false">
-			<block slot="content">
-				{{this.defaultTitle}}
-			</block>
-			<block slot="right" v-if="PageCur == 'personal'">
-				<button class="cu-btn cuIcon-settingsfill lg round text-white" style="background-color: rgba(255,255,255,0);"></button>
-				<button class="cu-btn alicon-icon-poweroff lg round text-white" style="background-color: rgba(255,255,255,0);"></button>
-			</block>
-		</cu-custom>
-		
 		<!-- content pages -->
 		<worktable v-if="PageCur == 'worktable'"></worktable>
 		<personal v-if="PageCur == 'personal'"></personal>
