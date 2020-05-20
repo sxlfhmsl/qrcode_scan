@@ -2,7 +2,13 @@
 	<view>
 		<!-- nav bar -->
 		<cu-custom bgColor="bg-gradual-blue" :isBack="false">
-			<block slot="content">{{this.defaultTitle}}</block>
+			<block slot="content">
+				{{this.defaultTitle}}
+			</block>
+			<block slot="right" v-if="PageCur == 'personal'">
+				<button class="cu-btn cuIcon-settingsfill lg round text-white" style="background-color: rgba(255,255,255,0);"></button>
+				<button class="cu-btn alicon-icon-poweroff lg round text-white" style="background-color: rgba(255,255,255,0);"></button>
+			</block>
 		</cu-custom>
 		
 		<!-- content pages -->
@@ -16,7 +22,7 @@
 				工作台
 			</view>
 			<view class="action text-gray add-action">
-				<button class="cu-btn cuIcon-add bg-blue shadow" @click="ScanQrCode"></button>
+				<button class="cu-btn cuIcon-camerafill bg-blue shadow" @click="ScanQrCode"></button>
 				扫描
 			</view>
 			<view :class="PageCur == 'personal'? 'action text-blue': 'action text-gray'" @click="NavChange" data-cur="personal">
@@ -53,4 +59,6 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+	
+</style>

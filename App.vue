@@ -116,5 +116,6 @@
 <style>
 	@import "colorui/main.css";
 	@import "colorui/icon.css";
+	@import url("static/icon/aliyun_con_icon/iconfont.css");
 	/*每个页面公共css */
 </style>
