@@ -5,7 +5,6 @@
 				{{this.defaultTitle}}
 			</block>
 		</cu-custom>
-		worktable
 	</view>
 </template>
 
