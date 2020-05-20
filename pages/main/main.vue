@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<cu-custom bgColor="bg-gradual-blue" :isBack="false">
-			<block slot="content">二维码</block>
+			<block slot="content">{{this.defaultTitle}}</block>
 		</cu-custom>
 		<basics v-if="PageCur == 'basics'"></basics>
 		<components v-if="PageCur == 'component'"></components>
