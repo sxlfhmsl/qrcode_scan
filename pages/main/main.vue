@@ -3,9 +3,8 @@
 		<cu-custom bgColor="bg-gradual-blue" :isBack="false">
 			<block slot="content">{{this.defaultTitle}}</block>
 		</cu-custom>
-		<basics v-if="PageCur == 'basics'"></basics>
-		<components v-if="PageCur == 'component'"></components>
-		<plugin v-if="PageCur == 'plugin'"></plugin>
+		<worktable v-if="PageCur == 'worktable'"></worktable>
+		<personal v-if="PageCur == 'personal'"></personal>
 		<!-- <view class="cu-bar tabbar bg-white shadow foot">
 			<view class="action" @click="NavChange" data-cur="basics">
 				<view class="cuIcon-cu-image"><image :src="'/static/tabbar/basics' + [PageCur == 'basics' ? '_cur' : ''] + '.png'"></image></view>
@@ -21,17 +20,17 @@
 			</view>
 		</view> -->
 		<view class="cu-bar tabbar bg-white shadow foot">
-			<view :class="PageCur == 'basics'? 'action text-green': 'action text-gray'" @click="NavChange" data-cur="basics">
+			<view :class="PageCur == 'worktable'? 'action text-green': 'action text-gray'" @click="NavChange" data-cur="worktable">
 				<view class="cuIcon-homefill"></view>
-				操作
+				工作台
 			</view>
 			<view class="action text-gray add-action">
 				<button class="cu-btn cuIcon-add bg-green shadow"></button>
 				扫描
 			</view>
-			<view :class="PageCur == 'plugin'? 'action text-green': 'action text-gray'" @click="NavChange" data-cur="basics">
+			<view :class="PageCur == 'personal'? 'action text-green': 'action text-gray'" @click="NavChange" data-cur="personal">
 				<view class="cuIcon-my"></view>
-				个人
+				我的
 			</view>
 		</view>
 	</view>
@@ -41,7 +40,7 @@
 export default {
 	data() {
 		return {
-			PageCur: 'basics'
+			PageCur: 'worktable'
 		};
 	},
 	methods: {
