@@ -5,8 +5,16 @@
 				个人信息
 			</block>
 			<block slot="right">
-				<button @click="ToSettingPage" class="cu-btn cuIcon-settingsfill lg round text-white" style="background-color: rgba(255,255,255,0);"></button>
-				<button class="cu-btn alicon-icon-poweroff lg round text-white" style="background-color: rgba(255,255,255,0);"></button>
+				<button 
+					@click="ToSettingPage" 
+					class="cu-btn cuIcon-settingsfill lg round text-white" 
+					style="background-color: rgba(255,255,255,0);"
+				></button>
+				<button 
+					@click="Logout" 
+					class="cu-btn alicon-icon-poweroff lg round text-white" 
+					style="background-color: rgba(255,255,255,0);"
+				></button>
 			</block>
 		</cu-custom>
 	</view>
@@ -26,7 +34,7 @@
 				})
 			},
 			Logout: function(e) {
-				
+				console.log('你点击了退出按钮');
 			}
 		}
 	}
