@@ -5,7 +5,7 @@
 				个人信息
 			</block>
 			<block slot="right">
-				<button class="cu-btn cuIcon-settingsfill lg round text-white" style="background-color: rgba(255,255,255,0);"></button>
+				<button @click="ToSettingPage" class="cu-btn cuIcon-settingsfill lg round text-white" style="background-color: rgba(255,255,255,0);"></button>
 				<button class="cu-btn alicon-icon-poweroff lg round text-white" style="background-color: rgba(255,255,255,0);"></button>
 			</block>
 		</cu-custom>
@@ -20,7 +20,14 @@
 			}
 		},
 		methods: {
-			
+			ToSettingPage: function(e) {
+				uni.navigateTo({
+					'url': '/pages/personal/setting'
+				})
+			},
+			Logout: function(e) {
+				
+			}
 		}
 	}
 </script>

@@ -3,7 +3,19 @@
 		{
             "path" : "pages/main/main",
             "style" : {}
-        }
+        },
+		{
+			"path": "pages/personal/personal",
+			"style": {}
+		},
+		{
+			"path": "pages/personal/setting",
+			"style": {}
+		},
+		{
+			"path": "pages/worktable/worktable",
+			"style": {}
+		}
     ],
 	"globalStyle": {
 		"mp-alipay": {
