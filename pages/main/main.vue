@@ -23,15 +23,15 @@
 		<view class="cu-bar tabbar bg-white shadow foot">
 			<view :class="PageCur == 'basics'? 'action text-green': 'action text-gray'" @click="NavChange" data-cur="basics">
 				<view class="cuIcon-homefill"></view>
-				首页
+				操作
 			</view>
 			<view class="action text-gray add-action">
 				<button class="cu-btn cuIcon-add bg-green shadow"></button>
-				发布
+				扫描
 			</view>
 			<view :class="PageCur == 'plugin'? 'action text-green': 'action text-gray'" @click="NavChange" data-cur="basics">
 				<view class="cuIcon-my"></view>
-				我的
+				个人
 			</view>
 		</view>
 	</view>
