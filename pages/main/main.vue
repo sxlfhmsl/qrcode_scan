@@ -1,5 +1,8 @@
 <template>
 	<view>
+		<cu-custom bgColor="bg-gradual-blue" :isBack="false">
+			<block slot="content">二维码</block>
+		</cu-custom>
 		<basics v-if="PageCur == 'basics'"></basics>
 		<components v-if="PageCur == 'component'"></components>
 		<plugin v-if="PageCur == 'plugin'"></plugin>
