@@ -11,7 +11,10 @@ import personal from './pages/personal/personal.vue';
 Vue.component('personal',personal);
 
 // 定义全局变量
-Vue.prototype.defaultTitle = "物料识别系统";                           // 系统默认标题
+Vue.prototype.softwareInfo = {
+	'defaultTitle': '物料识别系统',                              // 系统默认标题
+	'version': 'v0.0.1'                                         // 版本号
+};
 
 Vue.config.productionTip = false
 
