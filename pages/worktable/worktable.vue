@@ -2,7 +2,7 @@
 	<view>
 		<cu-custom bgColor="bg-gradual-blue" :isBack="false">
 			<block slot="content">
-				{{this.defaultTitle}}
+				{{this.softwareInfo.defaultTitle}}
 			</block>
 		</cu-custom>
 	</view>
