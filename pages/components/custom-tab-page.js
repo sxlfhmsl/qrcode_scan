@@ -9,8 +9,8 @@ const TabPage = {
 	},
 	methods: {
 		TabPage_tabSelect(e) {
-			this.TabPage_TabCur = e.currentTarget.dataset.id;
-			this.TabPage_scrollLeft = (e.currentTarget.dataset.id - 1) * 60;
+			this.TabPage_tabInfo.TabCur = e.currentTarget.dataset.id;
+			this.TabPage_tabInfo.scrollLeft = (e.currentTarget.dataset.id - 1) * 60;
 		}
 	},
 };
