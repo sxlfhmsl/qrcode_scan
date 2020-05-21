@@ -15,7 +15,7 @@
 				扫描
 			</view>
 			<view :class="PageCur == 'personal'? 'action text-blue': 'action text-gray'" @click="NavChange" data-cur="personal">
-				<view class="cuIcon-my"></view>
+				<view class="cuIcon-peoplefill"></view>
 				我的
 			</view>
 		</view>
