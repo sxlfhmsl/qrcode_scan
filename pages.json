@@ -20,6 +20,10 @@
             "path" : "pages/personal/software_info",
             "style" : {}
         }
+        ,{
+            "path" : "pages/rm_manage/rm_manage",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"mp-alipay": {
