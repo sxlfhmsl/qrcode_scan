@@ -37,7 +37,7 @@
 			</view>
 			<!-- #endif -->
 			
-			<view class="cu-item arrow">
+			<view class="cu-item arrow" @tap="jumpSoftwareInfoPage">
 				<view class="content">
 					<text class="cuIcon-info text-blue"></text>
 					<text class="text-grey">关于软件</text>
@@ -127,8 +127,13 @@
 			},
 			cacheDialogToggle: function(e) {
 				this.cacheClearConfirmDialog = !this.cacheClearConfirmDialog;
-			}
+			},
 			// #endif
+			jumpSoftwareInfoPage: function(e) {
+				uni.navigateTo({
+					'url': '/pages/personal/software_info'
+				});
+			}
 		},
 		mounted() {
 			// #ifdef APP-PLUS || APP-PLUS-NVUE

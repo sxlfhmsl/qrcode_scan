@@ -16,6 +16,10 @@
 			"path": "pages/worktable/worktable",
 			"style": {}
 		}
+        ,{
+            "path" : "pages/personal/software_info",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"mp-alipay": {
