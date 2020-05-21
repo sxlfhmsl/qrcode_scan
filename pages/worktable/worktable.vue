@@ -27,28 +27,28 @@
 		data() {
 			return {
 				models: [{
-					title: '原材料管理',
+					title: '信息查询',
 					childCount: '1',
 					color: 'cyan',
-					icon: 'alicon-icon-database-fill',
+					icon: 'cuIcon-qrcode',
 					url: '/pages/personal/software_info'
 				}, {
-					title: '产品制作',
-					childCount: '2',
+					title: '制作上传',
+					childCount: '1',
 					color: 'cyan',
 					icon: 'cuIcon-punch',
 					url: '/pages/personal/software_info'
 				}, {
-					title: '安装施工',
+					title: '安装上传',
 					childCount: '1',
 					color: 'cyan',
 					icon: 'cuIcon-repair',
 					url: '/pages/personal/software_info'
 				}, {
-					title: '人员管理',
+					title: '收货/发货',
 					childCount: '1',
 					color: 'cyan',
-					icon: 'cuIcon-peoplefill',
+					icon: 'cuIcon-deliver',
 					url: '/pages/personal/software_info'
 				}]
 			}
