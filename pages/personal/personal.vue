@@ -22,7 +22,7 @@
 
 <script>
 	export default {
-		name: "personal",
+		name: 'personal',
 		data() {
 			return {
 			}
