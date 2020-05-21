@@ -45,6 +45,9 @@
 				</view>
 			</view>
 		</view>
+		<view class="padding-xl flex flex-direction">
+			<button class="cu-btn bg-red margin-tb-sm lg" @tap="logout">退出登录</button>
+		</view>
 		
 	</view>
 </template>
@@ -133,6 +136,9 @@
 				uni.navigateTo({
 					'url': '/pages/personal/software_info'
 				});
+			},
+			logout: function(e) {
+				console.log("你点击退出登录按钮");
 			}
 		},
 		mounted() {
