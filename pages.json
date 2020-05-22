@@ -24,6 +24,10 @@
             "path" : "pages/query_info/query_info",
             "style" : {}
         }
+        ,{
+            "path" : "pages/make/make",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"mp-alipay": {

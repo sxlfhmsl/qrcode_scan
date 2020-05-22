@@ -37,7 +37,7 @@
 					childCount: '1',
 					color: 'blue',
 					icon: 'cuIcon-punch',
-					url: '/pages/personal/software_info'
+					url: '/pages/make/make'
 				}, {
 					title: '安装上传',
 					childCount: '1',
