@@ -29,25 +29,25 @@
 				models: [{
 					title: '信息查询',
 					childCount: '1',
-					color: 'cyan',
+					color: 'blue',
 					icon: 'cuIcon-qrcode',
 					url: '/pages/query_info/query_info'
 				}, {
 					title: '制作上传',
 					childCount: '1',
-					color: 'cyan',
+					color: 'blue',
 					icon: 'cuIcon-punch',
 					url: '/pages/personal/software_info'
 				}, {
 					title: '安装上传',
 					childCount: '1',
-					color: 'cyan',
+					color: 'blue',
 					icon: 'cuIcon-repair',
 					url: '/pages/personal/software_info'
 				}, {
 					title: '收货/发货',
 					childCount: '1',
-					color: 'cyan',
+					color: 'blue',
 					icon: 'cuIcon-deliver',
 					url: '/pages/personal/software_info'
 				}]
