@@ -28,6 +28,10 @@
             "path" : "pages/make/make",
             "style" : {}
         }
+        ,{
+            "path" : "pages/install/install",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"mp-alipay": {

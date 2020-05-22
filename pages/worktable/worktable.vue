@@ -43,7 +43,7 @@
 					childCount: '1',
 					color: 'blue',
 					icon: 'cuIcon-repair',
-					url: '/pages/personal/software_info'
+					url: '/pages/install/install'
 				}, {
 					title: '收货/发货',
 					childCount: '1',
