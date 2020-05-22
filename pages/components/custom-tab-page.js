@@ -3,7 +3,8 @@ const TabPage = {
 		return {
 			TabPage_tabInfo: {
 				TabCur: 0,
-				scrollLeft: 0
+				scrollLeft: 0,
+				TabItems: []
 			}
 		}
 	},
