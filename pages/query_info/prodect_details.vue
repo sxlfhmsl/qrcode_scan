@@ -6,8 +6,10 @@
 			</block>
 		</cu-custom>
 		
+		<pdBaseInfo></pdBaseInfo>
+		
 		<!-- 滚动条 -->
-		<scroll-view scroll-x class="bg-white nav" scroll-with-animation :scroll-left="TabPage_tabInfo.scrollLeft">
+		<scroll-view scroll-x class="bg-white nav solid-top" scroll-with-animation :scroll-left="TabPage_tabInfo.scrollLeft">
 			<view 
 				class="cu-item"
 				:class="item.id==TabPage_tabInfo.TabCur?'text-blue cur':''" v-for="(item,index) in TabPage_tabInfo.TabItems"
@@ -19,7 +21,6 @@
 				{{item.title}}
 			</view>
 		</scroll-view>
-		<pdBaseInfo v-show="TabPage_tabInfo.TabCur==='pdBaseInfo'"></pdBaseInfo>
 		<pdInBankInfo v-show="TabPage_tabInfo.TabCur==='pdInBankInfo'"></pdInBankInfo>
 		<pdInstall v-show="TabPage_tabInfo.TabCur==='pdInstall'"></pdInstall>
 		<pdMakeFlow v-show="TabPage_tabInfo.TabCur==='pdMakeFlow'"></pdMakeFlow>
@@ -61,9 +62,6 @@
 		},
 		mounted:function(){
 			this.TabPage_tabInfo.TabItems = [{
-				title: '基本信息',
-				id: 'pdBaseInfo'
-			}, {
 				title: '原材料信息',
 				id: 'pdSourceInfo'
 			}, {
