@@ -68,7 +68,9 @@
 			 * @description 跳转至详情页
 			 */
 			jumpDetails: function() {
-				console.log(this.itemCode);
+				uni.navigateTo({
+					url: '/pages/query_info/prodect_details?title=钢管0001&itemCode=this.itemCode'
+				});
 				this.itemCode = '';
 			}
 		}
