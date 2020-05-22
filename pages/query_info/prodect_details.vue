@@ -18,14 +18,34 @@
 			>
 				{{item.title}}
 			</view>
+			<pdBaseInfo></pdBaseInfo>
+			<pdInBankInfo></pdInBankInfo>
+			<pdInstall></pdInstall>
+			<pdMakeFlow></pdMakeFlow>
+			<pdSendRecv></pdSendRecv>
+			<pdSourceInfo></pdSourceInfo>
 		</scroll-view>
 	</view>
 </template>
 
 <script>
 	import TabPage from '@/pages/components/custom-tab-page';
+	import pdBaseInfo from '@/pages/query_info/pdBaseInfo';
+	import pdInBankInfo from '@/pages/query_info/pdInBankInfo';
+	import pdInstall from '@/pages/query_info/pdInstall';
+	import pdMakeFlow from '@/pages/query_info/pdMakeFlow';
+	import pdSendRecv from '@/pages/query_info/pdSendRecv';
+	import pdSourceInfo from '@/pages/query_info/pdSourceInfo';
 	export default {
 		extends: TabPage,
+		components: {
+			pdBaseInfo,
+			pdInBankInfo,
+			pdInstall,
+			pdMakeFlow,
+			pdSendRecv,
+			pdSourceInfo
+		},
 		data() {
 			return {
 				title: '',
