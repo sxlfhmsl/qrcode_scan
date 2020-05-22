@@ -9,7 +9,7 @@
 		<pdBaseInfo></pdBaseInfo>
 		
 		<!-- 滚动条 -->
-		<scroll-view scroll-x class="bg-white nav solid-top" scroll-with-animation :scroll-left="TabPage_tabInfo.scrollLeft">
+		<scroll-view scroll-x class="bg-white nav solid-top solid-bottom" scroll-with-animation :scroll-left="TabPage_tabInfo.scrollLeft">
 			<view 
 				class="cu-item"
 				:class="item.id==TabPage_tabInfo.TabCur?'text-blue cur':''" v-for="(item,index) in TabPage_tabInfo.TabItems"
