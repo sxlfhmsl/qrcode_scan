@@ -2,14 +2,10 @@
 	<view>
 		<cu-custom bgColor="bg-gradual-blue" :isBack="true">
 			<block slot="content">
-				原材料管理
+				信息查询
 			</block>
 			<block slot="right">
-				<button 
-					@tap="createRMInfo" 
-					class="cu-btn cuIcon-roundadd lg round text-white" 
-					style="background-color: rgba(255,255,255,0);"
-				></button>
+				<text class="cu-btn lg round text-white cuIcon-qrcode" style="background-color: rgba(255,255,255,0);"></text>
 			</block>
 		</cu-custom>
 	</view>
@@ -23,12 +19,7 @@
 			}
 		},
 		methods: {
-			/**
-			 * @description 创建原材料信息
-			 */
-			createRMInfo: function() {
-				
-			}
+			
 		}
 	}
 </script>

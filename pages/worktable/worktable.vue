@@ -31,7 +31,7 @@
 					childCount: '1',
 					color: 'cyan',
 					icon: 'cuIcon-qrcode',
-					url: '/pages/personal/software_info'
+					url: '/pages/query_info/query_info'
 				}, {
 					title: '制作上传',
 					childCount: '1',

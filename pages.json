@@ -21,7 +21,7 @@
             "style" : {}
         }
         ,{
-            "path" : "pages/rm_manage/rm_manage",
+            "path" : "pages/query_info/query_info",
             "style" : {}
         }
     ],
