@@ -7,7 +7,7 @@
 		</cu-custom>
 		
 		<!-- 滚动条 -->
-		<scroll-view scroll-x class="bg-white nav text-center fixed" :style="[{top:CustomBar + 'px'}]">
+		<scroll-view scroll-x class="bg-white nav" scroll-with-animation :scroll-left="TabPage_tabInfo.scrollLeft">
 			<view 
 				class="cu-item"
 				:class="item.id==TabPage_tabInfo.TabCur?'text-blue cur':''" v-for="(item,index) in TabPage_tabInfo.TabItems"
@@ -18,13 +18,13 @@
 			>
 				{{item.title}}
 			</view>
-			<pdBaseInfo></pdBaseInfo>
-			<pdInBankInfo></pdInBankInfo>
-			<pdInstall></pdInstall>
-			<pdMakeFlow></pdMakeFlow>
-			<pdSendRecv></pdSendRecv>
-			<pdSourceInfo></pdSourceInfo>
 		</scroll-view>
+		<pdBaseInfo v-show="TabPage_tabInfo.TabCur==='pdBaseInfo'"></pdBaseInfo>
+		<pdInBankInfo v-show="TabPage_tabInfo.TabCur==='pdInBankInfo'"></pdInBankInfo>
+		<pdInstall v-show="TabPage_tabInfo.TabCur==='pdInstall'"></pdInstall>
+		<pdMakeFlow v-show="TabPage_tabInfo.TabCur==='pdMakeFlow'"></pdMakeFlow>
+		<pdSendRecv v-show="TabPage_tabInfo.TabCur==='pdSendRecv'"></pdSendRecv>
+		<pdSourceInfo v-show="TabPage_tabInfo.TabCur==='pdSourceInfo'"></pdSourceInfo>
 	</view>
 </template>
 
@@ -62,22 +62,22 @@
 		mounted:function(){
 			this.TabPage_tabInfo.TabItems = [{
 				title: '基本信息',
-				id: 'base_info'
+				id: 'pdBaseInfo'
 			}, {
 				title: '原材料信息',
-				id: 'source_info'
+				id: 'pdSourceInfo'
 			}, {
 				title: '制作流程',
-				id: 'make_flow'
+				id: 'pdMakeFlow'
 			}, {
 				title: '入库信息',
-				id: 'in_bank_info'
+				id: 'pdInBankInfo'
 			}, {
 				title: '发货/收货',
-				id: 'send_recv'
+				id: 'pdSendRecv'
 			}, {
 				title: '产品安装',
-				id: 'install'
+				id: 'pdInstall'
 			}];
 			this.TabPage_tabInfo.TabCur = this.TabPage_tabInfo.TabItems[0].id;
 		}
