@@ -49,7 +49,7 @@
 					childCount: '1',
 					color: 'blue',
 					icon: 'cuIcon-deliver',
-					url: '/pages/personal/software_info'
+					url: '/pages/send_recv/send_recv'
 				}]
 			}
 		},

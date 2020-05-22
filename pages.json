@@ -32,6 +32,10 @@
             "path" : "pages/install/install",
             "style" : {}
         }
+        ,{
+            "path" : "pages/send_recv/send_recv",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"mp-alipay": {
