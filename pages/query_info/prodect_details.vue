@@ -31,7 +31,7 @@
 
 <script>
 	import TabPage from '@/pages/components/custom-tab-page';
-	import pdBaseInfo from '@/pages/query_info/pdBaseInfo';
+	import pdBaseInfo from '@/pages/components/pdBaseInfo';
 	import pdInBankInfo from '@/pages/query_info/pdInBankInfo';
 	import pdInstall from '@/pages/query_info/pdInstall';
 	import pdMakeFlow from '@/pages/query_info/pdMakeFlow';
