@@ -1,5 +1,5 @@
 <template>
-	<view class="margin">
+	<view class="margin-sm">
 		<view class="flex">
 			<view class="flex-treble padding-sm col-auto-line text-white soild" style="width: 100%; background-color: #5c9ed6;">焊接作业信息</view>
 		</view>
