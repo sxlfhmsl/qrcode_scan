@@ -8,11 +8,17 @@
 				<text class="cu-btn lg round text-white cuIcon-punch" style="background-color: rgba(255,255,255,0);"></text>
 			</block>
 		</cu-custom>
+		
+		<makeMain></makeMain>
 	</view>
 </template>
 
 <script>
+	import makeMain from "@/pages/make/makeMain.vue"
 	export default {
+		components: {
+			makeMain
+		},
 		data() {
 			return {
 				
