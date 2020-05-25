@@ -1,85 +1,67 @@
 <template>
 	<view>
-		<view class="flex margin-top-sm margin-left-sm margin-right-sm">
-			<view class="padding-sm col-auto-line text-white solid-left solid-bottom text-center" style="width: 8em; background-color: #dad8d8;">实际使用部位</view>
-			<view class="padding-sm col-auto-line text-black bg-white solid-left solid-bottom solid-right" style="width: calc(100% - 8em)"></view>
-		</view>
-		
-		<view class="flex margin-left-sm margin-right-sm">
-			<view class="flex-treble padding-sm col-auto-line text-white soild" style="width: 100%; background-color: #5c9ed6;">安装作业信息</view>
-		</view>
-		
-		<view class="flex margin-left-sm margin-right-sm">
-			<view class="padding-sm col-auto-line text-white solid-left solid-bottom text-center" style="width: 8em; background-color: #dad8d8;">加工作业时间</view>
-			<view class="padding-sm col-auto-line text-black bg-white solid-left solid-bottom" style="width: calc(50% - 8em)"></view>
-			<view class="padding-sm col-auto-line text-white solid-left solid-bottom text-center" style="width: 8em; background-color: #dad8d8;">作业人员</view>
-			<view class="padding-sm col-auto-line text-black bg-white solid-left solid-bottom solid-right" style="width: calc(50% - 8em)"></view>
-		</view>
-		
-		<view class="flex margin-left-sm margin-right-sm">
-			<view class="padding-sm col-auto-line text-white solid-left solid-bottom text-center" style="width: 8em; background-color: #dad8d8;">加工作业内容</view>
-			<view class="padding-sm col-auto-line text-black bg-white solid-left solid-bottom solid-right" style="width: calc(100% - 8em)"></view>
-		</view>
-		
-		<view class="flex margin-left-sm margin-right-sm">
-			<view class="padding-sm col-auto-line text-white solid-left solid-bottom text-center" style="width: 8em; background-color: #dad8d8;">加工过程照片</view>
-			<view class="padding-sm col-auto-line text-black bg-white solid-left solid-bottom solid-right" style="width: calc(100% - 8em)"></view>
-		</view>
-		
-		<view class="flex margin-left-sm margin-right-sm">
-			<view class="flex-treble padding-sm col-auto-line text-white soild" style="width: 100%; background-color: #5c9ed6;">安装检验信息</view>
-		</view>
-		
-		<view class="flex margin-left-sm margin-right-sm">
-			<view class="padding-sm col-auto-line text-white solid-left solid-bottom text-center" style="width: 8em; background-color: #dad8d8;">安装检验时间</view>
-			<view class="padding-sm col-auto-line text-black bg-white solid-left solid-bottom" style="width: calc(50% - 8em)"></view>
-			<view class="padding-sm col-auto-line text-white solid-left solid-bottom text-center" style="width: 8em; background-color: #dad8d8;">检验人员</view>
-			<view class="padding-sm col-auto-line text-black bg-white solid-left solid-bottom solid-right" style="width: calc(50% - 8em)"></view>
-		</view>
-		
-		<view class="flex margin-left-sm margin-right-sm">
-			<view class="padding-sm col-auto-line text-white solid-left solid-bottom text-center" style="width: 8em; background-color: #dad8d8;">安装检验结论</view>
-			<view class="padding-sm col-auto-line text-black bg-white solid-left solid-bottom solid-right" style="width: calc(100% - 8em)"></view>
-		</view>
-		
-		<view class="flex margin-left-sm margin-right-sm">
-			<view class="padding-sm col-auto-line text-white solid-left solid-bottom text-center" style="width: 8em; background-color: #dad8d8;">安装检验照片</view>
-			<view class="padding-sm col-auto-line text-black bg-white solid-left solid-bottom solid-right" style="width: calc(100% - 8em)"></view>
-		</view>
-		
-		<view class="flex margin-left-sm margin-right-sm">
-			<view class="flex-treble padding-sm col-auto-line text-white soild" style="width: 100%; background-color: #5c9ed6;">业主代表</view>
-		</view>
-		
-		<view class="flex margin-left-sm margin-right-sm">
-			<view class="padding-sm col-auto-line text-white solid-left solid-bottom text-center" style="width: 8em; background-color: #dad8d8;">业主检测时间</view>
-			<view class="padding-sm col-auto-line text-black bg-white solid-left solid-bottom" style="width: calc(50% - 8em)"></view>
-			<view class="padding-sm col-auto-line text-white solid-left solid-bottom text-center" style="width: 8em; background-color: #dad8d8;">业主代表</view>
-			<view class="padding-sm col-auto-line text-black bg-white solid-left solid-bottom solid-right" style="width: calc(50% - 8em)"></view>
-		</view>
-		
-		<view class="flex margin-left-sm margin-right-sm">
-			<view class="padding-sm col-auto-line text-white solid-left solid-bottom text-center" style="width: 8em; background-color: #dad8d8;">业主代表检测结论</view>
-			<view class="padding-sm col-auto-line text-black bg-white solid-left solid-bottom solid-right" style="width: calc(100% - 8em)"></view>
-		</view>
-		
-		<view class="flex margin-left-sm margin-right-sm">
-			<view class="padding-sm col-auto-line text-white solid-left solid-bottom text-center" style="width: 8em; background-color: #dad8d8;">业主代表检测照片</view>
-			<view class="padding-sm col-auto-line text-black bg-white solid-left solid-bottom solid-right" style="width: calc(100% - 8em)"></view>
-		</view>
+		<tableNoEditEgA 
+			v-for="(tableItem, index) in tableList"
+			:key="index"
+			:rowsBeforeTitle="tableItem.rowsBeforeTitle"
+			:title="tableItem.title" 
+			:rowsAfterTitle="tableItem.rowsAfterTitle" 
+		></tableNoEditEgA>
 	</view>
 </template>
 
 <script>
+	import tableNoEditEgA from "@/pages/components/tableNoEditEgA";
+	import TableEgAElem from "@/pages/components/tableEgAElem";
 	export default {
 		name: 'pdInstall',
+		components: {
+			tableNoEditEgA
+		},
 		data() {
 			return {
-				
+				tableList: [{
+					rowsBeforeTitle:[],
+					title: {},
+					rowsAfterTitle: [],
+				}, {
+					rowsBeforeTitle:[],
+					title: {},
+					rowsAfterTitle: [],
+				}, {
+					rowsBeforeTitle:[],
+					title: {},
+					rowsAfterTitle: [],
+				}]
 			}
 		},
 		methods: {
-			
+			createData: function() {
+				// 安装作业
+				this.tableList[0].rowsBeforeTitle.push(new TableEgAElem('实际使用部位', '', '30%', '70%', '#dad8d8', 'white'));
+				this.tableList[0].title = {color: '#5c9ed6', value: '安装作业信息'};
+				this.tableList[0].rowsAfterTitle.push(new TableEgAElem('加工作业时间', '', '30%', '70%', '#dad8d8', 'white'));
+				this.tableList[0].rowsAfterTitle.push(new TableEgAElem('作业人员', '', '30%', '70%', '#dad8d8', 'white'));
+				this.tableList[0].rowsAfterTitle.push(new TableEgAElem('加工作业内容', '', '30%', '70%', '#dad8d8', 'white'));
+				this.tableList[0].rowsAfterTitle.push(new TableEgAElem('加工过程照片', '', '30%', '70%', '#dad8d8', 'white'));
+				
+				// 检验信息
+				this.tableList[1].title = {color: '#5c9ed6', value: '安装检验信息'};
+				this.tableList[1].rowsAfterTitle.push(new TableEgAElem('安装检验时间', '', '30%', '70%', '#dad8d8', 'white'));
+				this.tableList[1].rowsAfterTitle.push(new TableEgAElem('检验人员', '', '30%', '70%', '#dad8d8', 'white'));
+				this.tableList[1].rowsAfterTitle.push(new TableEgAElem('安装检验结论', '', '30%', '70%', '#dad8d8', 'white'));
+				this.tableList[1].rowsAfterTitle.push(new TableEgAElem('安装检验照片', '', '30%', '70%', '#dad8d8', 'white'));
+				
+				// 检验信息
+				this.tableList[2].title = {color: '#5c9ed6', value: '业主代表'};
+				this.tableList[2].rowsAfterTitle.push(new TableEgAElem('业主检测时间', '', '30%', '70%', '#dad8d8', 'white'));
+				this.tableList[2].rowsAfterTitle.push(new TableEgAElem('业主代表', '', '30%', '70%', '#dad8d8', 'white'));
+				this.tableList[2].rowsAfterTitle.push(new TableEgAElem('业主代表检测结论', '', '30%', '70%', '#dad8d8', 'white'));
+				this.tableList[2].rowsAfterTitle.push(new TableEgAElem('业主代表检测照片', '', '30%', '70%', '#dad8d8', 'white'));
+			}
+		},
+		mounted:function(){
+			this.createData();
 		}
 	}
 </script>
