@@ -10,10 +10,11 @@ class PermissionRequest extends BaseRequest {
 	constructor() {
 	    super();
 		this.modeExtendUrl = new Url('permission/mode', RequestType.NORMAL | RequestType.NEED_TOKEN);
+		this.dataExtendUrl = new Url('permission/data', RequestType.NORMAL | RequestType.NEED_TOKEN);
 	};
 	
 	/**
-	 * @description 验证是否拥有{type}的权限（1-制作;2-入库; 3-发货;4-收货;5-安装）
+	 * @description 验证是否拥有模块{type}的权限（1-制作;2-入库; 3-发货;4-收货;5-安装）
 	 * @param {Int} type 权限类型
 	 * @param {Function} successCallback 成功执行回调
 	 */
@@ -21,6 +22,30 @@ class PermissionRequest extends BaseRequest {
 		this.basePost(
 			this.modeExtendUrl.url + '?type=' + type,
 			this.modeExtendUrl.type,
+			{},
+			(result) => {
+				if (result.data.code == 200) {
+					successCallback(result.data.data);
+				}
+				else {
+					uni.showToast({
+						title: result.data.message
+					});
+				}
+			}
+		);
+	};
+	
+	/**
+	 * @description 验证对某一产品productId的某一模块type是否有权限
+	 * @param {Int} type 模块
+	 * @param {Int} productId 产品
+	 * @param {Function} successCallback 成功执行回调
+	 */
+	data(type, productId, successCallback) {
+		this.basePost(
+			this.dataExtendUrl.url + '?type=' + type + '&productId=' + productId,
+			this.dataExtendUrl.type,
 			{},
 			(result) => {
 				if (result.data.code == 200) {
