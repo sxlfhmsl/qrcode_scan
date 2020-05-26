@@ -90,9 +90,6 @@
 			}
 		},
 		methods: {
-		},
-		mounted:function(){
-			console.log(this.title.value);
 		}
 	}
 </script>
