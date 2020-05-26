@@ -27,6 +27,11 @@ class UserRequest extends BaseRequest {
 					});
 					successCallback(result.data.data);
 				}
+				else {
+					uni.showToast({
+						title: result.data.message
+					});
+				}
 			}
 		);
 	};
