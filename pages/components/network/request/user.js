@@ -1,11 +1,12 @@
 import BaseRequest from "@/pages/components/network/request/base";
 import RequestType from "@/pages/components/network/request/type";
+import Url from "@/pages/components/network/request/url";
 
 class UserRequest extends BaseRequest {
 	constructor() {
 		super();
 		// 登录请求
-	    this.loginExtendUrl = {url: 'user/login', type: RequestType.NORMAL};
+	    this.loginExtendUrl = new Url('user/login', RequestType.NORMAL);
 	};
 	
 	/**
