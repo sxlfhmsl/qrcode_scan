@@ -43,8 +43,14 @@ class BaseRequest {
 	baseAjax(extendUrl, requestType, method, dataType, params, callbackFunc, header) {
 		if (requestType & RequestType.NEED_TOKEN != 0) {
 			let token = uni.getStorageSync('token');               // 获取token
-			if (token == undefined || token == null) {
+			if (token == undefined || token == null || token == '') {
 				// 请直接跳转至登录界面
+				uni.removeStorage({
+					key: 'token'
+				});
+				uni.redirectTo({
+					url: '/pages/index/index'
+				});
 			}
 			else {
 				header['Authorization'] = token;
@@ -62,6 +68,12 @@ class BaseRequest {
 				if (result.statusCode == 200) {
 					if (result.data.code == 700) {
 						// token验证失败，需跳转到登录界面
+						uni.removeStorage({
+							key: 'token'
+						});
+						uni.redirectTo({
+							url: '/pages/index/index'
+						});
 					}
 					else {
 						callbackFunc(result);
