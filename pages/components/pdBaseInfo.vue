@@ -29,9 +29,6 @@
 		},
 		methods: {
 			
-		},
-		mounted:function(e){
-			console.log("shabi");
 		}
 	}
 </script>
