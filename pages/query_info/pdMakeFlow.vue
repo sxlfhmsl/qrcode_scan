@@ -1,5 +1,5 @@
 <template>
-	<scroll-view class="bg-white padding-sm">
+	<scroll-view class="bg-white">
 		<tableNoEditEgA
 			v-for="(tableItem, index) in tableList"
 			:key="index"

@@ -1,55 +1,59 @@
 <template>
-	<view>
-		<view class="flex margin-left-sm margin-top-sm margin-right-sm">
-			<view class="flex-treble padding-sm col-auto-line text-white soild" style="width: 100%; background-color: #5c9ed6;">发货基本信息</view>
-		</view>
-		
-		<view class="flex margin-left-sm margin-right-sm">
-			<view class="padding-sm col-auto-line text-white solid-left solid-bottom text-center" style="width: 30%; background-color: #dad8d8;">发货时间</view>
-			<view class="padding-sm col-auto-line text-black bg-white solid-left solid-bottom solid-right" style="width: 80%"></view>
-		</view>
-		
-		<view class="flex margin-left-sm margin-right-sm">
-			<view class="padding-sm col-auto-line text-white solid-left solid-bottom text-center" style="width: 30%; background-color: #dad8d8;">发货订单编号</view>
-			<view class="padding-sm col-auto-line text-black bg-white solid-left solid-bottom solid-right" style="width: 80%"></view>
-		</view>
-		
-		<view class="flex margin-left-sm margin-right-sm">
-			<view class="padding-sm col-auto-line text-white solid-left solid-bottom text-center" style="width: 30%; background-color: #dad8d8;">客户单位</view>
-			<view class="padding-sm col-auto-line text-black bg-white solid-left solid-bottom solid-right" style="width: 80%"></view>
-		</view>
-		
-		<view class="flex margin-left-sm margin-right-sm">
-			<view class="padding-sm col-auto-line text-white solid-left solid-bottom text-center" style="width: 30%; background-color: #dad8d8;">发货地址</view>
-			<view class="padding-sm col-auto-line text-black bg-white solid-left solid-bottom solid-right" style="width: 80%"></view>
-		</view>
-		
-		<view class="flex margin-left-sm margin-right-sm">
-			<view class="padding-sm col-auto-line text-white solid-left solid-bottom text-center" style="width: 30%; background-color: #dad8d8;">收货地址</view>
-			<view class="padding-sm col-auto-line text-black bg-white solid-left solid-bottom solid-right" style="width: 80%"></view>
-		</view>
-		
-		<view class="flex margin-left-sm margin-right-sm">
-			<view class="flex-treble padding-sm col-auto-line text-white soild" style="width: 100%; background-color: #5c9ed6;">发货基本信息</view>
-		</view>
-		
-		<view class="flex margin-left-sm margin-right-sm">
-			<view class="padding-sm col-auto-line text-white solid-left solid-bottom text-center" style="width: 30%; background-color: #dad8d8;">收货时间</view>
-			<view class="padding-sm col-auto-line text-black bg-white solid-left solid-bottom solid-right" style="width: 80%"></view>
-		</view>
-	</view>
+	<scroll-view class="bg-white">
+		<tableNoEditEgA
+			v-for="(tableItem, index) in tableList"
+			:key="index"
+			:rowsBeforeTitle="tableItem.rowsBeforeTitle"
+			:title="tableItem.title" 
+			:rowsAfterTitle="tableItem.rowsAfterTitle" 
+		></tableNoEditEgA>
+	</scroll-view>
 </template>
 
 <script>
+	import tableNoEditEgA from "@/pages/components/tableNoEditEgA";
+	import TableEgAElem from "@/pages/components/tableEgAElem";
+	
 	export default {
 		name: 'pdSendRecv',
+		components: {
+			tableNoEditEgA
+		},
 		data() {
 			return {
-				
+				tableList: []
 			}
 		},
 		methods: {
-			
+			/**
+			 * @description 创造数据
+			 */
+			createData: function() {
+				// 例子1
+				this.tableList.push({
+					rowsBeforeTitle: [],
+					title: {color: '#5c9ed6', value: '发货基本信息'},
+					rowsAfterTitle: [
+						new TableEgAElem('发货时间', '', '25%', '75%', '#dad8d8', 'white'),
+						new TableEgAElem('发货订单编号', '', '25%', '75%', '#dad8d8', 'white'),
+						new TableEgAElem('客户单位', '', '25%', '75%', '#dad8d8', 'white'),
+						new TableEgAElem('发货地址', '', '25%', '75%', '#dad8d8', 'white'),
+						new TableEgAElem('收货地址', '', '25%', '75%', '#dad8d8', 'white')
+					]
+				});
+				
+				// 例子2
+				this.tableList.push({
+					rowsBeforeTitle: [],
+					title: {color: '#5c9ed6', value: '收货基本信息'},
+					rowsAfterTitle: [
+						new TableEgAElem('收货时间', '', '25%', '75%', '#dad8d8', 'white'),
+					]
+				});
+			}
+		},
+		mounted:function(){
+			this.createData();
 		}
 	}
 </script>
