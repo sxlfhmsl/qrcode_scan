@@ -11,6 +11,7 @@ class ProductRequest extends BaseRequest {
 	    super();
 		this.detailByIdUrl = new RequestType('product/detailById', RequestType.NORMAL | RequestType.NEED_TOKEN);
 		this.productByCodeUrl = new RequestType('product/productByCode', RequestType.NORMAL | RequestType.NEED_TOKEN);
+		this.selectMaterialUrl = new RequestType('product/selectMaterial', RequestType.NORMAL | RequestType.NEED_TOKEN);
 	};
 	
 	/**
@@ -38,6 +39,32 @@ class ProductRequest extends BaseRequest {
 		this.productByCodeUrl.urlParams = {'code': code};
 		this.basePost(
 			this.productByCodeUrl,
+			{},
+			(result) => {
+				this.baseResultProcess(result, successCallback);
+			}
+		);
+	};
+	
+	/**
+	 * @description 获取可选原材料列表
+	 * @param {Object} code 材料编号
+	 * @param {Object} materialType 材料类型
+	 * @param {Object} enterDate 进厂日期
+	 * @param {Object} page 当前页数
+	 * @param {Object} limit 每页大小
+	 * @param {Function} successCallback 成功回调
+	 */
+	selectMaterial(code, materialType, enterDate, page, limit, successCallback) {
+		this.selectMaterialUrl.urlParams = {
+			'code': code,
+			'materialType': materialType,
+			'enterDate': enterDate,
+			'page': page,
+			'limit': limit,
+		};
+		this.basePost(
+			this.selectMaterialUrl,
 			{},
 			(result) => {
 				this.baseResultProcess(result, successCallback);
