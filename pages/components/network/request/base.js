@@ -8,6 +8,22 @@ class BaseRequest {
 	};
 	
 	/**
+	 * @description 请求结果统一处理
+	 * @param {Object} result 结果
+	 * @param {Object} callback 执行回调-----成功
+	 */
+	baseResultProcess(result, callback) {
+		if (result.data.code == 200) {
+			callback(result.data.data);
+		}
+		else {
+			uni.showToast({
+				title: result.data.message
+			});
+		}
+	};
+	
+	/**
 	 * @description 基础get请求
 	 * @param {Object} url 地址
 	 * @param {Object} params 请求的参数
