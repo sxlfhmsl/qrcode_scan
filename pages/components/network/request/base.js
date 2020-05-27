@@ -5,43 +5,39 @@ import RequestType from "@/pages/components/network/request/type";
  */
 class BaseRequest {
 	constructor() {
-	    this.baseUrl = 'http://192.168.1.120:8180/cmpApi/';
 	};
 	
 	/**
 	 * @description 基础get请求
-	 * @param {Object} extendUrl 额外地址
-	 * @param {Object} requestType 请求的类型
+	 * @param {Object} url 地址
 	 * @param {Object} params 请求的参数
 	 * @param {Object} callbackFunc 执行成功的回调
 	 */
-	baseGet(extendUrl, requestType, params, callbackFunc) {
-		return this.baseAjax(extendUrl, requestType, 'GET', 'json', params, callbackFunc, {});
+	baseGet(url, params, callbackFunc) {
+		return this.baseAjax(extendUrl, 'GET', 'json', params, callbackFunc, {});
 	};
 	
 	/**
 	 * @description 基础post请求
-	 * @param {Object} extendUrl 额外地址
-	 * @param {Object} requestType 请求的类型
+	 * @param {Object} url 地址
 	 * @param {Object} params 请求的参数
 	 * @param {Object} callbackFunc 执行成功的回调
 	 */
-	basePost(extendUrl, requestType, params, callbackFunc) {
-		return this.baseAjax(extendUrl, requestType, 'POST', 'json', params, callbackFunc, {});
+	basePost(url, params, callbackFunc) {
+		return this.baseAjax(extendUrl, 'POST', 'json', params, callbackFunc, {});
 	};
 	
 	/**
 	 * @description 基本的ajax请求
-	 * @param {Object} extendUrl 额外地址
-	 * @param {Object} requestType 请求的类型
+	 * @param {Object} url 地址
 	 * @param {Object} method 请求方式 POST GET
 	 * @param {Object} dataType 返回数据类型
 	 * @param {Object} params 请求的参数
 	 * @param {Object} callbackFunc 执行成功的回调
 	 * @param {Object} header 请求头
 	 */
-	baseAjax(extendUrl, requestType, method, dataType, params, callbackFunc, header) {
-		if (requestType & RequestType.NEED_TOKEN != 0) {
+	baseAjax(url, method, dataType, params, callbackFunc, header) {
+		if (url.type & RequestType.NEED_TOKEN != 0) {
 			let token = uni.getStorageSync('token');               // 获取token
 			if (token == undefined || token == null || token == '') {
 				// 请直接跳转至登录界面
@@ -58,7 +54,7 @@ class BaseRequest {
 		}
 		
 		uni.request({
-			url: this.baseUrl + extendUrl,
+			url: url.url,
 			header: header,
 			method: method,
 			dataType: dataType,

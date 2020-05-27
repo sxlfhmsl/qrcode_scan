@@ -9,7 +9,7 @@ class ProductRequest extends BaseRequest {
 	
 	constructor() {
 	    super();
-		this.detailByIdExtendUrl = new RequestType('product/detailById', RequestType.NORMAL | RequestType.NEED_TOKEN);
+		this.detailByIdUrl = new RequestType('product/detailById', RequestType.NORMAL | RequestType.NEED_TOKEN);
 	};
 	
 	/**
@@ -18,9 +18,9 @@ class ProductRequest extends BaseRequest {
 	 * @param {Object} successCallback 成功执行回调
 	 */
 	detailById(id, successCallback) {
+		this.detailByIdUrl.urlParams = {'id': id};
 		this.basePost(
-			this.detailByIdExtendUrl.url + '?id=' + id,
-			this.detailByIdExtendUrl.type,
+			this.detailByIdUrl,
 			{},
 			(result) => {
 				if (result.data.code == 200) {

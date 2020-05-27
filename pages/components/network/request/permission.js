@@ -9,8 +9,8 @@ class PermissionRequest extends BaseRequest {
 	
 	constructor() {
 	    super();
-		this.modeExtendUrl = new Url('permission/mode', RequestType.NORMAL | RequestType.NEED_TOKEN);
-		this.dataExtendUrl = new Url('permission/data', RequestType.NORMAL | RequestType.NEED_TOKEN);
+		this.modeUrl = new Url('permission/mode', RequestType.NORMAL | RequestType.NEED_TOKEN);
+		this.dataUrl = new Url('permission/data', RequestType.NORMAL | RequestType.NEED_TOKEN);
 	};
 	
 	/**
@@ -19,9 +19,9 @@ class PermissionRequest extends BaseRequest {
 	 * @param {Function} successCallback 成功执行回调
 	 */
 	mode(type, successCallback) {
+		modeUrl.urlParams = {'type': type};
 		this.basePost(
-			this.modeExtendUrl.url + '?type=' + type,
-			this.modeExtendUrl.type,
+			this.modeUrl,
 			{},
 			(result) => {
 				if (result.data.code == 200) {
@@ -43,9 +43,9 @@ class PermissionRequest extends BaseRequest {
 	 * @param {Function} successCallback 成功执行回调
 	 */
 	data(type, productId, successCallback) {
+		dataUrl.urlParams = {'type': type, 'productId': productId};
 		this.basePost(
-			this.dataExtendUrl.url + '?type=' + type + '&productId=' + productId,
-			this.dataExtendUrl.type,
+			this.dataUrl,
 			{},
 			(result) => {
 				if (result.data.code == 200) {

@@ -6,7 +6,7 @@ class UserRequest extends BaseRequest {
 	constructor() {
 		super();
 		// 登录请求
-	    this.loginExtendUrl = new Url('user/login', RequestType.NORMAL);
+	    this.loginUrl = new Url('user/login', RequestType.NORMAL);
 	};
 	
 	/**
@@ -16,9 +16,9 @@ class UserRequest extends BaseRequest {
 	 * @param {Object} successCallback 执行成功的回调
 	 */
 	login(username, password, successCallback) {
+		this.loginUrl.urlParams = {'username': username, 'password': password};
 		this.basePost(
-			this.loginExtendUrl.url + '?username=' + username + '&password=' + password,
-			this.loginExtendUrl.type,
+			this.loginUrl,
 			{},
 			(result) => {
 				if (result.data.code == 200) {
