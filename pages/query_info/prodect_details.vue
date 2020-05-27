@@ -139,6 +139,7 @@
 			 */
 			saveRawData: function(data) {
 				this.productData = data;
+				this.title = this.productData.product.name;
 				this.viewData.pdBaseInfo = this.productData.product;
 			}
 		},
