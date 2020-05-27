@@ -1,8 +1,8 @@
 <template>
 	<view>
 		<!-- content pages -->
-		<worktable v-if="PageCur == 'worktable'"></worktable>
-		<personal v-if="PageCur == 'personal'"></personal>
+		<worktable v-show="PageCur == 'worktable'"></worktable>
+		<personal v-show="PageCur == 'personal'"></personal>
 		
 		<!-- foot bar -->
 		<view class="cu-bar tabbar bg-white shadow foot">
