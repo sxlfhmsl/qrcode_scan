@@ -9,17 +9,17 @@ class ProductRequest extends BaseRequest {
 	
 	constructor() {
 	    super();
-		this.detailByIdUrl = new RequestType('product/detailById', RequestType.NORMAL | RequestType.NEED_TOKEN);
-		this.productByCodeUrl = new RequestType('product/productByCode', RequestType.NORMAL | RequestType.NEED_TOKEN);
-		this.selectMaterialUrl = new RequestType('product/selectMaterial', RequestType.NORMAL | RequestType.NEED_TOKEN);
-		this.selectWorkerUrl = new RequestType('product/selectWorker', RequestType.NORMAL | RequestType.NEED_TOKEN);
-		this.madeUrl = new RequestType('product/made', RequestType.NORMAL | RequestType.NEED_TOKEN);
-		this.madeListUrl = new RequestType('product/madeList', RequestType.NORMAL | RequestType.NEED_TOKEN);
-		this.installListUrl = new RequestType('product/installList', RequestType.NORMAL | RequestType.NEED_TOKEN);
-		this.installUrl = new RequestType('product/install', RequestType.NORMAL | RequestType.NEED_TOKEN);
-		this.deliveryUrl = new RequestType('product/delivery', RequestType.NORMAL | RequestType.NEED_TOKEN);
-		this.receiveUrl = new RequestType('product/receive', RequestType.NORMAL | RequestType.NEED_TOKEN);
-		this.deptTreeUrl = new RequestType('product/deptTree', RequestType.NORMAL | RequestType.NEED_TOKEN);
+		this.detailByIdUrl = new Url('product/detailById', RequestType.NORMAL | RequestType.NEED_TOKEN);
+		this.productByCodeUrl = new Url('product/productByCode', RequestType.NORMAL | RequestType.NEED_TOKEN);
+		this.selectMaterialUrl = new Url('product/selectMaterial', RequestType.NORMAL | RequestType.NEED_TOKEN);
+		this.selectWorkerUrl = new Url('product/selectWorker', RequestType.NORMAL | RequestType.NEED_TOKEN);
+		this.madeUrl = new Url('product/made', RequestType.NORMAL | RequestType.NEED_TOKEN);
+		this.madeListUrl = new Url('product/madeList', RequestType.NORMAL | RequestType.NEED_TOKEN);
+		this.installListUrl = new Url('product/installList', RequestType.NORMAL | RequestType.NEED_TOKEN);
+		this.installUrl = new Url('product/install', RequestType.NORMAL | RequestType.NEED_TOKEN);
+		this.deliveryUrl = new Url('product/delivery', RequestType.NORMAL | RequestType.NEED_TOKEN);
+		this.receiveUrl = new Url('product/receive', RequestType.NORMAL | RequestType.NEED_TOKEN);
+		this.deptTreeUrl = new Url('product/deptTree', RequestType.NORMAL | RequestType.NEED_TOKEN);
 	};
 	
 	/**

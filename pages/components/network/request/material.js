@@ -10,9 +10,9 @@ class MaterialRequest extends BaseRequest {
 	constructor() {
 	    super();
 		
-		this.listUrl = new RequestType('productMaterial/list', RequestType.NORMAL | RequestType.NEED_TOKEN);
-		this.addUrl = new RequestType('productMaterial/add', RequestType.NORMAL | RequestType.NEED_TOKEN);
-		this.delUrl = new RequestType('productMaterial/delete', RequestType.NORMAL | RequestType.NEED_TOKEN);
+		this.listUrl = new Url('productMaterial/list', RequestType.NORMAL | RequestType.NEED_TOKEN);
+		this.addUrl = new Url('productMaterial/add', RequestType.NORMAL | RequestType.NEED_TOKEN);
+		this.delUrl = new Url('productMaterial/delete', RequestType.NORMAL | RequestType.NEED_TOKEN);
 	};
 	
 	/**
