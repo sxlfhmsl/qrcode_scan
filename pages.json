@@ -37,9 +37,13 @@
             "style" : {}
         }
         ,{
-            "path" : "pages/send_recv/send_recv",
+            "path" : "pages/send/send",
             "style" : {}
         }
+		,{
+		    "path" : "pages/recv/recv",
+		    "style" : {}
+		}
         ,{
             "path" : "pages/query_info/prodect_details",
             "style" : {}
