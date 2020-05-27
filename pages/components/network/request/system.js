@@ -21,14 +21,7 @@ class SystemRequest extends BaseRequest {
 			this.appCurrentVersionUrl,
 			{},
 			(result) => {
-				if (result.data.code == 200) {
-					successCallback(result.data.data);
-				}
-				else {
-					uni.showToast({
-						title: result.data.message
-					});
-				}
+				this.baseResultProcess(result, successCallback);
 			}
 		);
 	};

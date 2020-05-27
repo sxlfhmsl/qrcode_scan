@@ -24,14 +24,7 @@ class ProductRequest extends BaseRequest {
 			this.detailByIdUrl,
 			{},
 			(result) => {
-				if (result.data.code == 200) {
-					successCallback(result.data.data);
-				}
-				else {
-					uni.showToast({
-						title: result.data.message
-					});
-				}
+				this.baseResultProcess(result, successCallback);
 			}
 		);
 	};
@@ -47,14 +40,7 @@ class ProductRequest extends BaseRequest {
 			this.productByCodeUrl,
 			{},
 			(result) => {
-				if (result.data.code == 200) {
-					successCallback(result.data.data);
-				}
-				else {
-					uni.showToast({
-						title: result.data.message
-					});
-				}
+				this.baseResultProcess(result, successCallback);
 			}
 		);
 	};

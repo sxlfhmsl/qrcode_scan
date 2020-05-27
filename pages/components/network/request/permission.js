@@ -24,14 +24,7 @@ class PermissionRequest extends BaseRequest {
 			this.modeUrl,
 			{},
 			(result) => {
-				if (result.data.code == 200) {
-					successCallback(result.data.data);
-				}
-				else {
-					uni.showToast({
-						title: result.data.message
-					});
-				}
+				this.baseResultProcess(result, successCallback);
 			}
 		);
 	};
@@ -48,14 +41,7 @@ class PermissionRequest extends BaseRequest {
 			this.dataUrl,
 			{},
 			(result) => {
-				if (result.data.code == 200) {
-					successCallback(result.data.data);
-				}
-				else {
-					uni.showToast({
-						title: result.data.message
-					});
-				}
+				this.baseResultProcess(result, successCallback);
 			}
 		);
 	};
