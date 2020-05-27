@@ -2,19 +2,19 @@
 	<view class="bg-white padding-sm">
 		<view class="grid text-center col-4">
 			<view class="margin-bottom-sm col-title">生产单位</view>
-			<view class="margin-bottom-sm col-content"></view>
+			<view class="margin-bottom-sm col-content text-left text-gray">{{itemData == null? '': itemData.deptName}}</view>
 			<view class="margin-bottom-sm col-title">产品名称</view>
-			<view class="margin-bottom-sm col-content"></view>
+			<view class="margin-bottom-sm col-content text-left text-gray">{{itemData == null? '': itemData.name}}</view>
 			
 			<view class="margin-bottom-sm col-title">产品编号</view>
-			<view class="margin-bottom-sm col-content"></view>
+			<view class="margin-bottom-sm col-content text-left text-gray">{{itemData == null? '': itemData.code}}</view>
 			<view class="margin-bottom-sm col-title">产品类型</view>
-			<view class="margin-bottom-sm col-content"></view>
+			<view class="margin-bottom-sm col-content text-left text-gray">{{itemData == null? '': itemData.categoryName}}</view>
 			
 			<view class="margin-bottom-sm col-title">使用部位</view>
-			<view class="margin-bottom-sm col-content"></view>
+			<view class="margin-bottom-sm col-content text-left text-gray">{{itemData == null? '': itemData.place}}</view>
 			<view class="margin-bottom-sm col-title"></view>
-			<view class="margin-bottom-sm col-content"></view>
+			<view class="margin-bottom-sm col-content text-left text-gray"></view>
 		</view>
 	</view>
 </template>
@@ -22,6 +22,12 @@
 <script>
 	export default {
 		name: 'pdBaseInfo',
+		props: {
+			itemData: {
+				required: true,
+				default: null
+			}
+		},
 		data() {
 			return {
 				

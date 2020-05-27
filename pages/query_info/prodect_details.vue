@@ -6,7 +6,7 @@
 			</block>
 		</cu-custom>
 		
-		<pdBaseInfo  v-if="itemPermession['pdBaseInfo'].show"></pdBaseInfo>
+		<pdBaseInfo  v-if="itemPermession['pdBaseInfo'].show" :itemData="viewData.pdBaseInfo"></pdBaseInfo>
 		
 		<!-- 滚动条 -->
 		<scroll-view scroll-x class="bg-white nav solid-top solid-bottom" scroll-with-animation :scroll-left="TabPage_tabInfo.scrollLeft">
@@ -22,11 +22,11 @@
 				{{item.title}}
 			</view>
 		</scroll-view>
-		<pdInBankInfo v-if="itemPermession.pdInBankInfo.show" v-show="TabPage_tabInfo.TabCur==='pdInBankInfo'"></pdInBankInfo>
-		<pdInstall v-if="itemPermession.pdInstall.show" v-show="TabPage_tabInfo.TabCur==='pdInstall'"></pdInstall>
-		<pdMakeFlow v-if="itemPermession.pdMakeFlow.show" v-show="TabPage_tabInfo.TabCur==='pdMakeFlow'"></pdMakeFlow>
-		<pdSendRecv v-if="itemPermession.pdSendRecv.show" v-show="TabPage_tabInfo.TabCur==='pdSendRecv'"></pdSendRecv>
-		<pdSourceInfo v-if="itemPermession.pdSourceInfo.show" v-show="TabPage_tabInfo.TabCur==='pdSourceInfo'"></pdSourceInfo>
+		<pdInBankInfo v-if="itemPermession.pdInBankInfo.show" v-show="TabPage_tabInfo.TabCur==='pdInBankInfo'" :itemData="viewData.pdInBankInfo"></pdInBankInfo>
+		<pdInstall v-if="itemPermession.pdInstall.show" v-show="TabPage_tabInfo.TabCur==='pdInstall'" :itemData="viewData.pdInstall"></pdInstall>
+		<pdMakeFlow v-if="itemPermession.pdMakeFlow.show" v-show="TabPage_tabInfo.TabCur==='pdMakeFlow'" :itemData="viewData.pdMakeFlow"></pdMakeFlow>
+		<pdSendRecv v-if="itemPermession.pdSendRecv.show" v-show="TabPage_tabInfo.TabCur==='pdSendRecv'" :itemData="viewData.pdSendRecv"></pdSendRecv>
+		<pdSourceInfo v-if="itemPermession.pdSourceInfo.show" v-show="TabPage_tabInfo.TabCur==='pdSourceInfo'" :itemData="viewData.pdSourceInfo"></pdSourceInfo>
 	</view>
 </template>
 
@@ -85,6 +85,14 @@
 					},
 				},
 				productData: null,                                      // 产品查询数据
+				viewData: {                                             // 视图绑定的数据
+					'pdBaseInfo': null,
+					'pdInBankInfo': null,
+					'pdInstall': null,
+					'pdMakeFlow': null,
+					'pdSendRecv': null,
+					'pdSourceInfo': null,
+				},
 				permissionRequest: new PermissionRequest(),             // 网络请求类-----权限
 				productRequest: new ProductRequest(),                   // 网络请求类-----产品信息
 			}
@@ -111,7 +119,7 @@
 			 */
 			loadById: function(itemId) {
 				this.productRequest.detailById(itemId, (data) => {
-					this.productData = data;
+					this.saveRawData(data);
 				});
 				this.checkItemPermission(itemId);
 			},
@@ -121,9 +129,17 @@
 			 */
 			loadByCode: function(ItemCode) {
 				this.productRequest.productByCode(ItemCode, (data) => {
-					this.productData = data;
+					this.saveRawData(data);
 					this.checkItemPermission(data.product.id);
 				});
+			},
+			/**
+			 * @description 保留原始数据
+			 * @param {Object} data 数据
+			 */
+			saveRawData: function(data) {
+				this.productData = data;
+				this.viewData.pdBaseInfo = this.productData.product;
 			}
 		},
 		onLoad:function(option){
