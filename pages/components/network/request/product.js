@@ -17,6 +17,9 @@ class ProductRequest extends BaseRequest {
 		this.madeListUrl = new RequestType('product/madeList', RequestType.NORMAL | RequestType.NEED_TOKEN);
 		this.installListUrl = new RequestType('product/installList', RequestType.NORMAL | RequestType.NEED_TOKEN);
 		this.installUrl = new RequestType('product/install', RequestType.NORMAL | RequestType.NEED_TOKEN);
+		this.deliveryUrl = new RequestType('product/delivery', RequestType.NORMAL | RequestType.NEED_TOKEN);
+		this.receiveUrl = new RequestType('product/receive', RequestType.NORMAL | RequestType.NEED_TOKEN);
+		this.deptTreeUrl = new RequestType('product/deptTree', RequestType.NORMAL | RequestType.NEED_TOKEN);
 	};
 	
 	/**
@@ -174,6 +177,70 @@ class ProductRequest extends BaseRequest {
 		this.installUrl.urlParams = installParams;
 		this.basePost(
 			this.installUrl,
+			{},
+			(result) => {
+				this.baseResultProcess(result, successCallback);
+			}
+		);
+	};
+	
+	/**
+	 * @description 发货
+	 * @param {Object} productId 产品id
+	 * @param {Object} deliveryDate 发货时间
+	 * @param {Object} deliveryCode 发货编号
+	 * @param {Object} recevieDeptId 客户单位id
+	 * @param {Object} recevieDeptName 客户单位
+	 * @param {Object} deliveryAddress 发货地址
+	 * @param {Object} recevieAddress 收货地址
+	 * @param {Object} successCallback 成功回调
+	 */
+	delivery(productId, deliveryDate, deliveryCode, recevieDeptId, recevieDeptName, deliveryAddress, recevieAddress, successCallback) {
+		this.deliveryListUrl.urlParams = {
+			'productId': productId,
+			'deliveryDate': deliveryDate,
+			'deliveryCode': deliveryCode,
+			'recevieDeptId': recevieDeptId,
+			'recevieDeptName': recevieDeptName,
+			'deliveryAddress': deliveryAddress,
+			'recevieAddress': recevieAddress
+		};
+		this.basePost(
+			this.deliveryListUrl,
+			{},
+			(result) => {
+				this.baseResultProcess(result, successCallback);
+			}
+		);
+	};
+	
+	/**
+	 * @description 收货
+	 * @param {Object} productId 产品id
+	 * @param {Object} recevieDate 收货日期
+	 * @param {Object} successCallback 成功回调
+	 */
+	receive(productId, recevieDate, successCallback) {
+		this.receiveListUrl.urlParams = {
+			'productId': productId,
+			'recevieDate': recevieDate
+		};
+		this.basePost(
+			this.receiveListUrl,
+			{},
+			(result) => {
+				this.baseResultProcess(result, successCallback);
+			}
+		);
+	};
+	
+	/**
+	 * @description 客户部门
+	 * @param {Object} successCallback 成功回调
+	 */
+	deptTree(successCallback) {
+		this.basePost(
+			this.deptTreeUrl,
 			{},
 			(result) => {
 				this.baseResultProcess(result, successCallback);
