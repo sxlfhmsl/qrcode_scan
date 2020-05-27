@@ -42,7 +42,7 @@ export default {
 			        console.log('条码类型：' + res.scanType);
 			        console.log('条码内容：' + res.result);
 					uni.navigateTo({
-						url: '/pages/query_info/prodect_details?title=钢管0001&itemCode=' + res.result
+						url: '/pages/query_info/prodect_details?itemType=id&itemCode=' + res.result
 					});
 			    }
 			});

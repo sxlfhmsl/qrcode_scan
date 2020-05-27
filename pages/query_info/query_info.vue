@@ -27,7 +27,7 @@
 			
 			<view class="flex padding justify-center cu-form-group margin-top">
 				<view class="title">编号:</view>
-				<input class="uni-input" placeholder="请输入编号" name="input" :value="itemCode" @confirm="jumpDetails"></input>
+				<input class="uni-input" placeholder="请输入编号" name="input" v-model="itemCode" @confirm="jumpDetails"></input>
 			</view>
 			<view class="flex padding justify-center">
 				<button
@@ -69,7 +69,7 @@
 			 */
 			jumpDetails: function() {
 				uni.navigateTo({
-					url: '/pages/query_info/prodect_details?title=钢管0001&itemCode=' + this.itemCode
+					url: '/pages/query_info/prodect_details?itemType=id&itemCode=' + this.itemCode
 				});
 				this.itemCode = '';
 			}
