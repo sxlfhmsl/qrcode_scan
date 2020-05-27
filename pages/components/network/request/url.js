@@ -15,7 +15,9 @@ class Url {
 	get url() {
 		let paramList = [];
 		Object.keys(this._urlParams).forEach(param => {
-			paramList.push(param + '=' + this._urlParams[param]);
+			if (this._urlParams[param] !== undefined && this._urlParams[param] !== null) {
+				paramList.push(param + '=' + this._urlParams[param]);
+			}
 		});
 		return Url.baseUrl + this._url + (paramList.length > 0? ('?' + paramList.join('&')): '');
 	};
