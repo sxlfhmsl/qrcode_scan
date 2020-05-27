@@ -69,7 +69,7 @@
 			 */
 			jumpDetails: function() {
 				uni.navigateTo({
-					url: '/pages/query_info/prodect_details?title=钢管0001&itemCode=this.itemCode'
+					url: '/pages/query_info/prodect_details?title=钢管0001&itemCode=' + this.itemCode
 				});
 				this.itemCode = '';
 			}
