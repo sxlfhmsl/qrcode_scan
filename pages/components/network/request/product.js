@@ -15,6 +15,7 @@ class ProductRequest extends BaseRequest {
 		this.selectWorkerUrl = new RequestType('product/selectWorker', RequestType.NORMAL | RequestType.NEED_TOKEN);
 		this.madeUrl = new RequestType('product/made', RequestType.NORMAL | RequestType.NEED_TOKEN);
 		this.madeListUrl = new RequestType('product/madeList', RequestType.NORMAL | RequestType.NEED_TOKEN);
+		this.installListUrl = new RequestType('product/installList', RequestType.NORMAL | RequestType.NEED_TOKEN);
 	};
 	
 	/**
@@ -115,7 +116,7 @@ class ProductRequest extends BaseRequest {
 	 * @param {Object} status 状态 状态:0-待制作；1-制作中；2-已入库；3-已发货；4-已报废
 	 * @param {Object} page 当前页数
 	 * @param {Object} limit 每页大小
-	 * @param {Object} successCallback
+	 * @param {Object} successCallback 成功回调
 	 */
 	madeList(code, status, page, limit, successCallback) {
 		this.madeListUrl.urlParams = {
@@ -126,6 +127,30 @@ class ProductRequest extends BaseRequest {
 		};
 		this.basePost(
 			this.madeListUrl,
+			{},
+			(result) => {
+				this.baseResultProcess(result, successCallback);
+			}
+		);
+	};
+	
+	/**
+	 * @description 安装流程列表（包含收货列表）
+	 * @param {Object} code 产品编号
+	 * @param {Object} status 状态 状态:0-待收货;1-待安装；2-安装中；3-已安装；4-报废 (注：待安装和安装中的可以编辑安装)
+	 * @param {Object} page 当前页数
+	 * @param {Object} limit 每页大小
+	 * @param {Object} successCallback 成功回调
+	 */
+	installList(code, status, page, limit, successCallback) {
+		this.installListUrl.urlParams = {
+			'code': code,
+			'status': status,
+			'page': page,
+			'limit': limit
+		};
+		this.basePost(
+			this.installListUrl,
 			{},
 			(result) => {
 				this.baseResultProcess(result, successCallback);
