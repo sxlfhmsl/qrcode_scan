@@ -29,7 +29,7 @@
 			return {
 				models: [{
 					show: true,
-					perNum: undefined,
+					perNums: undefined,
 					title: '信息查询',
 					childCount: '1',
 					color: 'blue',
@@ -38,7 +38,7 @@
 					
 				}, {
 					show: false,
-					perNum: 1,
+					perNums: [1],
 					title: '制作上传',
 					childCount: '1',
 					color: 'blue',
@@ -46,7 +46,7 @@
 					url: '/pages/make/make'
 				}, {
 					show: false,
-					perNum: 5,
+					perNums: [5],
 					title: '安装上传',
 					childCount: '1',
 					color: 'blue',
@@ -54,20 +54,12 @@
 					url: '/pages/install/install'
 				}, {
 					show: false,
-					perNum: 3,
-					title: '发货',
+					perNums: [3, 4],
+					title: '发货/收货',
 					childCount: '1',
 					color: 'blue',
 					icon: 'cuIcon-deliver',
-					url: '/pages/send/send'
-				}, {
-					show: false,
-					perNum: 4,
-					title: '收货',
-					childCount: '1',
-					color: 'blue',
-					icon: 'cuIcon-goods',
-					url: '/pages/recv/recv'
+					url: '/pages/send_recv/send_recv'
 				}]
 			}
 		},
@@ -77,13 +69,15 @@
 			 */
 			checkModePermission: function() {
 				this.models.forEach(model => {
-					if (model.perNum !== undefined && model.perNum !== null) {
-						(new PermissionRequest()).mode(
-							model.perNum,
-							(data) => {
-								model.show = data;
-							}
-						);
+					if (model.perNums !== undefined && model.perNums !== null) {
+						model.perNums.forEach(perNum => {
+							(new PermissionRequest()).mode(
+								perNum,
+								(data) => {
+									model.show = data;
+								}
+							);
+						});
 					}
 				});
 			}
