@@ -50,7 +50,15 @@
 		data() {
 			return {
 				title: '',
-				itemCode: ''
+				itemCode: '',
+				// itemPermession: {
+				// 	'pdBaseInfo': true,
+				// 	'pdInBankInfo': ,
+				// 	'pdInstall':,
+				// 	'pdMakeFlow':,
+				// 	'pdSendRecv':,
+				// 	'pdSourceInfo':,
+				// }
 			}
 		},
 		methods: {
