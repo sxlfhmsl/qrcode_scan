@@ -14,7 +14,7 @@ class BaseRequest {
 	 * @param {Object} callbackFunc 执行成功的回调
 	 */
 	baseGet(url, params, callbackFunc) {
-		return this.baseAjax(extendUrl, 'GET', 'json', params, callbackFunc, {});
+		return this.baseAjax(url, 'GET', 'json', params, callbackFunc, {});
 	};
 	
 	/**
@@ -24,7 +24,7 @@ class BaseRequest {
 	 * @param {Object} callbackFunc 执行成功的回调
 	 */
 	basePost(url, params, callbackFunc) {
-		return this.baseAjax(extendUrl, 'POST', 'json', params, callbackFunc, {});
+		return this.baseAjax(url, 'POST', 'json', params, callbackFunc, {});
 	};
 	
 	/**

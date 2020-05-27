@@ -7,11 +7,11 @@
 		<view v-if="showLogin" class="list">
 			<view class="list-call">
 				<text>用户名:</text>
-				<input class="biaoti" v-model="username" type="text" maxlength="11" placeholder="输入用户名" :value="username"/>
+				<input class="biaoti" v-model="username" type="text" maxlength="11" placeholder="输入用户名"/>
 			</view>
 			<view class="list-call">
 				<text>密&nbsp;&nbsp;&nbsp;&nbsp;码:</text>
-				<input class="biaoti" v-model="password" type="text" maxlength="32" placeholder="输入密码" password="true" :value="password"/>
+				<input class="biaoti" v-model="password" type="text" maxlength="32" placeholder="输入密码" password="true"/>
 			</view>
 			
 		</view>
