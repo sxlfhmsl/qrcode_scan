@@ -34,7 +34,10 @@
 				})
 			},
 			Logout: function(e) {
-				console.log('你点击了退出按钮');
+				uni.removeStorageSync('token');
+				uni.redirectTo({
+					url: '/pages/index/index'
+				});
 			}
 		}
 	}
