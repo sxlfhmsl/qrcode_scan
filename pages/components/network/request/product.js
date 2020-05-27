@@ -16,6 +16,7 @@ class ProductRequest extends BaseRequest {
 		this.madeUrl = new RequestType('product/made', RequestType.NORMAL | RequestType.NEED_TOKEN);
 		this.madeListUrl = new RequestType('product/madeList', RequestType.NORMAL | RequestType.NEED_TOKEN);
 		this.installListUrl = new RequestType('product/installList', RequestType.NORMAL | RequestType.NEED_TOKEN);
+		this.installUrl = new RequestType('product/install', RequestType.NORMAL | RequestType.NEED_TOKEN);
 	};
 	
 	/**
@@ -151,6 +152,28 @@ class ProductRequest extends BaseRequest {
 		};
 		this.basePost(
 			this.installListUrl,
+			{},
+			(result) => {
+				this.baseResultProcess(result, successCallback);
+			}
+		);
+	};
+	
+	/**
+	 * @description 安装保存
+	 * @param {Object} id 安装id
+	 * @param {Object} productId 产品id
+	 * @param {Object} place 使用部位
+	 * @param {Object} installParams 安装参数
+	 * @param {Object} successCallback 成功回调
+	 */
+	install(id, productId, place, installParams, successCallback) {
+		installParams['id'] = id;
+		installParams['productId'] = productId;
+		installParams['place'] = place;
+		this.installUrl.urlParams = installParams;
+		this.basePost(
+			this.installUrl,
 			{},
 			(result) => {
 				this.baseResultProcess(result, successCallback);
