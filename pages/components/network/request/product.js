@@ -10,6 +10,7 @@ class ProductRequest extends BaseRequest {
 	constructor() {
 	    super();
 		this.detailByIdUrl = new RequestType('product/detailById', RequestType.NORMAL | RequestType.NEED_TOKEN);
+		this.productByCodeUrl = new RequestType('product/productByCode', RequestType.NORMAL | RequestType.NEED_TOKEN);
 	};
 	
 	/**
@@ -21,6 +22,29 @@ class ProductRequest extends BaseRequest {
 		this.detailByIdUrl.urlParams = {'id': id};
 		this.basePost(
 			this.detailByIdUrl,
+			{},
+			(result) => {
+				if (result.data.code == 200) {
+					successCallback(result.data.data);
+				}
+				else {
+					uni.showToast({
+						title: result.data.message
+					});
+				}
+			}
+		);
+	};
+	
+	/**
+	 * @description 根据产品编号获取产品信息
+	 * @param {Object} code 产品编号
+	 * @param {Object} successCallback 成功执行回调
+	 */
+	productByCode(code, successCallback) {
+		this.productByCodeUrl.urlParams = {'code': code};
+		this.basePost(
+			this.productByCodeUrl,
 			{},
 			(result) => {
 				if (result.data.code == 200) {
