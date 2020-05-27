@@ -12,6 +12,7 @@ class ProductRequest extends BaseRequest {
 		this.detailByIdUrl = new RequestType('product/detailById', RequestType.NORMAL | RequestType.NEED_TOKEN);
 		this.productByCodeUrl = new RequestType('product/productByCode', RequestType.NORMAL | RequestType.NEED_TOKEN);
 		this.selectMaterialUrl = new RequestType('product/selectMaterial', RequestType.NORMAL | RequestType.NEED_TOKEN);
+		this.selectWorkerUrl = new RequestType('product/selectWorker', RequestType.NORMAL | RequestType.NEED_TOKEN);
 	};
 	
 	/**
@@ -65,6 +66,20 @@ class ProductRequest extends BaseRequest {
 		};
 		this.basePost(
 			this.selectMaterialUrl,
+			{},
+			(result) => {
+				this.baseResultProcess(result, successCallback);
+			}
+		);
+	};
+	
+	/**
+	 * @description 获取可选的作业人员或检验人员
+	 * @param {Object} successCallback 成功回调
+	 */
+	selectWorker(successCallback) {
+		this.basePost(
+			this.selectWorkerUrl,
 			{},
 			(result) => {
 				this.baseResultProcess(result, successCallback);
