@@ -12,6 +12,7 @@ class ProductRequest extends BaseRequest {
 		this.detailByIdUrl = new RequestType('product/detailById', RequestType.NORMAL | RequestType.NEED_TOKEN);
 		this.productByCodeUrl = new RequestType('product/productByCode', RequestType.NORMAL | RequestType.NEED_TOKEN);
 		this.selectMaterialUrl = new RequestType('product/selectMaterial', RequestType.NORMAL | RequestType.NEED_TOKEN);
+		this.productMaterialListUrl = new RequestType('productMaterial/list', RequestType.NORMAL | RequestType.NEED_TOKEN);
 	};
 	
 	/**
@@ -65,6 +66,22 @@ class ProductRequest extends BaseRequest {
 		};
 		this.basePost(
 			this.selectMaterialUrl,
+			{},
+			(result) => {
+				this.baseResultProcess(result, successCallback);
+			}
+		);
+	};
+	
+	/**
+	 * @description 获取已选的原材料列表
+	 * @param {Object} productId 产品id
+	 * @param {Object} successCallback 成功回调
+	 */
+	productMaterialList(productId, successCallback) {
+		this.productMaterialListUrl.urlParams = {'productId': productId};
+		this.basePost(
+			this.productMaterialListUrl,
 			{},
 			(result) => {
 				this.baseResultProcess(result, successCallback);
