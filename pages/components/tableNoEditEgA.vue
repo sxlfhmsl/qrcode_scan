@@ -71,18 +71,19 @@
 		name: 'tableNoEditEgA',
 		props: {
 			title: {
-				required: true,
 				default: null
 			},
 			rowsBeforeTitle: {
 				// 为列表，内容大体如 TableEgAElem
-				required: true,
-				default: []
+				default: function() {
+					return [];
+				}
 			},
 			rowsAfterTitle: {
 				// 为列表，内容大体如 TableEgAElem
-				required: true,
-				default: []
+				default:  function() {
+					return [];
+				}
 			}
 		},
 		data() {
