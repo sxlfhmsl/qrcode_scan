@@ -19,7 +19,7 @@ class PermissionRequest extends BaseRequest {
 	 * @param {Function} successCallback 成功执行回调
 	 */
 	mode(type, successCallback) {
-		modeUrl.urlParams = {'type': type};
+		this.modeUrl.urlParams = {'type': type};
 		this.basePost(
 			this.modeUrl,
 			{},
@@ -36,7 +36,7 @@ class PermissionRequest extends BaseRequest {
 	 * @param {Function} successCallback 成功执行回调
 	 */
 	data(type, productId, successCallback) {
-		dataUrl.urlParams = {'type': type, 'productId': productId};
+		this.dataUrl.urlParams = {'type': type, 'productId': productId};
 		this.basePost(
 			this.dataUrl,
 			{},
