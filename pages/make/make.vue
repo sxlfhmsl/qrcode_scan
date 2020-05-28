@@ -9,23 +9,44 @@
 			</block>
 		</cu-custom>
 		
-		<makeMain></makeMain>
+		<!-- 滚动条 -->
+		<scroll-view scroll-x class="bg-white nav solid-top solid-bottom text-center" scroll-with-animation :scroll-left="TabPage_tabInfo.scrollLeft">
+			<view
+				class="cu-item"
+				:class="item.id==TabPage_tabInfo.TabCur?'text-blue cur':''" v-for="(item,index) in TabPage_tabInfo.TabItems"
+				:key="index"
+				@tap="TabPage_tabSelect"
+				:data-id="item.id"
+				:scroll-left="TabPage_tabInfo.scrollLeft"
+			>
+				{{item.title}}
+			</view>
+		</scroll-view>
+		
 	</view>
 </template>
 
 <script>
-	import makeMain from "@/pages/make/makeMain.vue"
+	import TabPage from '@/pages/components/custom-tab-page';
+	
 	export default {
-		components: {
-			makeMain
-		},
+		extends: TabPage,
 		data() {
 			return {
 				
 			}
 		},
 		methods: {
-			
+		},
+		mounted: function() {
+			this.TabPage_tabInfo.TabItems = [{
+				title: '待制作',
+				id: 'willMake'
+			}, {
+				title: '制作中',
+				id: 'making'
+			}];
+			this.TabPage_tabInfo.TabCur = this.TabPage_tabInfo.TabItems[0].id;
 		}
 	}
 </script>
