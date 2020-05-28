@@ -38,42 +38,42 @@
 					id: 'mtkModeWelding',
 					title: '焊接作业信息',
 					idPrefix: 'mtkWelding',
-					titlePrefix: '焊接作业',
+					'itemTitles': {'Date':'焊接作业时间', 'Content': '作业环境温度', 'User': '作业人员', 'Att': '焊接作业照片'},
 					checkPrefix: 'mtk',
 					type: 'makeTaskInfo'
 				}, {
 					id: 'mtkModeAnti',
 					title: '防腐作业信息',
 					idPrefix: 'mtkAnti',
-					titlePrefix: '防腐作业',
+					'itemTitles': {'Date':'防腐作业时间', 'Content': '防腐作业内容', 'User': '作业人员', 'Att': '防腐作业照片'},
 					checkPrefix: 'mtk',
 					type: 'makeTaskInfo'
 				}, {
 					id: 'mtkModeTask',
 					title: '加工作业信息',
 					idPrefix: 'mtkTask',
-					titlePrefix: '加工作业',
+					'itemTitles': {'Date':'加工作业时间', 'Content': '加工作业内容', 'User': '作业人员', 'Att': '加工作业照片'},
 					checkPrefix: 'mtk',
 					type: 'makeTaskInfo'
 				}, {
 					id: 'mckModeWelding',
-					title: '焊接检验信息',
+					title: '焊缝检验信息',
 					idPrefix: 'mckWelding',
-					titlePrefix: '焊接检验',
+					'itemTitles': {'Date':'焊缝检验时间', 'Content': '焊缝检验结论', 'User': '检验人员', 'Att': '焊缝检验照片'},
 					checkPrefix: 'mck',
 					type: 'makeCheckInfo'
 				}, {
 					id: 'mckModeProduct',
-					title: '产品检验信息',
+					title: '成品检验信息',
 					idPrefix: 'mckProduct',
-					titlePrefix: '产品检验',
+					'itemTitles': {'Date':'成品检验时间', 'Content': '成品检验结论', 'User': '检验人员', 'Att': '成品检验照片'},
 					checkPrefix: 'mck',
 					type: 'makeCheckInfo'
 				}, {
 					id: 'mckModeSupervision',
 					title: '监造检验信息',
 					idPrefix: 'mckSupervision',
-					titlePrefix: '监造检验',
+					'itemTitles': {'Date':'监造检验时间', 'Content': '监造检验结论', 'User': '监理工程师', 'Att': '监造检验照片'},
 					checkPrefix: 'mck',
 					type: 'makeCheckInfo'
 				}]
@@ -106,20 +106,20 @@
 								let rowsAfterTitle = [];
 								let rawData = {};
 								if (data.productCategory[item.checkPrefix + 'Date'] != 0) {  // 时间
-									rowsAfterTitle.push(new TableEgAElem(item.titlePrefix + '时间', data.productMade[item.idPrefix + 'Date'], '25%', '75%', '#dad8d8', 'white'));
+									rowsAfterTitle.push(new TableEgAElem(item.itemTitles.Date, data.productMade[item.idPrefix + 'Date'], '25%', '75%', '#dad8d8', 'white'));
 									rawData[item.idPrefix + 'Date'] = data.productMade[item.idPrefix + 'Date'];
 								}
 								if (data.productCategory[item.checkPrefix + 'Content'] != 0) {  // 内容
-									rowsAfterTitle.push(new TableEgAElem(item.titlePrefix + '内容', data.productMade[item.idPrefix + 'Content'], '25%', '75%', '#dad8d8', 'white'));
+									rowsAfterTitle.push(new TableEgAElem(item.itemTitles.Content, data.productMade[item.idPrefix + 'Content'], '25%', '75%', '#dad8d8', 'white'));
 									rawData[item.idPrefix + 'Content'] = data.productMade[item.idPrefix + 'Content'];
 								}
 								if (data.productCategory[item.checkPrefix + 'User'] != 0) {  // 人员
-									rowsAfterTitle.push(new TableEgAElem(item.titlePrefix + '人员', data.productMade[item.idPrefix + 'WorkerName'], '25%', '75%', '#dad8d8', 'white'));
+									rowsAfterTitle.push(new TableEgAElem(item.itemTitles.User, data.productMade[item.idPrefix + 'WorkerName'], '25%', '75%', '#dad8d8', 'white'));
 									rawData[item.idPrefix + 'WorkerName'] = data.productMade[item.idPrefix + 'WorkerName'];
 									rawData[item.idPrefix + 'WorkerId'] = data.productMade[item.idPrefix + 'WorkerId'];
 								}
 								if (data.productCategory[item.checkPrefix + 'Att'] != 0) {  // 图片
-									rowsAfterTitle.push(new TableEgAElem(item.titlePrefix + '图片', (
+									rowsAfterTitle.push(new TableEgAElem(item.itemTitles.Att, (
 										data.productMade[item.idPrefix + 'Att'] == null || data.productMade[item.idPrefix + 'Att'] == ''? 
 										'': 
 										Url.resBaseUrl + data.productMade[item.idPrefix + 'Att']
