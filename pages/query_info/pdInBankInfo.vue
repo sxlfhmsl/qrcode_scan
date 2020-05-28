@@ -34,7 +34,7 @@
 			// 	this.rowsAfterTitle.push(new TableEgAElem('合格证照片', '', '25%', '75%', '#dad8d8', 'white'));
 			// }
 			flushData: function(data) {
-				if (data !== null || data !== undefined) {
+				if (data !== null && data !== undefined) {
 					this.rowsAfterTitle.push(new TableEgAElem('入库时间', data.enterDate, '25%', '75%', '#dad8d8', 'white'));
 					this.rowsAfterTitle.push(new TableEgAElem('负责人', data.leaderName, '25%', '75%', '#dad8d8', 'white'));
 					this.rowsAfterTitle.push(new TableEgAElem('合格证编号', data.certificateCode, '25%', '75%', '#dad8d8', 'white'));

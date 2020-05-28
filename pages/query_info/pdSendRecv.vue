@@ -16,6 +16,12 @@
 	
 	export default {
 		name: 'pdSendRecv',
+		props: {
+			itemData: {
+				required: true,
+				default: null
+			}
+		},
 		components: {
 			tableNoEditEgA
 		},
@@ -28,32 +34,59 @@
 			/**
 			 * @description 创造数据
 			 */
-			createData: function() {
-				// 例子1
-				this.tableList.push({
-					rowsBeforeTitle: [],
-					title: {color: '#5c9ed6', value: '发货基本信息'},
-					rowsAfterTitle: [
-						new TableEgAElem('发货时间', '', '25%', '75%', '#dad8d8', 'white'),
-						new TableEgAElem('发货订单编号', '', '25%', '75%', '#dad8d8', 'white'),
-						new TableEgAElem('客户单位', '', '25%', '75%', '#dad8d8', 'white'),
-						new TableEgAElem('发货地址', '', '25%', '75%', '#dad8d8', 'white'),
-						new TableEgAElem('收货地址', '', '25%', '75%', '#dad8d8', 'white')
-					]
-				});
+			// createData: function() {
+			// 	// 例子1
+			// 	this.tableList.push({
+			// 		rowsBeforeTitle: [],
+			// 		title: {color: '#5c9ed6', value: '发货基本信息'},
+			// 		rowsAfterTitle: [
+			// 			new TableEgAElem('发货时间', '', '25%', '75%', '#dad8d8', 'white'),
+			// 			new TableEgAElem('发货订单编号', '', '25%', '75%', '#dad8d8', 'white'),
+			// 			new TableEgAElem('客户单位', '', '25%', '75%', '#dad8d8', 'white'),
+			// 			new TableEgAElem('发货地址', '', '25%', '75%', '#dad8d8', 'white'),
+			// 			new TableEgAElem('收货地址', '', '25%', '75%', '#dad8d8', 'white')
+			// 		]
+			// 	});
 				
-				// 例子2
-				this.tableList.push({
-					rowsBeforeTitle: [],
-					title: {color: '#5c9ed6', value: '收货基本信息'},
-					rowsAfterTitle: [
-						new TableEgAElem('收货时间', '', '25%', '75%', '#dad8d8', 'white'),
-					]
-				});
+			// 	// 例子2
+			// 	this.tableList.push({
+			// 		rowsBeforeTitle: [],
+			// 		title: {color: '#5c9ed6', value: '收货基本信息'},
+			// 		rowsAfterTitle: [
+			// 			new TableEgAElem('收货时间', '', '25%', '75%', '#dad8d8', 'white'),
+			// 		]
+			// 	});
+			// }
+			flushData: function(data) {
+				if (data !== null && data !== undefined) {
+					// 发货信息
+					this.tableList.push({
+						'rowsBeforeTitle': [],
+						'title': {'color': '#5c9ed6', 'value': '发货基本信息'},
+						'rowsAfterTitle': [
+							new TableEgAElem('发货时间', data.deliveryDate, '25%', '75%', '#dad8d8', 'white'),
+							new TableEgAElem('发货订单编号', data.deliveryCode, '25%', '75%', '#dad8d8', 'white'),
+							new TableEgAElem('客户单位', data.recevieDeptName, '25%', '75%', '#dad8d8', 'white'),
+							new TableEgAElem('发货地址', data.deliveryAddress, '25%', '75%', '#dad8d8', 'white'),
+							new TableEgAElem('收货地址', data.recevieAddress, '25%', '75%', '#dad8d8', 'white')
+						],
+						'rawData': data
+					});
+					
+					// 收货信息
+					this.tableList.push({
+						'rowsBeforeTitle': [],
+						'title': {'color': '#5c9ed6', 'value': '收货基本信息'},
+						'rowsAfterTitle': [
+							new TableEgAElem('收货时间', data.recevieDate, '25%', '75%', '#dad8d8', 'white'),
+						],
+						'rawData': data
+					});
+				}
 			}
 		},
 		mounted:function(){
-			this.createData();
+			this.flushData(this.itemData);
 		}
 	}
 </script>
