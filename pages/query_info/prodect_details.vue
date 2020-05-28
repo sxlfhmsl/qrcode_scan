@@ -143,6 +143,7 @@
 				this.viewData.pdBaseInfo = this.productData.product;
 				this.viewData.pdSourceInfo = (this.productData.materialList? this.productData.materialList: []);
 				this.viewData.pdMakeFlow = {'productCategory': this.productData.productCategory, 'productMade': this.productData.productMade};
+				this.viewData.pdInBankInfo = (this.productData.productStorage? this.productData.productStorage: null);
 			}
 		},
 		onLoad:function(option){

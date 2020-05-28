@@ -1,32 +1,50 @@
 <template>
 	<view>
-		<tableNoEditEgA :rowsAfterTitle="rowsAfterTitle"></tableNoEditEgA>
+		<tableNoEditEgA :rowsAfterTitle="rowsAfterTitle" :rawData="rawData"></tableNoEditEgA>
 	</view>
 </template>
 
 <script>
 	import tableNoEditEgA from "@/pages/components/tableNoEditEgA";
 	import TableEgAElem from "@/pages/components/tableEgAElem";
+	import Url from "@/pages/components/network/request/url";
+	
 	export default {
 		name: 'pdInBankInfo',
+		props: {
+			itemData: {
+				required: true,
+				default: null
+			}
+		},
 		components: {
 			tableNoEditEgA
 		},
 		data() {
 			return {
 				rowsAfterTitle: [],
+				rawData: {}
 			}
 		},
 		methods: {
-			createData: function() {
-				this.rowsAfterTitle.push(new TableEgAElem('入库时间', '', '25%', '75%', '#dad8d8', 'white'));
-				this.rowsAfterTitle.push(new TableEgAElem('负责人', '', '25%', '75%', '#dad8d8', 'white'));
-				this.rowsAfterTitle.push(new TableEgAElem('合格证编号', '', '25%', '75%', '#dad8d8', 'white'));
-				this.rowsAfterTitle.push(new TableEgAElem('合格证照片', '', '25%', '75%', '#dad8d8', 'white'));
+			// createData: function() {
+			// 	this.rowsAfterTitle.push(new TableEgAElem('入库时间', '', '25%', '75%', '#dad8d8', 'white'));
+			// 	this.rowsAfterTitle.push(new TableEgAElem('负责人', '', '25%', '75%', '#dad8d8', 'white'));
+			// 	this.rowsAfterTitle.push(new TableEgAElem('合格证编号', '', '25%', '75%', '#dad8d8', 'white'));
+			// 	this.rowsAfterTitle.push(new TableEgAElem('合格证照片', '', '25%', '75%', '#dad8d8', 'white'));
+			// }
+			flushData: function(data) {
+				if (data !== null || data !== undefined) {
+					this.rowsAfterTitle.push(new TableEgAElem('入库时间', data.enterDate, '25%', '75%', '#dad8d8', 'white'));
+					this.rowsAfterTitle.push(new TableEgAElem('负责人', data.leaderName, '25%', '75%', '#dad8d8', 'white'));
+					this.rowsAfterTitle.push(new TableEgAElem('合格证编号', data.certificateCode, '25%', '75%', '#dad8d8', 'white'));
+					this.rowsAfterTitle.push(new TableEgAElem('合格证照片', Url.resBaseUrl + data.certificateAtt, '25%', '75%', '#dad8d8', 'white', 'image'));
+					this.rawData = data;
+				}
 			}
 		},
 		mounted() {
-			this.createData();
+			this.flushData(this.itemData);
 		}
 	}
 </script>
