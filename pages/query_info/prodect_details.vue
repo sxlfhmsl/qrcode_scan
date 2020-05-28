@@ -142,6 +142,7 @@
 				this.title = this.productData.product.name;
 				this.viewData.pdBaseInfo = this.productData.product;
 				this.viewData.pdSourceInfo = (this.productData.materialList? this.productData.materialList: []);
+				this.viewData.pdMakeFlow = {'productCategory': this.productData.productCategory, 'productMade': this.productData.productMade};
 			}
 		},
 		onLoad:function(option){

@@ -84,6 +84,9 @@
 				default:  function() {
 					return [];
 				}
+			},
+			rawData: {
+				default: null
 			}
 		},
 		data() {
