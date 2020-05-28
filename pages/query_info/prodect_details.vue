@@ -6,10 +6,10 @@
 			</block>
 		</cu-custom>
 		
-		<pdBaseInfo  v-if="itemPermession['pdBaseInfo'].show" :itemData="viewData.pdBaseInfo"></pdBaseInfo>
+		<pdBaseInfo class="fixed"  v-if="itemPermession['pdBaseInfo'].show" :itemData="viewData.pdBaseInfo"></pdBaseInfo>
 		
 		<!-- 滚动条 -->
-		<scroll-view scroll-x class="bg-white nav solid-top solid-bottom" scroll-with-animation :scroll-left="TabPage_tabInfo.scrollLeft">
+		<scroll-view scroll-x class="fixed bg-white nav solid-top solid-bottom" scroll-with-animation :scroll-left="TabPage_tabInfo.scrollLeft">
 			<view 
 				v-if="itemPermession[item.id].show"
 				class="cu-item"

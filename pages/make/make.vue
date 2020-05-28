@@ -23,14 +23,21 @@
 			</view>
 		</scroll-view>
 		
+		<projectList v-show="TabPage_tabInfo.TabCur === 'willMake'"></projectList>
+		
+		<projectList v-show="TabPage_tabInfo.TabCur === 'making'"></projectList>
 	</view>
 </template>
 
 <script>
 	import TabPage from '@/pages/components/custom-tab-page';
+	import projectList from '@/pages/components/projectList';
 	
 	export default {
 		extends: TabPage,
+		components: {
+			projectList
+		},
 		data() {
 			return {
 				
