@@ -13,6 +13,7 @@
 <script>
 	import tableNoEditEgA from "@/pages/components/tableNoEditEgA";
 	import TableEgAElem from "@/pages/components/tableEgAElem";
+	import Url from "@/pages/components/network/request/url";
 	
 	export default {
 		name: 'pdMakeFlow',
@@ -112,7 +113,11 @@
 									rawData[item.idPrefix + 'WorkerId'] = data.productMade[item.idPrefix + 'WorkerId'];
 								}
 								if (data.productCategory[item.checkPrefix + 'att'] != 0) {  // 图片
-									rowsAfterTitle.push(new TableEgAElem(item.titlePrefix + '图片', data.productMade[item.idPrefix + 'Att'], '25%', '75%', '#dad8d8', 'white'));
+									rowsAfterTitle.push(new TableEgAElem(item.titlePrefix + '图片', (
+										data.productMade[item.idPrefix + 'Att'] == null || data.productMade[item.idPrefix + 'Att'] == ''? 
+										'': 
+										Url.resBaseUrl + data.productMade[item.idPrefix + 'Att']
+									), '25%', '75%', '#dad8d8', 'white', 'image'));
 									rawData[item.idPrefix + 'Att'] = data.productMade[item.idPrefix + 'Att'];
 								}
 								this.tableList.push({

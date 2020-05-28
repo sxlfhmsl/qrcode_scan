@@ -22,7 +22,8 @@
 				style="flex: auto;"
 				:style="'width:' + rowBeforeTitle.contentWidth + ';background-color:' + rowBeforeTitle.contentColor + ';'"
 			>
-				{{rowBeforeTitle.content}}
+				<text v-if="rowBeforeTitle.contentType == 'text'">{{rowBeforeTitle.content}}</text>
+				<image v-if="rowBeforeTitle.contentType == 'image'" @tap="imagePreview(rowBeforeTitle.content)" :src="rowBeforeTitle.content" mode="widthFix" :id="'imageb' + index"></image>
 			</view>
 		</view>
 		
@@ -60,7 +61,8 @@
 				style="flex: auto;"
 				:style="'width:' + rowAfterTitle.contentWidth + ';background-color:' + rowAfterTitle.contentColor + ';'"
 			>
-				{{rowAfterTitle.content}}
+				<text v-if="rowAfterTitle.contentType == 'text'">{{rowAfterTitle.content}}</text>
+				<image v-if="rowAfterTitle.contentType == 'image'" @tap="imagePreview(rowAfterTitle.content)" :src="rowAfterTitle.content" mode="widthFix" :id="'imagea' + index"></image>
 			</view>
 		</view>
 	</view>
@@ -94,6 +96,14 @@
 			}
 		},
 		methods: {
+			/**
+			 * @description 图片预览
+			 */
+			imagePreview: function(url) {
+				uni.previewImage({
+					urls: [url]
+				});
+			}
 		}
 	}
 </script>

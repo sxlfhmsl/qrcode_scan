@@ -13,6 +13,10 @@ class Url {
 		return 'http://192.168.1.120:8180/cmpApi/';
 	};
 	
+	static get resBaseUrl() {
+		return 'http://192.168.1.120:8180';
+	};
+	
 	get url() {
 		let paramList = [];
 		Object.keys(this._urlParams).forEach(param => {
