@@ -141,6 +141,7 @@
 				this.productData = data;
 				this.title = this.productData.product.name;
 				this.viewData.pdBaseInfo = this.productData.product;
+				this.viewData.pdSourceInfo = (this.productData.materialList? this.productData.materialList: []);
 			}
 		},
 		onLoad:function(option){
