@@ -35,41 +35,47 @@
 			return {
 				tableList: [],
 				mode: [{
-					id: 'mtk_mode_welding',
+					id: 'mtkModeWelding',
 					title: '焊接作业信息',
 					idPrefix: 'mtkWelding',
 					titlePrefix: '焊接作业',
-					checkPrefix: 'mtk_'
+					checkPrefix: 'mtk',
+					type: 'makeTaskInfo'
 				}, {
-					id: 'mtk_mode_anti',
+					id: 'mtkModeAnti',
 					title: '防腐作业信息',
 					idPrefix: 'mtkAnti',
 					titlePrefix: '防腐作业',
-					checkPrefix: 'mtk_'
+					checkPrefix: 'mtk',
+					type: 'makeTaskInfo'
 				}, {
-					id: 'mtk_mode_task',
+					id: 'mtkModeTask',
 					title: '加工作业信息',
 					idPrefix: 'mtkTask',
 					titlePrefix: '加工作业',
-					checkPrefix: 'mtk_'
+					checkPrefix: 'mtk',
+					type: 'makeTaskInfo'
 				}, {
-					id: 'mck_mode_welding',
+					id: 'mckModeWelding',
 					title: '焊接检验信息',
 					idPrefix: 'mckWelding',
 					titlePrefix: '焊接检验',
-					checkPrefix: 'mck_'
+					checkPrefix: 'mck',
+					type: 'makeCheckInfo'
 				}, {
-					id: 'mck_mode_product',
+					id: 'mckModeProduct',
 					title: '产品检验信息',
 					idPrefix: 'mckProduct',
 					titlePrefix: '产品检验',
-					checkPrefix: 'mck_'
+					checkPrefix: 'mck',
+					type: 'makeCheckInfo'
 				}, {
-					id: 'mck_mode_supervision',
+					id: 'mckModeSupervision',
 					title: '监造检验信息',
 					idPrefix: 'mckSupervision',
 					titlePrefix: '监造检验',
-					checkPrefix: 'mck_'
+					checkPrefix: 'mck',
+					type: 'makeCheckInfo'
 				}]
 			}
 		},
@@ -95,24 +101,24 @@
 				if (data.productCategory !== null && data.productCategory !== undefined) {
 					if (data.productMade !== null && data.productMade !== undefined) {
 						this.mode.forEach(item => {
-							if (data.productCategory[item.id] != 0) {
+							if (data.productCategory[item.id] != 0 && data.productCategory[item.type] != 0) {
 								// 生成行数据
 								let rowsAfterTitle = [];
 								let rawData = {};
-								if (data.productCategory[item.checkPrefix + 'date'] != 0) {  // 时间
+								if (data.productCategory[item.checkPrefix + 'Date'] != 0) {  // 时间
 									rowsAfterTitle.push(new TableEgAElem(item.titlePrefix + '时间', data.productMade[item.idPrefix + 'Date'], '25%', '75%', '#dad8d8', 'white'));
 									rawData[item.idPrefix + 'Date'] = data.productMade[item.idPrefix + 'Date'];
 								}
-								if (data.productCategory[item.checkPrefix + 'content'] != 0) {  // 内容
+								if (data.productCategory[item.checkPrefix + 'Content'] != 0) {  // 内容
 									rowsAfterTitle.push(new TableEgAElem(item.titlePrefix + '内容', data.productMade[item.idPrefix + 'Content'], '25%', '75%', '#dad8d8', 'white'));
 									rawData[item.idPrefix + 'Content'] = data.productMade[item.idPrefix + 'Content'];
 								}
-								if (data.productCategory[item.checkPrefix + 'user'] != 0) {  // 人员
+								if (data.productCategory[item.checkPrefix + 'User'] != 0) {  // 人员
 									rowsAfterTitle.push(new TableEgAElem(item.titlePrefix + '人员', data.productMade[item.idPrefix + 'WorkerName'], '25%', '75%', '#dad8d8', 'white'));
 									rawData[item.idPrefix + 'WorkerName'] = data.productMade[item.idPrefix + 'WorkerName'];
 									rawData[item.idPrefix + 'WorkerId'] = data.productMade[item.idPrefix + 'WorkerId'];
 								}
-								if (data.productCategory[item.checkPrefix + 'att'] != 0) {  // 图片
+								if (data.productCategory[item.checkPrefix + 'Att'] != 0) {  // 图片
 									rowsAfterTitle.push(new TableEgAElem(item.titlePrefix + '图片', (
 										data.productMade[item.idPrefix + 'Att'] == null || data.productMade[item.idPrefix + 'Att'] == ''? 
 										'': 

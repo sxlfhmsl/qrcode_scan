@@ -145,6 +145,7 @@
 				this.viewData.pdMakeFlow = {'productCategory': this.productData.productCategory, 'productMade': this.productData.productMade};
 				this.viewData.pdInBankInfo = (this.productData.productStorage? this.productData.productStorage: null);
 				this.viewData.pdSendRecv = (this.productData.productDelivery? this.productData.productDelivery: null);
+				this.viewData.pdInstall = {'productCategory': this.productData.productCategory, 'productInstall': this.productData.productInstall};
 			}
 		},
 		onLoad:function(option){
