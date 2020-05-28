@@ -13,8 +13,16 @@
 		name: 'pdInBankInfo',
 		props: {
 			itemData: {
-				required: true,
-				default: null
+				required: true
+			}
+		},
+		watch: {
+			itemData: {
+				handler: function (val, oldVal) {
+					if (val !== null && val !== undefined) {
+						this.flushData(val);
+					}
+				}
 			}
 		},
 		components: {
@@ -43,8 +51,10 @@
 				}
 			}
 		},
-		mounted() {
-			this.flushData(this.itemData);
+		mounted: function() {
+			if (this.itemData !== null && this.itemData !== undefined) {
+				this.flushData(this.itemData);
+			}
 		}
 	}
 </script>

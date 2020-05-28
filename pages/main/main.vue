@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import Url from "@/pages/components/network/request/url";
+	
 export default {
 	data() {
 		return {
@@ -41,9 +43,13 @@ export default {
 			    success: res => {
 			        console.log('条码类型：' + res.scanType);
 			        console.log('条码内容：' + res.result);
-					uni.navigateTo({
-						url: '/pages/query_info/prodect_details?itemType=id&itemCode=' + res.result
-					});
+					if (res.result.indexOf(Url.resBaseUrl) != -1) {
+						let buf = res.result.split('/');
+						let code = (buf[buf.length - 1] == ''? buf[buf.length - 2]: buf[buf.length - 1]);
+						uni.navigateTo({
+							url: '/pages/query_info/prodect_details?itemType=id&itemCode=' + code
+						});
+					}
 			    }
 			});
 		}

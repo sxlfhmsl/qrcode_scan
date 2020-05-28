@@ -20,15 +20,18 @@
 		components: {
 			tableNoEditEgA
 		},
-		props: {
+		watch: {
 			itemData: {
-				required: true,
-				default: function() {
-					return {
-						'productCategory': null,
-						'productInstall': null
+				handler: function (val, oldVal) {
+					if (val !== null && val !== undefined) {
+						this.flushData(val);
 					}
 				}
+			}
+		},
+		props: {
+			itemData: {
+				required: true
 			}
 		},
 		data() {
@@ -179,8 +182,10 @@
 				}
 			}
 		},
-		mounted:function(){
-			this.flushData(this.itemData);
+		mounted: function(){
+			if (this.itemData !== null && this.itemData !== undefined) {
+				this.flushData(this.itemData);
+			}
 		}
 	}
 </script>
