@@ -74,7 +74,7 @@
 					});
 				}
 				else {
-					
+					this.$emit('project_tap', {'btnType': btnType, 'projectId': projectId});
 				}
 			}
 			
