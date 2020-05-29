@@ -55,6 +55,10 @@
 							编号:{{item.code}}
 						</view>
 					</view>
+					<view class="text-blue" 
+					    v-if="choosedSouceIds.indexOf(item.id) !== -1"
+						style="position: absolute;z-index: 99;font-size: 2em;opacity: 0.5;transform:rotate(-45deg);top: calc(50% - 0.75em); left: calc(50% - 2em);"
+					>已选择</view>
 					<view class="action margin-top margin-bottom">
 						<view class="text-black text-right margin-bottom-sm">
 							规格:{{item.specs}}
