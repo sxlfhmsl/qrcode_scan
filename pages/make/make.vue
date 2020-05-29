@@ -35,7 +35,7 @@
 				style="min-height: 200rpx; width: 100%;"
 				:itemData="projectItems.willMake"
 				:btnExtends="btnExtends"
-				@projectTap="projectTap"
+				@productTap="productTap"
 			></projectList>
 			
 			<projectList 
@@ -43,7 +43,7 @@
 				style="min-height: 200rpx; width: 100%;"
 				:itemData="projectItems.making"
 				:btnExtends="btnExtends"
-				@projectTap="projectTap"
+				@productTap="productTap"
 			></projectList>
 		</you-scroll>
 	</view>
@@ -99,12 +99,12 @@
 			},
 			/**
 			 * @description 子组件回传项目点击事件
-			 * @param {Object} params 参数 结构{'btnType': btnType, 'projectId': projectId}
+			 * @param {Object} params 参数 结构{'btnType': btnType, 'productId': productId}
 			 */
-			projectTap: function(params) {
+			productTap: function(params) {
 				if (params.btnType === 'make') {
 					uni.navigateTo({
-						url: '/pages/make/makeMain?projectId=' + params.projectId
+						url: '/pages/make/makeMain?productId=' + params.productId
 					})
 				}
 			},

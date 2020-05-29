@@ -34,9 +34,40 @@
 		
 		<scroll-view v-show="TabPage_tabInfo.TabCur==='pdSource'">
 			<view class="text-center flex">
-				<input class="radius margin" placeholder="材料编号" style="max-width: 30%; border-bottom: grey solid 1px;" v-model="code"/>
-				<input class="radius margin" placeholder="品种名称" style="max-width: 30%; border-bottom: grey solid 1px;" v-model="materialType"/>
-				<input class="radius margin" placeholder="进场时间" style="max-width: 30%; border-bottom: grey solid 1px;" v-model="enterDate" disabled="true"/>
+				<input @change="searchFilterChange" class="radius margin" placeholder="材料编号" style="max-width: 30%; border-bottom: grey solid 1px;" v-model="code"/>
+				<input @change="searchFilterChange" class="radius margin" placeholder="品种名称" style="max-width: 30%; border-bottom: grey solid 1px;" v-model="materialType"/>
+				<picker mode="date" @change="dateChange" style="width: 60%;">
+					<input class="radius margin" placeholder="进场时间" style="max-width: 100%; border-bottom: grey solid 1px;" v-model="enterDate" disabled="true"/>
+				</picker>
+			</view>
+			
+			<!-- 原材料 -->
+			<view class="cu-list menu">
+				<view class="cu-item margin-bottom-sm margin-top-sm margin-left-sm radius" :class="modalName=='move-box-'+ index?'move-cur':''" v-for="(item, index) in souceList" :key="index" :id="item.id" 
+					@touchstart="ListTouchStart" @touchmove="ListTouchMove" @touchend="ListTouchEnd" :data-target="'move-box-' + index"
+					:style="choosedSouceIds.indexOf(item.id) !== -1? 'border: blue solid 2px;': ''"
+				>
+					<view class="content margin-top margin-bottom">
+						<view class="text-black margin-bottom-sm">
+							品种:{{item.materialType}}
+						</view>
+						<view class="text-black margin-top-sm">
+							编号:{{item.code}}
+						</view>
+					</view>
+					<view class="action margin-top margin-bottom">
+						<view class="text-black text-right margin-bottom-sm">
+							规格:{{item.specs}}
+						</view>
+						<view class="text-black text-right margin-top-sm">
+							时间:{{item.enterDate}}
+						</view>
+					</view>
+					<view class="move">
+						<view class="bg-blue" @tap="addMaterial(item.id, item.materialType, item.code, item.specs)">添加</view>
+						<view class="bg-red" @tap="removeMaterial(item.id)">删除</view>
+					</view>
+				</view>
 			</view>
 			
 			<view class="text-center">
@@ -80,6 +111,9 @@
 				'code': '',                                                 // 编码
 				'materialType': '',                                         // 品种名称
 				'enterDate': '',                                            // 进场日期
+				'modalName': null,
+				'listTouchStart': 0,
+				'listTouchDirection': null
 			}
 		},
 		methods: {
@@ -113,11 +147,47 @@
 				this.enterDate = '';
 				this.loadSourceData();
 			},
+			dateChange: function(e) {
+				this.enterDate = e.detail.value
+				this.searchFilterChange();
+			},
+			searchFilterChange: function(e) {
+				this.loadSourceData();
+			},
+			/**
+			 * @description 添加原材俩
+			 * @param {Object} materialId 原材料id
+			 * @param {Object} materialName 原材料名称
+			 * @param {Object} materialCode 原材料编码
+			 * @param {Object} materialSpecs 原材料规格
+			 */
+			addMaterial: function(materialId, materialName, materialCode, materialSpecs) {
+				this.materialRequest.add(
+					this.productId, materialId, materialName, materialCode, materialSpecs, data => {
+						this.loadChoosedSource();
+					}
+				);
+			},
+			/**
+			 * @description 移除原材料
+			 * @param {Object} materialId 原材料id
+			 */
+			removeMaterial: function(materialId) {
+				if (this.choosedSouceIds.indexOf(materialId) == -1) {
+					return;
+				}
+				materialId = this.choosedSouceList[this.choosedSouceIds.indexOf(materialId)].id;
+				this.materialRequest.del(
+					materialId, data => {
+						this.loadChoosedSource();
+					}
+				);
+			},
 			/**
 			 * @description 加载产品信息
 			 */
 			loadProductInfo: function() {
-				this.productRequest.detailById(this.projectId, data => {
+				this.productRequest.detailById(this.productId, data => {
 					this.rawProductData = data;
 					if (data !== null) {
 						this.title = data.product.name;
@@ -140,7 +210,7 @@
 			 * @description 加载已选择原材料
 			 */
 			loadChoosedSource: function() {
-				this.materialRequest.list(this.projectId, data => {
+				this.materialRequest.list(this.productId, data => {
 					if (data != null) {
 						this.choosedSouceList = data;
 						this.choosedSouceCodes = [];
@@ -149,10 +219,27 @@
 						});
 					}
 				});
-			}
+			},
+			// ListTouch触摸开始
+			ListTouchStart: function(e) {
+				this.listTouchStart = e.touches[0].pageX
+			},
+			// ListTouch计算方向
+			ListTouchMove: function(e) {
+				this.listTouchDirection = e.touches[0].pageX - this.listTouchStart > 0 ? 'right' : 'left'
+			},
+			// ListTouch计算滚动
+			ListTouchEnd: function(e) {
+				if (this.listTouchDirection == 'left') {
+					this.modalName = e.currentTarget.dataset.target
+				} else {
+					this.modalName = null
+				}
+				this.listTouchDirection = null
+			},
 		},
 		onLoad: function(option) {
-			this.projectId = (option.projectId? option.projectId: this.projectId);
+			this.productId = (option.productId? option.productId: this.productId);
 			this.loadProductInfo();
 			this.loadSourceData();
 			this.loadChoosedSource();

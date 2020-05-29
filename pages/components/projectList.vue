@@ -67,14 +67,14 @@
 				this.listTouchDirection = null
 			},
 			
-			btnTap: function(btnType, projectId) {
+			btnTap: function(btnType, productId) {
 				if (btnType === 'details') {
 					uni.navigateTo({
-						url: '/pages/query_info/prodect_details?itemType=id&itemCode=' + projectId
+						url: '/pages/query_info/prodect_details?itemType=id&itemCode=' + productId
 					});
 				}
 				else {
-					this.$emit('projectTap', {'btnType': btnType, 'projectId': projectId});
+					this.$emit('productTap', {'btnType': btnType, 'productId': productId});
 				}
 			}
 			
