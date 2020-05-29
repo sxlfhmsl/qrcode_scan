@@ -17,6 +17,7 @@ class BaseRequest {
 			callback(result.data.data);
 		}
 		else {
+			callback(null);
 			uni.showToast({
 				title: result.data.message
 			});
