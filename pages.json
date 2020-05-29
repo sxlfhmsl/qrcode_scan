@@ -32,6 +32,10 @@
             "path" : "pages/make/make",
             "style" : {}
         }
+		,{
+		    "path" : "pages/make/makeMain",
+		    "style" : {}
+		}
         ,{
             "path" : "pages/install/install",
             "style" : {}

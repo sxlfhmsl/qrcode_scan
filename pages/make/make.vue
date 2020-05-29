@@ -102,7 +102,11 @@
 			 * @param {Object} params 参数 结构{'btnType': btnType, 'projectId': projectId}
 			 */
 			projectTap: function(params) {
-				console.log(params);
+				if (params.btnType === 'make') {
+					uni.navigateTo({
+						url: '/pages/make/makeMain?projectId=' + params.projectId
+					})
+				}
 			},
 			/**
 			 * @description 刷新数据

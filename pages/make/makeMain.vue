@@ -1,5 +1,13 @@
 <template>
 	<view>
+		<cu-custom bgColor="bg-gradual-blue" :isBack="true">
+			<block slot="content">
+				{{title}}
+			</block>
+			<block slot="right">
+				<text class="cu-btn lg round text-white cuIcon-punch" style="background-color: rgba(255,255,255,0);"></text>
+			</block>
+		</cu-custom>
 		<pdBaseInfo></pdBaseInfo>
 		<scroll-view scroll-x class="bg-white nav solid-top solid-bottom" scroll-with-animation :scroll-left="TabPage_tabInfo.scrollLeft">
 			<view 
@@ -37,7 +45,7 @@
 		extends: TabPage,
 		data() {
 			return {
-				
+				'title': ''
 			}
 		},
 		methods: {
