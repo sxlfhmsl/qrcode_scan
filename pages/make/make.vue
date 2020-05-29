@@ -35,6 +35,7 @@
 				style="min-height: 200rpx; width: 100%;"
 				:itemData="projectItems.willMake"
 				:btnExtends="btnExtends"
+				@projectTap="projectTap"
 			></projectList>
 			
 			<projectList 
@@ -42,6 +43,7 @@
 				style="min-height: 200rpx; width: 100%;"
 				:itemData="projectItems.making"
 				:btnExtends="btnExtends"
+				@projectTap="projectTap"
 			></projectList>
 		</you-scroll>
 	</view>
@@ -94,6 +96,13 @@
 			},
 			onLoadMore: function(e) { // 加载更多
 				this.flushData(undefined, 'up');
+			},
+			/**
+			 * @description 子组件回传项目点击事件
+			 * @param {Object} params 参数 结构{'btnType': btnType, 'projectId': projectId}
+			 */
+			projectTap: function(params) {
+				console.log(params);
 			},
 			/**
 			 * @description 刷新数据
