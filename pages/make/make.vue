@@ -10,18 +10,24 @@
 		</cu-custom>
 		
 		<!-- 滚动条 -->
-		<scroll-view scroll-x class="bg-white nav solid-top solid-bottom text-center" scroll-with-animation :scroll-left="TabPage_tabInfo.scrollLeft">
-			<view
-				class="cu-item"
-				:class="item.id==TabPage_tabInfo.TabCur?'text-blue cur':''" v-for="(item,index) in TabPage_tabInfo.TabItems"
-				:key="index"
-				@tap="TabPage_tabSelect"
-				:data-id="item.id"
-				:scroll-left="TabPage_tabInfo.scrollLeft"
-			>
-				{{item.title}}
-			</view>
-		</scroll-view>
+		<view style="height: 100rpx;">
+			<scroll-view scroll-x class="bg-white nav solid-top solid-bottom text-center" scroll-with-animation :scroll-left="TabPage_tabInfo.scrollLeft" style="
+				position: fixed;
+				width: 100%;
+				z-index: 1024;
+			" :style="'top:' + CustomBar + 'px'">
+				<view
+					class="cu-item"
+					:class="item.id==TabPage_tabInfo.TabCur?'text-blue cur':''" v-for="(item,index) in TabPage_tabInfo.TabItems"
+					:key="index"
+					@tap="TabPage_tabSelect"
+					:data-id="item.id"
+					:scroll-left="TabPage_tabInfo.scrollLeft"
+				>
+					{{item.title}}
+				</view>
+			</scroll-view>
+		</view>
 		
 		<projectList v-show="TabPage_tabInfo.TabCur === 'willMake'"></projectList>
 		
