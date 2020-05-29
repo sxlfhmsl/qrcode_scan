@@ -213,7 +213,7 @@
 				this.materialRequest.list(this.productId, data => {
 					if (data != null) {
 						this.choosedSouceList = data;
-						this.choosedSouceCodes = [];
+						this.choosedSouceIds = [];
 						this.choosedSouceList.forEach(item => {
 							this.choosedSouceIds.push(item.materialId);
 						});
