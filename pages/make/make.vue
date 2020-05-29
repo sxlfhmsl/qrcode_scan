@@ -29,9 +29,9 @@
 			</scroll-view>
 		</view>
 		
-		<projectList v-show="TabPage_tabInfo.TabCur === 'willMake'"></projectList>
+		<projectList v-if="TabPage_tabInfo.TabCur === 'willMake'"></projectList>
 		
-		<projectList v-show="TabPage_tabInfo.TabCur === 'making'"></projectList>
+		<projectList v-if="TabPage_tabInfo.TabCur === 'making'"></projectList>
 	</view>
 </template>
 
