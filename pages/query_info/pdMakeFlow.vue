@@ -151,5 +151,11 @@
 </script>
 
 <style>
-
+	.col-auto-line {
+		word-wrap:break-word;
+		word-break:normal;
+	}
+	* {
+		font-size: 25rpx !important;
+	}
 </style>
