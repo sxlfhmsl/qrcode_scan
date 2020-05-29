@@ -8,28 +8,41 @@
 				<text class="cu-btn lg round text-white cuIcon-punch" style="background-color: rgba(255,255,255,0);"></text>
 			</block>
 		</cu-custom>
-		<pdBaseInfo></pdBaseInfo>
-		<scroll-view scroll-x class="bg-white nav solid-top solid-bottom" scroll-with-animation :scroll-left="TabPage_tabInfo.scrollLeft">
-			<view 
-				class="cu-item"
-				:class="item.id==TabPage_tabInfo.TabCur?'text-blue cur':''" v-for="(item,index) in TabPage_tabInfo.TabItems"
-				:key="index"
-				@tap="TabPage_tabSelect"
-				:data-id="item.id"
-				:scroll-left="TabPage_tabInfo.scrollLeft"
-			>
-				{{item.title}}
+		
+		<view style="height: 320rpx;">
+			<view style="
+				position: fixed;
+				width: 100%;
+				z-index: 1024;
+			" :style="'top:' + CustomBar + 'px'">
+				<pdBaseInfo></pdBaseInfo>
+				<scroll-view scroll-x class="bg-white nav solid-top solid-bottom text-center" scroll-with-animation :scroll-left="TabPage_tabInfo.scrollLeft">
+					<view 
+						class="cu-item"
+						:class="item.id==TabPage_tabInfo.TabCur?'text-blue cur':''" v-for="(item,index) in TabPage_tabInfo.TabItems"
+						:key="index"
+						@tap="TabPage_tabSelect"
+						:data-id="item.id"
+						:scroll-left="TabPage_tabInfo.scrollLeft"
+					>
+						{{item.title}}
+					</view>
+				</scroll-view>
 			</view>
-		</scroll-view>
+		</view>
+		
+		
 		<scroll-view v-show="TabPage_tabInfo.TabCur==='pdSource'">
 			<view class="text-center">
-				<button class="cu-btn bg-blue round lg shadow margin-right" @tap="toSourceChoosePage">原材料</button>
-				<button class="cu-btn bg-blue round lg shadow margin-left" @tap="toNextStep">下一步</button>
+				<button class="cu-btn bg-blue round lg shadow margin" @tap="toNextStep">下一步</button>
 			</view>
 		</scroll-view>
 		
 		<scroll-view v-show="TabPage_tabInfo.TabCur==='pdMake'">
-			sdsd55
+			<view class="text-center">
+				<button class="cu-btn bg-blue round lg shadow margin" @tap="closePages">关闭</button>
+				<button class="cu-btn bg-blue round lg shadow margin" @tap="saveMake">保存</button>
+			</view>
 		</scroll-view>
 	</view>
 </template>
@@ -50,19 +63,26 @@
 		},
 		methods: {
 			/**
-			 * @description 跳转至原材料选择界面
-			 * @param {Object} e 事件
-			 */
-			toSourceChoosePage: function(e) {
-				uni.navigateTo({
-					url: '/pages/make/makeSourceChoose'
-				});
-			},
-			/**
 			 * @description 跳转到下一步
 			 */
 			toNextStep: function() {
 				this.TabPage_tabInfo.TabCur = 'pdMake';
+			},
+			/**
+			 * @description 关闭页面
+			 * @param {Object} e 事件对象
+			 */
+			closePages: function(e) {
+				uni.navigateBack({
+					
+				});
+			},
+			/**
+			 * @description 保存结果
+			 * @param {Object} e 事件对象
+			 */
+			saveMake: function(e) {
+				
 			}
 		},
 		mounted:function(){

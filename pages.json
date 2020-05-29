@@ -48,10 +48,6 @@
             "path" : "pages/query_info/prodect_details",
             "style" : {}
         }
-		,{
-		    "path" : "pages/make/makeSourceChoose",
-		    "style" : {}
-		}
     ],
 	"globalStyle": {
 		"mp-alipay": {
