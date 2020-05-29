@@ -1,6 +1,6 @@
 <template>
 	<view class="cu-list menu">
-		<view class="cu-item" :class="modalName=='move-box-'+ index?'move-cur':''" v-for="(item, index) in itemData" :key="index" :id="item.id" 
+		<view class="cu-item margin-bottom-sm margin-top-sm" :class="modalName=='move-box-'+ index?'move-cur':''" v-for="(item, index) in itemData" :key="index" :id="item.id" 
 		 @touchstart="ListTouchStart" @touchmove="ListTouchMove" @touchend="ListTouchEnd" :data-target="'move-box-' + index">
 			<view class="content margin-top margin-bottom">
 				<view class="text-black margin-bottom-sm">
