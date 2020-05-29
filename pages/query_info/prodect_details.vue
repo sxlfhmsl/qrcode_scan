@@ -6,27 +6,39 @@
 			</block>
 		</cu-custom>
 		
-		<pdBaseInfo class="fixed"  v-if="itemPermession['pdBaseInfo'].show" :itemData="viewData.pdBaseInfo"></pdBaseInfo>
+		<view style="
+			position: fixed;
+			width: 100%;
+			z-index: 1024;
+		" :style="'top:' + CustomBar + 'px'">
+			<pdBaseInfo  v-if="itemPermession['pdBaseInfo'].show" :itemData="viewData.pdBaseInfo"></pdBaseInfo>
+			
+			<!-- 滚动条 -->
+			<scroll-view scroll-x class="bg-white nav solid-top solid-bottom" scroll-with-animation :scroll-left="TabPage_tabInfo.scrollLeft">
+				<view 
+					v-if="itemPermession[item.id].show"
+					class="cu-item"
+					:class="item.id==TabPage_tabInfo.TabCur?'text-blue cur':''" v-for="(item,index) in TabPage_tabInfo.TabItems"
+					:key="index"
+					@tap="TabPage_tabSelect"
+					:data-id="item.id"
+					:scroll-left="TabPage_tabInfo.scrollLeft"
+				>
+					{{item.title}}
+				</view>
+			</scroll-view>
+		</view>
 		
-		<!-- 滚动条 -->
-		<scroll-view scroll-x class="fixed bg-white nav solid-top solid-bottom" scroll-with-animation :scroll-left="TabPage_tabInfo.scrollLeft">
-			<view 
-				v-if="itemPermession[item.id].show"
-				class="cu-item"
-				:class="item.id==TabPage_tabInfo.TabCur?'text-blue cur':''" v-for="(item,index) in TabPage_tabInfo.TabItems"
-				:key="index"
-				@tap="TabPage_tabSelect"
-				:data-id="item.id"
-				:scroll-left="TabPage_tabInfo.scrollLeft"
-			>
-				{{item.title}}
-			</view>
-		</scroll-view>
+		<!-- 留白 -->
+		<view style="height: 300rpx; width: 100%;"></view>
 		<pdInBankInfo v-if="itemPermession.pdInBankInfo.show" v-show="TabPage_tabInfo.TabCur==='pdInBankInfo'" :itemData="viewData.pdInBankInfo"></pdInBankInfo>
 		<pdInstall v-if="itemPermession.pdInstall.show" v-show="TabPage_tabInfo.TabCur==='pdInstall'" :itemData="viewData.pdInstall"></pdInstall>
 		<pdMakeFlow v-if="itemPermession.pdMakeFlow.show" v-show="TabPage_tabInfo.TabCur==='pdMakeFlow'" :itemData="viewData.pdMakeFlow"></pdMakeFlow>
 		<pdSendRecv v-if="itemPermession.pdSendRecv.show" v-show="TabPage_tabInfo.TabCur==='pdSendRecv'" :itemData="viewData.pdSendRecv"></pdSendRecv>
 		<pdSourceInfo v-if="itemPermession.pdSourceInfo.show" v-show="TabPage_tabInfo.TabCur==='pdSourceInfo'" :itemData="viewData.pdSourceInfo"></pdSourceInfo>
+		
+		<!-- 留白 -->
+		<view style="height: 20rpx; width: 100%;"></view>
 	</view>
 </template>
 
