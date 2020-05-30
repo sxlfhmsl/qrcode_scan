@@ -81,6 +81,7 @@
 		</scroll-view>
 		
 		<scroll-view v-show="TabPage_tabInfo.TabCur==='pdMake'">
+			<standardEditTable :picInt="item.picInt" :title="item.title" :itemData="item.itemData" v-for="(item, index) in tableList" :key="index"></standardEditTable>
 			<view class="text-center">
 				<button class="cu-btn bg-blue round lg shadow margin" @tap="closePages">关闭</button>
 				<button class="cu-btn bg-blue round lg shadow margin" @tap="saveMake">保存</button>
@@ -95,9 +96,12 @@
 	import ProductRequest from "@/pages/components/network/request/product";
 	import MaterialRequest from "@/pages/components/network/request/material";
 	
+	import standardEditTable from "@/pages/components/standardEditTable"
+	
 	export default {
 		components: {
-			pdBaseInfo
+			pdBaseInfo,
+			standardEditTable
 		},
 		name: 'makeMain',
 		extends: TabPage,
@@ -117,7 +121,57 @@
 				'enterDate': '',                                            // 进场日期
 				'modalName': null,
 				'listTouchStart': 0,
-				'listTouchDirection': null
+				'listTouchDirection': null,
+				'mode': [{
+					id: 'mtkModeWelding',
+					title: '焊接作业信息',
+					idPrefix: 'mtkWelding',
+					'itemTitles': {'Date':'焊接作业时间', 'Content': '作业环境温度', 'User': '作业人员', 'Att': '焊接作业照片'},
+					checkPrefix: 'mtk',
+					type: 'makeTaskInfo',
+					picInt: 3,
+				}, {
+					id: 'mtkModeAnti',
+					title: '防腐作业信息',
+					idPrefix: 'mtkAnti',
+					'itemTitles': {'Date':'防腐作业时间', 'Content': '防腐作业内容', 'User': '作业人员', 'Att': '防腐作业照片'},
+					checkPrefix: 'mtk',
+					type: 'makeTaskInfo',
+					picInt: 4,
+				}, {
+					id: 'mtkModeTask',
+					title: '加工作业信息',
+					idPrefix: 'mtkTask',
+					'itemTitles': {'Date':'加工作业时间', 'Content': '加工作业内容', 'User': '作业人员', 'Att': '加工作业照片'},
+					checkPrefix: 'mtk',
+					type: 'makeTaskInfo',
+					picInt: 5,
+				}, {
+					id: 'mckModeWelding',
+					title: '焊缝检验信息',
+					idPrefix: 'mckWelding',
+					'itemTitles': {'Date':'焊缝检验时间', 'Content': '焊缝检验结论', 'User': '检验人员', 'Att': '焊缝检验照片'},
+					checkPrefix: 'mck',
+					type: 'makeCheckInfo',
+					picInt: 6,
+				}, {
+					id: 'mckModeProduct',
+					title: '成品检验信息',
+					idPrefix: 'mckProduct',
+					'itemTitles': {'Date':'成品检验时间', 'Content': '成品检验结论', 'User': '检验人员', 'Att': '成品检验照片'},
+					checkPrefix: 'mck',
+					type: 'makeCheckInfo',
+					picInt: 7,
+				}, {
+					id: 'mckModeSupervision',
+					title: '监造检验信息',
+					idPrefix: 'mckSupervision',
+					'itemTitles': {'Date':'监造检验时间', 'Content': '监造检验结论', 'User': '监理工程师', 'Att': '监造检验照片'},
+					checkPrefix: 'mck',
+					type: 'makeCheckInfo',
+					picInt: 8,
+				}],
+				'tableList': [],
 			}
 		},
 		methods: {
@@ -193,6 +247,8 @@
 			loadProductInfo: function() {
 				this.productRequest.detailById(this.productId, data => {
 					this.rawProductData = data;
+					// 计算制作数据显示
+					this.calcMakeData();
 					if (data !== null) {
 						this.title = data.product.name;
 						this.pdBaseInfoData = data.product;
@@ -241,6 +297,59 @@
 				}
 				this.listTouchDirection = null
 			},
+			/**
+			 * @description 计算产品数据
+			 */
+			calcMakeData: function() {
+				this.tableList = [];
+				if (this.rawProductData.productCategory !== null && this.rawProductData.productCategory !== undefined) {
+					if (this.rawProductData.productMade !== null && this.rawProductData.productMade !== undefined) {
+						this.mode.forEach(item => {
+							if (this.rawProductData.productCategory[item.id] != 0 && this.rawProductData.productCategory[item.type] != 0) {
+								// 生成行数据
+								let itemData = [];
+								if (this.rawProductData.productCategory[item.checkPrefix + 'Date'] != 0) {  // 时间
+									itemData.push({
+										'id': item.idPrefix + 'Date',
+										'title': item.itemTitles.Date,
+										'value': this.rawProductData.productMade[item.idPrefix + 'Date'],
+										'type': 'date'
+									});
+								}
+								if (this.rawProductData.productCategory[item.checkPrefix + 'Content'] != 0) {  // 内容
+									itemData.push({
+										'id': item.idPrefix + 'Content',
+										'title': item.itemTitles.Content,
+										'value': this.rawProductData.productMade[item.idPrefix + 'Content'],
+										'type': 'text'
+									});
+								}
+								if (this.rawProductData.productCategory[item.checkPrefix + 'User'] != 0) {  // 人员
+									itemData.push({
+										'id': item.idPrefix + 'WorkerId',
+										'title': item.itemTitles.User,
+										'value': this.rawProductData.productMade[item.idPrefix + 'WorkerId'],
+										'type': 'text'
+									});
+								}
+								if (this.rawProductData.productCategory[item.checkPrefix + 'Att'] != 0) {  // 图片
+									itemData.push({
+										'id': item.idPrefix + 'Att',
+										'title': item.itemTitles.Att,
+										'value': this.rawProductData.productMade[item.idPrefix + 'Att'],
+										'type': 'image'
+									});
+								}
+								this.tableList.push({
+									'itemData': itemData,
+									'title':  item.title,
+									'picInt': item.picInt
+								});
+							}
+						});
+					}
+				}
+			}
 		},
 		onLoad: function(option) {
 			this.productId = (option.productId? option.productId: this.productId);

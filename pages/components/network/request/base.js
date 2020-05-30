@@ -101,6 +101,61 @@ class BaseRequest {
 			}
 		});
 	};
+	
+	/**
+	 * @description 文件上传接口
+	 * @param {Object} url 路径
+	 * @param {Object} filePath 文件
+	 * @param {Object} callbackFunc 回调 
+	 */
+	baseUpload(url, filePath, header, callbackFunc) {
+		if (url.type & RequestType.NEED_TOKEN != 0) {
+			let token = uni.getStorageSync('token');               // 获取token
+			if (token == undefined || token == null || token == '') {
+				// 请直接跳转至登录界面
+				uni.removeStorage({
+					key: 'token'
+				});
+				uni.redirectTo({
+					url: '/pages/index/index'
+				});
+			}
+			else {
+				header['Authorization'] = token;
+			}
+		}
+		uni.uploadFile({
+			url: url.url,
+			header: header,
+			filePath: filePath,
+			name: 'file',
+			success: (result) => {
+				if (result.statusCode == 200) {
+					if (typeof(result.data) == 'string') {
+						result.data = JSON.parse(result.data);
+					}
+					if (result.data.code == 700) {
+						// token验证失败，需跳转到登录界面
+						uni.removeStorage({
+							key: 'token'
+						});
+						uni.redirectTo({
+							url: '/pages/index/index'
+						});
+					}
+					else {
+						callbackFunc(result);
+					}
+				}
+				else {
+					// 请求异常
+					uni.showToast({
+						title: '请求异常-----请检查网络',
+					});
+				}
+			}
+		});
+	}
 };
 
 export default BaseRequest;

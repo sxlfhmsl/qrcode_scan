@@ -40,6 +40,10 @@ class Url {
 	set urlParams(params) {
 		this._urlParams = params;
 	};
+	
+	set pathParams(params) {
+		this._pathParams = params;
+	}
 };
 
 export default Url;
