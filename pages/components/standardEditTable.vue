@@ -31,7 +31,7 @@
 			>
 				<input v-if="item.type == 'text'" v-model="item.value" :id="item.id" @change="inputChange(item.id, item.value)" style="height: 100%; width: 100%;"/>
 				<image v-if="item.type == 'image'" mode="widthFix" :src="Url.resBaseUrl + item.value" @tap="pictureChoose(item.id, item.value)" :id="item.id"></image>
-				<picker v-if="item.type == 'date'" mode="date" @change="dateChange($event)" :id="item.id" style="height: 100%; width: 100%;">
+				<picker v-if="item.type == 'date'" :value="item.value" mode="date" @change="dateChange($event)" :id="item.id" style="height: 100%; width: 100%;">
 					<input v-model="item.value" disabled="true" style="height: 100%; width: 100%;"/>
 				</picker>
 				<picker v-if="item.type == 'worker'" @change="workerPickerChange($event, item.id)" range-key="workerName" :value="workerIndex" :range="workers" style="height: 100%; width: 100%;" :id="item.id">

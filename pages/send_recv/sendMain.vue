@@ -25,16 +25,63 @@
 					class="padding-sm col-auto-line text-white text-center solid-right bg-gradual-blue" 
 					style="flex: auto; width: 25%;"
 				>
-					*收货时间:
+					*发货时间:
 				</view>
 				
 				<view
 					class="padding-sm col-auto-line bg-white solid-right"
 					style="flex: auto; width: 75%; background-color: white"
 				>
-					<picker mode="date" @change="dateChange($event)" :value="recvDate" style="height: 100%; width: 100%;">
-						<input class="text-right" v-model="recvDate" disabled="true" style="height: 100%; width: 100%;"/>
+					<picker mode="date" :value="sendData.date" @change="dateChange($event)" style="height: 100%; width: 100%;">
+						<input class="text-right" v-model="sendData.date" disabled="true" style="height: 100%; width: 100%;"/>
 					</picker>
+				</view>
+			</view>
+			
+			<view class="flex margin-left-sm margin-right-sm solid-left solid-bottom solid-top">
+				<view 
+					class="padding-sm col-auto-line text-white text-center solid-right bg-gradual-blue" 
+					style="flex: auto; width: 25%;"
+				>
+					*客户单位:
+				</view>
+				
+				<view
+					class="padding-sm col-auto-line bg-white solid-right"
+					style="flex: auto; width: 75%; background-color: white"
+				>
+				</view>
+			</view>
+			
+			<view class="flex margin-left-sm margin-right-sm solid-left solid-bottom solid-top">
+				<view 
+					class="padding-sm col-auto-line text-white text-center solid-right bg-gradual-blue" 
+					style="flex: auto; width: 25%;"
+				>
+					发货地址:
+				</view>
+				
+				<view
+					class="padding-sm col-auto-line bg-white solid-right"
+					style="flex: auto; width: 75%; background-color: white"
+				>
+					<input v-model="sendData.sendAddr" style="height: 100%; width: 100%;"/>
+				</view>
+			</view>
+			
+			<view class="flex margin-left-sm margin-right-sm solid-left solid-bottom solid-top">
+				<view 
+					class="padding-sm col-auto-line text-white text-center solid-right bg-gradual-blue" 
+					style="flex: auto; width: 25%;"
+				>
+					收货地址:
+				</view>
+				
+				<view
+					class="padding-sm col-auto-line bg-white solid-right"
+					style="flex: auto; width: 75%; background-color: white"
+				>
+					<input v-model="sendData.recvAddr" style="height: 100%; width: 100%;"/>
 				</view>
 			</view>
 			
@@ -61,7 +108,15 @@
 				'rawProductData': null,                                     // 原始数据
 				'pdBaseInfoData': {},                                       // 基础页面显示数据
 				'title': '',                                                // 标题
-				'recvDate': '',
+				'sendData': {                                               // 发货数据
+					'date': '',                                             // 日期
+					'unit': {                                               // 客户单位
+						'id': null,
+						'name': ''
+					},
+					'sendAddr': '',                                         // 发货地址
+					'recvAddr': '',                                         // 收货地址
+				}
 			}
 		},
 		methods: {
@@ -92,25 +147,35 @@
 			 */
 			saveRecv: function(e) {
 				if (this.productId !== null) {
-					if (this.recvDate != null && this.recvDate != '') {
-						this.productRequest.receive(this.productId, this.recvDate, result => {
-							uni.showToast({
-								title: '收货成功'
-							});
-							uni.navigateBack({
-								
-							});
+					if (this.sendData.date == '') {
+						uni.showToast({
+							title: '请输入发货日期'
 						});
+						return;
+					}
+					else if (this.sendData.unit.id == null) {
+						uni.showToast({
+							title: '请输入单位'
+						});
+						return;
 					}
 					else {
-						uni.showToast({
-							title: '请输入收货日期'
+						this.productRequest.delivery(this.productId, 
+							this.sendData.date, undefined, this.sendData.unit.id, 
+							this.sendData.unit.name, this.sendData.sendAddr, 
+							this.sendData.recvAddr, result => {
+								uni.showToast({
+									title: '发货完成'
+								});
+								uni.navigateBack({
+									
+								});
 						});
 					}
 				}
 			},
 			dateChange: function(e) {
-				this.recvDate = e.detail.value;
+				this.sendData.date = e.detail.value;
 			}
 		},
 		onLoad: function(option) {
