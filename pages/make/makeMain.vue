@@ -81,7 +81,7 @@
 		</scroll-view>
 		
 		<scroll-view v-show="TabPage_tabInfo.TabCur==='pdMake'">
-			<standardEditTable :picInt="item.picInt" :title="item.title" :itemData="item.itemData" v-for="(item, index) in tableList" :key="index"></standardEditTable>
+			<standardEditTable @itemChange="itemChange" :workers="workers" :picInt="item.picInt" :title="item.title" :itemData="item.itemData" v-for="(item, index) in tableList" :key="index"></standardEditTable>
 			<view class="text-center">
 				<button class="cu-btn bg-blue round lg shadow margin" @tap="closePages">关闭</button>
 				<button class="cu-btn bg-blue round lg shadow margin" @tap="saveMake">保存</button>
@@ -172,6 +172,8 @@
 					picInt: 8,
 				}],
 				'tableList': [],
+				'workers': [],
+				'makeCommitObject': {},                                    // 提交对象
 			}
 		},
 		methods: {
@@ -196,7 +198,9 @@
 			 */
 			saveMake: function(e) {
 				if (this.productId !== null) {
-					
+					this.productRequest.made(this.rawProductData.productMade.id, this.productId, this.makeCommitObject, result => {
+						console.log(result)
+					});
 				}
 			},
 			resetSearchFilter: function(e) {
@@ -329,7 +333,7 @@
 										'id': item.idPrefix + 'WorkerId',
 										'title': item.itemTitles.User,
 										'value': this.rawProductData.productMade[item.idPrefix + 'WorkerId'],
-										'type': 'text'
+										'type': 'worker'
 									});
 								}
 								if (this.rawProductData.productCategory[item.checkPrefix + 'Att'] != 0) {  // 图片
@@ -349,6 +353,9 @@
 						});
 					}
 				}
+			},
+			itemChange: function(params) {
+				this.makeCommitObject[params.id] = params.value;
 			}
 		},
 		onLoad: function(option) {
@@ -358,6 +365,11 @@
 			this.loadChoosedSource();
 		},
 		mounted:function(){
+			// 获取工作者
+			this.productRequest.selectWorker(data => {
+				this.workers = data;
+			});
+			
 			this.TabPage_tabInfo.TabItems = [{
 				title: '原材料',
 				id: 'pdSource'
