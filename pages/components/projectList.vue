@@ -8,7 +8,7 @@
 					<text class="margin-left-sm text-sm">{{item.name}}</text>
 				</view>
 				<view class="text-gray text-sm margin-top-sm">
-					时间：{{item.createDate}}  
+					时间：{{item.createDate? item.createDate: item.recevieDate}}  
 				</view>
 			</view>
 			<view class="action margin-top margin-bottom">

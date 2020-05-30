@@ -31,7 +31,7 @@
 		
 		<you-scroll ref="scroll" @onPullDown="onPullDown" @onScroll="onScroll" @onLoadMore="onLoadMore">
 			<projectList 
-				v-if="TabPage_tabInfo.TabCur === 'willMake'" 
+				v-show="TabPage_tabInfo.TabCur === 'willMake'" 
 				style="min-height: 200rpx; width: 100%;"
 				:itemData="projectItems.willMake"
 				:btnExtends="btnExtends"
@@ -39,7 +39,7 @@
 			></projectList>
 			
 			<projectList 
-				v-if="TabPage_tabInfo.TabCur === 'making'" 
+				v-show="TabPage_tabInfo.TabCur === 'making'" 
 				style="min-height: 200rpx; width: 100%;"
 				:itemData="projectItems.making"
 				:btnExtends="btnExtends"
