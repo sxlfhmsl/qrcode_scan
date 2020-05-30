@@ -50,6 +50,13 @@
 					class="padding-sm col-auto-line bg-white solid-right"
 					style="flex: auto; width: 75%; background-color: white"
 				>
+					<picker mode="multiSelector" range-key="name" @change="MultiChange" @columnchange="MultiColumnChange" :value="multiIndex" :range="multiArray" style="height: 100%; width: 100%;">
+						<view class="picker text-right">
+							{{multiArray[0][multiIndex[0]]? multiArray[0][multiIndex[0]].name: ' '}}
+							{{multiArray[1][multiIndex[1]]? multiArray[1][multiIndex[1]].name: ' '}}
+							{{multiArray[2][multiIndex[2]]? multiArray[2][multiIndex[2]].name: ' '}}
+						</view>
+					</picker>
 				</view>
 			</view>
 			
@@ -65,7 +72,7 @@
 					class="padding-sm col-auto-line bg-white solid-right"
 					style="flex: auto; width: 75%; background-color: white"
 				>
-					<input v-model="sendData.sendAddr" style="height: 100%; width: 100%;"/>
+					<input class="text-right" v-model="sendData.sendAddr" style="height: 100%; width: 100%;"/>
 				</view>
 			</view>
 			
@@ -81,7 +88,7 @@
 					class="padding-sm col-auto-line bg-white solid-right"
 					style="flex: auto; width: 75%; background-color: white"
 				>
-					<input v-model="sendData.recvAddr" style="height: 100%; width: 100%;"/>
+					<input class="text-right" v-model="sendData.recvAddr" style="height: 100%; width: 100%;"/>
 				</view>
 			</view>
 			
@@ -111,15 +118,65 @@
 				'sendData': {                                               // 发货数据
 					'date': '',                                             // 日期
 					'unit': {                                               // 客户单位
-						'id': null,
-						'name': ''
+						'id': 0,
+						'name': '顶级'
 					},
 					'sendAddr': '',                                         // 发货地址
 					'recvAddr': '',                                         // 收货地址
-				}
+				},
+				multiArray: [
+					[],
+					[],
+					[]
+				],
+				multiIndex: [0, 0, 0],
+				multiIndexBuffer: [0, 0, 0],
+				deptFormatData: {},
 			}
 		},
 		methods: {
+			MultiChange(e) {
+				this.multiIndex = e.detail.value;
+				let buffer = this.multiArray[2][this.multiIndex[2]];
+				if (buffer == undefined || buffer == null || buffer.id == -1) {
+					buffer = this.multiArray[1][this.multiIndex[1]];
+					if (buffer != undefined && buffer != null && buffer.id != -1) {
+						this.sendData.unit.id = buffer.id;
+						this.sendData.unit.name = buffer.name;
+					}
+				}
+				else {
+					this.sendData.unit.id = buffer.id;
+					this.sendData.unit.name = buffer.name;
+				}
+			},
+			MultiColumnChange(e) {
+				// data.multiIndex[e.detail.column] = e.detail.value;
+				this.multiIndexBuffer[e.detail.column] = e.detail.value;
+				switch(e.detail.column) {
+					case 0:
+						let id = this.multiArray[0][e.detail.value].id;
+						this.multiArray[1].splice(0, this.multiArray[1].length, {'id': -1, 'name': ''});
+						let childrenSen = this.multiArray[0][this.multiIndexBuffer[0]].children;
+						Object.keys(childrenSen).forEach(key => {
+							this.multiArray[1].push(childrenSen[key]);
+						});
+					break;
+					case 1:
+						let idLevel2 = this.multiArray[1][e.detail.value].id;
+						if (idLevel2 != -1) {
+							this.multiArray[2].splice(0, this.multiArray[2].length, {'id': -1, 'name': ''});
+							Object.keys(this.multiArray[1][e.detail.value].children).forEach(key => {
+								this.multiArray[2].push(this.multiArray[1][e.detail.value].children[key]);
+							});
+							console.log(this.multiArray[2]);
+						}
+						else {
+							this.multiArray[2].splice(0, this.multiArray[2].length);
+						}
+					break;
+				};
+			},
 			/**
 			 * @description 加载产品信息
 			 */
@@ -176,11 +233,54 @@
 			},
 			dateChange: function(e) {
 				this.sendData.date = e.detail.value;
+			},
+			loadDeptData: function() {
+				this.productRequest.deptTree(result => {
+					this.deptFormatData[0] = {'name': '顶级', 'id': 0, children: {}};
+					let pids = [0, 999999999, 999999999];
+					result.forEach((item, index) => {
+						if (item.pId == pids[0]) {
+							this.deptFormatData[pids[0]].children[item.id] = item;
+							this.deptFormatData[pids[0]].children[item.id].children = {};
+							pids[1] = item.id;
+						}
+						else if (item.pId == pids[1]) {
+							this.deptFormatData[pids[0]].children[pids[1]].children[item.id] = item;
+							this.deptFormatData[pids[0]].children[pids[1]].children[item.id].children = {};
+							pids[2] = item.id;
+						}
+						else if (item.pId == pids[2]) {
+							this.deptFormatData[pids[0]].children[pids[1]].children[pids[2]].children[item.id] = item;
+							this.deptFormatData[pids[0]].children[pids[1]].children[pids[2]].children[item.id].children = {};
+						}
+						else {
+							this.deptFormatData[item.id] = item;
+							this.deptFormatData[item.id].children = {};
+							pids[0] = item.id;
+						}
+					});
+					
+					this.multiArray[0] =[];
+					let deptKeys = Object.keys(this.deptFormatData);
+					deptKeys.forEach(item => {
+						this.multiArray[0].push(this.deptFormatData[item]);
+					});
+					
+					if (deptKeys.length == 1) {
+						let childrenSen = this.multiArray[0][0].children;
+						deptKeys = Object.keys(childrenSen);
+						this.multiArray[1].push({name: '', id: -1});
+						deptKeys.forEach(item => {
+							this.multiArray[1].push(childrenSen[item]);
+						});
+					}
+				});
 			}
 		},
 		onLoad: function(option) {
 			this.productId = (option.productId? option.productId: this.productId);
 			this.loadProductInfo();
+			this.loadDeptData();
 		},
 	}
 </script>
