@@ -36,7 +36,7 @@
 				</picker>
 				<picker v-if="item.type == 'worker'" @change="workerPickerChange($event, item.id)" range-key="workerName" :value="workerIndex" :range="workers" style="height: 100%; width: 100%;" :id="item.id">
 					<view class="picker">
-						{{workerIndex == null? '': workers[workerIndex].workerName}}
+						{{workerIndex == null? '': workers[workerIndex].workerName + '-' + workers[workerIndex].dictName}}
 					</view>
 				</picker>
 			</view>
