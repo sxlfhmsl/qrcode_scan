@@ -29,6 +29,7 @@
 			</scroll-view>
 		</view>
 		
+		<!-- 主要内容 -->
 		<you-scroll ref="scroll" @onPullDown="onPullDown" @onScroll="onScroll" @onLoadMore="onLoadMore">
 			<projectList 
 				v-show="TabPage_tabInfo.TabCur === 'willInstall'" 
