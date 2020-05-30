@@ -92,7 +92,6 @@
 				this.flushData(done, 'down');
 			},
 			onScroll: function(e) { // 监听滚动
-				console.log(e.detail.scrollTop)
 			},
 			onLoadMore: function(e) { // 加载更多
 				this.flushData(undefined, 'up');
@@ -103,10 +102,9 @@
 			 */
 			productTap: function(params) {
 				if (params.btnType === 'install') {
-					// uni.navigateTo({
-					// 	url: '/pages/make/makeMain?productId=' + params.productId
-					// })
-					console.log("sdsd");
+					uni.navigateTo({
+						url: '/pages/install/installMain?productId=' + params.productId
+					})
 				}
 			},
 			/**

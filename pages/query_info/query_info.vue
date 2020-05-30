@@ -59,8 +59,8 @@
 				    onlyFromCamera: true,
 					scanType: ['qrCode'],
 				    success: res => {
-				        console.log('条码类型：' + res.scanType);
-				        console.log('条码内容：' + res.result);
+				        // console.log('条码类型：' + res.scanType);
+				        // console.log('条码内容：' + res.result);
 						if (res.result.indexOf(Url.resBaseUrl) != -1) {
 							let buf = res.result.split('/');
 							this.itemCode = (buf[buf.length - 1] == ''? buf[buf.length - 2]: buf[buf.length - 1]);

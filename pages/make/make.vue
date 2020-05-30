@@ -92,7 +92,6 @@
 				this.flushData(done, 'down');
 			},
 			onScroll: function(e) { // 监听滚动
-				console.log(e.detail.scrollTop)
 			},
 			onLoadMore: function(e) { // 加载更多
 				this.flushData(undefined, 'up');

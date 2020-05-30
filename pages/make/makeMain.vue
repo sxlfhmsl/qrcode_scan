@@ -199,7 +199,6 @@
 			saveMake: function(e) {
 				if (this.productId !== null) {
 					this.productRequest.made(this.rawProductData.productMade.id, this.productId, this.makeCommitObject, result => {
-						console.log(result)
 					});
 				}
 			},

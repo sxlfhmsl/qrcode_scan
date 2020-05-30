@@ -40,6 +40,10 @@
             "path" : "pages/install/install",
             "style" : {}
         }
+		,{
+		    "path" : "pages/install/installMain",
+		    "style" : {}
+		}
         ,{
             "path" : "pages/send_recv/send_recv",
             "style" : {}
