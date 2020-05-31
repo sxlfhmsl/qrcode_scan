@@ -86,5 +86,7 @@
 </script>
 
 <style>
-
+	.cu-list+.cu-list {
+		margin-top: 0px !important;
+	}
 </style>
