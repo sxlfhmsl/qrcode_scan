@@ -1,0 +1,48 @@
+@font-face {
+    font-family: "new_simhei";
+    src: url("~@/static/fonts/simhei/simhei.eot"); /* IE9 */
+    src: url("~@/static/fonts/simhei/simhei.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    
+    url("~@/static/fonts/simhei/simhei.woff") format("woff"), /* chrome、firefox */
+    url("~@/static/fonts/simhei/simhei.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
+    
+    url("~@/static/fonts/simhei/simhei.svg#simhei") format("svg"); /* iOS 4.1- */
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "new_simsun";
+    src: url("~@/static/fonts/simsun/NSimSun-02.eot"); /* IE9 */
+    src: url("~@/static/fonts/simsun/NSimSun-02.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    
+    url("~@/static/fonts/simsun/NSimSun-02.woff") format("woff"), /* chrome、firefox */
+    url("~@/static/fonts/simsun/NSimSun-02.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
+    
+    url("~@/static/fonts/simsun/NSimSun-02.svg#NSimSun-02") format("svg"); /* iOS 4.1- */
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "new_simkai";
+    src: url("~@/static/fonts/simkai/simkai.eot"); /* IE9 */
+    src: url("~@/static/fonts/simkai/simkai.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    
+    url("~@/static/fonts/simkai/simkai.woff") format("woff"), /* chrome、firefox */
+    url("~@/static/fonts/simkai/simkai.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
+    
+    url("~@/static/fonts/simkai/simkai.svg#simkai") format("svg"); /* iOS 4.1- */
+    font-style: normal;
+    font-weight: normal;
+}
+
+.font-title-simsun {color: #555555; font-weight: 600; font-family: new_simsun, sans-serif;}
+.font-title-simkai {color: #555555; font-weight: 600; font-family: new_simkai, sans-serif;}
+.font-title-simhei {color: #555555; font-weight: 600; font-family: new_simhei, sans-serif;}
+.font-title-simsun-nocolor {font-weight: 600; font-family: new_simsun, sans-serif;}
+.font-title-simkai-nocolor {font-weight: 600; font-family: new_simkai, sans-serif;}
+.font-title-simhei-nocolor {font-weight: 600; font-family: new_simhei, sans-serif;}
+.font-content-simsun {font-family: new_simsun, sans-serif;}
+.font-content-simkai {font-family: new_simkai, sans-serif;}
+.font-content-simhei {font-family: new_simhei, sans-serif;}
