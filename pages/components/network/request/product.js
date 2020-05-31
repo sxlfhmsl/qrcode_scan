@@ -196,7 +196,7 @@ class ProductRequest extends BaseRequest {
 	 * @param {Object} successCallback 成功回调
 	 */
 	delivery(productId, deliveryDate, deliveryCode, recevieDeptId, recevieDeptName, deliveryAddress, recevieAddress, successCallback) {
-		this.deliveryListUrl.urlParams = {
+		this.deliveryUrl.urlParams = {
 			'productId': productId,
 			'deliveryDate': deliveryDate,
 			'deliveryCode': deliveryCode,
@@ -206,7 +206,7 @@ class ProductRequest extends BaseRequest {
 			'recevieAddress': recevieAddress
 		};
 		this.basePost(
-			this.deliveryListUrl,
+			this.deliveryUrl,
 			{},
 			(result) => {
 				this.baseResultProcess(result, successCallback);
@@ -221,12 +221,12 @@ class ProductRequest extends BaseRequest {
 	 * @param {Object} successCallback 成功回调
 	 */
 	receive(productId, recevieDate, successCallback) {
-		this.receiveListUrl.urlParams = {
+		this.receiveUrl.urlParams = {
 			'productId': productId,
 			'recevieDate': recevieDate
 		};
 		this.basePost(
-			this.receiveListUrl,
+			this.receiveUrl,
 			{},
 			(result) => {
 				this.baseResultProcess(result, successCallback);
