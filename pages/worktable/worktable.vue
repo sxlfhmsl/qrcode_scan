@@ -11,7 +11,7 @@
 			<view class="nav-list">
 				<navigator v-if="item.show" hover-class="none" :url="item.url" class="nav-li" navigateTo :class="'bg-'+item.color"
 				 :style="[{animation: 'show ' + ((index+1)*0.2+1) + 's 1'}]" v-for="(item,index) in models" :key="index">
-					<view class="nav-title" style="font-size: 1em; margin-right: 2em;">{{item.title}}</view>
+					<view class="nav-title font-title-simkai-nocolor" style="font-size: 1em; margin-right: 2em;">{{item.title}}</view>
 					<view class="nav-name" style="margin-bottom: 0rpx;">{{item.childCount}}</view>
 					<text :class="item.icon"></text>
 				</navigator>
