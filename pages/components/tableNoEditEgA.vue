@@ -9,7 +9,7 @@
 		>
 			<!-- 标题 -->
 			<view 
-				class="padding-sm col-auto-line text-white text-center solid-right"
+				class="padding-sm col-auto-line text-black text-center solid-right"
 				style="flex: auto;"
 				:style="'width:' + rowBeforeTitle.titleWidth + ';background-color:' + rowBeforeTitle.titleColor + ';'"
 			>
@@ -48,7 +48,7 @@
 		>
 			<!-- 标题 -->
 			<view 
-				class="padding-sm col-auto-line text-white text-center solid-right"
+				class="padding-sm col-auto-line text-black text-center solid-right"
 				style="flex: auto;"
 				:style="'width:' + rowAfterTitle.titleWidth + ';background-color:' + rowAfterTitle.titleColor + ';'"
 			>
