@@ -261,4 +261,7 @@
 			transform: translateY(0px);
 		}
 	}
+	page{
+		background-color: white;
+	}
 </style>

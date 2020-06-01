@@ -109,15 +109,15 @@
 								let rowsAfterTitle = [];
 								let rawData = {};
 								if (data.productCategory[item.checkPrefix + 'Date'] != 0) {  // 时间
-									rowsAfterTitle.push(new TableEgAElem(item.itemTitles.Date, data.productMade[item.idPrefix + 'Date'], '25%', '75%', '#dad8d8', 'white'));
+									rowsAfterTitle.push(new TableEgAElem(item.itemTitles.Date, data.productMade[item.idPrefix + 'Date'], '30%', '70%', '#f2f2f2', 'white'));
 									rawData[item.idPrefix + 'Date'] = data.productMade[item.idPrefix + 'Date'];
 								}
 								if (data.productCategory[item.checkPrefix + 'Content'] != 0) {  // 内容
-									rowsAfterTitle.push(new TableEgAElem(item.itemTitles.Content, data.productMade[item.idPrefix + 'Content'], '25%', '75%', '#dad8d8', 'white'));
+									rowsAfterTitle.push(new TableEgAElem(item.itemTitles.Content, data.productMade[item.idPrefix + 'Content'], '30%', '70%', '#f2f2f2', 'white'));
 									rawData[item.idPrefix + 'Content'] = data.productMade[item.idPrefix + 'Content'];
 								}
 								if (data.productCategory[item.checkPrefix + 'User'] != 0) {  // 人员
-									rowsAfterTitle.push(new TableEgAElem(item.itemTitles.User, data.productMade[item.idPrefix + 'WorkerName'], '25%', '75%', '#dad8d8', 'white'));
+									rowsAfterTitle.push(new TableEgAElem(item.itemTitles.User, data.productMade[item.idPrefix + 'WorkerName'], '30%', '70%', '#f2f2f2', 'white'));
 									rawData[item.idPrefix + 'WorkerName'] = data.productMade[item.idPrefix + 'WorkerName'];
 									rawData[item.idPrefix + 'WorkerId'] = data.productMade[item.idPrefix + 'WorkerId'];
 								}
@@ -126,7 +126,7 @@
 										data.productMade[item.idPrefix + 'Att'] == null || data.productMade[item.idPrefix + 'Att'] == ''? 
 										'': 
 										Url.resBaseUrl + data.productMade[item.idPrefix + 'Att']
-									), '25%', '75%', '#dad8d8', 'white', 'image'));
+									), '30%', '70%', '#f2f2f2', 'white', 'image'));
 									rawData[item.idPrefix + 'Att'] = data.productMade[item.idPrefix + 'Att'];
 								}
 								this.tableList.push({

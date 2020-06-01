@@ -72,11 +72,11 @@
 						'rowsBeforeTitle': [],
 						'title': {'color': '#5c9ed6', 'value': '发货基本信息'},
 						'rowsAfterTitle': [
-							new TableEgAElem('发货时间', data.deliveryDate, '25%', '75%', '#dad8d8', 'white'),
-							new TableEgAElem('发货订单编号', data.deliveryCode, '25%', '75%', '#dad8d8', 'white'),
-							new TableEgAElem('客户单位', data.recevieDeptName, '25%', '75%', '#dad8d8', 'white'),
-							new TableEgAElem('发货地址', data.deliveryAddress, '25%', '75%', '#dad8d8', 'white'),
-							new TableEgAElem('收货地址', data.recevieAddress, '25%', '75%', '#dad8d8', 'white')
+							new TableEgAElem('发货时间', data.deliveryDate, '30%', '70%', '#f2f2f2', 'white'),
+							new TableEgAElem('发货订单编号', data.deliveryCode, '30%', '70%', '#f2f2f2', 'white'),
+							new TableEgAElem('客户单位', data.recevieDeptName, '30%', '70%', '#f2f2f2', 'white'),
+							new TableEgAElem('发货地址', data.deliveryAddress, '30%', '70%', '#f2f2f2', 'white'),
+							new TableEgAElem('收货地址', data.recevieAddress, '30%', '70%', '#f2f2f2', 'white')
 						],
 						'rawData': data
 					});
@@ -86,7 +86,7 @@
 						'rowsBeforeTitle': [],
 						'title': {'color': '#5c9ed6', 'value': '收货基本信息'},
 						'rowsAfterTitle': [
-							new TableEgAElem('收货时间', data.recevieDate, '25%', '75%', '#dad8d8', 'white'),
+							new TableEgAElem('收货时间', data.recevieDate, '30%', '70%', '#f2f2f2', 'white'),
 						],
 						'rawData': data
 					});

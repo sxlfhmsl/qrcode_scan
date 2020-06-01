@@ -146,15 +146,15 @@
 								let rowsAfterTitle = [];
 								let rawData = {};
 								if (data.productCategory[item.checkPrefix + 'Date'] != 0) {  // 时间
-									rowsAfterTitle.push(new TableEgAElem(item.itemTitles['Date'], data.productInstall[item.idPrefix + 'Date'], '25%', '75%', '#dad8d8', 'white'));
+									rowsAfterTitle.push(new TableEgAElem(item.itemTitles['Date'], data.productInstall[item.idPrefix + 'Date'], '30%', '70%', '#f2f2f2', 'white'));
 									rawData[item.idPrefix + 'Date'] = data.productInstall[item.idPrefix + 'Date'];
 								}
 								if (data.productCategory[item.checkPrefix + 'Content'] != 0) {  // 内容
-									rowsAfterTitle.push(new TableEgAElem(item.itemTitles['Content'], data.productInstall[item.idPrefix + 'Content'], '25%', '75%', '#dad8d8', 'white'));
+									rowsAfterTitle.push(new TableEgAElem(item.itemTitles['Content'], data.productInstall[item.idPrefix + 'Content'], '30%', '70%', '#f2f2f2', 'white'));
 									rawData[item.idPrefix + 'Content'] = data.productInstall[item.idPrefix + 'Content'];
 								}
 								if (data.productCategory[item.checkPrefix + 'User'] != 0) {  // 人员
-									rowsAfterTitle.push(new TableEgAElem(item.itemTitles['User'], data.productInstall[item.idPrefix + 'WorkerName'], '25%', '75%', '#dad8d8', 'white'));
+									rowsAfterTitle.push(new TableEgAElem(item.itemTitles['User'], data.productInstall[item.idPrefix + 'WorkerName'], '30%', '70%', '#f2f2f2', 'white'));
 									rawData[item.idPrefix + 'WorkerName'] = data.productInstall[item.idPrefix + 'WorkerName'];
 									rawData[item.idPrefix + 'WorkerId'] = data.productInstall[item.idPrefix + 'WorkerId'];
 								}
@@ -163,12 +163,12 @@
 										data.productInstall[item.idPrefix + 'Att'] == null || data.productInstall[item.idPrefix + 'Att'] == ''? 
 										'': 
 										Url.resBaseUrl + data.productInstall[item.idPrefix + 'Att']
-									), '25%', '75%', '#dad8d8', 'white', 'image'));
+									), '30%', '70%', '#f2f2f2', 'white', 'image'));
 									rawData[item.idPrefix + 'Att'] = data.productInstall[item.idPrefix + 'Att'];
 								}
 								let rowsBeforeTitle = [];
 								if (index == 0) {
-									rowsBeforeTitle.push(new TableEgAElem('实际使用部位', data.productInstall.place, '25%', '75%', '#dad8d8', 'white'));
+									rowsBeforeTitle.push(new TableEgAElem('实际使用部位', data.productInstall.place, '30%', '70%', '#f2f2f2', 'white'));
 								}
 								this.tableList.push({
 									'rowsBeforeTitle': rowsBeforeTitle,
