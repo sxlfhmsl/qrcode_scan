@@ -17,7 +17,7 @@
 				z-index: 1024;
 			" :style="'top:' + CustomBar + 'px'">
 				<view
-					class="cu-item"
+					class="cu-item font-title-simhei"
 					:class="item.id==TabPage_tabInfo.TabCur?'text-blue cur':''" v-for="(item,index) in TabPage_tabInfo.TabItems"
 					:key="index"
 					@tap="TabPage_tabSelect"
