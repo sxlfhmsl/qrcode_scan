@@ -27,7 +27,7 @@
 			
 			<view class="flex padding justify-center cu-form-group margin-top">
 				<view class="title">编号:</view>
-				<input class="uni-input" placeholder="请输入编号" name="input" v-model="itemCode" @confirm="jumpDetails"></input>
+				<input class="uni-input" placeholder="请输入编号" name="input" v-model="itemCode" @confirm="jumpDetails('code', itemCode)"></input>
 			</view>
 			<view class="flex padding justify-center">
 				<button
@@ -64,17 +64,19 @@
 						if (res.result.indexOf(Url.resBaseUrl) != -1) {
 							let buf = res.result.split('/');
 							this.itemCode = (buf[buf.length - 1] == ''? buf[buf.length - 2]: buf[buf.length - 1]);
-							this.jumpDetails();
+							this.jumpDetails('id', this.itemCode);
 						}
 				    }
 				});
 			},
 			/**
 			 * @description 跳转至详情页
+			 * @param {Object} itemType 种类支持 code id
+			 * @param {Object} itemCode 实际的值
 			 */
-			jumpDetails: function() {
+			jumpDetails: function(itemType, itemCode) {
 				uni.navigateTo({
-					url: '/pages/query_info/prodect_details?itemType=id&itemCode=' + this.itemCode
+					url: '/pages/query_info/prodect_details?itemType=' + itemType + '&itemCode=' + itemCode
 				});
 				this.itemCode = '';
 			}
