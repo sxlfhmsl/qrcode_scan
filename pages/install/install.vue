@@ -163,7 +163,7 @@
 			},
 			flushRealData: function(stopFlushCallback, typeString) {
 				typeString = (typeString != undefined? typeString: this.TabPage_tabInfo.TabCur);
-				this.productRequest.madeList(
+				this.productRequest.installList(
 					undefined, this.status[typeString], 
 					this.pageInfo[typeString].page, this.pageInfo[typeString].pageLimit, 
 					data => {
