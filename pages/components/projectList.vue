@@ -1,7 +1,7 @@
 <template>
 	<view class="cu-list menu">
 		<view class="cu-item margin-bottom-sm margin-top-sm" :class="modalName=='move-box-'+ index?'move-cur':''" v-for="(item, index) in itemData" :key="index" :id="item.createDate? item.id: item.productId" 
-		 @touchstart="ListTouchStart" @touchmove="ListTouchMove" @touchend="ListTouchEnd" :data-target="'move-box-' + index">
+		 @touchstart="ListTouchStart" @touchmove="ListTouchMove" @touchend="ListTouchEnd" :data-target="'move-box-' + index" @tap="btnTap('details', item.createDate? item.id: item.productId)">
 			<view class="content margin-top margin-bottom">
 				<view class="text-black margin-bottom-sm">
 					<text class="margin-right-sm">{{item.categoryName}}</text>
