@@ -32,18 +32,12 @@
 		<!-- 主要内容 -->
 		<you-scroll ref="scroll" @onPullDown="onPullDown" @onScroll="onScroll" @onLoadMore="onLoadMore">
 			<projectList 
-				v-show="TabPage_tabInfo.TabCur === 'willInstall'" 
+				v-for="(item, index) in this.TabPage_tabInfo.TabItems"
+				:key="index"
+				v-show="TabPage_tabInfo.TabCur === item.id" 
 				style="min-height: 200rpx; width: 100%;"
-				:itemData="projectItems.willInstall"
-				:btnExtends="btnExtends"
-				@productTap="productTap"
-			></projectList>
-			
-			<projectList 
-				v-show="TabPage_tabInfo.TabCur === 'installing'" 
-				style="min-height: 200rpx; width: 100%;"
-				:itemData="projectItems.installing"
-				:btnExtends="btnExtends"
+				:itemData="projectItems[item.id]"
+				:btnExtends="btnExtends[item.id]"
 				@productTap="productTap"
 			></projectList>
 		</you-scroll>
@@ -64,6 +58,13 @@
 		},
 		data() {
 			return {
+				'status': {
+					'willInstall': 1,
+					'installing': 2,
+					'installed': 3,
+					'scrap': 4,
+					'receive': 0,
+				},
 				'pageInfo': {
 					'willInstall': {
 						'page': 1,
@@ -74,18 +75,46 @@
 						'page': 1,
 						'pageLimit': 20,
 						'total': 99999
-					}
+					},
+					'installed': {
+						'page': 1,
+						'pageLimit': 20,
+						'total': 99999
+					},
+					'scrap': {
+						'page': 1,
+						'pageLimit': 20,
+						'total': 99999
+					},
+					'receive': {
+						'page': 1,
+						'pageLimit': 20,
+						'total': 99999
+					},
 				},
 				'projectItems': {
 					'willInstall': [],
-					'installing': []
+					'installing': [],
+					'installed': [],
+					'scrap': [],
+					'receive': [],
 				},
 				productRequest: new ProductRequest(),
-				btnExtends: [{
-					'type': 'install',
-					'color': 'red',
-					'title': '安装'
-				}]
+				btnExtends: {
+					'willInstall': [{
+						'type': 'install',
+						'color': 'red',
+						'title': '安装',
+					}],
+					'installing': [{
+						'type': 'install',
+						'color': 'red',
+						'title': '安装',
+					}],
+					'installed': [],
+					'scrap': [],
+					'receive': [],
+				}
 			}
 		},
 		methods: {
@@ -114,76 +143,36 @@
 			 * @param {Object} flushType 刷新类型
 			 */
 			flushData: function(stopFlushCallback, flushType) {
-				if (this.TabPage_tabInfo.TabCur === 'willInstall') {
-					let pageInfo = this.pageInfo.willInstall;
-					if (flushType === 'up') {
-						if (pageInfo.total > (pageInfo.page * pageInfo.limit)) {
-							pageInfo.page ++;
-						}
-						else {
-							return;
-						}
+				// 修改并获取page info
+				let pageInfo = this.pageInfo[this.TabPage_tabInfo.TabCur];
+				if (flushType === 'up') {
+					if (pageInfo.total > (pageInfo.page * pageInfo.limit)) {
+						pageInfo.page ++;
 					}
 					else {
-						this.projectItems.willInstall = [];
-						pageInfo.page = 1;
-						pageInfo.total = 99999;
+						return;
 					}
-					this.flushDataWillInstall(stopFlushCallback);
 				}
-				else if (this.TabPage_tabInfo.TabCur === 'installing') {
-					let pageInfo = this.pageInfo.installing;
-					if (flushType === 'up') {
-						if (pageInfo.total > (pageInfo.page * pageInfo.limit)) {
-							pageInfo.page ++;
-						}
-						else {
-							return;
-						}
-					}
-					else {
-						this.projectItems.installing = [];
-						pageInfo.page = 1;
-						pageInfo.total = 99999;
-					}
-					this.flushDataInstalling(stopFlushCallback);
+				else {
+					this.projectItems[this.TabPage_tabInfo.TabCur].splice(0, this.projectItems[this.TabPage_tabInfo.TabCur].length);
+					pageInfo.page = 1;
+					pageInfo.total = 99999;
 				}
+				
+				this.flushRealData(stopFlushCallback);
 			},
-			/**
-			 * @description 刷新待安装列表
-			 * @param {Object} stopFlushCallback 结束刷新的回调
-			 */
-			flushDataWillInstall: function(stopFlushCallback) {
-				// 0
-				this.productRequest.installList(
-					undefined, 1, 
-					this.pageInfo.willInstall.page, this.pageInfo.willInstall.pageLimit, 
+			flushRealData: function(stopFlushCallback, typeString) {
+				typeString = (typeString != undefined? typeString: this.TabPage_tabInfo.TabCur);
+				this.productRequest.madeList(
+					undefined, this.status[typeString], 
+					this.pageInfo[typeString].page, this.pageInfo[typeString].pageLimit, 
 					data => {
 						if (stopFlushCallback !== null && stopFlushCallback !== undefined) {
 							stopFlushCallback();
 						}
 						if (data !== null && data !== undefined) {
-							this.pageInfo.willInstall.total = data.total;
-							this.projectItems.willInstall = this.projectItems.willInstall.concat(data.records);
-						}
-				});
-			},
-			/**
-			 * @description 刷新安装中列表
-			 * @param {Object} stopFlushCallback 结束刷新的回调
-			 */
-			flushDataInstalling: function(stopFlushCallback) {
-				// 1
-				this.productRequest.installList(
-					undefined, 2, 
-					this.pageInfo.installing.page, this.pageInfo.installing.pageLimit, 
-					data => {
-						if (stopFlushCallback !== null && stopFlushCallback !== undefined) {
-							stopFlushCallback();
-						}
-						if (data !== null && data !== undefined) {
-							this.pageInfo.installing.total = data.total;
-							this.projectItems.installing = this.projectItems.installing.concat(data.records);
+							this.pageInfo[typeString].total = data.total;
+							this.projectItems[typeString] = this.projectItems[typeString].concat(data.records);
 						}
 				});
 			}
@@ -194,14 +183,15 @@
 				title: '待安装',
 				id: 'willInstall'
 			}, {
-				title: '安装中',
-				id: 'installing'
+				title: '已安装',
+				id: 'installed'
 			}];
 			this.TabPage_tabInfo.TabCur = this.TabPage_tabInfo.TabItems[0].id;
 			
 			// 刷新数据
-			this.flushDataWillInstall();                   // 待安装
-			this.flushDataInstalling();                 // 安装中
+			this.TabPage_tabInfo.TabItems.forEach(item => {
+				this.flushRealData(undefined, item.id);
+			});
 		}
 	}
 </script>
