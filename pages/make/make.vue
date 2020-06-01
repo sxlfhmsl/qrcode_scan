@@ -62,7 +62,8 @@
 					'making': 1,
 					'inBank': 2,
 					'delivery': 3,
-					'scrap': 4
+					'scrap': 4,
+					'delivered': 5
 				},
 				'pageInfo': {
 					'willMake': {
@@ -89,6 +90,11 @@
 						'page': 1,
 						'pageLimit': 20,
 						'total': 99999
+					},
+					'delivered': {
+						'page': 1,
+						'pageLimit': 20,
+						'total': 99999
 					}
 				},
 				'projectItems': {
@@ -96,7 +102,8 @@
 					'making': [],
 					'inBank': [],
 					'delivery': [],
-					'scrap': []
+					'scrap': [],
+					'delivered': []
 				},
 				productRequest: new ProductRequest(),
 				btnExtends: {
@@ -112,7 +119,8 @@
 					}],
 					'inBank': [],
 					'delivery': [],
-					'scrap': []
+					'scrap': [],
+					'delivered': []
 				}
 			}
 		},
@@ -189,7 +197,7 @@
 				id: 'delivery'
 			}, {
 				title: '已交付',
-				id: 'scrap'
+				id: 'delivered'
 			}];
 			this.TabPage_tabInfo.TabCur = this.TabPage_tabInfo.TabItems[0].id;
 			
