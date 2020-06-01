@@ -114,18 +114,16 @@
 			justify-content:center;
 	}
 	.header {
-		width:161upx;
-		height:161upx;
-		background:rgba(63,205,235,1);
-		box-shadow:0upx 12upx 13upx 0upx rgba(63,205,235,0.47);
+		width:200upx;
+		height:200upx;
 		border-radius:50%;
 		margin-top: 30upx;
 		margin-left: auto;
 		margin-right: auto;
 	}
 	.header image{
-		width:161upx;
-		height:161upx;
+		width:200upx;
+		height:200upx;
 		border-radius:50%;
 	}
 	
