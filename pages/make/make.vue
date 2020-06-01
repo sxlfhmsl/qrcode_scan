@@ -31,18 +31,12 @@
 		
 		<you-scroll ref="scroll" @onPullDown="onPullDown" @onScroll="onScroll" @onLoadMore="onLoadMore">
 			<projectList 
-				v-show="TabPage_tabInfo.TabCur === 'willMake'" 
+				v-for="(item, index) in this.TabPage_tabInfo.TabItems"
+				:key="index"
+				v-show="TabPage_tabInfo.TabCur === item.id" 
 				style="min-height: 200rpx; width: 100%;"
-				:itemData="projectItems.willMake"
-				:btnExtends="btnExtends"
-				@productTap="productTap"
-			></projectList>
-			
-			<projectList 
-				v-show="TabPage_tabInfo.TabCur === 'making'" 
-				style="min-height: 200rpx; width: 100%;"
-				:itemData="projectItems.making"
-				:btnExtends="btnExtends"
+				:itemData="projectItems[item.id]"
+				:btnExtends="btnExtends[item.id]"
 				@productTap="productTap"
 			></projectList>
 		</you-scroll>
@@ -63,6 +57,13 @@
 		},
 		data() {
 			return {
+				'status': {
+					'willMake': 0,
+					'making': 1,
+					'inBank': 2,
+					'delivery': 3,
+					'scrap': 4
+				},
 				'pageInfo': {
 					'willMake': {
 						'page': 1,
@@ -73,18 +74,46 @@
 						'page': 1,
 						'pageLimit': 20,
 						'total': 99999
+					},
+					'inBank': {
+						'page': 1,
+						'pageLimit': 20,
+						'total': 99999
+					},
+					'delivery': {
+						'page': 1,
+						'pageLimit': 20,
+						'total': 99999
+					},
+					'scrap': {
+						'page': 1,
+						'pageLimit': 20,
+						'total': 99999
 					}
 				},
 				'projectItems': {
 					'willMake': [],
-					'making': []
+					'making': [],
+					'inBank': [],
+					'delivery': [],
+					'scrap': []
 				},
 				productRequest: new ProductRequest(),
-				btnExtends: [{
-					'type': 'make',
-					'color': 'red',
-					'title': '制作'
-				}]
+				btnExtends: {
+					'willMake': [{
+						'type': 'make',
+						'color': 'red',
+						'title': '制作',
+					}],
+					'making': [{
+						'type': 'make',
+						'color': 'red',
+						'title': '制作'
+					}],
+					'inBank': [],
+					'delivery': [],
+					'scrap': []
+				}
 			}
 		},
 		methods: {
@@ -113,76 +142,36 @@
 			 * @param {Object} flushType 刷新类型
 			 */
 			flushData: function(stopFlushCallback, flushType) {
-				if (this.TabPage_tabInfo.TabCur === 'willMake') {
-					let pageInfo = this.pageInfo.willMake;
-					if (flushType === 'up') {
-						if (pageInfo.total > (pageInfo.page * pageInfo.limit)) {
-							pageInfo.page ++;
-						}
-						else {
-							return;
-						}
+				// 修改并获取page info
+				let pageInfo = this.pageInfo[this.TabPage_tabInfo.TabCur];
+				if (flushType === 'up') {
+					if (pageInfo.total > (pageInfo.page * pageInfo.limit)) {
+						pageInfo.page ++;
 					}
 					else {
-						this.projectItems.willMake = [];
-						pageInfo.page = 1;
-						pageInfo.total = 99999;
+						return;
 					}
-					this.flushDataWillMake(stopFlushCallback);
 				}
-				else if (this.TabPage_tabInfo.TabCur === 'making') {
-					let pageInfo = this.pageInfo.making;
-					if (flushType === 'up') {
-						if (pageInfo.total > (pageInfo.page * pageInfo.limit)) {
-							pageInfo.page ++;
-						}
-						else {
-							return;
-						}
-					}
-					else {
-						this.projectItems.making = [];
-						pageInfo.page = 1;
-						pageInfo.total = 99999;
-					}
-					this.flushDataMaking(stopFlushCallback);
+				else {
+					this.projectItems[this.TabPage_tabInfo.TabCur].splice(0, this.projectItems[this.TabPage_tabInfo.TabCur].length);
+					pageInfo.page = 1;
+					pageInfo.total = 99999;
 				}
+				
+				this.flushRealData(stopFlushCallback);
 			},
-			/**
-			 * @description 刷新待制作列表
-			 * @param {Object} stopFlushCallback 结束刷新的回调
-			 */
-			flushDataWillMake: function(stopFlushCallback) {
-				// 0
+			flushRealData: function(stopFlushCallback, typeString) {
+				typeString = (typeString? typeString: this.TabPage_tabInfo.TabCur);
 				this.productRequest.madeList(
-					undefined, 0, 
-					this.pageInfo.willMake.page, this.pageInfo.willMake.pageLimit, 
+					undefined, this.status[typeString], 
+					this.pageInfo[typeString].page, this.pageInfo[typeString].pageLimit, 
 					data => {
 						if (stopFlushCallback !== null && stopFlushCallback !== undefined) {
 							stopFlushCallback();
 						}
 						if (data !== null && data !== undefined) {
-							this.pageInfo.willMake.total = data.total;
-							this.projectItems.willMake = this.projectItems.willMake.concat(data.records);
-						}
-				});
-			},
-			/**
-			 * @description 刷新制作中列表
-			 * @param {Object} stopFlushCallback 结束刷新的回调
-			 */
-			flushDataMaking: function(stopFlushCallback) {
-				// 1
-				this.productRequest.madeList(
-					undefined, 1, 
-					this.pageInfo.making.page, this.pageInfo.making.pageLimit, 
-					data => {
-						if (stopFlushCallback !== null && stopFlushCallback !== undefined) {
-							stopFlushCallback();
-						}
-						if (data !== null && data !== undefined) {
-							this.pageInfo.making.total = data.total;
-							this.projectItems.making = this.projectItems.making.concat(data.records);
+							this.pageInfo[typeString].total = data.total;
+							this.projectItems[typeString] = this.projectItems[typeString].concat(data.records);
 						}
 				});
 			}
@@ -193,14 +182,21 @@
 				title: '待制作',
 				id: 'willMake'
 			}, {
-				title: '制作中',
-				id: 'making'
+				title: '已入库',
+				id: 'inBank'
+			}, {
+				title: '已发货',
+				id: 'delivery'
+			}, {
+				title: '已交付',
+				id: 'scrap'
 			}];
 			this.TabPage_tabInfo.TabCur = this.TabPage_tabInfo.TabItems[0].id;
 			
 			// 刷新数据
-			this.flushDataMaking();                   // 制作中
-			this.flushDataWillMake();                 // 待制作
+			this.TabPage_tabInfo.TabItems.forEach(item => {
+				this.flushRealData(undefined, item.id);
+			});
 		}
 	}
 </script>
