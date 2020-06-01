@@ -16,12 +16,12 @@
 				<view class="text-blue text-right margin-top-sm"><text class="text-white cuIcon cuIcon-full"></text>{{item.place}}</view>
 			</view>
 			<view class="move">
-				<view class="bg-blue" @tap="btnTap('details', item.createDate? item.id: item.productId)">详情</view>
+				<view class="bg-blue" @tap.stop="btnTap('details', item.createDate? item.id: item.productId)">详情</view>
 				<view 
 					v-for="(btnItem, index) in btnExtends" 
 					:key="index" 
 					:style="'background-color:' + btnItem.color"
-					@tap="btnTap(btnItem.type, item.createDate? item.id: item.productId)"
+					@tap.stop="btnTap(btnItem.type, item.createDate? item.id: item.productId)"
 				>{{btnItem.title}}</view>
 			</view>
 		</view>
@@ -67,7 +67,7 @@
 				this.listTouchDirection = null
 			},
 			
-			btnTap: function(btnType, productId) {
+			btnTap: function(btnType, productId, event) {
 				if (btnType === 'details') {
 					uni.navigateTo({
 						url: '/pages/query_info/prodect_details?itemType=id&itemCode=' + productId
