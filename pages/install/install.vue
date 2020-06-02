@@ -105,11 +105,13 @@
 						'type': 'install',
 						'color': 'red',
 						'title': '安装',
+						'perNum': 5,
 					}],
 					'installing': [{
 						'type': 'install',
 						'color': 'red',
 						'title': '安装',
+						'perNum': 5,
 					}],
 					'installed': [],
 					'scrap': [],
