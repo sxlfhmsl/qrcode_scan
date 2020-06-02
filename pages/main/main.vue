@@ -35,7 +35,7 @@
 				<!-- 进度条 -->
 				<view class="padding">
 					<view class="cu-progress round active striped">
-						<view class="bg-green" :style="'width: ' + downloadFileProgress">{{downloadFileProgress}}</view>
+						<view class="bg-green" :style="'width: ' + downloadFileProgress + '%;'">{{downloadFileProgress}}%</view>
 					</view>
 				</view>
 				
@@ -59,7 +59,7 @@ export default {
 			systemRequest: new SystemRequest(),
 			updateModelShow: false,
 			updateFileUrl: '',
-			downloadFileProgress: '0%',
+			downloadFileProgress: 0,
 		};
 	},
 	methods: {
@@ -84,7 +84,7 @@ export default {
 				
 				// 进度条
 				downloadTask.onProgressUpdate(res => {
-				    this.downloadFileProgress = res.progress + "%";
+				    this.downloadFileProgress = res.progress;
 				});
 			}
 			else {
