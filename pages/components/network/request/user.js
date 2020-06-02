@@ -7,6 +7,8 @@ class UserRequest extends BaseRequest {
 		super();
 		// 登录请求
 	    this.loginUrl = new Url('user/login', RequestType.NORMAL);
+		// 用户信息请求
+		this.infoUrl = new Url('user/info', RequestType.NORMAL | RequestType.NEED_TOKEN);
 	};
 	
 	/**
@@ -33,6 +35,20 @@ class UserRequest extends BaseRequest {
 						title: result.data.message
 					});
 				}
+			}
+		);
+	};
+	
+	/**
+	 * @description 获取当前用户信息
+	 * @param {Object} successCallback 成功的执行回调
+	 */
+	info(successCallback) {
+		this.basePost(
+			this.infoUrl,
+			{},
+			(result) => {
+				this.baseResultProcess(result, successCallback);
 			}
 		);
 	};
