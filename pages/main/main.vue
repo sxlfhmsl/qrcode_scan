@@ -31,6 +31,14 @@
 				<view class="padding-xl">
 					软件版本升级，请更新
 				</view>
+				
+				<!-- 进度条 -->
+				<view class="padding">
+					<view class="cu-progress round active striped">
+						<view class="bg-green" :style="'width: ' + downloadFileProgress">{{downloadFileProgress}}</view>
+					</view>
+				</view>
+				
 				<view class="cu-bar bg-white">
 					<view class="action margin-0 flex-sub text-green solid-left" @tap="quit">退出</view>
 					<view class="action margin-0 flex-sub  solid-left" @tap="update">确定</view>
@@ -51,6 +59,7 @@ export default {
 			systemRequest: new SystemRequest(),
 			updateModelShow: false,
 			updateFileUrl: '',
+			downloadFileProgress: '0%',
 		};
 	},
 	methods: {
@@ -62,7 +71,7 @@ export default {
 		update: function(e) {
 			// #ifdef APP-PLUS || APP-PLUS-NVUE
 			if (this.updateFileUrl != null && this.updateFileUrl != undefined && this.updateFileUrl != '') {
-				uni.downloadFile({
+				const downloadTask = uni.downloadFile({
 					url: this.updateFileUrl,
 					success: tempFilePath => {
 						plus.runtime.install(tempFilePath, {}, function(){
@@ -71,6 +80,11 @@ export default {
 							plus.runtime.quit();
 						});
 					}
+				});
+				
+				// 进度条
+				downloadTask.onProgressUpdate(res => {
+				    this.downloadFileProgress = res.progress + "%";
 				});
 			}
 			else {
