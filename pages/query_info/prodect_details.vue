@@ -6,7 +6,7 @@
 			</block>
 		</cu-custom>
 		
-		<view style="height: 320rpx;">
+		<view style="height: 350rpx;">
 			<view style="
 				position: fixed;
 				width: 100%;
