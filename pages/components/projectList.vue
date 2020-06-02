@@ -18,8 +18,9 @@
 			<view class="move">
 				<view class="bg-blue" @tap.stop="btnTap('details', item.createDate? item.id: item.productId)">详情</view>
 				<view 
-					v-for="(btnItem, index) in btnExtends" 
-					:key="index" 
+					v-if="specBtnIsTapable[index] && specBtnIsTapable[index][btnIndex]"
+					v-for="(btnItem, btnIndex) in btnExtends" 
+					:key="btnIndex" 
 					:style="'background-color:' + btnItem.color"
 					@tap.stop="btnTap(btnItem.type, item.createDate? item.id: item.productId)"
 				>{{btnItem.title}}</view>
@@ -29,6 +30,8 @@
 </template>
 
 <script>
+	import PermissionRequest from '@/pages/components/network/request/permission';
+	
 	export default {
 		name: 'projectList',
 		props: {
@@ -39,11 +42,20 @@
 				required: true,
 			}
 		},
+		watch: {
+			'itemData': {
+				handler: function(val, oldVal) {
+					this.checkBtnSpecial(val, this.btnExtends);
+				}
+			}
+		},
 		data() {
 			return {
 				modalName: null,
 				listTouchStart: 0,
-				listTouchDirection: null
+				listTouchDirection: null,
+				specBtnIsTapable: {},
+				permissionRequest: new PermissionRequest()
 			}
 		},
 		methods: {
@@ -76,11 +88,27 @@
 				else {
 					this.$emit('productTap', {'btnType': btnType, 'productId': productId});
 				}
+			},
+			
+			/**
+			 * @description 检查产品是否可以点击特殊按钮
+			 * @param {Object} itemData 带展示产品列表
+			 * @param {Object} btns 特殊按钮权限 
+			 */
+			checkBtnSpecial: function(itemData, btns) {
+				itemData.forEach((item, index) => {
+					this.specBtnIsTapable[index] = {};
+					btns.forEach((itemBtn, indexBtn) => {
+						this.permissionRequest.data(itemBtn.perNum, item.createDate? item.id: item.productId, (data) => {
+							this.specBtnIsTapable[index][indexBtn] = data;
+						});
+					});
+				});
 			}
 			
 		},
 		mounted:function(){
-			
+			this.checkBtnSpecial(this.itemData, this.btnExtends);
 		}
 	}
 </script>

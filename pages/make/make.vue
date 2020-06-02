@@ -111,11 +111,13 @@
 						'type': 'make',
 						'color': 'red',
 						'title': '制作',
+						'perNum': 1,                                      // 产品编辑权限编码-制作
 					}],
 					'making': [{
 						'type': 'make',
 						'color': 'red',
-						'title': '制作'
+						'title': '制作',
+						'perNum': 1,                                      // 产品编辑权限编码-制作
 					}],
 					'inBank': [],
 					'delivery': [],
