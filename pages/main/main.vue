@@ -5,7 +5,7 @@
 		<personal v-show="PageCur == 'personal'"></personal>
 		
 		<!-- foot bar -->
-		<view class="cu-bar tabbar bg-white shadow foot">
+		<view class="cu-bar tabbar shadow foot" style="background-color: #f2f2f2;">
 			<view class="font-content-simhei" :class="PageCur == 'worktable'? 'action text-blue': 'action text-gray'" @click="NavChange" data-cur="worktable">
 				<view class="cuIcon-homefill"></view>
 				工作台
