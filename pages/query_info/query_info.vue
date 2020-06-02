@@ -29,13 +29,21 @@
 				<view class="title">编号:</view>
 				<input class="uni-input" placeholder="请输入编号" name="input" v-model="itemCode" @confirm="jumpDetails('code', itemCode)"></input>
 			</view>
-			<view class="flex padding justify-center">
+			<view class="flex padding justify-center" style="margin-top: 10vh;">
 				<button
-					class="cu-btn bg-olive lg shadow cuIcon-qrcode"
-					style="width: 40vw; height: 40vw; font-size: 22vw;"
+					class="cu-btn bg-white lg"
+					style="
+						width: 40vw; 
+						height: 40vw; 
+						font-size: 22vw;
+						background-image: url(../../static/scancode.png);
+						background-size: 40vw 40vw;
+					"
 					@tap="qrcodeScan"
 				></button>
 			</view>
+			
+			<view class="text-center font-title-simkai-nocolor" style="font-size: 40rpx; color: #1296db">扫一扫</view>
 		</view>
 	</view>
 </template>
