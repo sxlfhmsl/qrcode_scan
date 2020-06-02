@@ -84,12 +84,14 @@
 				btnExtendsRecv: [{
 					'type': 'recv',
 					'color': 'red',
-					'title': '收货'
+					'title': '收货',
+					'perNum': 4,
 				}],
 				btnExtendsSend: [{
 					'type': 'send',
 					'color': 'red',
-					'title': '发货'
+					'title': '发货',
+					'perNum': 3,
 				}],
 				pageHide: false,
 			}
