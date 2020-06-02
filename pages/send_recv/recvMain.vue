@@ -97,6 +97,7 @@
 							uni.showToast({
 								title: '收货成功'
 							});
+							uni.setStorageSync('flushPage', true);
 							uni.navigateBack({
 								
 							});

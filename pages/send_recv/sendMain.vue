@@ -224,6 +224,7 @@
 								uni.showToast({
 									title: '发货完成'
 								});
+								uni.setStorageSync('flushPage', true);
 								uni.navigateBack({
 									
 								});
