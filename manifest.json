@@ -1,9 +1,9 @@
 {
-    "name" : "二维码",
+    "name" : "产品数字化管理系统",
     "appid" : "__UNI__0A2A211",
-    "description" : "二维码",
-    "versionName" : "0.1.0",
-    "versionCode" : 10,
+    "description" : "产品数字化管理系统",
+    "versionName" : "0.1.1",
+    "versionCode" : 21,
     "transformPx" : false,
     /* 5+App特有相关 */
     "app-plus" : {

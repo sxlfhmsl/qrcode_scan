@@ -24,9 +24,6 @@
 			<view class="cu-dialog">
 				<view class="cu-bar bg-white justify-end">
 					<view class="content">请更新</view>
-					<view class="action" @tap="hideModal">
-						<text class="cuIcon-close text-red"></text>
-					</view>
 				</view>
 				<view class="padding-xl">
 					软件版本升级，请更新
@@ -41,7 +38,7 @@
 				
 				<view class="cu-bar bg-white">
 					<view class="action margin-0 flex-sub text-green solid-left" @tap="quit">退出</view>
-					<view class="action margin-0 flex-sub  solid-left" @tap="update">确定</view>
+					<view class="action margin-0 flex-sub  solid-left" @tap="update">更新</view>
 				</view>
 			</view>
 		</view>
@@ -60,6 +57,7 @@ export default {
 			updateModelShow: false,
 			updateFileUrl: '',
 			downloadFileProgress: 0,
+			updateClicked: false,
 		};
 	},
 	methods: {
@@ -69,16 +67,29 @@ export default {
 			// #endif
 		},
 		update: function(e) {
+			if (this.updateClicked) {
+				uni.showToast({
+					title: '请勿多次点击更新',
+				});
+				return;
+			}
+			this.updateClicked = true;
 			// #ifdef APP-PLUS || APP-PLUS-NVUE
 			if (this.updateFileUrl != null && this.updateFileUrl != undefined && this.updateFileUrl != '') {
 				const downloadTask = uni.downloadFile({
 					url: this.updateFileUrl,
 					success: tempFilePath => {
-						plus.runtime.install(tempFilePath, {}, function(){
-							
-						}, function() {
+						this.updateClicked = false;
+						if (tempFilePath.statusCode == 200) {
+							plus.runtime.install(tempFilePath.tempFilePath, {}, function(){
+								
+							}, function() {
+								plus.runtime.quit();
+							});
+						}
+						else {
 							plus.runtime.quit();
-						});
+						}
 					}
 				});
 				
