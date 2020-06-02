@@ -4,9 +4,9 @@
     src: url("~@/static/fonts/simhei/simhei.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
     
     url("~@/static/fonts/simhei/simhei.woff") format("woff"), /* chrome、firefox */
-    url("~@/static/fonts/simhei/simhei.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
+    url("~@/static/fonts/simhei/simhei.ttf") format("truetype"); /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
     
-    url("~@/static/fonts/simhei/simhei.svg#simhei") format("svg"); /* iOS 4.1- */
+    /* url("~@/static/fonts/simhei/simhei.svg#simhei") format("svg"); */ /* iOS 4.1- */
     font-style: normal;
     font-weight: normal;
 }
@@ -17,9 +17,9 @@
     src: url("~@/static/fonts/simsun/NSimSun-02.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
     
     url("~@/static/fonts/simsun/NSimSun-02.woff") format("woff"), /* chrome、firefox */
-    url("~@/static/fonts/simsun/NSimSun-02.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
+    url("~@/static/fonts/simsun/NSimSun-02.ttf") format("truetype"); /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
     
-    url("~@/static/fonts/simsun/NSimSun-02.svg#NSimSun-02") format("svg"); /* iOS 4.1- */
+    /* url("~@/static/fonts/simsun/NSimSun-02.svg#NSimSun-02") format("svg"); */ /* iOS 4.1- */
     font-style: normal;
     font-weight: normal;
 }
@@ -30,9 +30,9 @@
     src: url("~@/static/fonts/simkai/simkai.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
     
     url("~@/static/fonts/simkai/simkai.woff") format("woff"), /* chrome、firefox */
-    url("~@/static/fonts/simkai/simkai.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
+    url("~@/static/fonts/simkai/simkai.ttf") format("truetype"); /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
     
-    url("~@/static/fonts/simkai/simkai.svg#simkai") format("svg"); /* iOS 4.1- */
+    /* url("~@/static/fonts/simkai/simkai.svg#simkai") format("svg"); *//* iOS 4.1- */
     font-style: normal;
     font-weight: normal;
 }

@@ -4,9 +4,9 @@
     src: url("~@/static/fonts/simsun/NSimSun-02.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
     
     url("~@/static/fonts/simsun/NSimSun-02.woff") format("woff"), /* chrome、firefox */
-    url("~@/static/fonts/simsun/NSimSun-02.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
+    url("~@/static/fonts/simsun/NSimSun-02.ttf") format("truetype"); /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
     
-    url("~@/static/fonts/simsun/NSimSun-02.svg#NSimSun-02") format("svg"); /* iOS 4.1- */
+    /* url("~@/static/fonts/simsun/NSimSun-02.svg#NSimSun-02") format("svg");  iOS 4.1- */
     font-style: normal;
     font-weight: normal;
 }
