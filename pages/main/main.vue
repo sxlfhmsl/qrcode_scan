@@ -19,19 +19,65 @@
 				我的
 			</view>
 		</view>
+		
+		<view class="cu-modal" :class="updateModelShow? 'show': ''">
+			<view class="cu-dialog">
+				<view class="cu-bar bg-white justify-end">
+					<view class="content">请更新</view>
+					<view class="action" @tap="hideModal">
+						<text class="cuIcon-close text-red"></text>
+					</view>
+				</view>
+				<view class="padding-xl">
+					软件版本升级，请更新
+				</view>
+				<view class="cu-bar bg-white">
+					<view class="action margin-0 flex-sub text-green solid-left" @tap="quit">退出</view>
+					<view class="action margin-0 flex-sub  solid-left" @tap="update">确定</view>
+				</view>
+			</view>
+		</view>
 	</view>
 </template>
 
 <script>
 import Url from "@/pages/components/network/request/url";
+import SystemRequest from "@/pages/components/network/request/system"
 	
 export default {
 	data() {
 		return {
-			PageCur: 'worktable'
+			PageCur: 'worktable',
+			systemRequest: new SystemRequest(),
+			updateModelShow: false,
+			updateFileUrl: '',
 		};
 	},
 	methods: {
+		quit: function(e) {
+			// #ifdef APP-PLUS || APP-PLUS-NVUE
+			plus.runtime.quit();
+			// #endif
+		},
+		update: function(e) {
+			// #ifdef APP-PLUS || APP-PLUS-NVUE
+			if (this.updateFileUrl != null && this.updateFileUrl != undefined && this.updateFileUrl != '') {
+				uni.downloadFile({
+					url: this.updateFileUrl,
+					success: tempFilePath => {
+						plus.runtime.install(tempFilePath, {}, function(){
+							
+						}, function() {
+							plus.runtime.quit();
+						});
+					}
+				});
+			}
+			else {
+				plus.runtime.quit();
+			}
+			// #endif
+		},
 		NavChange: function(e) {
 			this.PageCur = e.currentTarget.dataset.cur;
 		},
@@ -53,6 +99,23 @@ export default {
 			    }
 			});
 		}
+	},
+	mounted:function(){
+		// #ifdef APP-PLUS || APP-PLUS-NVUE
+		this.systemRequest.appCurrentVersion( result => {
+			if (result != null && result != undefined) {
+				let version = plus.runtime.version + ' ' + plus.runtime.versionCode;
+				if (result.version != version) {
+					// 开始下载并更新
+					this.updateFileUrl = result.url;
+					this.updateModelShow = true;
+				}
+			}
+			else {
+				this.updateModelShow = true;
+			}
+		});
+		// #endif
 	}
 };
 </script>
