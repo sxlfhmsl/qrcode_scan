@@ -2,7 +2,7 @@
 	<view class="you-scroll" ref="youScroll">
 		<view class="pullDown" :style="{ transform: 'translateY('+translateY+'px)', transition: isDown ? '0s' : '0.3s' }">
 			<slot name="pullDown">
-				<image src="~@/you-scroll/static/pullDown.jpg" :class="{'down-icon': true,'animate': pullDownStatus == 3}"></image>
+				<image src="../../you-scroll/static/pullDown.jpg" :class="{'down-icon': true,'animate': pullDownStatus == 3}"></image>
 				<span>
 					<block v-if="pullDownStatus == 1">{{downPullToRefresh}}</block>
 					<block v-if="pullDownStatus == 2">{{downReleaseToRefresh}}</block>
