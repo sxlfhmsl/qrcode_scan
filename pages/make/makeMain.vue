@@ -199,6 +199,10 @@
 			saveMake: function(e) {
 				if (this.productId !== null) {
 					this.productRequest.made(this.rawProductData.productMade.id, this.productId, this.makeCommitObject, result => {
+						uni.setStorageSync('flushPage', true);
+						uni.showToast({
+							title: '制作信息保存成功'
+						});
 					});
 				}
 			},
