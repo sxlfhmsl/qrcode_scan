@@ -9,11 +9,11 @@
 		<!-- 所有的按钮 -->
 		<scroll-view scroll-y class="page">
 			<view class="nav-list">
-				<navigator v-if="item.show" hover-class="none" :url="item.url" class="nav-li" navigateTo :class="'bg-'+item.color"
+				<navigator v-if="item.show" hover-class="none" :url="item.url" class="nav-li text-center" navigateTo :class="'bg-'+item.color"
+				 style="height: 20vh"
 				 :style="[{animation: 'show ' + ((index+1)*0.2+1) + 's 1'}]" v-for="(item,index) in models" :key="index">
-					<view class="nav-title font-title-simkai-nocolor" style="font-size: 1em; margin-right: 2em;">{{item.title}}</view>
-					<view class="nav-name" style="margin-bottom: 0rpx;">{{item.childCount}}</view>
-					<text :class="item.icon"></text>
+					<view :class="item.icon" style="font-size: 5em; width: 100%; margin-top: 1.5vh;"></view>
+					<view class="nav-title font-title-simkai-nocolor">{{item.title}}</view>
 				</navigator>
 			</view>
 			<view class="cu-tabbar-height"></view>
@@ -90,6 +90,6 @@
 
 <style>
 	.page {
-		margin-top: 30vh;
+		margin-top: 20vh;
 	}
 </style>
