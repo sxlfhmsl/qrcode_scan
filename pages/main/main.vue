@@ -98,7 +98,7 @@ export default {
 		ScanQrCode: function(e) {
 			// scan qrcode
 			uni.scanCode({
-			    onlyFromCamera: true,
+			    // onlyFromCamera: true,
 				scanType: ['qrCode'],
 			    success: res => {
 			        // console.log('条码类型：' + res.scanType);

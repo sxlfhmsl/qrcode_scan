@@ -64,7 +64,7 @@
 			 */
 			qrcodeScan: function(e) {
 				uni.scanCode({
-				    onlyFromCamera: true,
+				    // onlyFromCamera: true,
 					scanType: ['qrCode'],
 				    success: res => {
 				        // console.log('条码类型：' + res.scanType);
