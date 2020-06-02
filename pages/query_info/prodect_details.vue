@@ -131,7 +131,14 @@
 			 */
 			loadById: function(itemId) {
 				this.productRequest.detailById(itemId, (data) => {
-					this.saveRawData(data);
+					if (data == null) {
+						uni.navigateBack({
+							
+						});
+					}
+					else {
+						this.saveRawData(data);
+					}
 				});
 				this.checkItemPermission(itemId);
 			},
@@ -141,8 +148,15 @@
 			 */
 			loadByCode: function(ItemCode) {
 				this.productRequest.productByCode(ItemCode, (data) => {
-					this.saveRawData(data);
-					this.checkItemPermission(data.product.id);
+					if (data == null) {
+						uni.navigateBack({
+							
+						});
+					}
+					else {
+						this.saveRawData(data);
+						this.checkItemPermission(data.product.id);
+					}
 				});
 			},
 			/**

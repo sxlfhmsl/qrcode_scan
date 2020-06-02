@@ -127,19 +127,21 @@ export default {
 	},
 	mounted:function(){
 		// #ifdef APP-PLUS || APP-PLUS-NVUE
-		this.systemRequest.appCurrentVersion( result => {
-			if (result != null && result != undefined) {
-				let version = plus.runtime.version + ' ' + plus.runtime.versionCode;
-				if (result.version != version) {
-					// 开始下载并更新
-					this.updateFileUrl = result.url;
+		if (plus.runtime.appid != "HBuilder") {
+			this.systemRequest.appCurrentVersion( result => {
+				if (result != null && result != undefined) {
+					let version = plus.runtime.version + ' ' + plus.runtime.versionCode;
+					if (result.version != version) {
+						// 开始下载并更新
+						this.updateFileUrl = result.url;
+						this.updateModelShow = true;
+					}
+				}
+				else {
 					this.updateModelShow = true;
 				}
-			}
-			else {
-				this.updateModelShow = true;
-			}
-		});
+			});
+		}
 		// #endif
 	}
 };
