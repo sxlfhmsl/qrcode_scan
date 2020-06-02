@@ -76,19 +76,19 @@
 						perNums: null,
 					},
 					'pdInBankInfo': {
-						show: false,
+						show: true,
 						perNums: [2],
 					},
 					'pdInstall': {
-						show: false,
+						show: true,
 						perNums: [5],
 					},
 					'pdMakeFlow': {
-						show: false,
+						show: true,
 						perNums: [1],
 					},
 					'pdSendRecv': {
-						show: false,
+						show: true,
 						perNums: [3, 4],
 					},
 					'pdSourceInfo': {
@@ -115,15 +115,15 @@
 			 * @param {Object} itemId id
 			 */
 			checkItemPermission: function(itemId) {
-				Object.keys(this.itemPermession).forEach(key => {
-					if (this.itemPermession[key].perNums != null && this.itemPermession[key].perNums != undefined) {
-						this.itemPermession[key].perNums.forEach(num => {
-							this.permissionRequest.data(num, itemId, (data) => {
-								this.itemPermession[key].show = data;
-							});
-						});
-					}
-				});
+				// Object.keys(this.itemPermession).forEach(key => {
+				// 	if (this.itemPermession[key].perNums != null && this.itemPermession[key].perNums != undefined) {
+				// 		this.itemPermession[key].perNums.forEach(num => {
+				// 			this.permissionRequest.data(num, itemId, (data) => {
+				// 				this.itemPermession[key].show = data;
+				// 			});
+				// 		});
+				// 	}
+				// });
 			},
 			/**
 			 * @description 通过id加载数据
