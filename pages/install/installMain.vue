@@ -152,6 +152,10 @@
 			saveInstall: function(e) {
 				if (this.productId !== null) {
 					this.productRequest.install(this.rawProductData.productInstall.id, this.productId, this.rawProductData.productInstall.place, this.installCommitObject, result => {
+						uni.setStorageSync('flushPage', true);
+						uni.showToast({
+							title: '安装信息保存成功'
+						});
 					});
 				}
 			},

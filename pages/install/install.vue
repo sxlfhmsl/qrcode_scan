@@ -114,7 +114,8 @@
 					'installed': [],
 					'scrap': [],
 					'receive': [],
-				}
+				},
+				pageHide: false,
 			}
 		},
 		methods: {
@@ -176,6 +177,24 @@
 						}
 				});
 			}
+		},
+		onHide: function() {
+			this.pageHide = true;
+			uni.removeStorage({
+				key: 'flushPage'
+			});
+		},
+		onShow: function() {
+			if (this.pageHide == true) {
+				let flushPage = uni.getStorageSync('flushPage');
+				if (flushPage == true) {
+					uni.removeStorage({
+						key: 'flushPage'
+					});
+					this.flushData();
+				}
+			}
+			this.pageHide = false;
 		},
 		mounted: function() {
 			// 添加tab点击项
