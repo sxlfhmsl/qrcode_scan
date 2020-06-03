@@ -44,6 +44,7 @@
 			<!-- 原材料 -->
 			<view class="cu-list menu">
 				<view class="cu-item margin-bottom-sm margin-top-sm margin-left-sm radius" :class="modalName=='move-box-'+ index?'move-cur':''" v-for="(item, index) in souceList" :key="index" :id="item.id" 
+					@longpress="longpress(item.id, item.materialType, item.code, item.specs)"
 					@touchstart="ListTouchStart" @touchmove="ListTouchMove" @touchend="ListTouchEnd" :data-target="'move-box-' + index"
 					:style="choosedSouceIds.indexOf(item.id) !== -1? 'border: blue solid 2px;': ''"
 				>
@@ -177,6 +178,21 @@
 			}
 		},
 		methods: {
+			/**
+			 * @description 长按添加或者删除
+			 * @param {Object} id 原材料id
+			 * @param {Object} materialType 原材料materialType
+			 * @param {Object} code 原材料code
+			 * @param {Object} specs 原材料specs
+			 */
+			longpress: function(id, materialType, code, specs) {
+				if (this.choosedSouceIds.indexOf(id) !== -1) {
+					this.removeMaterial(id);
+				}
+				else {
+					this.addMaterial(id, materialType, code, specs);
+				}
+			},
 			/**
 			 * @description 跳转到下一步
 			 */
