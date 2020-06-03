@@ -5,7 +5,7 @@
 			class="flex margin-left-sm margin-right-sm solid-left solid-bottom"
 			:class="index == 0? ' solid-top margin-top-sm': ' solid-top'"
 			v-for="(rowBeforeTitle, index) in rowsBeforeTitle"
-			v-if="rowBeforeTitle.contentType != 'image' || (rowBeforeTitle.content && rowBeforeTitle.content != '')"
+			v-if="rowBeforeTitle.contentType != 'image' || rowBeforeTitle.content"
 			:key="'b' + index"
 		>
 			<!-- 标题 -->
@@ -45,7 +45,7 @@
 			class="flex margin-left-sm margin-right-sm solid-left solid-bottom"
 			:class="rowsBeforeTitle.length == 0 && index == 0 && title == null? ' solid-top margin-top-sm': ' solid-top'"
 			v-for="(rowAfterTitle, index) in rowsAfterTitle"
-			v-if="rowAfterTitle.contentType != 'image' || (rowAfterTitle.content && rowAfterTitle.content != '')"
+			v-if="rowAfterTitle.contentType != 'image' || rowAfterTitle.content"
 			:key="'a' + index"
 		>
 			<!-- 标题 -->
