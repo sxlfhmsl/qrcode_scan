@@ -74,6 +74,9 @@
 		methods: {
 			// 长按跳转至高级功能
 			longpress: function(event, index, itemId) {
+				if (this.productShowType != 'longpress') {
+					return;
+				}
 				if (event && index != null && itemId != null) {
 					if (this.specBtnIsTapable[index] && this.btnExtends.length == 1) {
 						if (this.specBtnIsTapable[index][0]) {
