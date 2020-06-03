@@ -17,6 +17,10 @@ Vue.prototype.softwareInfo = {
 	'owner': 'LuSheng'                                          // 版权所属
 };
 
+// 确定产品列表多功能展现方式
+Vue.prototype.productShowType = 'longpress'                     // 长按
+// Vue.prototype.productShowType = 'slide'                         // 滑动
+
 Vue.config.productionTip = false
 
 App.mpType = 'app'

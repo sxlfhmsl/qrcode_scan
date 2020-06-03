@@ -6,9 +6,9 @@
 			v-for="(item, index) in itemData" :key="index"
 			:id="item.createDate? item.id: item.productId" 
 			@longpress="longpress($event, index, item.createDate? item.id: item.productId)"
-			@touchstart="ListTouchStart"
-			@touchmove="ListTouchMove"
-			@touchend="ListTouchEnd"
+			@touchstart="ListTouchStart($event, index)"
+			@touchmove="ListTouchMove($event, index)"
+			@touchend="ListTouchEnd($event, index)"
 			:data-target="'move-box-' + index"
 			@tap="btnTap('details', item.createDate? item.id: item.productId)"
 		>
@@ -25,7 +25,10 @@
 				<view class="text-blue text-right margin-bottom-sm"><text class="text-white cuIcon cuIcon-full" style="color: #f2f2f2;"></text>{{item.deptName}}</view>
 				<view class="text-blue text-right margin-top-sm"><text class="text-white cuIcon cuIcon-full" style="color: #f2f2f2;"></text>{{item.place}}</view>
 			</view>
-			<view class="move">
+			<view
+				v-if="(productShowType == 'longpress' && btnExtends.length > 1) || productShowType == 'slide'"
+				class="move"
+			>
 				<view class="bg-blue" @tap.stop="btnTap('details', item.createDate? item.id: item.productId)">详情</view>
 				<view 
 					v-if="specBtnIsTapable[index] && specBtnIsTapable[index][btnIndex]"
@@ -80,23 +83,29 @@
 				}
 			},
 			// ListTouch触摸开始
-			ListTouchStart: function(e) {
-				this.listTouchStart = e.touches[0].pageX
+			ListTouchStart: function(e, index) {
+				if ((this.productShowType == 'longpress' && this.btnExtends.length > 1) || this.productShowType == 'slide') {
+					this.listTouchStart = e.touches[0].pageX;
+				}
 			},
 			
 			// ListTouch计算方向
 			ListTouchMove: function(e) {
-				this.listTouchDirection = e.touches[0].pageX - this.listTouchStart > 0 ? 'right' : 'left'
+				if ((this.productShowType == 'longpress' && this.btnExtends.length > 1) || this.productShowType == 'slide') {
+					this.listTouchDirection = e.touches[0].pageX - this.listTouchStart > 0 ? 'right' : 'left';
+				}
 			},
 			
 			// ListTouch计算滚动
 			ListTouchEnd: function(e) {
-				if (this.listTouchDirection == 'left') {
-					this.modalName = e.currentTarget.dataset.target
-				} else {
-					this.modalName = null
+				if ((this.productShowType == 'longpress' && this.btnExtends.length > 1) || this.productShowType == 'slide') {
+					if (this.listTouchDirection == 'left') {
+						this.modalName = e.currentTarget.dataset.target;
+					} else {
+						this.modalName = null;
+					}
+					this.listTouchDirection = null;
 				}
-				this.listTouchDirection = null
 			},
 			
 			btnTap: function(btnType, productId, event) {
