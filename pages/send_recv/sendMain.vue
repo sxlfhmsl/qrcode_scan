@@ -156,7 +156,6 @@
 				switch(e.detail.column) {
 					case 0:
 						let id = this.multiArray[0][e.detail.value].id;
-						this.multiArray[1].splice(0, this.multiArray[1].length, {'id': -1, 'name': ''});
 						let childrenSen = this.multiArray[0][this.multiIndexBuffer[0]].children;
 						Object.keys(childrenSen).forEach(key => {
 							this.multiArray[1].push(childrenSen[key]);
@@ -270,7 +269,6 @@
 					if (deptKeys.length == 1) {
 						let childrenSen = this.multiArray[0][0].children;
 						deptKeys = Object.keys(childrenSen);
-						this.multiArray[1].push({name: '', id: -1});
 						deptKeys.forEach(item => {
 							this.multiArray[1].push(childrenSen[item]);
 						});
