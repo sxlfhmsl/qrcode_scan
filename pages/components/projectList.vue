@@ -1,7 +1,17 @@
 <template>
 	<view class="cu-list menu">
-		<view class="cu-item margin-bottom-sm margin-top-sm shadow" style="background-color: #f2f2f2;" :class="modalName=='move-box-'+ index?'move-cur':''" v-for="(item, index) in itemData" :key="index" :id="item.createDate? item.id: item.productId" 
-		 @touchstart="ListTouchStart" @touchmove="ListTouchMove" @touchend="ListTouchEnd" :data-target="'move-box-' + index" @tap="btnTap('details', item.createDate? item.id: item.productId)">
+		<view class="cu-item margin-bottom-sm margin-top-sm shadow"
+			style="background-color: #f2f2f2;"
+			:class="modalName=='move-box-'+ index?'move-cur':''"
+			v-for="(item, index) in itemData" :key="index"
+			:id="item.createDate? item.id: item.productId" 
+			@longpress="longpress($event, index, item.createDate? item.id: item.productId)"
+			@touchstart="ListTouchStart"
+			@touchmove="ListTouchMove"
+			@touchend="ListTouchEnd"
+			:data-target="'move-box-' + index"
+			@tap="btnTap('details', item.createDate? item.id: item.productId)"
+		>
 			<view class="content margin-top margin-bottom">
 				<view class="text-black margin-bottom-sm">
 					<text class="margin-right-sm">{{item.categoryName}}</text>
@@ -59,6 +69,16 @@
 			}
 		},
 		methods: {
+			// 长按跳转至高级功能
+			longpress: function(event, index, itemId) {
+				if (event && index != null && itemId != null) {
+					if (this.specBtnIsTapable[index] && this.btnExtends.length == 1) {
+						if (this.specBtnIsTapable[index][0]) {
+							this.$emit('productTap', {'btnType': this.btnExtends[0].type, 'productId': itemId});
+						}
+					}
+				}
+			},
 			// ListTouch触摸开始
 			ListTouchStart: function(e) {
 				this.listTouchStart = e.touches[0].pageX
