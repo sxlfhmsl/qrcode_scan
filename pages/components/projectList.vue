@@ -13,18 +13,25 @@
 			@tap="btnTap('details', item.createDate? item.id: item.productId)"
 		>
 			<view class="content margin-top margin-bottom">
-				<view class="text-black margin-bottom-sm">
+				<view class="text-black margin-bottom">
 					<text class="margin-right-sm">{{item.categoryName}}</text>
+					<text class="text-white cuIcon cuIcon-full" style="color: #f2f2f2;"></text>
 					<text class="margin-left-sm text-sm">{{item.name}}</text>
 				</view>
-				<view class="text-gray text-sm margin-top-sm">
-					时间：{{item.createDate? item.createDate: item.recevieDate}}  
+				<view class="text-gray text-sm margin-top">
+					{{item.deptName}}
 				</view>
 			</view>
+			
 			<view class="action margin-top margin-bottom">
-				<view class="text-blue text-right margin-bottom-sm"><text class="text-white cuIcon cuIcon-full" style="color: #f2f2f2;"></text>{{item.deptName}}</view>
-				<view class="text-blue text-right margin-top-sm"><text class="text-white cuIcon cuIcon-full" style="color: #f2f2f2;"></text>{{item.place}}</view>
+				<view class="text-blue text-right margin-bottom">
+					<button>sdsd</button>
+				</view>
+				<view class="text-blue text-right margin-top">
+					<button>sdsd</button>
+				</view>
 			</view>
+			
 			<view
 				v-if="(productShowType == 'longpress' && btnExtends.length > 1) || productShowType == 'slide'"
 				class="move"
