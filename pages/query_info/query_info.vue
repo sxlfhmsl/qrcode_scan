@@ -24,7 +24,7 @@
 				<input class="uni-input" placeholder="请输入编号" name="input" v-model="itemCode"></input>
 				<button class="margin-left cu-btn bg-gradual-blue radius shadow"  @tap="jumpDetails('code', itemCode)">搜索</button>
 			</view>
-			<view class="flex padding justify-center" style="margin-top: 10vh;">
+			<view class="flex padding justify-center" style="margin-top: 20vh;">
 				<button
 					class="cu-btn bg-white lg"
 					style="
