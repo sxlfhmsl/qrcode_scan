@@ -23,12 +23,32 @@
 				</view>
 			</view>
 			
-			<view class="action margin-top margin-bottom">
-				<view class="text-blue text-right margin-bottom">
-					<button>sdsd</button>
+			<view v-if="productShowType != 'button'" class="action margin-top margin-bottom margin-right-sm">
+				<view class="text-gray text-right margin-bottom" style="line-height: 2em;">
+					<text v-if="!(item.createDate? item.createDate: item.recevieDate)" class="text-white cuIcon cuIcon-full" style="color: #f2f2f2;">
+					</text>
+					{{item.createDate? item.createDate: item.recevieDate}}
 				</view>
-				<view class="text-blue text-right margin-top">
-					<button>sdsd</button>
+				<view class="text-blue text-right margin-top" style="line-height: 2em;">
+					<text v-if="!item.place" class="text-white cuIcon cuIcon-full" style="color: #f2f2f2;">
+					</text>
+					{{item.place}}
+				</view>
+			</view>
+			
+			<view v-if="productShowType == 'button'" class="action margin-top margin-bottom">
+				<view
+					class="padding-bottom-sm"
+					v-for="(btnItem, btnIndex) in btnExtends"
+					:key="btnIndex"
+				>
+					<button 
+						class="cu-btn round shadow"
+						:class="'bg-' + btnItem.color"
+						@tap.stop="btnTap(btnItem.type, item.createDate? item.id: item.productId)"
+					>
+						{{btnItem.title}}
+					</button>
 				</view>
 			</view>
 			
