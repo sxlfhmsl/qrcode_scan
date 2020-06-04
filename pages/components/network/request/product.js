@@ -218,12 +218,14 @@ class ProductRequest extends BaseRequest {
 	 * @description 收货
 	 * @param {Object} productId 产品id
 	 * @param {Object} recevieDate 收货日期
+	 * @param {Object} recevieLeader 签收者
 	 * @param {Object} successCallback 成功回调
 	 */
-	receive(productId, recevieDate, successCallback) {
+	receive(productId, recevieDate, recevieLeader, successCallback) {
 		this.receiveUrl.urlParams = {
 			'productId': productId,
-			'recevieDate': recevieDate
+			'recevieDate': recevieDate,
+			'recevieLeader': recevieLeader
 		};
 		this.basePost(
 			this.receiveUrl,
