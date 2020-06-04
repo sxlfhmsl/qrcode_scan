@@ -52,7 +52,7 @@
 					v-for="(item, index) in souceList"
 					:key="index"
 					:id="item.id" 
-					@longpress="longpress(item.id, item.materialType, item.code, item.specs)"
+					@longpress="longpress(item.id, item.materialType, item.code, item.specs, 'longpress')"
 					@touchstart="ListTouchStart" @touchmove="ListTouchMove" @touchend="ListTouchEnd" :data-target="'move-box-' + index"
 					style="padding-left: 2rpx; padding-right: 2rpx; background-color: #f2f2f2;"
 					:style="choosedSouceIds.indexOf(item.id) !== -1? 'border: blue solid 2px;': ''"
@@ -204,7 +204,11 @@
 			 * @param {Object} code 原材料code
 			 * @param {Object} specs 原材料specs
 			 */
-			longpress: function(id, materialType, code, specs) {
+			longpress: function(id, materialType, code, specs, pressType) {
+				if (pressType == 'longpress' && this.productShowType != 'longpress') {
+					return;
+				}
+				
 				if (this.productShowType == 'longpress' || this.productShowType == 'button') {
 					if (this.choosedSouceIds.indexOf(id) !== -1) {
 						this.removeMaterial(id);
