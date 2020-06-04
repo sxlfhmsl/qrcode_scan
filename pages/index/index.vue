@@ -1,22 +1,30 @@
 <template>
-	<view class="content" style="margin-top: 50%">
-		<view class="header">
-			<image src="/static/logo.png"></image>
+	<view class="content">
+		<view 
+			class="header text-center"
+			style="height: 50vw; width: 100%;"
+			:style="'margin-top: calc(37vh - 25vw - ' + CustomBar + 'rpx)'"
+		>
+			<image src="/static/logo.png" style="width: 45vw;" mode="widthFix"></image>
 		</view>
 		
-		<view v-if="showLogin" class="list">
+		<view v-if="showLogin" class="list" style="font-size: 5vw;">
 			<view class="list-call">
-				<text>用户名:</text>
-				<input class="biaoti" v-model="username" type="text" maxlength="11" placeholder="输入用户名"/>
+				<text class="font-title-simhei">用户名:</text>
+				<input class="biaoti font-content-simsun" v-model="username" type="text" maxlength="11" placeholder="输入用户名"/>
 			</view>
 			<view class="list-call">
-				<text>密&nbsp;&nbsp;&nbsp;&nbsp;码:</text>
-				<input class="biaoti" v-model="password" type="text" maxlength="32" placeholder="输入密码" password="true"/>
+				<text class="font-title-simhei">密&nbsp;&nbsp;&nbsp;&nbsp;码:</text>
+				<input class="biaoti font-content-simsun" v-model="password" type="text" maxlength="32" placeholder="输入密码" password="true"/>
 			</view>
 			
 		</view>
 		
-		<button v-if="showLogin" class="margin cu-btn bg-blue round lg shadow"style="width: 300rpx;" @tap="login">登录</button>
+		<button v-if="showLogin" 
+			class="cu-btn bg-blue round lg shadow font-content-simkai"
+			style="width: 300rpx; height: 2em; font-size: 8vw; margin-top: 2em;"
+			@tap="login"
+		>登录</button>
 	</view>
 </template>
 
@@ -113,19 +121,6 @@
 			flex-direction: column;
 			justify-content:center;
 	}
-	.header {
-		width:200upx;
-		height:200upx;
-		border-radius:50%;
-		margin-top: 30upx;
-		margin-left: auto;
-		margin-right: auto;
-	}
-	.header image{
-		width:200upx;
-		height:200upx;
-		border-radius:50%;
-	}
 	
 	.list {
 		display: flex;
@@ -150,9 +145,9 @@
 	.list-call .biaoti{
 		flex: 1;
 		text-align: left;
-		font-size: 32upx;
-		line-height: 100upx;
-		margin-left: 16upx;
+		font-size: 5vw;
+		line-height: 1em;
+		margin-left: 1em;
 	}
 	.xieyi{
 		display: flex;
