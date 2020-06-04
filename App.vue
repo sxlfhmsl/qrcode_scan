@@ -126,6 +126,8 @@
 	
 	/* 阿里云控制台图标 */
 	@import url("static/icon/aliyun_con_icon/iconfont.css");
+	/* 男女图标 */
+	@import url("static/icon/sex/iconfont.css");
 	
 	/* 字体css */
 	@import url("static/fonts/fonts.css");

@@ -1,0 +1,31 @@
+@font-face {font-family: "iconfontSex";
+  src: url('~@/static/icon/sex/iconfont.eot?t=1591241066749'); /* IE9 */
+  src: url('~@/static/icon/sex/iconfont.eot?t=1591241066749#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAOEAAsAAAAAB1gAAAM1AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDBgqCRIJLATYCJAMMCwgABCAFhG0HMhuNBsguMRUZ6bxkGSFuFoWo+PQCOB4/O4qHr/34nbu7Xz2JWDJpH0vMT0TRSqUxJA1FPDJkDR1PJC/h/ZhX/5ous1ZW0LeLZJxM8SmceBNvwhHqAi4wRRmxVZ9OX2o5xOSfqwDqB5fT/4ZANg8ol7kGjgmYYGBjTSqiAknQW4bXuhQO+jCBRgPKSIcDoyZBiIKMCsRVl0OBkIxKacgO9UJtxcIi7kJ9up1eA7gTfD/+Q02EkNRkZOKZ8/06dP1K+9GbV1WrQA/Bns4AeRkZc0AhzlWajslRaI6s0RQFNCfXKkKayltVBCxLUEv/8EiCqEUym8EUFqaLYnNWIgacqz4og1oUXAIeApF1Dy1K03LDl0qJsFn4uZerLodNnXT/Pcaf3k76/G5y07MPaNucM+8rpsKqy1uvSvqlt3X4/fspXz9Mbaoz3Hy71GO0yxf27NWqSxhziVuupAYOrb5a2CTp4snjMNrT05c1n/kF+GjRgYezhxbmL4r7D0eP71RyGgPXl5tvwH3vutc316LAn8bStBnlZhQa7Pbx4//jNubdijuG7w3dkqdJixei6TDjxpIZyLxyWlnmaCBdk/agBw/R7lj7+N6KhPZ+YKMspr8v1idIfX0xm0Lf+obIm2/R5rz748PduLT3ARKIiwIOjIQBdOgOAVTLR3NcECHPkCf/nt/o+/JxVVFt1zcV8OMHRyUAuqWDeonO7J/B7thQLC5R52KwOMuxZOsDgwmNllUVsXX6PlzWc8ORUK8ngaROP2T1xtCCn4MaTdagVr0daDRrcHmTLiZZlAbMWI8gtLsJSav3kLV7gxb8N6jR6z/Uag8ZGp2NuA2bTIQL95pUsalO1MXEpQnOmNbGYfYE6pjvVcw0NyBOoabl8pLqiqp8dJByak4xxVrgqLFtRpgpfGQAHUe9XkH8pnBTza5w2ra/pbKSVb2oQhM+wA6YKIWN0hGqxQgXjcAxr70NFz4/AeUwn5fCbChp0k5BmSyuzolqFao6oIMi3qnkVp6xLOBQw2ZjCMYk+BADyEB5aUgg/NX93CiNrYJzQMCvRSVuxbqKKpaX+F4gU66AzM6RIkeRrysc8QUAAAAA') format('woff2'),
+  url('~@/static/icon/sex/iconfont.woff?t=1591241066749') format('woff'),
+  url('~@/static/icon/sex/iconfont.ttf?t=1591241066749') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('~@/static/icon/sex/iconfont.svg?t=1591241066749#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfontSex" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class*="alicon-icon-sex-"] {
+	font-family: "iconfontSex";
+	font-size: inherit;
+	font-style: normal;
+}
+
+.alicon-icon-sex-nan:before {
+  content: "\e643";
+}
+
+.alicon-icon-sex-nv:before {
+  content: "\e61b";
+}
+
