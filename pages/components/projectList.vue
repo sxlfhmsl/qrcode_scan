@@ -23,7 +23,7 @@
 				</view>
 			</view>
 			
-			<view v-if="productShowType != 'button'" class="action margin-top margin-bottom margin-right-sm">
+			<view class="action margin-top margin-bottom margin-right-sm">
 				<view class="text-gray text-right margin-bottom" style="line-height: 2em;">
 					<text v-if="!(item.createDate? item.createDate: item.recevieDate)" class="text-white cuIcon cuIcon-full" style="color: #f2f2f2;">
 					</text>
