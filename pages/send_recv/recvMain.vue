@@ -37,6 +37,21 @@
 					</picker>
 				</view>
 			</view>
+			<view class="flex margin-left-sm margin-right-sm solid-left solid-bottom solid-top">
+				<view 
+					class="padding-sm col-auto-line text-white text-center solid-right bg-gradual-blue" 
+					style="flex: auto; width: 25%;"
+				>
+					收货人:
+				</view>
+				
+				<view
+					class="padding-sm col-auto-line bg-white solid-right"
+					style="flex: auto; width: 75%; background-color: white"
+				>
+					<input class="text-right" v-model="receiver" style="height: 100%; width: 100%;"/>
+				</view>
+			</view>
 			
 			<view class="text-center">
 				<button class="cu-btn bg-blue round lg shadow margin" @tap="closePages">关闭</button>
@@ -62,6 +77,7 @@
 				'pdBaseInfoData': {},                                       // 基础页面显示数据
 				'title': '',                                                // 标题
 				'recvDate': '',
+				'receiver': '',
 			}
 		},
 		methods: {
@@ -93,7 +109,8 @@
 			saveRecv: function(e) {
 				if (this.productId !== null) {
 					if (this.recvDate != null && this.recvDate != '') {
-						this.productRequest.receive(this.productId, this.recvDate, result => {
+						let receiver = this.receiver? this.receiver: undefined;
+						this.productRequest.receive(this.productId, this.recvDate, receiver, result => {
 							uni.showToast({
 								title: '收货成功'
 							});
