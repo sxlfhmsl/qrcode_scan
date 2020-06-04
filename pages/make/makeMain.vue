@@ -43,9 +43,18 @@
 			
 			<!-- 原材料 -->
 			<view class="cu-list menu">
-				<view class="cu-item margin-bottom-sm margin-top-sm margin-left-sm radius" :class="modalName=='move-box-'+ index?'move-cur':''" v-for="(item, index) in souceList" :key="index" :id="item.id" 
+				<view 
+					class="cu-item margin-bottom-sm margin-top-sm margin-left-sm radius" 
+					:class="
+						(modalName=='move-box-'+ index?'move-cur':'') + 
+						(productShowType != 'slide'? ' margin-right-sm': ' ')
+					"
+					v-for="(item, index) in souceList"
+					:key="index"
+					:id="item.id" 
 					@longpress="longpress(item.id, item.materialType, item.code, item.specs)"
 					@touchstart="ListTouchStart" @touchmove="ListTouchMove" @touchend="ListTouchEnd" :data-target="'move-box-' + index"
+					style="padding-left: 2rpx; padding-right: 2rpx; background-color: #f2f2f2;"
 					:style="choosedSouceIds.indexOf(item.id) !== -1? 'border: blue solid 2px;': ''"
 				>
 					<view class="content margin-top margin-bottom">
@@ -60,6 +69,7 @@
 					    v-if="choosedSouceIds.indexOf(item.id) !== -1"
 						style="position: absolute;z-index: 99;font-size: 2em;opacity: 0.5;transform:rotate(-45deg);top: calc(50% - 0.75em); left: calc(50% - 2em);"
 					>已选择</view>
+					
 					<view class="action margin-top margin-bottom">
 						<view class="text-black text-right margin-bottom-sm">
 							规格:{{item.specs}}
@@ -68,7 +78,16 @@
 							时间:{{item.enterDate}}
 						</view>
 					</view>
-					<view class="move">
+					
+					<view 
+						v-if="productShowType == 'button'"
+						class="action margin-top margin-bottom margin-left margin-right"
+						@tap="longpress(item.id, item.materialType, item.code, item.specs)"
+					>
+						<button class="cu-btn bg-red shadow round">{{choosedSouceIds.indexOf(item.id) !== -1? '删除': '添加'}}</button>
+					</view>
+					
+					<view v-if="productShowType == 'slide'" class="move">
 						<view class="bg-blue" @tap="addMaterial(item.id, item.materialType, item.code, item.specs)">添加</view>
 						<view class="bg-red" @tap="removeMaterial(item.id)">删除</view>
 					</view>
@@ -186,11 +205,13 @@
 			 * @param {Object} specs 原材料specs
 			 */
 			longpress: function(id, materialType, code, specs) {
-				if (this.choosedSouceIds.indexOf(id) !== -1) {
-					this.removeMaterial(id);
-				}
-				else {
-					this.addMaterial(id, materialType, code, specs);
+				if (this.productShowType == 'longpress' || this.productShowType == 'button') {
+					if (this.choosedSouceIds.indexOf(id) !== -1) {
+						this.removeMaterial(id);
+					}
+					else {
+						this.addMaterial(id, materialType, code, specs);
+					}
 				}
 			},
 			/**
@@ -305,20 +326,26 @@
 			},
 			// ListTouch触摸开始
 			ListTouchStart: function(e) {
-				this.listTouchStart = e.touches[0].pageX
+				if (this.productShowType == 'slide') {
+					this.listTouchStart = e.touches[0].pageX;
+				}
 			},
 			// ListTouch计算方向
 			ListTouchMove: function(e) {
-				this.listTouchDirection = e.touches[0].pageX - this.listTouchStart > 0 ? 'right' : 'left'
+				if (this.productShowType == 'slide') {
+					this.listTouchDirection = e.touches[0].pageX - this.listTouchStart > 0 ? 'right' : 'left';
+				}
 			},
 			// ListTouch计算滚动
 			ListTouchEnd: function(e) {
-				if (this.listTouchDirection == 'left') {
-					this.modalName = e.currentTarget.dataset.target
-				} else {
-					this.modalName = null
+				if (this.productShowType == 'slide') {
+					if (this.listTouchDirection == 'left') {
+						this.modalName = e.currentTarget.dataset.target;
+					} else {
+						this.modalName = null;
+					}
+					this.listTouchDirection = null;
 				}
-				this.listTouchDirection = null
 			},
 			/**
 			 * @description 计算产品数据
