@@ -130,21 +130,19 @@
 		mounted: function(){
 			this.viewData.itemData = this.itemData;
 			this.viewData.title = this.title;
-			
-			this.viewData.itemData.forEach(item => {
-				if (item.type == 'worker') {
-					this.workers.forEach((wItem, wIndex) => {
-						if (wItem.id == item.value) {
-							this.workerIndex = wIndex;
-						}
-					});
-				}
-			});
-			
 			this.$nextTick(() => {
+				this.viewData.itemData.forEach(item => {
+					if (item.type == 'worker') {
+						this.workers.forEach((wItem, wIndex) => {
+							if (wItem.id == item.value) {
+								this.workerIndex = wIndex;
+							}
+						});
+					}
+				});
+				
 				this.workers.forEach((item, index) => {
 					this.workersLocal.push(item);
-					console.log(this.workersLocal[index])
 					this.workersLocal[index].label = item.workerName + '-' + item.dictName;
 				});
 			});
