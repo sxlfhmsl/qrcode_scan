@@ -22,7 +22,7 @@
 		<scroll-view>
 			<view class="flex margin-left-sm margin-right-sm margin-top-sm solid-left solid-bottom solid-top">
 				<view 
-					class="padding-sm col-auto-line text-white text-center solid-right bg-gradual-blue" 
+					class="font-title-simhei-nocolor padding-sm col-auto-line text-white text-center solid-right bg-gradual-blue" 
 					style="flex: auto; width: 25%;"
 				>
 					*收货时间:
@@ -33,13 +33,13 @@
 					style="flex: auto; width: 75%; background-color: white"
 				>
 					<picker mode="date" @change="dateChange($event)" :value="recvDate" style="height: 100%; width: 100%;">
-						<input class="text-right" v-model="recvDate" disabled="true" style="height: 100%; width: 100%;"/>
+						<input class="text-left font-content-simsun" v-model="recvDate" disabled="true" style="height: 100%; width: 100%;"/>
 					</picker>
 				</view>
 			</view>
 			<view class="flex margin-left-sm margin-right-sm solid-left solid-bottom solid-top">
 				<view 
-					class="padding-sm col-auto-line text-white text-center solid-right bg-gradual-blue" 
+					class="font-title-simhei-nocolor padding-sm col-auto-line text-white text-center solid-right bg-gradual-blue" 
 					style="flex: auto; width: 25%;"
 				>
 					收货人:
@@ -49,7 +49,7 @@
 					class="padding-sm col-auto-line bg-white solid-right"
 					style="flex: auto; width: 75%; background-color: white"
 				>
-					<input class="text-right" v-model="receiver" style="height: 100%; width: 100%;"/>
+					<input class="text-left font-content-simsun" v-model="receiver" style="height: 100%; width: 100%;"/>
 				</view>
 			</view>
 			
