@@ -18,7 +18,7 @@
 				<scroll-view scroll-x class="bg-white nav solid-top solid-bottom" scroll-with-animation :scroll-left="TabPage_tabInfo.scrollLeft">
 					<view 
 						v-if="itemPermession[item.id].show"
-						class="cu-item"
+						class="cu-item font-title-simhei-nocolor"
 						:class="item.id==TabPage_tabInfo.TabCur?'text-blue cur':''" v-for="(item,index) in TabPage_tabInfo.TabItems"
 						:key="index"
 						@tap="TabPage_tabSelect"
