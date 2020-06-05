@@ -2,8 +2,8 @@
     "name" : "产品数字化",
     "appid" : "__UNI__0A2A211",
     "description" : "产品数字化管理系统",
-    "versionName" : "0.1.1",
-    "versionCode" : 21,
+    "versionName" : "0.1.2",
+    "versionCode" : 86,
     "transformPx" : false,
     /* 5+App特有相关 */
     "app-plus" : {
