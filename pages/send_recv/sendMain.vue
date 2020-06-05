@@ -22,7 +22,7 @@
 		<scroll-view>
 			<view class="flex margin-left-sm margin-right-sm margin-top-sm solid-left solid-bottom solid-top">
 				<view 
-					class="padding-sm col-auto-line text-white text-center solid-right bg-gradual-blue" 
+					class="font-title-simhei-nocolor padding-sm col-auto-line text-white text-center solid-right bg-gradual-blue" 
 					style="flex: auto; width: 25%;"
 				>
 					*发货时间:
@@ -33,14 +33,14 @@
 					style="flex: auto; width: 75%; background-color: white"
 				>
 					<picker mode="date" :value="sendData.date" @change="dateChange($event)" style="height: 100%; width: 100%;">
-						<input class="text-right" v-model="sendData.date" disabled="true" style="height: 100%; width: 100%;"/>
+						<input class="font-content-simsun" v-model="sendData.date" disabled="true" style="height: 100%; width: 100%;"/>
 					</picker>
 				</view>
 			</view>
 			
 			<view class="flex margin-left-sm margin-right-sm solid-left solid-bottom solid-top">
 				<view 
-					class="padding-sm col-auto-line text-white text-center solid-right bg-gradual-blue" 
+					class="font-title-simhei-nocolor padding-sm col-auto-line text-white text-center solid-right bg-gradual-blue" 
 					style="flex: auto; width: 25%;"
 				>
 					*客户单位:
@@ -50,8 +50,8 @@
 					class="padding-sm col-auto-line bg-white solid-right"
 					style="flex: auto; width: 75%; background-color: white"
 				>
-					<picker mode="multiSelector" range-key="name" @change="MultiChange" @columnchange="MultiColumnChange" :value="multiIndex" :range="multiArray" style="height: 100%; width: 100%;">
-						<view class="picker text-right">
+					<picker class="font-content-simsun" mode="multiSelector" range-key="name" @change="MultiChange" @columnchange="MultiColumnChange" :value="multiIndex" :range="multiArray" style="height: 100%; width: 100%;">
+						<view class="picker font-content-simsun">
 							{{multiArray[0][multiIndex[0]]? multiArray[0][multiIndex[0]].name: ' '}}
 							{{multiArray[1][multiIndex[1]]? multiArray[1][multiIndex[1]].name: ' '}}
 							{{multiArray[2][multiIndex[2]]? multiArray[2][multiIndex[2]].name: ' '}}
@@ -62,7 +62,7 @@
 			
 			<view class="flex margin-left-sm margin-right-sm solid-left solid-bottom solid-top">
 				<view 
-					class="padding-sm col-auto-line text-white text-center solid-right bg-gradual-blue" 
+					class="font-title-simhei-nocolor padding-sm col-auto-line text-white text-center solid-right bg-gradual-blue" 
 					style="flex: auto; width: 25%;"
 				>
 					发货地址:
@@ -72,13 +72,13 @@
 					class="padding-sm col-auto-line bg-white solid-right"
 					style="flex: auto; width: 75%; background-color: white"
 				>
-					<input class="text-right" v-model="sendData.sendAddr" style="height: 100%; width: 100%;"/>
+					<input class="font-content-simsun" v-model="sendData.sendAddr" style="height: 100%; width: 100%;"/>
 				</view>
 			</view>
 			
 			<view class="flex margin-left-sm margin-right-sm solid-left solid-bottom solid-top">
 				<view 
-					class="padding-sm col-auto-line text-white text-center solid-right bg-gradual-blue" 
+					class="font-title-simhei-nocolor padding-sm col-auto-line text-white text-center solid-right bg-gradual-blue" 
 					style="flex: auto; width: 25%;"
 				>
 					收货地址:
@@ -88,7 +88,7 @@
 					class="padding-sm col-auto-line bg-white solid-right"
 					style="flex: auto; width: 75%; background-color: white"
 				>
-					<input class="text-right" v-model="sendData.recvAddr" style="height: 100%; width: 100%;"/>
+					<input class="font-content-simsun" v-model="sendData.recvAddr" style="height: 100%; width: 100%;"/>
 				</view>
 			</view>
 			
