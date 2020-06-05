@@ -7,6 +7,18 @@ class BaseRequest {
 	constructor() {
 	};
 	
+	S4() {
+		return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+	};
+	
+	guid() {
+		return (this.S4()+this.S4()+"-"+this.S4()+"-"+this.S4()+"-"+this.S4()+"-"+this.S4()+this.S4()+this.S4());
+	};
+	
+	perGuid() {
+		return (this.S4()+this.S4()+this.S4()+this.S4()+this.S4()+this.S4()+this.S4()+this.S4());
+	};
+	
 	/**
 	 * @description 请求结果统一处理
 	 * @param {Object} result 结果
