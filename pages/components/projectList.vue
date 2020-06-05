@@ -14,29 +14,27 @@
 		>
 			<view class="content margin-top margin-bottom">
 				<view class="text-black margin-bottom">
-					<text class="margin-right-sm font-title-simhei-nocolor">{{item.categoryName}}</text>
-					<text class="text-white cuIcon cuIcon-full" style="color: #f2f2f2;"></text>
-					<text class="margin-left-sm text-sm font-content-simsun">{{item.name}}</text>
+					<text class="margin-right-sm font-title-simhei-nocolor">{{item.code}}</text>
 				</view>
 				<view class="text-gray text-sm margin-top font-content-simsun">
-					{{item.deptName}}
+					{{item.categoryName}}
 				</view>
 			</view>
 			
 			<view class="action margin-top margin-bottom margin-right-sm">
 				<view class="text-gray text-right margin-bottom font-content-simsun" style="line-height: 2em;">
+					<text v-if="!item.deptName" class="text-white cuIcon cuIcon-full" style="color: #f2f2f2;">
+					</text>
+					{{item.deptName}}
+				</view>
+				<view class="text-blue text-right margin-top font-content-simsun" style="line-height: 2em;">
 					<text v-if="!(item.createDate? item.createDate: item.recevieDate)" class="text-white cuIcon cuIcon-full" style="color: #f2f2f2;">
 					</text>
 					{{item.createDate? item.createDate: item.recevieDate}}
 				</view>
-				<view class="text-blue text-right margin-top font-content-simsun" style="line-height: 2em;">
-					<text v-if="!item.place" class="text-white cuIcon cuIcon-full" style="color: #f2f2f2;">
-					</text>
-					{{item.place}}
-				</view>
 			</view>
 			
-			<view v-if="productShowType == 'button'" class="action margin-top margin-bottom">
+			<view v-if="productShowType == 'button'" class="action margin-top margin-bottom margin-left" style="margin-left: 50rpx;">
 				<view
 					class="padding-bottom-sm"
 					v-for="(btnItem, btnIndex) in btnExtends"
