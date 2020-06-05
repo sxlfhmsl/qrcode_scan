@@ -22,8 +22,8 @@
 		<scroll-view>
 			<standardEditTable @itemChange="itemChange" :workers="workers" :picInt="item.picInt" :title="item.title" :itemData="item.itemData" v-for="(item, index) in tableList" :key="index"></standardEditTable>
 			<view class="text-center">
-				<button class="cu-btn bg-blue round lg shadow margin" @tap="closePages">关闭</button>
-				<button class="cu-btn bg-blue round lg shadow margin" @tap="saveInstall">保存</button>
+				<button class="font-title-simkai-nocolor cu-btn bg-blue round lg shadow margin" @tap="closePages">关闭</button>
+				<button class="font-title-simkai-nocolor cu-btn bg-blue round lg shadow margin" @tap="saveInstall">保存</button>
 			</view>
 		</scroll-view>
 	</view>
