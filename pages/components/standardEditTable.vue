@@ -30,7 +30,13 @@
 				style="flex: auto; width: 75%; background-color: white"
 			>
 				<input v-if="item.type == 'text'" v-model="item.value" :id="item.id" @change="inputChange(item.id, item.value)" style="height: 100%; width: 100%;"/>
-				<image v-if="item.type == 'image'" mode="widthFix" :src="item.value? Url.resBaseUrl + item.value: ''" @tap="pictureChooseList(picInt, item.title)" :id="item.id"></image>
+				<image 
+					v-if="item.type == 'image'"
+					mode="widthFix"
+					:src="showPictureObj[item.id]? Url.resBaseUrl + showPictureObj[item.id]: ''"
+					@tap="pictureChooseList(picInt, item.title, item.id)"
+					:id="item.id"
+				></image>
 				<picker v-if="item.type == 'date'" :value="item.value" mode="date" @change="dateChange($event)" :id="item.id" style="height: 100%; width: 100%;">
 					<input v-model="item.value" disabled="true" style="height: 100%; width: 100%;"/>
 				</picker>
@@ -88,13 +94,25 @@
 				'systemRequest': new SystemRequest(),
 				'workerIndex': null,
 				'Url': Url,
-				workersLocal: []
+				workersLocal: [],
+				pictureEventName: '',
+				showPictureObj: {}
 			}
 		},
 		methods: {
-			pictureChooseList: function(type, title) {
+			pictureChangeResponse: function(picInfo) {
+				if (this.pictureEventName == picInfo.id) {
+					this.applyChange(picInfo.id, picInfo.att);
+				}
+				this.$set(this.showPictureObj, picInfo.id, picInfo.att);
+				uni.$off(this.pictureEventName, this.pictureChangeResponse);
+				this.pictureEventName = '';
+			},
+			pictureChooseList: function(type, title, id) {
+				this.pictureEventName = id;
+				uni.$on(this.pictureEventName, this.pictureChangeResponse);
 				uni.navigateTo({
-					'url': '/pages/components/imageChoose?type=' + type + '&title=' + title
+					'url': '/pages/components/imageChoose?type=' + type + '&title=' + title + '&id=' + this.pictureEventName
 				});
 			},
 			pictureChoose: function(id, srcValue) {
@@ -138,6 +156,10 @@
 			
 			this.$nextTick(() => {
 				this.viewData.itemData.forEach(item => {
+					if (item.type == 'image') {
+						this.$set(this.showPictureObj, item.id, item.value);
+					}
+					
 					if (item.type == 'worker') {
 						this.workers.forEach((wItem, wIndex) => {
 							if (wItem.id == item.value) {
@@ -152,6 +174,9 @@
 					this.workersLocal[index].label = item.workerName + '-' + item.dictName;
 				});
 			});
+		},
+		destroyed: function() {
+			uni.$off(this.pictureEventName, this.pictureChangeResponse);
 		}
 	}
 </script>
