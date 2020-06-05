@@ -16,10 +16,10 @@
 				z-index: 1024;
 			" :style="'top:' + CustomBar + 'px'">
 				<pdBaseInfo :itemData="pdBaseInfoData"></pdBaseInfo>
-				<scroll-view scroll-x class="bg-white nav solid-top solid-bottom text-center" scroll-with-animation :scroll-left="TabPage_tabInfo.scrollLeft">
+				<scroll-view scroll-x class="bg-gradual-blue nav solid-top solid-bottom text-center" scroll-with-animation :scroll-left="TabPage_tabInfo.scrollLeft">
 					<view 
 						class="cu-item"
-						:class="item.id==TabPage_tabInfo.TabCur?'text-blue cur':''" v-for="(item,index) in TabPage_tabInfo.TabItems"
+						:class="item.id==TabPage_tabInfo.TabCur?'text-black cur':''" v-for="(item,index) in TabPage_tabInfo.TabItems"
 						:key="index"
 						@tap="TabPage_tabSelect"
 						:data-id="item.id"
