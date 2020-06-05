@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<!-- 标题 -->
-		<view class="flex margin-left-sm margin-right-sm">
+		<view class="flex margin-left-sm margin-right-sm font-title-simkai-nocolor">
 			<view 
 				class="padding-sm col-auto-line text-white soild margin-top-sm"
 				style="width: 100%;flex: auto; background-color: #5c9ed6"
@@ -18,7 +18,7 @@
 		>
 			<!-- 标题 -->
 			<view 
-				class="padding-sm col-auto-line text-white text-center solid-right"
+				class="padding-sm col-auto-line text-white text-center solid-right font-title-simhei"
 				style="flex: auto; width: 25%; background-color: #dad8d8"
 			>
 				{{item.title}}
@@ -26,7 +26,7 @@
 			
 			<!-- 内容 -->
 			<view
-				class="padding-sm col-auto-line bg-white solid-right"
+				class="padding-sm col-auto-line bg-white solid-right font-content-simsun"
 				style="flex: auto; width: 75%; background-color: white"
 			>
 				<input v-if="item.type == 'text'" v-model="item.value" :id="item.id" @change="inputChange(item.id, item.value)" style="height: 100%; width: 100%;"/>
@@ -34,7 +34,7 @@
 				<picker v-if="item.type == 'date'" :value="item.value" mode="date" @change="dateChange($event)" :id="item.id" style="height: 100%; width: 100%;">
 					<input v-model="item.value" disabled="true" style="height: 100%; width: 100%;"/>
 				</picker>
-				<picker v-if="item.type == 'worker'" @change="workerPickerChange($event, item.id)" range-key="workerName" :value="workerIndex" :range="workers" style="height: 100%; width: 100%;" :id="item.id">
+				<picker v-if="item.type == 'worker'" @change="workerPickerChange($event, item.id)" range-key="label" :value="workerIndex" :range="workersLocal" style="height: 100%; width: 100%;" :id="item.id">
 					<view class="picker">
 						{{workerIndex == null? '': workers[workerIndex].workerName + '-' + workers[workerIndex].dictName}}
 					</view>
@@ -87,7 +87,8 @@
 				},
 				'systemRequest': new SystemRequest(),
 				'workerIndex': null,
-				'Url': Url
+				'Url': Url,
+				workersLocal: []
 			}
 		},
 		methods: {
@@ -138,6 +139,14 @@
 						}
 					});
 				}
+			});
+			
+			this.$nextTick(() => {
+				this.workers.forEach((item, index) => {
+					this.workersLocal.push(item);
+					console.log(this.workersLocal[index])
+					this.workersLocal[index].label = item.workerName + '-' + item.dictName;
+				});
 			});
 		}
 	}

@@ -10,7 +10,7 @@
 		>
 			<!-- 标题 -->
 			<view 
-				class="padding-sm col-auto-line text-black text-center solid-right"
+				class="padding-sm col-auto-line text-black text-center solid-right font-title-simhei-nocolor"
 				style="flex: auto;"
 				:style="'width:' + rowBeforeTitle.titleWidth + ';background-color:' + rowBeforeTitle.titleColor + ';'"
 			>
@@ -19,7 +19,7 @@
 			
 			<!-- 内容 -->
 			<view
-				class="padding-sm col-auto-line bg-white solid-right"
+				class="padding-sm col-auto-line bg-white solid-right font-content-simsun"
 				style="flex: auto;"
 				:style="'width:' + rowBeforeTitle.contentWidth + ';background-color:' + rowBeforeTitle.contentColor + ';'"
 			>
@@ -29,7 +29,7 @@
 		</view>
 		
 		<!-- 标题 -->
-		<view v-if="title != null" class="flex margin-left-sm margin-right-sm">
+		<view v-if="title != null" class="flex margin-left-sm margin-right-sm font-title-simkai-nocolor">
 			<view 
 				class="padding-sm col-auto-line text-white soild"
 				:class="title != null && rowsBeforeTitle.length == 0? ' margin-top-sm': ''"
@@ -50,7 +50,7 @@
 		>
 			<!-- 标题 -->
 			<view 
-				class="padding-sm col-auto-line text-black text-center solid-right"
+				class="padding-sm col-auto-line text-black text-center solid-right font-title-simhei-nocolor"
 				style="flex: auto;"
 				:style="'width:' + rowAfterTitle.titleWidth + ';background-color:' + rowAfterTitle.titleColor + ';'"
 			>
@@ -59,7 +59,7 @@
 			
 			<!-- 内容 -->
 			<view
-				class="padding-sm col-auto-line bg-white solid-right"
+				class="padding-sm col-auto-line bg-white solid-right font-content-simsun"
 				style="flex: auto;"
 				:style="'width:' + rowAfterTitle.contentWidth + ';background-color:' + rowAfterTitle.contentColor + ';'"
 			>
