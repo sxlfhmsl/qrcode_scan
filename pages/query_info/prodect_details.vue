@@ -17,7 +17,7 @@
 				<!-- 滚动条 -->
 				<scroll-view scroll-x class="bg-white nav solid-top solid-bottom" scroll-with-animation :scroll-left="TabPage_tabInfo.scrollLeft">
 					<view 
-						v-if="itemPermession[item.id].show"
+						v-if="item.id == 'baseInfo'? true: itemPermession[item.id].show"
 						class="cu-item font-title-simhei-nocolor"
 						:class="item.id==TabPage_tabInfo.TabCur?'text-blue cur':''" v-for="(item,index) in TabPage_tabInfo.TabItems"
 						:key="index"
@@ -31,11 +31,17 @@
 			</view>
 		</view>
 		
-		<pdInBankInfo v-if="itemPermession.pdInBankInfo.show" v-show="TabPage_tabInfo.TabCur==='pdInBankInfo'" :itemData="viewData.pdInBankInfo"></pdInBankInfo>
+		<view v-if="itemPermession.pdSourceInfo.show" v-show="TabPage_tabInfo.TabCur==='baseInfo'" class="text-blue padding margin-left margin-right margin-top font-title-simhei-nocolor" style="background-color: #f2f2f2; margin-top: 50rpx;">原材料信息</view>
+		<pdSourceInfo v-if="itemPermession.pdSourceInfo.show" v-show="TabPage_tabInfo.TabCur==='baseInfo'" :itemData="viewData.pdSourceInfo"></pdSourceInfo>
+		
+		<view v-if="itemPermession.pdInBankInfo.show" v-show="TabPage_tabInfo.TabCur==='baseInfo'" class="text-blue padding margin-left margin-right margin-top font-title-simhei-nocolor" style="background-color: #f2f2f2; margin-top: 50rpx;">入库信息</view>
+		<pdInBankInfo v-if="itemPermession.pdInBankInfo.show" v-show="TabPage_tabInfo.TabCur==='baseInfo'" :itemData="viewData.pdInBankInfo"></pdInBankInfo>
+		
+		<view v-if="itemPermession.pdSendRecv.show" v-show="TabPage_tabInfo.TabCur==='baseInfo'" class="text-blue padding margin-left margin-right margin-top font-title-simhei-nocolor" style="background-color: #f2f2f2; margin-top: 50rpx;">收发货信息</view>
+		<pdSendRecv v-if="itemPermession.pdSendRecv.show" v-show="TabPage_tabInfo.TabCur==='baseInfo'" :itemData="viewData.pdSendRecv"></pdSendRecv>
+		
 		<pdInstall v-if="itemPermession.pdInstall.show" v-show="TabPage_tabInfo.TabCur==='pdInstall'" :itemData="viewData.pdInstall"></pdInstall>
 		<pdMakeFlow v-if="itemPermession.pdMakeFlow.show" v-show="TabPage_tabInfo.TabCur==='pdMakeFlow'" :itemData="viewData.pdMakeFlow"></pdMakeFlow>
-		<pdSendRecv v-if="itemPermession.pdSendRecv.show" v-show="TabPage_tabInfo.TabCur==='pdSendRecv'" :itemData="viewData.pdSendRecv"></pdSendRecv>
-		<pdSourceInfo v-if="itemPermession.pdSourceInfo.show" v-show="TabPage_tabInfo.TabCur==='pdSourceInfo'" :itemData="viewData.pdSourceInfo"></pdSourceInfo>
 		
 		<!-- 留白 -->
 		<view style="height: 20rpx; width: 100%;"></view>
@@ -186,22 +192,34 @@
 			}
 		},
 		mounted:function(){
+			// this.TabPage_tabInfo.TabItems = [{
+			// 	title: '原材料信息',
+			// 	id: 'pdSourceInfo'
+			// }, {
+			// 	title: '制作流程',
+			// 	id: 'pdMakeFlow'
+			// }, {
+			// 	title: '入库信息',
+			// 	id: 'pdInBankInfo'
+			// }, {
+			// 	title: '发货/收货',
+			// 	id: 'pdSendRecv'
+			// }, {
+			// 	title: '产品安装',
+			// 	id: 'pdInstall'
+			// }];
+			
 			this.TabPage_tabInfo.TabItems = [{
-				title: '原材料信息',
-				id: 'pdSourceInfo'
+				title: '基本信息',
+				id: 'baseInfo'
 			}, {
 				title: '制作流程',
 				id: 'pdMakeFlow'
 			}, {
-				title: '入库信息',
-				id: 'pdInBankInfo'
-			}, {
-				title: '发货/收货',
-				id: 'pdSendRecv'
-			}, {
-				title: '产品安装',
+				title: '安装流程',
 				id: 'pdInstall'
 			}];
+			
 			this.TabPage_tabInfo.TabCur = this.TabPage_tabInfo.TabItems[0].id;
 		}
 	}
