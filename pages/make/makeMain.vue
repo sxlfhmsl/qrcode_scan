@@ -18,7 +18,7 @@
 				<pdBaseInfo :itemData="pdBaseInfoData"></pdBaseInfo>
 				<scroll-view scroll-x class="bg-gradual-blue nav solid-top solid-bottom text-center" scroll-with-animation :scroll-left="TabPage_tabInfo.scrollLeft">
 					<view 
-						class="cu-item"
+						class="cu-item font-title-simhei-nocolor"
 						:class="item.id==TabPage_tabInfo.TabCur?'text-black cur':''" v-for="(item,index) in TabPage_tabInfo.TabItems"
 						:key="index"
 						@tap="TabPage_tabSelect"
@@ -34,10 +34,10 @@
 		
 		<scroll-view v-show="TabPage_tabInfo.TabCur==='pdSource'">
 			<view class="text-center flex">
-				<input @change="searchFilterChange" class="radius margin" placeholder="材料编号" style="max-width: 30%; border-bottom: grey solid 1px;" v-model="code"/>
-				<input @change="searchFilterChange" class="radius margin" placeholder="品种名称" style="max-width: 30%; border-bottom: grey solid 1px;" v-model="materialType"/>
-				<picker mode="date" @change="dateChange" style="width: 60%;">
-					<input class="radius margin" placeholder="进场时间" style="max-width: 100%; border-bottom: grey solid 1px;" v-model="enterDate" disabled="true"/>
+				<input @change="searchFilterChange" class="radius margin font-content-simhei" placeholder="材料编号" style="max-width: 30%; border-bottom: grey solid 1px;" v-model="code"/>
+				<input @change="searchFilterChange" class="radius margin font-content-simhei" placeholder="品种名称" style="max-width: 30%; border-bottom: grey solid 1px;" v-model="materialType"/>
+				<picker class="font-content-simhei" mode="date" @change="dateChange" style="width: 60%;">
+					<input class="radius margin font-content-simhei" placeholder="进场时间" style="max-width: 100%; border-bottom: grey solid 1px;" v-model="enterDate" disabled="true"/>
 				</picker>
 			</view>
 			
@@ -58,24 +58,28 @@
 					:style="choosedSouceIds.indexOf(item.id) !== -1? 'border: blue solid 2px;': ''"
 				>
 					<view class="content margin-top margin-bottom">
-						<view class="text-black margin-bottom-sm">
-							品种:{{item.materialType}}
+						<view class="text-black margin-bottom-sm font-title-simhei">
+							品种:
+							<text class="font-content-simsun">{{item.materialType}}</text>
 						</view>
-						<view class="text-black margin-top-sm">
-							编号:{{item.code}}
+						<view class="text-black margin-top-sm font-title-simhei">
+							编号:
+							<text class="font-content-simsun">{{item.code}}</text>
 						</view>
 					</view>
-					<view class="text-blue" 
+					<view class="text-blue font-title-simkai-nocolor" 
 					    v-if="choosedSouceIds.indexOf(item.id) !== -1"
 						style="position: absolute;z-index: 99;font-size: 2em;opacity: 0.5;transform:rotate(-45deg);top: calc(50% - 0.75em); left: calc(50% - 2em);"
 					>已选择</view>
 					
 					<view class="action margin-top margin-bottom">
-						<view class="text-black text-right margin-bottom-sm">
-							规格:{{item.specs}}
+						<view class="text-black text-right margin-bottom-sm font-title-simhei" style="line-height: 1.75em;">
+							规格:
+							<text class="font-content-simsun">{{item.specs}}</text>
 						</view>
-						<view class="text-black text-right margin-top-sm">
-							时间:{{item.enterDate}}
+						<view class="text-black text-right margin-top-sm font-title-simhei" style="line-height: 1.75em;">
+							时间:
+							<text class="font-content-simsun">{{item.enterDate}}</text>
 						</view>
 					</view>
 					
@@ -84,7 +88,7 @@
 						class="action margin-top margin-bottom margin-left margin-right"
 						@tap="longpress(item.id, item.materialType, item.code, item.specs)"
 					>
-						<button class="cu-btn bg-red shadow round">{{choosedSouceIds.indexOf(item.id) !== -1? '删除': '添加'}}</button>
+						<button class="cu-btn bg-red shadow round font-title-simkai-nocolor">{{choosedSouceIds.indexOf(item.id) !== -1? '删除': '添加'}}</button>
 					</view>
 					
 					<view v-if="productShowType == 'slide'" class="move">
@@ -95,16 +99,16 @@
 			</view>
 			
 			<view class="text-center">
-				<button class="cu-btn bg-blue round lg shadow margin" @tap="resetSearchFilter">重置</button>
-				<button class="cu-btn bg-blue round lg shadow margin" @tap="toNextStep">下一步</button>
+				<button class="cu-btn bg-blue round lg shadow margin font-title-simkai-nocolor" @tap="resetSearchFilter">重置</button>
+				<button class="cu-btn bg-blue round lg shadow margin font-title-simkai-nocolor" @tap="toNextStep">下一步</button>
 			</view>
 		</scroll-view>
 		
 		<scroll-view v-show="TabPage_tabInfo.TabCur==='pdMake'">
 			<standardEditTable @itemChange="itemChange" :workers="workers" :picInt="item.picInt" :title="item.title" :itemData="item.itemData" v-for="(item, index) in tableList" :key="index"></standardEditTable>
 			<view class="text-center">
-				<button class="cu-btn bg-blue round lg shadow margin" @tap="closePages">关闭</button>
-				<button class="cu-btn bg-blue round lg shadow margin" @tap="saveMake">保存</button>
+				<button class="cu-btn bg-blue round lg shadow margin font-title-simkai-nocolor" @tap="closePages">关闭</button>
+				<button class="cu-btn bg-blue round lg shadow margin font-title-simkai-nocolor" @tap="saveMake">保存</button>
 			</view>
 		</scroll-view>
 	</view>
