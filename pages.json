@@ -60,6 +60,10 @@
             "path" : "pages/send_recv/sendMain",
             "style" : {}
         }
+        ,{
+            "path" : "pages/components/imageChoose",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"mp-alipay": {

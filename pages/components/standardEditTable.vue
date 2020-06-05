@@ -30,7 +30,7 @@
 				style="flex: auto; width: 75%; background-color: white"
 			>
 				<input v-if="item.type == 'text'" v-model="item.value" :id="item.id" @change="inputChange(item.id, item.value)" style="height: 100%; width: 100%;"/>
-				<image v-if="item.type == 'image'" mode="widthFix" :src="Url.resBaseUrl + item.value" @tap="pictureChoose(item.id, item.value)" :id="item.id"></image>
+				<image v-if="item.type == 'image'" mode="widthFix" :src="item.value? Url.resBaseUrl + item.value: ''" @tap="pictureChooseList(picInt, item.title)" :id="item.id"></image>
 				<picker v-if="item.type == 'date'" :value="item.value" mode="date" @change="dateChange($event)" :id="item.id" style="height: 100%; width: 100%;">
 					<input v-model="item.value" disabled="true" style="height: 100%; width: 100%;"/>
 				</picker>
@@ -92,6 +92,11 @@
 			}
 		},
 		methods: {
+			pictureChooseList: function(type, title) {
+				uni.navigateTo({
+					'url': '/pages/components/imageChoose?type=' + type + '&title=' + title
+				});
+			},
 			pictureChoose: function(id, srcValue) {
 				uni.chooseImage({
 				    count: 1,
@@ -130,6 +135,7 @@
 		mounted: function(){
 			this.viewData.itemData = this.itemData;
 			this.viewData.title = this.title;
+			
 			this.$nextTick(() => {
 				this.viewData.itemData.forEach(item => {
 					if (item.type == 'worker') {

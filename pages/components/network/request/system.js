@@ -11,6 +11,7 @@ class SystemRequest extends BaseRequest {
 	    super();
 		this.appCurrentVersionUrl = new Url('appVersion/current', RequestType.NORMAL | RequestType.NEED_TOKEN);
 		this.attUploadUrl = new Url('att/upload', RequestType.NORMAL | RequestType.NEED_TOKEN);
+		this.attListUrl = new Url('att/list', RequestType.NORMAL | RequestType.NEED_TOKEN);
 	};
 	
 	/**
@@ -43,7 +44,23 @@ class SystemRequest extends BaseRequest {
 				this.baseResultProcess(result, successCallback);
 			}
 		);
-	}
+	};
+	
+	/**
+	 * @description 获取历史图片
+	 * @param {Object} type 类型
+	 * @param {Object} successCallback 执行成功回调
+	 */
+	attList(type, successCallback) {
+		this.attListUrl.pathParams = [type];
+		this.basePost(
+			this.attListUrl,
+			{},
+			(result) => {
+				this.baseResultProcess(result, successCallback);
+			}
+		);
+	};
 };
 
 export default SystemRequest;
