@@ -6,15 +6,15 @@
 		
 		<!-- foot bar -->
 		<view class="cu-bar tabbar shadow foot" style="background-color: #f2f2f2;">
-			<view class="font-content-simhei" :class="PageCur == 'worktable'? 'action text-blue': 'action text-gray'" @click="NavChange" data-cur="worktable">
+			<view class="font-title-simhei-nocolor" :class="PageCur == 'worktable'? 'action text-blue': 'action text-gray'" @click="NavChange" data-cur="worktable">
 				<view class="cuIcon-homefill"></view>
 				工作台
 			</view>
-			<view class="action text-gray add-action font-content-simhei">
+			<view class="action text-gray add-action font-title-simhei-nocolor">
 				<button class="cu-btn cuIcon-camerafill bg-blue shadow" @click="ScanQrCode"></button>
 				扫描
 			</view>
-			<view class="font-content-simhei" :class="PageCur == 'personal'? 'action text-blue': 'action text-gray'" @click="NavChange" data-cur="personal">
+			<view class="font-title-simhei-nocolor" :class="PageCur == 'personal'? 'action text-blue': 'action text-gray'" @click="NavChange" data-cur="personal">
 				<view class="cuIcon-peoplefill"></view>
 				我的
 			</view>
