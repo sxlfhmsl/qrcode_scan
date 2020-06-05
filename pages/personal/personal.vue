@@ -35,7 +35,7 @@
 				</view>
 			</view>
 			<view class="padding text-right">
-				<text class="cuIcon cuIcon-peoplefill" style="font-size: 250rpx;"></text>
+				<image style="width: 250rpx; height: 250rpx; border-radius: 25rpx;" src="../../static/user.jpg" mode="scaleToFill"></image>
 			</view>
 		</view>
 		
