@@ -1,20 +1,25 @@
 <template>
 	<view class="bg-white padding-sm">
 		<view class="grid text-center col-4">
-			<view class="margin-bottom-sm col-title">生产单位</view>
-			<view class="margin-bottom-sm col-content text-left text-gray">{{itemData == null? '': itemData.deptName}}</view>
-			<view class="margin-bottom-sm col-title">产品名称</view>
-			<view class="margin-bottom-sm col-content text-left text-gray">{{itemData == null? '': itemData.name}}</view>
+			<view class="col-title text-left font-title-simhei" style="color: gray;">管节号</view>
+			<view class="col-content text-left text-black font-content-simsun">{{itemData == null? '': itemData.code}}</view>
+			<view class="col-title text-left font-title-simhei" style="color: gray;">产品类型</view>
+			<view class="col-content text-left text-black font-content-simsun">{{itemData == null? '': itemData.categoryName}}</view>
 			
-			<view class="margin-bottom-sm col-title">产品编号</view>
-			<view class="margin-bottom-sm col-content text-left text-gray">{{itemData == null? '': itemData.code}}</view>
-			<view class="margin-bottom-sm col-title">产品类型</view>
-			<view class="margin-bottom-sm col-content text-left text-gray">{{itemData == null? '': itemData.categoryName}}</view>
+			<view class="col-title text-left font-title-simhei" style="color: gray;">制造单位</view>
+			<view class="col-content text-left text-black font-content-simsun">{{itemData == null? '': itemData.deptName}}</view>
+			<view class="col-title text-left font-title-simhei" style="color: gray;">工程名称</view>
+			<view class="col-content text-left text-black font-content-simsun">{{itemData == null? '': itemData.projectName}}</view>
 			
-			<view class="margin-bottom-sm col-title">使用部位</view>
-			<view class="margin-bottom-sm col-content text-left text-gray">{{itemData == null? '': itemData.place}}</view>
-			<view class="margin-bottom-sm col-title"></view>
-			<view class="margin-bottom-sm col-content text-left text-gray"></view>
+			<view class="col-title text-left font-title-simhei" style="color: gray;">产品规格</view>
+			<view class="col-content text-left text-black font-content-simsun">{{itemData == null? '': itemData.specs}}</view>
+			<view class="col-title text-left font-title-simhei" style="color: gray;">牌号</view>
+			<view class="col-content text-left text-black font-content-simsun">{{itemData == null? '': itemData.brandNum}}</view>
+			
+			<view class="col-title text-left font-title-simhei" style="color: gray;">制作标准</view>
+			<view class="col-content text-left text-black font-content-simsun">{{itemData == null? '': itemData.standard}}</view>
+			<view class="col-title text-left font-title-simhei" style="color: gray;">生产日期</view>
+			<view class="col-content text-left text-black font-content-simsun">{{itemData == null? '': itemData.createDate}}</view>
 		</view>
 	</view>
 </template>
@@ -40,6 +45,10 @@
 </script>
 
 <style>
+	.col-title, .col-content {
+		padding-top: 10rpx;
+		padding-bottom: 10rpx;
+	}
 	.col-title {
 		width: 20% !important;
 		word-wrap:break-word;
