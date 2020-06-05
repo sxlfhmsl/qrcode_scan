@@ -20,9 +20,9 @@
 			
 			
 			<view class="flex padding justify-center cu-form-group" style="margin-top: 5vh; margin-bottom: 15vh;">
-				<view class="title">编号:</view>
-				<input class="uni-input" placeholder="请输入编号" name="input" v-model="itemCode"></input>
-				<button class="margin-left cu-btn bg-gradual-blue radius shadow"  @tap="jumpDetails('code', itemCode)">搜索</button>
+				<view class="title font-title-simhei">编号:</view>
+				<input class="uni-input font-content-simsun" placeholder="请输入编号" name="input" v-model="itemCode"></input>
+				<button class="font-content-simkai margin-left cu-btn bg-gradual-blue radius shadow"  @tap="jumpDetails('code', itemCode)">搜索</button>
 			</view>
 			<view class="flex padding justify-center" style="margin-top: 20vh;">
 				<button
