@@ -83,13 +83,13 @@
 				productRequest: new ProductRequest(),
 				btnExtendsRecv: [{
 					'type': 'recv',
-					'color': 'red',
+					'color': 'blue',
 					'title': '收货',
 					'perNum': 4,
 				}],
 				btnExtendsSend: [{
 					'type': 'send',
-					'color': 'red',
+					'color': 'blue',
 					'title': '发货',
 					'perNum': 3,
 				}],

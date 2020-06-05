@@ -109,13 +109,13 @@
 				btnExtends: {
 					'willMake': [{
 						'type': 'make',
-						'color': 'red',
+						'color': 'blue',
 						'title': '制作',
 						'perNum': 1,                                      // 产品编辑权限编码-制作
 					}],
 					'making': [{
 						'type': 'make',
-						'color': 'red',
+						'color': 'blue',
 						'title': '制作',
 						'perNum': 1,                                      // 产品编辑权限编码-制作
 					}],

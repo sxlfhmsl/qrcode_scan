@@ -103,13 +103,13 @@
 				btnExtends: {
 					'willInstall': [{
 						'type': 'install',
-						'color': 'red',
+						'color': 'blue',
 						'title': '安装',
 						'perNum': 5,
 					}],
 					'installing': [{
 						'type': 'install',
-						'color': 'red',
+						'color': 'blue',
 						'title': '安装',
 						'perNum': 5,
 					}],

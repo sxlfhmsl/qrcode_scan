@@ -88,7 +88,7 @@
 						class="action margin-top margin-bottom margin-left margin-right"
 						@tap="longpress(item.id, item.materialType, item.code, item.specs)"
 					>
-						<button class="cu-btn bg-red shadow round font-title-simkai-nocolor">{{choosedSouceIds.indexOf(item.id) !== -1? '删除': '添加'}}</button>
+						<button class="cu-btn shadow round font-title-simkai-nocolor" :class="choosedSouceIds.indexOf(item.id) !== -1? 'bg-red': 'bg-blue'">{{choosedSouceIds.indexOf(item.id) !== -1? '删除': '添加'}}</button>
 					</view>
 					
 					<view v-if="productShowType == 'slide'" class="move">
