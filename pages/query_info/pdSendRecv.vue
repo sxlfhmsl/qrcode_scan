@@ -94,6 +94,7 @@
 			}
 		},
 		mounted: function(){
+			console.log(this.itemData)
 			if (this.itemData !== null && this.itemData !== undefined) {
 				this.flushData(this.itemData);
 			}

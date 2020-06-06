@@ -187,6 +187,9 @@
 				this.viewData.pdMakeFlow = {'productCategory': this.productData.productCategory, 'productMade': this.productData.productMade};
 				this.viewData.pdInBankInfo = (this.productData.productStorage? this.productData.productStorage: null);
 				this.viewData.pdSendRecv = (this.productData.productDelivery? this.productData.productDelivery: null);
+				if (this.viewData.pdSendRecv) {
+					this.$set(this.viewData.pdSendRecv, 'place', this.productInstall.place);
+				}
 				this.viewData.pdInstall = {'productCategory': this.productData.productCategory, 'productInstall': this.productData.productInstall};
 			}
 		},
