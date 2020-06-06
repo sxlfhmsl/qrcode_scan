@@ -21,6 +21,24 @@
 			</view>
 		</view>
 		
+		<input
+			class="font-content-simsun"
+			style="
+				background-color: rgba(255, 255, 255, 0.8);
+				border-radius: 20rpx;
+				color: #000000;
+				font-size: 30rpx;
+				border: #000000 solid 2rpx;
+				position: fixed;
+				z-index: 100;
+				left: 20rpx;
+				height: 80rpx;
+				width: 500rpx;
+				top: 100rpx;"
+			:style="'top: ' + (CustomBar + 70) + 'rpx;width: calc(100vw - ' + 140 + 'rpx);'"
+			type="text"
+			value="" />
+		
 		<button
 			class="cuIcon cuIcon-locationfill cu-btn lg line-blue"
 			style="position: fixed; z-index: 100;right: 20rpx;"
