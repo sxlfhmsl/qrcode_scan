@@ -15,7 +15,7 @@
 				<pdBaseInfo  v-if="itemPermession['pdBaseInfo'].show" :itemData="viewData.pdBaseInfo"></pdBaseInfo>
 				
 				<!-- 滚动条 -->
-				<scroll-view scroll-x class="bg-white nav solid-top solid-bottom" scroll-with-animation :scroll-left="TabPage_tabInfo.scrollLeft">
+				<scroll-view scroll-x class="bg-white nav solid-top solid-bottom text-center" scroll-with-animation :scroll-left="TabPage_tabInfo.scrollLeft">
 					<view 
 						v-if="item.id == 'baseInfo'? true: itemPermession[item.id].show"
 						class="cu-item font-title-simhei-nocolor"
