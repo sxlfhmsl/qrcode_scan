@@ -44,17 +44,17 @@
 		<view v-if="itemPermession.pdInBankInfo.show" v-show="TabPage_tabInfo.TabCur==='pdMakeFlow'" class="text-blue padding margin-left-sm margin-right-sm margin-top font-title-simhei-nocolor" style="background-color: #f2f2f2; margin-top: 66rpx;">入库</view>
 		<pdInBankInfo v-if="itemPermession.pdInBankInfo.show" v-show="TabPage_tabInfo.TabCur==='pdMakeFlow'" :itemData="viewData.pdInBankInfo"></pdInBankInfo>
 		
-		<view v-if="itemPermession.pdSendRecv.show" v-show="TabPage_tabInfo.TabCur==='baseInfo'" class="text-blue padding margin-left margin-right margin-top font-title-simhei-nocolor" style="background-color: #f2f2f2; margin-top: 50rpx;">收发货信息</view>
-		<pdSendRecv v-if="itemPermession.pdSendRecv.show" v-show="TabPage_tabInfo.TabCur==='baseInfo'" :itemData="viewData.pdSendRecv"></pdSendRecv>
+		<view v-if="itemPermession.pdSendRecv.show" v-show="TabPage_tabInfo.TabCur==='pdMakeFlow'" class="text-blue padding margin-left-sm margin-right-sm margin-top font-title-simhei-nocolor" style="background-color: #f2f2f2; margin-top: 66rpx;">发货</view>
+		<pdSend v-if="itemPermession.pdSendRecv.show" v-show="TabPage_tabInfo.TabCur==='pdMakeFlow'" :itemData="viewData.pdSendRecv"></pdSend>
 		
 		
 		<!-- 安装流程 -->
+		<view v-if="itemPermession.pdSendRecv.show" v-show="TabPage_tabInfo.TabCur==='pdInstall'" class="text-blue padding margin-left-sm margin-right-sm margin-top font-title-simhei-nocolor" style="background-color: #f2f2f2; margin-top: 66rpx;">收货</view>
+		<pdRecv v-if="itemPermession.pdSendRecv.show" v-show="TabPage_tabInfo.TabCur==='pdInstall'" :itemData="viewData.pdSendRecv"></pdRecv>
+		
 		<view v-if="itemPermession.pdSourceInfo.show" v-show="TabPage_tabInfo.TabCur==='pdInstall'" class="text-blue padding margin-left-sm margin-right-sm margin-top font-title-simhei-nocolor" style="background-color: #f2f2f2; margin-top: 66rpx;">安装</view>
 		<pdInstall v-if="itemPermession.pdInstall.show" v-show="TabPage_tabInfo.TabCur==='pdInstall'" :itemData="viewData.pdInstall"></pdInstall>
 		
-		
-		<!-- 留白 -->
-		<view style="height: 20rpx; width: 100%;"></view>
 	</view>
 </template>
 
@@ -64,8 +64,11 @@
 	import pdInBankInfo from '@/pages/query_info/pdInBankInfo';
 	import pdInstall from '@/pages/query_info/pdInstall';
 	import pdMakeFlow from '@/pages/query_info/pdMakeFlow';
-	import pdSendRecv from '@/pages/query_info/pdSendRecv';
 	import pdSourceInfo from '@/pages/query_info/pdSourceInfo';
+	
+	import pdSendRecv from '@/pages/query_info/pdSendRecv';
+	import pdSend from '@/pages/query_info/pdSend';
+	import pdRecv from '@/pages/query_info/pdRecv';
 	
 	// 网络请求类
 	import ProductRequest from '@/pages/components/network/request/product';
@@ -79,7 +82,9 @@
 			pdInstall,
 			pdMakeFlow,
 			pdSendRecv,
-			pdSourceInfo
+			pdSourceInfo,
+			pdSend,
+			pdRecv
 		},
 		data() {
 			return {
@@ -188,7 +193,7 @@
 				this.viewData.pdInBankInfo = (this.productData.productStorage? this.productData.productStorage: null);
 				this.viewData.pdSendRecv = (this.productData.productDelivery? this.productData.productDelivery: null);
 				if (this.viewData.pdSendRecv) {
-					this.$set(this.viewData.pdSendRecv, 'place', this.productInstall.place);
+					this.$set(this.viewData.pdSendRecv, 'place', this.productData.productInstall.place);
 				}
 				this.viewData.pdInstall = {'productCategory': this.productData.productCategory, 'productInstall': this.productData.productInstall};
 			}
