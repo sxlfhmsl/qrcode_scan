@@ -64,6 +64,10 @@
             "path" : "pages/components/imageChoose",
             "style" : {}
         }
+        ,{
+            "path" : "pages/components/addressChoose",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"mp-alipay": {
