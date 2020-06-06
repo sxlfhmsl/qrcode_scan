@@ -16,6 +16,7 @@
 						class="padding margin-bottom margin-top" 
 						v-for="(image, index) in images"
 						style="border: #222222 solid 3rpx;"
+						:key="index"
 					>
 						<image mode="widthFix" :src="Url.resBaseUrl + image.att" @tap="choosePicture(image.att)"></image>
 					</view>
