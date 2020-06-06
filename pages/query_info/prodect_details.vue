@@ -6,13 +6,12 @@
 			</block>
 		</cu-custom>
 		
-		<view style="height: 400rpx;">
+		<view style="height: 80rpx;">
 			<view style="
 				position: fixed;
 				width: 100%;
 				z-index: 1024;
 			" :style="'top:' + CustomBar + 'px'">
-				<pdBaseInfo  v-if="itemPermession['pdBaseInfo'].show" :itemData="viewData.pdBaseInfo"></pdBaseInfo>
 				
 				<!-- 滚动条 -->
 				<scroll-view scroll-x class="bg-white nav solid-top solid-bottom text-center" scroll-with-animation :scroll-left="TabPage_tabInfo.scrollLeft">
@@ -31,14 +30,18 @@
 			</view>
 		</view>
 		
-		<view v-if="itemPermession.pdSourceInfo.show" v-show="TabPage_tabInfo.TabCur==='baseInfo'" class="text-blue padding margin-left margin-right margin-top font-title-simhei-nocolor" style="background-color: #f2f2f2; margin-top: 50rpx;">原材料信息</view>
-		<pdSourceInfo v-if="itemPermession.pdSourceInfo.show" v-show="TabPage_tabInfo.TabCur==='baseInfo'" :itemData="viewData.pdSourceInfo"></pdSourceInfo>
+		<!-- 基本信息 -->
+		<pdBaseInfo  v-if="itemPermession['pdBaseInfo'].show" v-show="TabPage_tabInfo.TabCur==='baseInfo'" :itemData="viewData.pdBaseInfo"></pdBaseInfo>
 		
-		<view v-if="itemPermession.pdInBankInfo.show" v-show="TabPage_tabInfo.TabCur==='baseInfo'" class="text-blue padding margin-left margin-right margin-top font-title-simhei-nocolor" style="background-color: #f2f2f2; margin-top: 50rpx;">入库信息</view>
+		
+		<view v-if="itemPermession.pdSourceInfo.show" v-show="TabPage_tabInfo.TabCur==='pdMakeFlow'" class="text-blue padding margin-left-sm margin-right-sm margin-top font-title-simhei-nocolor" style="background-color: #f2f2f2; margin-top: 66rpx;">原材料信息</view>
+		<pdSourceInfo v-if="itemPermession.pdSourceInfo.show" v-show="TabPage_tabInfo.TabCur==='pdMakeFlow'" :itemData="viewData.pdSourceInfo"></pdSourceInfo>
+		
+		<!-- <view v-if="itemPermession.pdInBankInfo.show" v-show="TabPage_tabInfo.TabCur==='baseInfo'" class="text-blue padding margin-left margin-right margin-top font-title-simhei-nocolor" style="background-color: #f2f2f2; margin-top: 50rpx;">入库信息</view>
 		<pdInBankInfo v-if="itemPermession.pdInBankInfo.show" v-show="TabPage_tabInfo.TabCur==='baseInfo'" :itemData="viewData.pdInBankInfo"></pdInBankInfo>
 		
 		<view v-if="itemPermession.pdSendRecv.show" v-show="TabPage_tabInfo.TabCur==='baseInfo'" class="text-blue padding margin-left margin-right margin-top font-title-simhei-nocolor" style="background-color: #f2f2f2; margin-top: 50rpx;">收发货信息</view>
-		<pdSendRecv v-if="itemPermession.pdSendRecv.show" v-show="TabPage_tabInfo.TabCur==='baseInfo'" :itemData="viewData.pdSendRecv"></pdSendRecv>
+		<pdSendRecv v-if="itemPermession.pdSendRecv.show" v-show="TabPage_tabInfo.TabCur==='baseInfo'" :itemData="viewData.pdSendRecv"></pdSendRecv> -->
 		
 		<pdInstall v-if="itemPermession.pdInstall.show" v-show="TabPage_tabInfo.TabCur==='pdInstall'" :itemData="viewData.pdInstall"></pdInstall>
 		<pdMakeFlow v-if="itemPermession.pdMakeFlow.show" v-show="TabPage_tabInfo.TabCur==='pdMakeFlow'" :itemData="viewData.pdMakeFlow"></pdMakeFlow>
