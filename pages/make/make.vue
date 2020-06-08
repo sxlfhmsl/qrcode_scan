@@ -226,6 +226,14 @@
 			this.TabPage_tabInfo.TabItems.forEach(item => {
 				this.flushRealData(undefined, item.id);
 			});
+			
+			// 生成workers
+			this.productRequest.selectWorker(data => {
+				uni.setStorage({
+					key: 'workers',
+					data: JSON.stringify(data),
+				});
+			});
 		}
 	}
 </script>

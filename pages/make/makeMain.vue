@@ -413,17 +413,25 @@
 			}
 		},
 		onLoad: function(option) {
+			// 获取工作者
+			let workersBuf = uni.getStorageSync('workers');
+			console.log(workersBuf);
+			if (workersBuf) {
+				this.workers = JSON.parse(workersBuf);
+				
+			}
+			else {
+				this.productRequest.selectWorker(data => {
+					this.workers = data;
+				});
+			}
+			
 			this.productId = (option.productId? option.productId: this.productId);
 			this.loadProductInfo();
 			this.loadSourceData();
 			this.loadChoosedSource();
 		},
 		mounted:function(){
-			// 获取工作者
-			this.productRequest.selectWorker(data => {
-				this.workers = data;
-			});
-			
 			this.TabPage_tabInfo.TabItems = [{
 				title: '原材料',
 				id: 'pdSource'

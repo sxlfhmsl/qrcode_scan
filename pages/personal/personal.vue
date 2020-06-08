@@ -35,7 +35,7 @@
 				</view>
 			</view>
 			<view class="padding text-right">
-				<image style="width: 250rpx; height: 250rpx; border-radius: 25rpx;" src="../../static/user.jpg" mode="scaleToFill"></image>
+				<image style="width: 250rpx; height: 250rpx; border-radius: 25rpx;" src="../../static/user.webp" mode="scaleToFill"></image>
 			</view>
 		</view>
 		
