@@ -69,10 +69,17 @@
 				</view>
 				
 				<view
-					class="padding-sm col-auto-line bg-white solid-right"
-					style="flex: auto; width: 75%; background-color: white"
+					class="padding-sm col-auto-line bg-white"
+					style="flex: auto; width: calc(75% - 60rpx); background-color: white"
 				>
 					<input class="font-content-simsun" v-model="sendData.sendAddr" style="height: 100%; width: 100%;"/>
+				</view>
+				
+				<view
+					class="col-auto-line bg-white solid-right padding-bottom-sm padding-top-sm"
+					style="flex: auto; width: 60rpx; background-color: white"
+				>
+					<button class="cu-btn sm cuIcon cuIcon-locationfill bg-blue" @tap="addressChoose('send')"></button>
 				</view>
 			</view>
 			
@@ -85,10 +92,17 @@
 				</view>
 				
 				<view
-					class="padding-sm col-auto-line bg-white solid-right"
-					style="flex: auto; width: 75%; background-color: white"
+					class="padding-sm col-auto-line bg-white"
+					style="flex: auto; width: calc(75% - 60rpx); background-color: white"
 				>
-					<input class="font-content-simsun" v-model="sendData.recvAddr" style="height: 100%; width: 100%;"/>
+					<input class="font-content-simsun" v-model="sendData.recvAddr" style="height: 100%; width: 100%"/>
+				</view>
+				
+				<view
+					class="col-auto-line bg-white solid-right padding-bottom-sm padding-top-sm"
+					style="flex: auto; width: 60rpx; background-color: white"
+				>
+					<button class="cu-btn sm cuIcon cuIcon-locationfill bg-blue" @tap="addressChoose('recv')"></button>
 				</view>
 			</view>
 			
@@ -135,6 +149,11 @@
 			}
 		},
 		methods: {
+			addressChoose: function(type) {
+				uni.navigateTo({
+					url: '/pages/components/addressChoose?type=' + type
+				});
+			},
 			MultiChange(e) {
 				this.multiIndex = e.detail.value;
 				let buffer = this.multiArray[2][this.multiIndex[2]];
