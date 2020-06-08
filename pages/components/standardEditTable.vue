@@ -147,7 +147,9 @@
 			},
 			workerPickerChange: function(e, id) {
 				this.workerIndex = e.detail.value;
+				let workerNameKey = id.substring(0, id.indexOf('WorkerId')) + 'WorkerName';
 				this.applyChange(id, this.workers[this.workerIndex].id);
+				this.applyChange(workerNameKey, this.workers[this.workerIndex].workerName + '-' + this.workers[this.workerIndex].dictName);
 			},
 		},
 		mounted: function(){
