@@ -74,7 +74,7 @@
 				});
 			},
 			pickerMenu: function(btnType) {
-				console.log({'btnType': btnType, 'productId': targetId})
+				// console.log({'btnType': btnType, 'productId': targetId})
 				// this.$emit('productTap', );
 			}
 		},

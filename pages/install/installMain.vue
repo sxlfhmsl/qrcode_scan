@@ -168,7 +168,7 @@
 					// 计算制作数据显示
 					this.calcInstallData();
 					if (data !== null) {
-						this.title = data.product.name;
+						this.title = data.product.code;
 						this.pdBaseInfoData = data.product;
 					}
 				});

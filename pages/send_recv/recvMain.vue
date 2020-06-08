@@ -88,7 +88,7 @@
 				this.productRequest.detailById(this.productId, data => {
 					this.rawProductData = data;
 					if (data !== null) {
-						this.title = data.product.name;
+						this.title = data.product.code;
 						this.pdBaseInfoData = data.product;
 					}
 				});

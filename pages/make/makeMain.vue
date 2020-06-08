@@ -302,7 +302,7 @@
 					// 计算制作数据显示
 					this.calcMakeData();
 					if (data !== null) {
-						this.title = data.product.name;
+						this.title = data.product.code;
 						this.pdBaseInfoData = data.product;
 					}
 				});
@@ -415,7 +415,7 @@
 		onLoad: function(option) {
 			// 获取工作者
 			let workersBuf = uni.getStorageSync('workers');
-			console.log(workersBuf);
+			// console.log(workersBuf);
 			if (workersBuf) {
 				this.workers = JSON.parse(workersBuf);
 				
