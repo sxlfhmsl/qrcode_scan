@@ -273,6 +273,9 @@
 							this.multiArray[1].push(childrenSen[item]);
 						});
 					}
+					
+					// 提供一个默认值
+					this.sendData.unit.name = this.multiArray[1][0];
 				});
 			}
 		},
