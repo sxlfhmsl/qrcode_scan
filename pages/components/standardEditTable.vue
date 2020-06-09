@@ -42,7 +42,7 @@
 				</picker>
 				<picker v-if="item.type == 'worker'" @change="workerPickerChange($event, item.id)" range-key="label" :value="workerIndex" :range="workersLocal" style="height: 100%; width: 100%;" :id="item.id">
 					<view class="picker">
-						{{workerIndex == null? '': workers[workerIndex].workerName + '-' + workers[workerIndex].dictName}}
+						{{workerIndex == null? '': workers[workerIndex].workerName + '-' + workers[workerIndex].dictName + '（' + workers[workerIndex].deptName + '）'}}
 					</view>
 				</picker>
 			</view>
@@ -149,7 +149,7 @@
 				this.workerIndex = e.detail.value;
 				let workerNameKey = id.substring(0, id.indexOf('WorkerId')) + 'WorkerName';
 				this.applyChange(id, this.workers[this.workerIndex].id);
-				this.applyChange(workerNameKey, this.workers[this.workerIndex].workerName + '-' + this.workers[this.workerIndex].dictName);
+				this.applyChange(workerNameKey, this.workers[this.workerIndex].workerName + '-' + this.workers[this.workerIndex].dictName + '（' + this.workers[this.workerIndex].deptName + '）');
 			},
 		},
 		mounted: function(){
@@ -173,7 +173,7 @@
 				
 				this.workers.forEach((item, index) => {
 					this.workersLocal.push(item);
-					this.workersLocal[index].label = item.workerName + '-' + item.dictName;
+					this.workersLocal[index].label = item.workerName + '-' + item.dictName + '（' + item.deptName + '）';
 				});
 			});
 		},
