@@ -5,7 +5,12 @@
 				{{this.softwareInfo.defaultTitle}}
 			</block>
 		</cu-custom>
-		
+		<image 
+			src="../../static/background/02.jpg" 
+			mode="aspectFill" 
+			style="width: 100vw; position: fixed; z-index: 1;" 
+			:style="'height: calc(100vh - ' + CustomBar + 'rpx)'"
+		></image>
 		<!-- 所有的按钮 -->
 		<scroll-view scroll-y class="page">
 			<view class="nav-list">
