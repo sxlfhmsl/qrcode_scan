@@ -418,7 +418,6 @@
 			// console.log(workersBuf);
 			if (workersBuf) {
 				this.workers = JSON.parse(workersBuf);
-				
 			}
 			else {
 				this.productRequest.selectWorker(data => {
