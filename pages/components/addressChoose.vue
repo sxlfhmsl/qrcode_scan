@@ -62,6 +62,12 @@
 						@tap="toLocation"
 					>
 					</cover-image>
+					
+					<cover-view
+						class="cu-btn bg-gradual-blue font-content-simkai text-center shadow"
+						style="font-size: 50rpx; border-radius: 80rpx; border: #fff solid 2rpx; position: fixed; z-index: 100;right: 20rpx; width: 160rpx; height: 160rpx; bottom: 40rpx; left: calc(50vw - 80rpx);"
+						@tap="confirm"
+					>确定</cover-view>
 				</map>
 			</view>
 		</view>
@@ -97,12 +103,16 @@
 			
 			lower: function() {
 				
+			},
+			
+			confirm: function() {
+				
 			}
 		},
 		mounted: function(){
 		},
 		onReady: function() {
-			console.log(this.$refs.locationMap);
+			this.map = this.$refs.locationMap;
 		}
 	}
 </script>
