@@ -40,42 +40,42 @@
 		</view>
 		
 		<view class="cu-list menu sm-border card-menu margin-top" style="background-color: #f2f2f2;">
-			<view class="cu-item arrow" style="background-color: #f2f2f2;">
+			<view class="cu-item" style="background-color: #f2f2f2;">
 				<view class="content">
 					<text class="text-black font-title-simhei-nocolor">账户:</text>
 					<text class="text-black font-content-simsun">{{userInfo.user.account? userInfo.user.account: ''}}</text>
 				</view>
 			</view>
 			
-			<view class="cu-item arrow" style="background-color: #f2f2f2;">
+			<view class="cu-item" style="background-color: #f2f2f2;">
 				<view class="content">
 					<text class="text-black font-title-simhei-nocolor">创建:</text>
 					<text class="text-black font-content-simsun">{{userInfo.user.createTime? userInfo.user.createTime: ''}}</text>
 				</view>
 			</view>
 			
-			<view class="cu-item arrow" style="background-color: #f2f2f2;">
+			<view class="cu-item" style="background-color: #f2f2f2;">
 				<view class="content">
 					<text class="text-black font-title-simhei-nocolor">生日:</text>
 					<text class="text-black font-content-simsun">{{userInfo.user.birthday? userInfo.user.birthday: ''}}</text>
 				</view>
 			</view>
 			
-			<view class="cu-item arrow" style="background-color: #f2f2f2;">
+			<view class="cu-item" style="background-color: #f2f2f2;">
 				<view class="content">
 					<text class="text-black font-title-simhei-nocolor">邮箱:</text>
 					<text class="text-black font-content-simsun">{{userInfo.user.email? userInfo.user.email: ''}}</text>
 				</view>
 			</view>
 			
-			<view class="cu-item arrow" style="background-color: #f2f2f2;">
+			<view class="cu-item" style="background-color: #f2f2f2;">
 				<view class="content">
 					<text class="text-black font-title-simhei-nocolor">手机:</text>
 					<text class="text-black font-content-simsun">{{userInfo.user.phone? userInfo.user.phone: ''}}</text>
 				</view>
 			</view>
 			
-			<view class="cu-item arrow" style="background-color: #f2f2f2;">
+			<view class="cu-item" style="background-color: #f2f2f2;">
 				<view class="content">
 					<text class="text-black font-title-simhei-nocolor">部门:</text>
 					<text class="text-black font-content-simsun">{{userInfo.dept.fullName? userInfo.dept.fullName: ''}}</text>
