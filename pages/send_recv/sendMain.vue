@@ -149,6 +149,14 @@
 			}
 		},
 		methods: {
+			addressChooseComp: function(result) {
+				if (result.type == 'send') {
+					sendData.sendAddr = result.address;
+				}
+				else if (result.type == 'recv') {
+					sendData.recvAddr = result.address;
+				}
+			},
 			addressChoose: function(type) {
 				uni.navigateTo({
 					url: '/pages/components/addressChoose?type=' + type
@@ -302,7 +310,12 @@
 			this.productId = (option.productId? option.productId: this.productId);
 			this.loadProductInfo();
 			this.loadDeptData();
+			
+			uni.$on('addrChooseComp', this.addressChooseComp);
 		},
+		destroyed:function(){
+			uni.$off('addrChooseComp', this.addressChooseComp);
+		}
 	}
 </script>
 
