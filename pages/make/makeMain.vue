@@ -313,6 +313,10 @@
 					if (data !== null) {
 						this.title = data.product.code;
 						this.pdBaseInfoData = data.product;
+						uni.setStorage({
+							key: 'pdBaseInfoData',
+							data: JSON.stringify(this.pdBaseInfoData);
+						});
 					}
 				});
 			},
