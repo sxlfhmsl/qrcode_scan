@@ -315,7 +315,7 @@
 						this.pdBaseInfoData = data.product;
 						uni.setStorage({
 							key: 'pdBaseInfoData',
-							data: JSON.stringify(this.pdBaseInfoData);
+							data: JSON.stringify(this.pdBaseInfoData)
 						});
 					}
 				});
