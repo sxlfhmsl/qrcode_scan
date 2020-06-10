@@ -31,6 +31,7 @@
 		</view>
 		
 		<!-- 基本信息 -->
+		<view v-if="itemPermession['pdBaseInfo'].show" v-show="TabPage_tabInfo.TabCur==='baseInfo'" class="text-blue padding margin-left-sm margin-right-sm margin-top font-title-simhei-nocolor" style="background-color: #f2f2f2; margin-top: 66rpx;">基本信息</view>
 		<pdBaseInfo  v-if="itemPermession['pdBaseInfo'].show" v-show="TabPage_tabInfo.TabCur==='baseInfo'" :itemData="viewData.pdBaseInfo"></pdBaseInfo>
 		
 		
@@ -60,7 +61,7 @@
 
 <script>
 	import TabPage from '@/pages/components/custom-tab-page';
-	import pdBaseInfo from '@/pages/components/pdBaseInfo';
+	import pdBaseInfo from '@/pages/query_info/pdBaseInfo';
 	import pdInBankInfo from '@/pages/query_info/pdInBankInfo';
 	import pdInstall from '@/pages/query_info/pdInstall';
 	import pdMakeFlow from '@/pages/query_info/pdMakeFlow';
