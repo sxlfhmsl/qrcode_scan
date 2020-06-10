@@ -33,13 +33,13 @@
 		
 		
 		<scroll-view v-show="TabPage_tabInfo.TabCur==='pdSource'">
-			<view class="text-center flex">
-				<input @change="searchFilterChange" class="radius margin font-content-simhei" placeholder="材料编号" style="max-width: 30%; border-bottom: grey solid 1px;" v-model="code"/>
-				<input @change="searchFilterChange" class="radius margin font-content-simhei" placeholder="品种名称" style="max-width: 30%; border-bottom: grey solid 1px;" v-model="materialType"/>
-				<picker class="font-content-simhei" mode="date" @change="dateChange" style="width: 60%;">
-					<input class="radius margin font-content-simhei" placeholder="进场时间" style="max-width: 100%; border-bottom: grey solid 1px;" v-model="enterDate" disabled="true"/>
-				</picker>
-			</view>
+			<!-- <view class="text-center flex"> -->
+				<!-- <input @change="searchFilterChange" class="radius margin font-content-simhei" placeholder="材料编号" style="max-width: 30%; border-bottom: grey solid 1px;" v-model="code"/> -->
+				<!-- <input @change="searchFilterChange" class="radius margin font-content-simhei" placeholder="品种名称" style="max-width: 30%; border-bottom: grey solid 1px;" v-model="materialType"/> -->
+				<!-- <picker class="font-content-simhei" mode="date" @change="dateChange" style="width: 60%;"> -->
+					<!-- <input class="radius margin font-content-simhei" placeholder="进场时间" style="max-width: 100%; border-bottom: grey solid 1px;" v-model="enterDate" disabled="true"/> -->
+				<!-- </picker> -->
+			<!-- </view> -->
 			
 			<!-- 原材料 -->
 			<view class="cu-list menu">
@@ -49,57 +49,59 @@
 						(modalName=='move-box-'+ index?'move-cur':'') + 
 						(productShowType != 'slide'? ' margin-right-sm': ' ')
 					"
-					v-for="(item, index) in souceList"
+					v-for="(item, index) in choosedSouceList"
 					:key="index"
 					:id="item.id" 
-					@longpress="longpress(item.id, item.materialType, item.code, item.specs, 'longpress')"
+					@longpress="removeMaterial(item.id)"
 					@touchstart="ListTouchStart" @touchmove="ListTouchMove" @touchend="ListTouchEnd" :data-target="'move-box-' + index"
 					style="padding-left: 2rpx; padding-right: 2rpx; background-color: #f2f2f2;"
-					:style="choosedSouceIds.indexOf(item.id) !== -1? 'border: blue solid 2px;': ''"
 				>
-					<view class="content margin-top margin-bottom">
+					<view class="content margin-left margin-top margin-bottom">
 						<view class="text-black margin-bottom-sm font-title-simhei">
-							品种:
-							<text class="font-content-simsun">{{item.materialType}}</text>
+							名称:
+							<text class="font-content-simsun">{{item.materialName}}</text>
 						</view>
 						<view class="text-black margin-top-sm font-title-simhei">
 							编号:
-							<text class="font-content-simsun">{{item.code}}</text>
+							<text class="font-content-simsun">{{item.materialCode}}</text>
 						</view>
 					</view>
-					<view class="text-blue font-title-simkai-nocolor" 
-					    v-if="choosedSouceIds.indexOf(item.id) !== -1"
-						style="position: absolute;z-index: 99;font-size: 2em;opacity: 0.5;transform:rotate(-45deg);top: calc(50% - 0.75em); left: calc(50% - 2em);"
-					>已选择</view>
+					<!-- <view class="text-blue font-title-simkai-nocolor" -->
+					    <!-- v-if="choosedSouceIds.indexOf(item.id) !== -1" -->
+						<!-- style="position: absolute;z-index: 99;font-size: 2em;opacity: 0.5;transform:rotate(-45deg);top: calc(50% - 0.75em); left: calc(50% - 2em);" -->
+					<!-- >已选择</view> -->
 					
 					<view class="action margin-top margin-bottom">
 						<view class="text-black text-right margin-bottom-sm font-title-simhei" style="line-height: 1.75em;">
 							规格:
-							<text class="font-content-simsun">{{item.specs}}</text>
+							<text class="font-content-simsun">{{item.materialSpecs}}</text>
 						</view>
 						<view class="text-black text-right margin-top-sm font-title-simhei" style="line-height: 1.75em;">
-							时间:
-							<text class="font-content-simsun">{{item.enterDate}}</text>
+							<text class="text-white" style="color: #f2f2f2;">asshole</text>
 						</view>
 					</view>
 					
 					<view 
 						v-if="productShowType == 'button'"
 						class="action margin-top margin-bottom margin-left margin-right"
-						@tap="longpress(item.id, item.materialType, item.code, item.specs)"
 					>
-						<button class="cu-btn shadow round font-title-simkai-nocolor" :class="choosedSouceIds.indexOf(item.id) !== -1? 'bg-red': 'bg-blue'">{{choosedSouceIds.indexOf(item.id) !== -1? '删除': '添加'}}</button>
+						<button 
+							class="cu-btn shadow round font-title-simkai-nocolor bg-red"
+							@tap="removeMaterial(item.id)"
+						>删除</button>
+						<!-- <button class="cu-btn shadow round font-title-simkai-nocolor" :class="choosedSouceIds.indexOf(item.id) !== -1? 'bg-red': 'bg-blue'">{{choosedSouceIds.indexOf(item.id) !== -1? '删除': '添加'}}</button> -->
 					</view>
 					
 					<view v-if="productShowType == 'slide'" class="move">
-						<view class="bg-blue" @tap="addMaterial(item.id, item.materialType, item.code, item.specs)">添加</view>
+						<!-- <view class="bg-blue" @tap="addMaterial(item.id, item.materialType, item.code, item.specs)">添加</view> -->
 						<view class="bg-red" @tap="removeMaterial(item.id)">删除</view>
 					</view>
 				</view>
 			</view>
 			
 			<view class="text-center">
-				<button class="cu-btn bg-blue round lg shadow margin font-title-simkai-nocolor" @tap="resetSearchFilter">重置</button>
+				<button class="cu-btn bg-blue round lg shadow margin font-title-simkai-nocolor" @tap="editMaterial">修改</button>
+				<!-- <button class="cu-btn bg-blue round lg shadow margin font-title-simkai-nocolor" @tap="resetSearchFilter">重置</button> -->
 				<button class="cu-btn bg-blue round lg shadow margin font-title-simkai-nocolor" @tap="toNextStep">下一步</button>
 			</view>
 		</scroll-view>
@@ -200,7 +202,18 @@
 				'makeCommitObject': {},                                    // 提交对象
 			}
 		},
+		onShow: function () {
+			this.loadChoosedSource();
+		},
 		methods: {
+			/**
+			 * @description 编辑原材料
+			 */
+			editMaterial: function() {
+				uni.navigateTo({
+					url: '/pages/make/materialChoose?productId=' + this.productId
+				});
+			},
 			/**
 			 * @description 长按添加或者删除
 			 * @param {Object} id 原材料id
@@ -283,10 +296,6 @@
 			 * @param {Object} materialId 原材料id
 			 */
 			removeMaterial: function(materialId) {
-				if (this.choosedSouceIds.indexOf(materialId) == -1) {
-					return;
-				}
-				materialId = this.choosedSouceList[this.choosedSouceIds.indexOf(materialId)].id;
 				this.materialRequest.del(
 					materialId, data => {
 						this.loadChoosedSource();
