@@ -20,6 +20,7 @@ Vue.prototype.softwareInfo = {
 // #ifdef APP-PLUS || APP-PLUS-NVUE
 if (plus.runtime.appid != "HBuilder") {
 	Vue.prototype.softwareInfo.version = plus.runtime.version + ' ' + plus.runtime.versionCode;
+	Vue.prototype.softwareInfo.owner = '成都朝为科技';
 }
 // #endif
 
