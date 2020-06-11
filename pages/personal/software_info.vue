@@ -6,7 +6,7 @@
 			</block>
 		</cu-custom>
 		<view class="cu-list menu sm-border">
-			<view class="cu-item arrow">
+			<view class="cu-item">
 				<view class="content">
 					<text class="cuIcon-title text-blue"></text>
 					<text class="text-grey">名称</text>
@@ -14,7 +14,7 @@
 				</view>
 			</view>
 			
-			<view class="cu-item arrow">
+			<view class="cu-item">
 				<view class="content">
 					<text class="cuIcon-people text-blue"></text>
 					<text class="text-grey">版权所属</text>
@@ -22,7 +22,7 @@
 				</view>
 			</view>
 			
-			<view class="cu-item arrow">
+			<view class="cu-item">
 				<view class="content">
 					<text class="cuIcon-info text-blue"></text>
 					<text class="text-grey">版本号</text>
