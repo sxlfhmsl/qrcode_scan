@@ -21,7 +21,7 @@
 		<view class="grid margin col-2" style="background-color: #f2f2f2; border-radius: 50rpx; margin-top: 70rpx;">
 			<view class="padding">
 				<view class="font-title-simhei dept" style="margin-bottom: 150rpx;">
-					{{userInfo.dept.simpleName? userInfo.dept.simpleName: ''}}
+					{{userInfo.dept.simpleName? (userInfo.dept.simpleName.length <= 6? userInfo.dept.simpleName: userInfo.dept.simpleName.substring(0, 6) + ' ...'): ''}}
 				</view>
 				<view class="cu-avatar text-black" style="font-size: 100rpx; width: auto; height: auto; background-color: #f2f2f2;">
 					<view
@@ -42,43 +42,55 @@
 		<view class="cu-list menu sm-border card-menu margin-top" style="background-color: #f2f2f2;">
 			<view class="cu-item" style="background-color: #f2f2f2;">
 				<view class="content">
-					<text class="text-black font-title-simhei-nocolor">账户:</text>
-					<text class="text-black font-content-simsun">{{userInfo.user.account? userInfo.user.account: ''}}</text>
+					<view class="grid text-left col-2">
+						<view  class="text-black font-title-simhei-nocolor" style="width: 20%;">账户:</view>
+						<view  class="text-black font-content-simsun" style="width: 80%;">{{userInfo.user.account? userInfo.user.account: ''}}</view>
+					</view>
 				</view>
 			</view>
 			
 			<view class="cu-item" style="background-color: #f2f2f2;">
 				<view class="content">
-					<text class="text-black font-title-simhei-nocolor">创建:</text>
-					<text class="text-black font-content-simsun">{{userInfo.user.createTime? userInfo.user.createTime: ''}}</text>
+					<view class="grid text-left col-2">
+						<view  class="text-black font-title-simhei-nocolor" style="width: 20%;">创建:</view>
+						<view  class="text-black font-content-simsun" style="width: 80%;">{{userInfo.user.createTime? userInfo.user.createTime: ''}}</view>
+					</view>
 				</view>
 			</view>
 			
 			<view class="cu-item" style="background-color: #f2f2f2;">
 				<view class="content">
-					<text class="text-black font-title-simhei-nocolor">生日:</text>
-					<text class="text-black font-content-simsun">{{userInfo.user.birthday? userInfo.user.birthday: ''}}</text>
+					<view class="grid text-left col-2">
+						<view  class="text-black font-title-simhei-nocolor" style="width: 20%;">生日:</view>
+						<view  class="text-black font-content-simsun" style="width: 80%;">{{userInfo.user.birthday? userInfo.user.birthday: ''}}</view>
+					</view>
 				</view>
 			</view>
 			
 			<view class="cu-item" style="background-color: #f2f2f2;">
 				<view class="content">
-					<text class="text-black font-title-simhei-nocolor">邮箱:</text>
-					<text class="text-black font-content-simsun">{{userInfo.user.email? userInfo.user.email: ''}}</text>
+					<view class="grid text-left col-2">
+						<view  class="text-black font-title-simhei-nocolor" style="width: 20%;">邮箱:</view>
+						<view  class="text-black font-content-simsun" style="width: 80%;">{{userInfo.user.email? userInfo.user.email: ''}}</view>
+					</view>
 				</view>
 			</view>
 			
 			<view class="cu-item" style="background-color: #f2f2f2;">
 				<view class="content">
-					<text class="text-black font-title-simhei-nocolor">手机:</text>
-					<text class="text-black font-content-simsun">{{userInfo.user.phone? userInfo.user.phone: ''}}</text>
+					<view class="grid text-left col-2">
+						<view  class="text-black font-title-simhei-nocolor" style="width: 20%;">手机:</view>
+						<view  class="text-black font-content-simsun" style="width: 80%;">{{userInfo.user.phone? userInfo.user.phone: ''}}</view>
+					</view>
 				</view>
 			</view>
 			
 			<view class="cu-item" style="background-color: #f2f2f2;">
 				<view class="content">
-					<text class="text-black font-title-simhei-nocolor">部门:</text>
-					<text class="text-black font-content-simsun">{{userInfo.dept.fullName? userInfo.dept.fullName: ''}}</text>
+					<view class="grid text-left col-2">
+						<view  class="text-black font-title-simhei-nocolor" style="width: 20%;">部门:</view>
+						<view  class="text-black font-content-simsun" style="width: 80%;">{{userInfo.dept.fullName? userInfo.dept.fullName: ''}}</view>
+					</view>
 				</view>
 			</view>
 		</view>
