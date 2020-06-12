@@ -25,7 +25,7 @@
 				<view class="text-gray text-right margin-bottom font-content-simsun" style="line-height: 2em;">
 					<text v-if="!item.deptName" class="text-white cuIcon cuIcon-full" style="color: #f2f2f2;">
 					</text>
-					{{item.deptName}}
+					{{item.deptName.length <= 10? item.deptName: item.deptName.substring(0, 10) + ' ...'}}
 				</view>
 				<view class="text-blue text-right margin-top font-content-simsun" style="line-height: 2em;">
 					<text v-if="!(item.createDate? item.createDate: item.recevieDate)" class="text-white cuIcon cuIcon-full" style="color: #f2f2f2;">

@@ -9,8 +9,10 @@
 			</block>
 		</cu-custom>
 		
-		<view style="height: 300rpx;">
-			<view style="
+		<view :style="'height: ' + frontBarHeight + 'rpx;'">
+			<view 
+				ref="frontBar" id="frontBar"
+				style="
 				position: fixed;
 				width: 100%;
 				z-index: 1024;
@@ -78,6 +80,7 @@
 				'title': '',                                                // 标题
 				'recvDate': '',
 				'receiver': '',
+				'frontBarHeight': 400,
 			}
 		},
 		methods: {
@@ -90,6 +93,7 @@
 					if (data !== null) {
 						this.title = data.product.code;
 						this.pdBaseInfoData = data.product;
+						this.calcFlowHeight();
 					}
 				});
 			},
@@ -129,6 +133,21 @@
 			},
 			dateChange: function(e) {
 				this.recvDate = e.detail.value;
+			},
+			/**
+			 * @description 计算tabBar高度
+			 */
+			calcFlowHeight: function() {//tabBarEle
+				this.$nextTick(() => {
+					setTimeout(() => {
+						let frontBar = uni.createSelectorQuery().select("#frontBar");
+						frontBar.boundingClientRect((data) => {
+							if (data && data.height) {
+								this.frontBarHeight = data.height * 2;
+							}
+						}).exec();
+					}, 200);
+				})
 			}
 		},
 		onLoad: function(option) {

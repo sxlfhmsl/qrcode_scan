@@ -9,15 +9,16 @@
 			</block>
 		</cu-custom>
 		
-		<view style="height: 400rpx;">
-			<view style="
+		<view :style="'height: ' + frontBarHeight + 'rpx;'">
+			<view ref="frontBar" id="frontBar" style="
 				position: fixed;
 				width: 100%;
 				z-index: 1024;
 			" :style="'top:' + CustomBar + 'px'">
 				<pdBaseInfo :itemData="pdBaseInfoData"></pdBaseInfo>
 				<scroll-view scroll-x class="bg-gradual-blue nav solid-top solid-bottom text-center" scroll-with-animation :scroll-left="TabPage_tabInfo.scrollLeft">
-					<view 
+					<view
+						ref="tabBarEle" id="tabBarEle"
 						class="cu-item font-title-simhei-nocolor"
 						:class="item.id==TabPage_tabInfo.TabCur?'text-black cur':''" v-for="(item,index) in TabPage_tabInfo.TabItems"
 						:key="index"
@@ -200,6 +201,7 @@
 				'tableList': [],
 				'workers': [],
 				'makeCommitObject': {},                                    // 提交对象
+				'frontBarHeight': 500,
 			}
 		},
 		onShow: function () {
@@ -423,6 +425,21 @@
 			},
 			itemChange: function(params) {
 				this.makeCommitObject[params.id] = params.value;
+			},
+			/**
+			 * @description 计算tabBar高度
+			 */
+			calcFlowHeight: function() {//tabBarEle
+				this.$nextTick(() => {
+					setTimeout(() => {
+						let frontBar = uni.createSelectorQuery().select("#frontBar");
+						frontBar.boundingClientRect((data) => {
+							if (data && data.height) {
+								this.frontBarHeight = data.height * 2;
+							}
+						}).exec();
+					}, 200);
+				})
 			}
 		},
 		onLoad: function(option) {
@@ -452,6 +469,8 @@
 				id: 'pdMake'
 			}];
 			this.TabPage_tabInfo.TabCur = this.TabPage_tabInfo.TabItems[0].id;
+			
+			this.calcFlowHeight();
 		}
 	}
 </script>

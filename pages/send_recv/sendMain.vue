@@ -9,8 +9,10 @@
 			</block>
 		</cu-custom>
 		
-		<view style="height: 300rpx;">
-			<view style="
+		<view :style="'height: ' + frontBarHeight + 'rpx;'">
+			<view 
+				ref="frontBar" id="frontBar"
+				style="
 				position: fixed;
 				width: 100%;
 				z-index: 1024;
@@ -146,6 +148,7 @@
 				multiIndex: [0, 0, 0],
 				multiIndexBuffer: [0, 0, 0],
 				deptFormatData: {},
+				'frontBarHeight': 400,
 			}
 		},
 		methods: {
@@ -212,6 +215,7 @@
 					if (data !== null) {
 						this.title = data.product.code;
 						this.pdBaseInfoData = data.product;
+						this.calcFlowHeight();
 					}
 				});
 			},
@@ -304,6 +308,21 @@
 					// 提供一个默认值
 					this.sendData.unit.name = this.multiArray[1][0];
 				});
+			},
+			/**
+			 * @description 计算tabBar高度
+			 */
+			calcFlowHeight: function() {//tabBarEle
+				this.$nextTick(() => {
+					setTimeout(() => {
+						let frontBar = uni.createSelectorQuery().select("#frontBar");
+						frontBar.boundingClientRect((data) => {
+							if (data && data.height) {
+								this.frontBarHeight = data.height * 2;
+							}
+						}).exec();
+					}, 200);
+				})
 			}
 		},
 		onLoad: function(option) {
