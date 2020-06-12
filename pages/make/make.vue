@@ -156,7 +156,7 @@
 				// 修改并获取page info
 				let pageInfo = this.pageInfo[this.TabPage_tabInfo.TabCur];
 				if (flushType === 'up') {
-					if (pageInfo.total > (pageInfo.page * pageInfo.limit)) {
+					if (pageInfo.total > (pageInfo.page * pageInfo.pageLimit)) {
 						pageInfo.page ++;
 					}
 					else {
