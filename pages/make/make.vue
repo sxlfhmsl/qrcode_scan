@@ -29,7 +29,7 @@
 			</scroll-view>
 		</view>
 		
-		<you-scroll ref="scroll" @onPullDown="onPullDown" @onScroll="onScroll" @onLoadMore="onLoadMore">
+		<you-scroll :style="'height: calc(100vh - ' + (CustomBar + 100) + 'rpx)'" ref="scroll" @onPullDown="onPullDown" @onScroll="onScroll" @onLoadMore="onLoadMore">
 			<projectList 
 				v-for="(item, index) in this.TabPage_tabInfo.TabItems"
 				:key="index"
