@@ -19,18 +19,17 @@
 				z-index: 1024;
 			" :style="'top:' + CustomBar + 'px'">
 				<pdBaseInfo :itemData="pdBaseInfoData"></pdBaseInfo>
+				<view class="text-center flex">
+					<input @change="searchFilterChange" class="radius margin font-content-simhei" placeholder="材料编号" style="max-width: 30%; border-bottom: grey solid 1px;" v-model="code"/>
+					<input @change="searchFilterChange" class="radius margin font-content-simhei" placeholder="品种名称" style="max-width: 30%; border-bottom: grey solid 1px;" v-model="materialType"/>
+					<picker class="font-content-simhei" mode="date" @change="dateChange" style="width: 60%;">
+						<input class="radius margin font-content-simhei" placeholder="进场时间" style="max-width: 100%; border-bottom: grey solid 1px;" v-model="enterDate" disabled="true"/>
+					</picker>
+				</view>
 			</view>
 		</view>
 		
-		<view class="text-center flex">
-			<input @change="searchFilterChange" class="radius margin font-content-simhei" placeholder="材料编号" style="max-width: 30%; border-bottom: grey solid 1px;" v-model="code"/>
-			<input @change="searchFilterChange" class="radius margin font-content-simhei" placeholder="品种名称" style="max-width: 30%; border-bottom: grey solid 1px;" v-model="materialType"/>
-			<picker class="font-content-simhei" mode="date" @change="dateChange" style="width: 60%;">
-				<input class="radius margin font-content-simhei" placeholder="进场时间" style="max-width: 100%; border-bottom: grey solid 1px;" v-model="enterDate" disabled="true"/>
-			</picker>
-		</view>
-		
-		<you-scroll :style="'height: calc(100vh - ' + (frontBarHeight + 50) + 'rpx)'" ref="scroll" @onPullDown="onPullDown" @onScroll="onScroll" @onLoadMore="onLoadMore">
+		<you-scroll :style="'height: calc(100vh - ' + (frontBarHeight + CustomBar) + 'rpx)'" ref="scroll" @onPullDown="onPullDown" @onScroll="onScroll" @onLoadMore="onLoadMore">
 			<!-- 原材料 -->
 			<view class="cu-list menu">
 				<view 
