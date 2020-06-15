@@ -30,7 +30,7 @@
 			</picker>
 		</view>
 		
-		<you-scroll ref="scroll" @onPullDown="onPullDown" @onScroll="onScroll" @onLoadMore="onLoadMore">
+		<you-scroll :style="'height: calc(100vh - ' + (frontBarHeight + 50) + 'rpx)'" ref="scroll" @onPullDown="onPullDown" @onScroll="onScroll" @onLoadMore="onLoadMore">
 			<!-- 原材料 -->
 			<view class="cu-list menu">
 				<view 
@@ -104,6 +104,10 @@
 		},
 		data() {
 			return {
+				'pullup': {
+					'text': '正在努力加载中......',
+					'show': false,
+				},
 				pdBaseInfoData: {},
 				title: '',
 				'modalName': null,
@@ -125,6 +129,10 @@
 			}
 		},
 		methods: {
+			stopFlushUp: function() {
+				this.pullup.text = '正在努力加载中......';
+				this.pullup.show = false;
+			},
 			resetSearchFilter: function(e) {
 				this.code = '';
 				this.materialType = '';
@@ -210,7 +218,7 @@
 			onScroll: function(e) { // 监听滚动
 			},
 			onLoadMore: function(e) { // 加载更多
-				this.flushData(undefined, 'up');
+				this.flushData(this.stopFlushUp, 'up');
 			},
 			/**
 			 * @description 刷新数据
@@ -221,8 +229,12 @@
 				if (flushType === 'up') {
 					if (this.total > (this.page * this.limit)) {
 						this.page ++;
+						this.pullup.text = '正在努力加载中......';
+						this.pullup.show = true;
 					}
 					else {
+						this.pullup.text = '没有更多的数据了';
+						this.pullup.show = true;
 						return;
 					}
 				}
