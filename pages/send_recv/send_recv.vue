@@ -30,7 +30,7 @@
 		</view>
 		
 		<!-- 主要内容 -->
-		<you-scroll ref="scroll" @onPullDown="onPullDown" @onScroll="onScroll" @onLoadMore="onLoadMore">
+		<you-scroll :style="'height: calc(100vh - ' + (CustomBar * 2 + 100) + 'rpx)'" ref="scroll" @onPullDown="onPullDown" @onScroll="onScroll" @onLoadMore="onLoadMore">
 			<projectList 
 				v-show="TabPage_tabInfo.TabCur === 'recv'" 
 				style="min-height: 200rpx; width: 100%;"
@@ -64,6 +64,10 @@
 		},
 		data() {
 			return {
+				'pullup': {
+					'text': '正在努力加载中......',
+					'show': false,
+				},
 				'pageInfo': {
 					'recv': {
 						'page': 1,
@@ -97,13 +101,17 @@
 			}
 		},
 		methods: {
+			stopFlushUp: function() {
+				this.pullup.text = '正在努力加载中......';
+				this.pullup.show = false;
+			},
 			onPullDown: function(done) { // 下拉刷新
 				this.flushData(done, 'down');
 			},
 			onScroll: function(e) { // 监听滚动
 			},
 			onLoadMore: function(e) { // 加载更多
-				this.flushData(undefined, 'up');
+				this.flushData(this.stopFlushUp, 'up');
 			},
 			/**
 			 * @description 子组件回传项目点击事件
@@ -134,8 +142,12 @@
 					if (flushType === 'up') {
 						if (pageInfo.total > (pageInfo.page * pageInfo.limit)) {
 							pageInfo.page ++;
+							this.pullup.text = '正在努力加载中......';
+							this.pullup.show = true;
 						}
 						else {
+							this.pullup.text = '没有更多的数据了';
+							this.pullup.show = true;
 							return;
 						}
 					}
