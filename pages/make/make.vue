@@ -134,12 +134,11 @@
 		},
 		methods: {
 			stopFlushUp: function() {
-				this.pullup.show = true;
 				this.pullup.text = '正在努力加载中......';
+				this.pullup.show = false;
 			},
 			onPullDown: function(done) { // 下拉刷新
-				this.pullup.show = false;
-				this.pullup.text = '正在努力加载中......';
+				this.stopFlushUp();
 				this.flushData(done, 'down');
 			},
 			onScroll: function(e) { // 监听滚动
@@ -169,10 +168,12 @@
 				if (flushType === 'up') {
 					if (pageInfo.total > (pageInfo.page * pageInfo.pageLimit)) {
 						pageInfo.page ++;
+						this.pullup.text = '正在努力加载中......';
+						this.pullup.show = true;
 					}
 					else {
-						this.pullup.show = true;
 						this.pullup.text = '没有更多的数据了';
+						this.pullup.show = true;
 						return;
 					}
 				}
