@@ -39,6 +39,7 @@
 				:btnExtends="btnExtends[item.id]"
 				@productTap="productTap"
 			></projectList>
+			<view v-show="pullup.show" class="text-center font-title-simkai" style="font-style: italic">{{pullup.text}}</view>
 		</you-scroll>
 	</view>
 </template>
@@ -57,6 +58,10 @@
 		},
 		data() {
 			return {
+				'pullup': {
+					'text': '正在努力加载中......',
+					'show': false,
+				},
 				'status': {
 					'willMake': 0,
 					'making': 1,
@@ -128,13 +133,19 @@
 			}
 		},
 		methods: {
+			stopFlushUp: function() {
+				this.pullup.show = true;
+				this.pullup.text = '正在努力加载中......';
+			},
 			onPullDown: function(done) { // 下拉刷新
+				this.pullup.show = false;
+				this.pullup.text = '正在努力加载中......';
 				this.flushData(done, 'down');
 			},
 			onScroll: function(e) { // 监听滚动
 			},
 			onLoadMore: function(e) { // 加载更多
-				this.flushData(undefined, 'up');
+				this.flushData(this.stopFlushUp, 'up');
 			},
 			/**
 			 * @description 子组件回传项目点击事件
@@ -160,6 +171,8 @@
 						pageInfo.page ++;
 					}
 					else {
+						this.pullup.show = true;
+						this.pullup.text = '没有更多的数据了';
 						return;
 					}
 				}
