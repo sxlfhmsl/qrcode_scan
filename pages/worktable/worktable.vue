@@ -2,8 +2,13 @@
 	<view>
 		<cu-custom bgColor="bg-gradual-blue" :isBack="false">
 			<block slot="content">
+				<!-- 李家岩水库输水管道 -->
 				{{this.softwareInfo.defaultTitle}}
 			</block>
+			<!-- <block slot="right">
+				<text class="padding-left-sm">李家岩水库</text>
+				<text class="padding-right-sm">输水管道</text>
+			</block> -->
 		</cu-custom>
 		<image 
 			src="../../static/background/02.jpg" 
@@ -11,6 +16,7 @@
 			style="width: 100vw; position: fixed; z-index: 1;" 
 			:style="'height: calc(100vh - ' + CustomBar + 'rpx)'"
 		></image>
+		<view class="text-center text-white font-content-simkai" style="width: 100vw; font-size: 2em; position: fixed; z-index: 99; margin-top: 8vh">李家岩水库输水管道</view>
 		<!-- 所有的按钮 -->
 		<scroll-view scroll-y class="page">
 			<view class="nav-list">
