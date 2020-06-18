@@ -154,10 +154,10 @@
 		methods: {
 			addressChooseComp: function(result) {
 				if (result.type == 'send') {
-					sendData.sendAddr = result.address;
+					this.sendData.sendAddr = result.address;
 				}
 				else if (result.type == 'recv') {
-					sendData.recvAddr = result.address;
+					this.sendData.recvAddr = result.address;
 				}
 			},
 			addressChoose: function(type) {

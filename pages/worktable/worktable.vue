@@ -16,7 +16,7 @@
 			style="width: 100vw; position: fixed; z-index: 1;" 
 			:style="'height: calc(100vh - ' + CustomBar + 'rpx)'"
 		></image>
-		<view class="text-center text-white font-content-simkai" style="width: 100vw; font-size: 2em; position: fixed; z-index: 99; margin-top: 8vh">李家岩水库输水管道</view>
+		<view class="text-center text-white font-content-simkai" style="width: 100vw; font-size: 2em; position: fixed; z-index: 99; margin-top: 8vh">李家岩水库输水管道工程</view>
 		<!-- 所有的按钮 -->
 		<scroll-view scroll-y class="page">
 			<view class="nav-list">
