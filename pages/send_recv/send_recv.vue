@@ -236,11 +236,11 @@
 		mounted: function() {
 			// 添加tab点击项
 			this.TabPage_tabInfo.TabItems = [{
-				title: '收货',
-				id: 'recv'
-			}, {
 				title: '发货',
 				id: 'send'
+			}, {
+				title: '收货',
+				id: 'recv'
 			}];
 			this.TabPage_tabInfo.TabCur = this.TabPage_tabInfo.TabItems[0].id;
 			
