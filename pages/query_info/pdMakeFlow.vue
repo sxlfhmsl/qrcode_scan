@@ -37,7 +37,39 @@
 		data() {
 			return {
 				tableList: [],
-				mode: [{
+				modePccp: [{
+					'id': 'mtkHydrostatic',
+					'title': '水压检测',
+					'idPrefix': 'Hydr',
+					'itemTitles': [{
+						'id': ['mck', 'Date'],
+						'title': '水压检测时间',
+						'type': '',
+					}, {
+						'id': ['mck', 'WorkerNames'],
+						'title': '水压检测人员',
+						'type': '',
+					}, {
+						'id': ['mck', 'Content'],
+						'title': '水压检测结论',
+						'type': '',
+					}, {
+						'id': ['', 'Att'],
+						'title': '水压检测报告',
+						'type': '',
+					}, {
+						'id': ['msk', 'WorkerNames'],
+						'title': '监造人员',
+						'type': '',
+					}, {
+						'id': ['msk', 'Content'],
+						'title': '监造结论',
+						'type': '',
+					}],
+					'checkPrefix': 'mtk',
+					'type': 'makeTaskInfo'
+				}],
+				modeSteelPipe: [{
 					'id': 'mtkWelding',
 					'title': '焊接信息',
 					'idPrefix': 'Welding',
