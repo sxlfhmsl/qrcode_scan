@@ -38,47 +38,79 @@
 			return {
 				tableList: [],
 				mode: [{
-					id: 'mtkModeWelding',
-					title: '焊接作业信息',
-					idPrefix: 'mtkWelding',
-					'itemTitles': {'Date':'焊接作业时间', 'Content': '作业环境温度', 'User': '作业人员', 'Att': '焊接作业照片'},
-					checkPrefix: 'mtk',
-					type: 'makeTaskInfo'
+					'id': 'mtkWelding',
+					'title': '焊接信息',
+					'idPrefix': 'Welding',
+					'itemTitles': [{
+						'id': ['mtk', 'Date'],
+						'title': '焊接作业时间',
+						'type': '',
+					}, {
+						'id': ['mtk', 'WorkerNames'],
+						'title': '焊接作业人员',
+						'type': '',
+					}, {
+						'id': ['mck', 'WorkerNames'],
+						'title': '焊缝检验人员',
+						'type': '',
+					}, {
+						'id': ['mck', 'Content'],
+						'title': '焊缝检验结论',
+						'type': '',
+					}, {
+						'id': ['', 'AttOne'],
+						'title': '焊缝外观检测报告',
+						'type': '',
+					}, {
+						'id': ['', 'AttTwo'],
+						'title': '焊缝探伤检测报告',
+						'type': '',
+					}, {
+						'id': ['msk', 'WorkerNames'],
+						'title': '监造人员',
+						'type': '',
+					}, {
+						'id': ['msk', 'content'],
+						'title': '监造结论',
+						'type': '',
+					}, ],
+					'checkPrefix': 'mtk',
+					'type': 'makeTaskInfo'
 				}, {
-					id: 'mtkModeAnti',
-					title: '防腐作业信息',
-					idPrefix: 'mtkAnti',
-					'itemTitles': {'Date':'防腐作业时间', 'Content': '防腐作业内容', 'User': '作业人员', 'Att': '防腐作业照片'},
-					checkPrefix: 'mtk',
-					type: 'makeTaskInfo'
-				}, {
-					id: 'mtkModeTask',
-					title: '加工作业信息',
-					idPrefix: 'mtkTask',
-					'itemTitles': {'Date':'加工作业时间', 'Content': '加工作业内容', 'User': '作业人员', 'Att': '加工作业照片'},
-					checkPrefix: 'mtk',
-					type: 'makeTaskInfo'
-				}, {
-					id: 'mckModeWelding',
-					title: '焊缝检验信息',
-					idPrefix: 'mckWelding',
-					'itemTitles': {'Date':'焊缝检验时间', 'Content': '焊缝检验结论', 'User': '检验人员', 'Att': '焊缝检验照片'},
-					checkPrefix: 'mck',
-					type: 'makeCheckInfo'
-				}, {
-					id: 'mckModeProduct',
-					title: '成品检验信息',
-					idPrefix: 'mckProduct',
-					'itemTitles': {'Date':'成品检验时间', 'Content': '成品检验结论', 'User': '检验人员', 'Att': '成品检验照片'},
-					checkPrefix: 'mck',
-					type: 'makeCheckInfo'
-				}, {
-					id: 'mckModeSupervision',
-					title: '监造检验信息',
-					idPrefix: 'mckSupervision',
-					'itemTitles': {'Date':'监造检验时间', 'Content': '监造检验结论', 'User': '监理工程师', 'Att': '监造检验照片'},
-					checkPrefix: 'mck',
-					type: 'makeCheckInfo'
+					'id': 'mtkAnti',
+					'title': '防腐信息',
+					'idPrefix': 'Anti',
+					'itemTitles': [{
+						'id': ['mtk', 'Date'],
+						'title': '防腐作业时间',
+						'type': '',
+					}, {
+						'id': ['mtk', 'WorkerNames'],
+						'title': '防腐作业人员',
+						'type': '',
+					}, {
+						'id': ['mck', 'WorkerNames'],
+						'title': '防腐检验人员',
+						'type': '',
+					}, {
+						'id': ['mck', 'Content'],
+						'title': '防腐检验结论',
+						'type': '',
+					}, {
+						'id': ['', 'Att'],
+						'title': '防腐检验报告',
+						'type': '',
+					}, {
+						'id': ['msk', 'WorkerNames'],
+						'title': '监造人员',
+						'type': '',
+					}, {
+						'id': ['msk', 'Content'],
+						'title': '监造结论',
+						'type': '',
+					},],
+					'checkPrefix': 'mtk',
+					'type': 'makeTaskInfo'
 				}]
 			}
 		},
