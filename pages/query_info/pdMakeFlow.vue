@@ -68,6 +68,68 @@
 					}],
 					'checkPrefix': 'mtk',
 					'type': 'makeTaskInfo'
+				}, {
+					'id': 'mtkSteamCuring',
+					'title': '蒸汽养护',
+					'idPrefix': 'Sc',
+					'itemTitles': [{
+						'id': ['mtk', 'Date'],
+						'title': '蒸汽养护时间',
+						'type': '',
+					}, {
+						'id': ['mck', 'WorkerNames'],
+						'title': '蒸汽养护人员',
+						'type': '',
+					}, {
+						'id': ['mck', 'Content'],
+						'title': '蒸汽养护结论',
+						'type': '',
+					}, {
+						'id': ['', 'Att'],
+						'title': '蒸汽养护报告',
+						'type': '',
+					}, {
+						'id': ['msk', 'WorkerNames'],
+						'title': '监造人员',
+						'type': '',
+					}, {
+						'id': ['msk', 'Content'],
+						'title': '监造结论',
+						'type': '',
+					}],
+					'checkPrefix': 'mtk',
+					'type': 'makeTaskInfo'
+				}, {
+					'id': 'mtkSteamCuring',
+					'title': '蒸汽养护',
+					'idPrefix': 'Sc',
+					'itemTitles': [{
+						'id': ['mtk', 'Date'],
+						'title': '蒸汽养护时间',
+						'type': '',
+					}, {
+						'id': ['mck', 'WorkerNames'],
+						'title': '蒸汽养护人员',
+						'type': '',
+					}, {
+						'id': ['mck', 'Content'],
+						'title': '蒸汽养护结论',
+						'type': '',
+					}, {
+						'id': ['', 'Att'],
+						'title': '蒸汽养护报告',
+						'type': '',
+					}, {
+						'id': ['msk', 'WorkerNames'],
+						'title': '监造人员',
+						'type': '',
+					}, {
+						'id': ['msk', 'Content'],
+						'title': '监造结论',
+						'type': '',
+					}],
+					'checkPrefix': 'mtk',
+					'type': 'makeTaskInfo'
 				}],
 				modeSteelPipe: [{
 					'id': 'mtkWelding',
