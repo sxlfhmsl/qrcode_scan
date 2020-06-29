@@ -25,6 +25,14 @@
 			>
 				<text v-if="rowBeforeTitle.contentType == 'text'">{{rowBeforeTitle.content}}</text>
 				<image v-if="rowBeforeTitle.contentType == 'image'" @tap="imagePreview(rowBeforeTitle.content)" :src="rowBeforeTitle.content" mode="widthFix" :id="'imageb' + index"></image>
+				
+				<view v-if="rowAfterTitle.contentType == 'textList'" v-for="(param, textListIndex) in rowAfterTitle.content" :key="'bTextList' + index + '-' + textListIndex">
+					<text>{{param}}</text>
+				</view>
+				<view v-if="rowAfterTitle.contentType == 'imageList'" v-for="(param, imageListIndex) in rowAfterTitle.content" :key="'bImageList' + index + '-' + imageListIndex">
+					<image @tap="imagePreview(param)" :src="param" mode="widthFix" :id="'imageb' + index + '-' + imageListIndex"></image>
+				</view>
+				
 			</view>
 		</view>
 		
@@ -65,6 +73,14 @@
 			>
 				<text v-if="rowAfterTitle.contentType == 'text'">{{rowAfterTitle.content}}</text>
 				<image v-if="rowAfterTitle.contentType == 'image'" @tap="imagePreview(rowAfterTitle.content)" :src="rowAfterTitle.content" mode="widthFix" :id="'imagea' + index"></image>
+				
+				<view v-if="rowAfterTitle.contentType == 'textList'" v-for="(param, textListIndex) in rowAfterTitle.content" :key="'aTextList' + index + '-' + textListIndex">
+					<text>{{param}}</text>
+				</view>
+				<view v-if="rowAfterTitle.contentType == 'imageList'" v-for="(param, imageListIndex) in rowAfterTitle.content" :key="'aImageList' + index + '-' + imageListIndex">
+					<image @tap="imagePreview(param)" :src="param" mode="widthFix" :id="'imagea' + index + '-' + imageListIndex"></image>
+				</view>
+				
 			</view>
 		</view>
 	</view>
