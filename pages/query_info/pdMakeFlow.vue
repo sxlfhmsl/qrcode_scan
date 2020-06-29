@@ -100,24 +100,63 @@
 					'checkPrefix': 'mtk',
 					'type': 'makeTaskInfo'
 				}, {
-					'id': 'mtkSteamCuring',
-					'title': '蒸汽养护',
-					'idPrefix': 'Sc',
+					'id': 'mtkWrappingWire',
+					'title': '缠丝',
+					'idPrefix': 'Ww',
 					'itemTitles': [{
 						'id': ['mtk', 'Date'],
-						'title': '蒸汽养护时间',
+						'title': '缠丝作业时间',
+						'type': '',
+					}, {
+						'id': ['mtk', 'WorkerNames'],
+						'title': '缠丝作业人员',
 						'type': '',
 					}, {
 						'id': ['mck', 'WorkerNames'],
-						'title': '蒸汽养护人员',
+						'title': '缠丝检验人员',
 						'type': '',
 					}, {
 						'id': ['mck', 'Content'],
-						'title': '蒸汽养护结论',
+						'title': '缠丝检验结论',
 						'type': '',
 					}, {
 						'id': ['', 'Att'],
-						'title': '蒸汽养护报告',
+						'title': '缠丝检验报告',
+						'type': '',
+					}, {
+						'id': ['msk', 'WorkerNames'],
+						'title': '监造人员',
+						'type': '',
+					}, {
+						'id': ['msk', 'Content'],
+						'title': '监造结论',
+						'type': '',
+					}],
+					'checkPrefix': 'mtk',
+					'type': 'makeTaskInfo'
+				}, {
+					'id': 'mtkRollEjection',
+					'title': '辊射',
+					'idPrefix': 'Re',
+					'itemTitles': [{
+						'id': ['mtk', 'Date'],
+						'title': '辊射作业时间',
+						'type': '',
+					}, {
+						'id': ['mtk', 'WorkerNames'],
+						'title': '辊射作业人员',
+						'type': '',
+					}, {
+						'id': ['mck', 'WorkerNames'],
+						'title': '辊射检验人员',
+						'type': '',
+					}, {
+						'id': ['mck', 'Content'],
+						'title': '辊射检验结论',
+						'type': '',
+					}, {
+						'id': ['', 'Att'],
+						'title': '辊射检验报告',
 						'type': '',
 					}, {
 						'id': ['msk', 'WorkerNames'],
