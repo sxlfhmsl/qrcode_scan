@@ -59,17 +59,19 @@ class ProductRequest extends BaseRequest {
 	 * @param {Object} code 材料编号
 	 * @param {Object} materialType 材料类型
 	 * @param {Object} enterDate 进厂日期
+	 * @param {Object} categoryId 类别
 	 * @param {Object} page 当前页数
 	 * @param {Object} limit 每页大小
 	 * @param {Function} successCallback 成功回调
 	 */
-	selectMaterial(code, materialType, enterDate, page, limit, successCallback) {
+	selectMaterial(code, materialType, enterDate, categoryId, page, limit, successCallback) {
 		this.selectMaterialUrl.urlParams = {
 			'code': code,
 			'materialType': materialType,
 			'enterDate': enterDate,
 			'page': page,
 			'limit': limit,
+			'categoryId': categoryId,
 		};
 		this.basePost(
 			this.selectMaterialUrl,

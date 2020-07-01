@@ -125,6 +125,7 @@
 				'pageLimit': 20,
 				'total': 99999,
 				'frontBarHeight': 400,
+				'categoryId': null
 			}
 		},
 		methods: {
@@ -251,7 +252,7 @@
 			 */
 			loadSourceData: function(stopFlushCallback) {
 				this.productRequest.selectMaterial(
-					this.code, this.materialType, this.enterDate, this.page, this.pageLimit, data => {
+					this.code, this.materialType, this.enterDate, this.categoryId, this.page, this.pageLimit, data => {
 						if (stopFlushCallback) {
 							stopFlushCallback();
 						}
@@ -301,6 +302,7 @@
 		},
 		onLoad: function(option){
 			this.productId = (option.productId? option.productId: this.productId);
+			this.categoryId = (option.categoryId? option.categoryId: this.categoryId);
 			if (this.productId) {
 				this.flushData();
 			}

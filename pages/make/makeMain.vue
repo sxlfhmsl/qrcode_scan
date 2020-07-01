@@ -213,7 +213,7 @@
 			 */
 			editMaterial: function() {
 				uni.navigateTo({
-					url: '/pages/make/materialChoose?productId=' + this.productId
+					url: '/pages/make/materialChoose?productId=' + this.productId + "&categoryId=" + this.pdBaseInfoData.categoryId
 				});
 			},
 			/**
@@ -327,7 +327,7 @@
 			 */
 			loadSourceData: function() {
 				this.productRequest.selectMaterial(
-					this.code, this.materialType, this.enterDate, 1, 99999, data => {
+					this.code, this.materialType, this.enterDate, this.pdBaseInfoData.categoryId, 1, 99999, data => {
 						if (data != null) {
 							this.souceList = data.records;
 						}
