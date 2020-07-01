@@ -31,7 +31,7 @@ class PermissionRequest extends BaseRequest {
 	
 	/**
 	 * @description 验证对某一产品productId的某一模块type是否有权限
-	 * @param {Int} type 模块
+	 * @param {Int} type 模块 1-制作;2-入库; 3-发货;4-收货;5-安装;6-查看人员信息
 	 * @param {Int} productId 产品
 	 * @param {Function} successCallback 成功执行回调
 	 */
