@@ -1,12 +1,12 @@
 <template>
 	<view>
-		<tableNoEditEgA 
+		<!-- <tableNoEditEgA 
 			v-for="(tableItem, index) in tableList"
 			:key="index"
 			:rowsBeforeTitle="tableItem.rowsBeforeTitle"
 			:title="tableItem.title" 
 			:rowsAfterTitle="tableItem.rowsAfterTitle" 
-		></tableNoEditEgA>
+		></tableNoEditEgA> -->
 	</view>
 </template>
 

@@ -36,8 +36,9 @@
 		},
 		data() {
 			return {
-				tableList: [],
-				modePccp: [{
+				'tableList': [],
+				'mode': {},
+				'modePccp': [{
 					'id': 'mtkHydrostatic',
 					'title': '水压检测',
 					'idPrefix': 'Hydr',
@@ -170,7 +171,7 @@
 					'checkPrefix': 'mtk',
 					'type': 'makeTaskInfo'
 				}],
-				modeSteelPipe: [{
+				'modeSteelPipe': [{
 					'id': 'mtkWelding',
 					'title': '焊接信息',
 					'idPrefix': 'Welding',
@@ -268,7 +269,7 @@
 				this.tableList = [];
 				if (data.productCategory !== null && data.productCategory !== undefined) {
 					if (data.productMade !== null && data.productMade !== undefined) {
-						this.mode.forEach(item => {
+						this.mode[data.productCategory.name].forEach(item => {
 							if (data.productCategory[item.id] != 0 && data.productCategory[item.type] != 0) {
 								// 生成行数据
 								let rowsAfterTitle = [];
@@ -308,6 +309,8 @@
 			
 		},
 		mounted: function(){
+			this.mode['PCCP'] = this.modePccp;
+			this.mode['钢管'] = this.modeSteelPipe;
 			if (this.itemData !== null && this.itemData !== undefined) {
 				this.flushData(this.itemData);
 			}
