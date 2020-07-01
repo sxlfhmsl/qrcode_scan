@@ -55,7 +55,7 @@
 				    count: 1,
 				    success: res => {
 						this.systemRequest.attUpload(this.type, res.tempFilePaths[0], result => {
-							this.choosePicture(result.att);
+							this.choosePicture(result);
 						})
 				    }
 				});

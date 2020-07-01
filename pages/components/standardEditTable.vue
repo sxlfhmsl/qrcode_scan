@@ -120,10 +120,10 @@
 				    count: 1,
 				    success: res => {
 						this.systemRequest.attUpload(this.picInt, res.tempFilePaths[0], result => {
-							this.applyChange(id, result.att);
+							this.applyChange(id, result);
 							this.viewData.itemData.forEach(item => {
 								if (item.id == id) {
-									item.value = result.att;
+									item.value = result;
 								}
 							});
 						})
