@@ -20,6 +20,7 @@ class ProductRequest extends BaseRequest {
 		this.deliveryUrl = new Url('product/delivery', RequestType.NORMAL | RequestType.NEED_TOKEN);
 		this.receiveUrl = new Url('product/receive', RequestType.NORMAL | RequestType.NEED_TOKEN);
 		this.deptTreeUrl = new Url('product/deptTree', RequestType.NORMAL | RequestType.NEED_TOKEN);
+		this.workerInfoUrl = new Url('product/workerInfo', RequestType.NORMAL | RequestType.NEED_TOKEN);
 	};
 	
 	/**
@@ -245,6 +246,22 @@ class ProductRequest extends BaseRequest {
 	deptTree(successCallback) {
 		this.basePost(
 			this.deptTreeUrl,
+			{},
+			(result) => {
+				this.baseResultProcess(result, successCallback);
+			}
+		);
+	};
+	
+	/**
+	 * @description 获取可选的人员信息
+	 * @param {Object} uId 登录者的id
+	 * @param {Object} successCallback 执行回调
+	 */
+	workerInfo(uId, successCallback) {
+		this.workerInfoUrl.urlParams = {'Id': uId};
+		this.basePost(
+			this.workerInfoUrl,
 			{},
 			(result) => {
 				this.baseResultProcess(result, successCallback);
