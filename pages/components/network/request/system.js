@@ -47,6 +47,7 @@ class SystemRequest extends BaseRequest {
 	};
 	
 	/**
+	 * @important 废弃方法
 	 * @description 获取历史图片
 	 * @param {Object} type 类型
 	 * @param {Object} successCallback 执行成功回调
