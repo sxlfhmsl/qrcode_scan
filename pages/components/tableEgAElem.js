@@ -15,7 +15,7 @@ class TableEgAElem {
 		this.contentWidth = contentWidth;
 		this.titleColor = titleColor;
 		this.contentColor = contentColor;
-		this.contentType = (contentType == null || contentType == undefined? 'text': 'image');
+		this.contentType = (contentType == null || contentType == undefined? 'text': contentType);
 	}
 };
 
