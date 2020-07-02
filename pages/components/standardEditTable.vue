@@ -48,6 +48,12 @@
 					</view>
 				</picker>
 				
+				<view @tap="changeWorkerList(item.id)" v-if="item.type == 'workerList'" style="min-height: 1em;">
+					<view class="margin-bottom-sm" v-if="Object.keys(workerObjs).length > 0"  v-for="(param, textListIndex) in workerListObj[item.id]" :key="'bTextList' + index + '-' + textListIndex">
+						{{workerObjs[param].workerName + '-' + workerObjs[param].dictName /*+ '（' + workerObjs[param].deptName + '）'*/}}
+					</view>
+				</view>
+				
 				<swiper v-if="item.type == 'imageList'" class="screen-swiper square-dot" :indicator-dots="true" :circular="true"
 				 :autoplay="true" interval="5000" duration="500">
 					<swiper-item @tap="imagePreview(showPictureListObj[item.id])" v-for="(param, imageListIndex) in showPictureListObj[item.id]" :key="'bImageList' + index + '-' + imageListIndex">
@@ -113,9 +119,14 @@
 				pictureEventName: '',
 				showPictureObj: {},
 				showPictureListObj: {},
+				workerListObj: {},
+				workerObjs: {},
 			}
 		},
 		methods: {
+			changeWorkerList: function(id) {
+				console.log(id);
+			},
 			/**
 			 * @description 图片预览
 			 */
@@ -201,6 +212,13 @@
 					
 					if (item.type == 'imageList') {
 						this.$set(this.showPictureListObj, item.id, item.value);
+					}
+					
+					if (item.type == 'workerList') {
+						this.$set(this.workerListObj, item.id, item.value);
+						this.workers.forEach(workerItem => {
+							this.$set(this.workerObjs, workerItem.id, workerItem);
+						});
 					}
 					
 					if (item.type == 'worker') {
