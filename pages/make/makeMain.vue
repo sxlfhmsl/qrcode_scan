@@ -159,7 +159,7 @@
 						'title': '水压检测时间',
 						'type': 'date',
 					}, {
-						'id': ['mck', 'WorkerNames'],
+						'id': ['mck', 'WorkerIds'],
 						'title': '水压检测人员',
 						'type': 'workerList',
 					}, {
@@ -171,7 +171,7 @@
 						'title': '水压检测报告',
 						'type': 'imageList',
 					}, {
-						'id': ['msk', 'WorkerNames'],
+						'id': ['msk', 'WorkerIds'],
 						'title': '监造人员',
 						'type': 'workerList',
 					}, {
@@ -190,7 +190,7 @@
 						'title': '蒸汽养护时间',
 						'type': 'date',
 					}, {
-						'id': ['mck', 'WorkerNames'],
+						'id': ['mck', 'WorkerIds'],
 						'title': '蒸汽养护人员',
 						'type': 'workerList',
 					}, {
@@ -202,7 +202,7 @@
 						'title': '蒸汽养护报告',
 						'type': 'imageList',
 					}, {
-						'id': ['msk', 'WorkerNames'],
+						'id': ['msk', 'WorkerIds'],
 						'title': '监造人员',
 						'type': 'workerList',
 					}, {
@@ -221,11 +221,11 @@
 						'title': '缠丝作业时间',
 						'type': 'date',
 					}, {
-						'id': ['mtk', 'WorkerNames'],
+						'id': ['mtk', 'WorkerIds'],
 						'title': '缠丝作业人员',
 						'type': 'workerList',
 					}, {
-						'id': ['mck', 'WorkerNames'],
+						'id': ['mck', 'WorkerIds'],
 						'title': '缠丝检验人员',
 						'type': 'workerList',
 					}, {
@@ -237,7 +237,7 @@
 						'title': '缠丝检验报告',
 						'type': 'imageList',
 					}, {
-						'id': ['msk', 'WorkerNames'],
+						'id': ['msk', 'WorkerIds'],
 						'title': '监造人员',
 						'type': 'workerList',
 					}, {
@@ -256,11 +256,11 @@
 						'title': '辊射作业时间',
 						'type': 'date',
 					}, {
-						'id': ['mtk', 'WorkerNames'],
+						'id': ['mtk', 'WorkerIds'],
 						'title': '辊射作业人员',
 						'type': 'workerList',
 					}, {
-						'id': ['mck', 'WorkerNames'],
+						'id': ['mck', 'WorkerIds'],
 						'title': '辊射检验人员',
 						'type': 'workerList',
 					}, {
@@ -272,7 +272,7 @@
 						'title': '辊射检验报告',
 						'type': 'imageList',
 					}, {
-						'id': ['msk', 'WorkerNames'],
+						'id': ['msk', 'WorkerIds'],
 						'title': '监造人员',
 						'type': 'workerList',
 					}, {
@@ -292,11 +292,11 @@
 						'title': '焊接作业时间',
 						'type': 'date',
 					}, {
-						'id': ['mtk', 'WorkerNames'],
+						'id': ['mtk', 'WorkerIds'],
 						'title': '焊接作业人员',
 						'type': 'workerList',
 					}, {
-						'id': ['mck', 'WorkerNames'],
+						'id': ['mck', 'WorkerIds'],
 						'title': '焊缝检验人员',
 						'type': 'workerList',
 					}, {
@@ -312,7 +312,7 @@
 						'title': '焊缝探伤检测报告',
 						'type': 'imageList',
 					}, {
-						'id': ['msk', 'WorkerNames'],
+						'id': ['msk', 'WorkerIds'],
 						'title': '监造人员',
 						'type': 'workerList',
 					}, {
@@ -331,11 +331,11 @@
 						'title': '防腐作业时间',
 						'type': 'date',
 					}, {
-						'id': ['mtk', 'WorkerNames'],
+						'id': ['mtk', 'WorkerIds'],
 						'title': '防腐作业人员',
 						'type': 'workerList',
 					}, {
-						'id': ['mck', 'WorkerNames'],
+						'id': ['mck', 'WorkerIds'],
 						'title': '防腐检验人员',
 						'type': 'workerList',
 					}, {
@@ -347,7 +347,7 @@
 						'title': '防腐检验报告',
 						'type': 'imageList',
 					}, {
-						'id': ['msk', 'WorkerNames'],
+						'id': ['msk', 'WorkerIds'],
 						'title': '监造人员',
 						'type': 'workerList',
 					}, {

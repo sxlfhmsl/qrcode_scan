@@ -81,11 +81,11 @@
 						'title': '作业时间',
 						'type': 'date',
 					}, {
-						'id': ['u', 'WorkerNames'],
+						'id': ['u', 'WorkerIds'],
 						'title': '作业人员',
 						'type': 'workerList',
 					}, {
-						'id': ['cu', 'WorkerNames'],
+						'id': ['cu', 'WorkerIds'],
 						'title': '检验人员',
 						'type': 'workerList',
 					}, {
@@ -108,7 +108,7 @@
 						'title': '监理时间',
 						'type': 'date',
 					}, {
-						'id': ['', 'WorkerNames'],
+						'id': ['', 'WorkerIds'],
 						'title': '监理人员',
 						'type': 'workerList',
 					}, {
@@ -127,7 +127,7 @@
 						'title': '检测时间',
 						'type': 'date',
 					}, {
-						'id': ['', 'WorkerNames'],
+						'id': ['', 'WorkerIds'],
 						'title': '检测人员',
 						'type': 'workerList',
 					}, {
@@ -146,7 +146,7 @@
 					'title': '业主代表',
 					'idPrefix': 'io',
 					'itemTitles': [{
-						'id': ['', 'WorkerNames'],
+						'id': ['', 'WorkerIds'],
 						'title': '业主代表',
 						'type': 'workerList',
 					}, ],
