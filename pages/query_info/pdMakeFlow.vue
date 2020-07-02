@@ -312,7 +312,6 @@
 									'rowsAfterTitle': rowsAfterTitle,
 									'rawData': rawData
 								});
-								console.log(this.tableList);
 							}
 						});
 					}
