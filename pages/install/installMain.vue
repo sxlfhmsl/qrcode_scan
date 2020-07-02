@@ -50,88 +50,109 @@
 				'productId': null,                                          // 产品id
 				'rawProductData': null,                                     // 产品数据
 				'pdBaseInfoData': {},                                       // 基础信息绑定数据对象
-				'mode': [{
-					'id': 'itkModeWelding',
-					'title': '安装焊接作业',
-					'idPrefix': 'itkWelding',
-					'itemTitles': {'Date':'焊接作业时间', 'Content': '作业环境温度', 'User': '作业人员', 'Att': '焊接作业照片'},
-					// titlePrefix: '焊接作业',
-					'checkPrefix': 'itk',
+				'mode': [
+				// 	{
+				// 	'special': true,
+				// 	'id': null,
+				// 	'title': '收货信息',
+				// 	'idPrefix': null,
+				// 	'itemTitles': [{
+				// 		'id': 'recevieDate',
+				// 		'title': '收货时间',
+				// 		'type': 'text',
+				// 	}, {
+				// 		'id': 'deptName',
+				// 		'title': '收货人',
+				// 		'type': 'text',
+				// 	}, {
+				// 		'id': 'place',
+				// 		'title': '实际使用部位',
+				// 		'type': 'text',
+				// 	}, ],
+				// 	'checkPrefix': 'isu',
+				// 	'type': 'installTaskInfo',
+				// }, 
+				{
+					'id': 'itkConstructionUnit',
+					'title': '施工单位',
+					'idPrefix': 'ic',
+					'itemTitles': [{
+						'id': ['u', 'Date'],
+						'title': '作业时间',
+						'type': 'date',
+					}, {
+						'id': ['u', 'WorkerNames'],
+						'title': '作业人员',
+						'type': 'workerList',
+					}, {
+						'id': ['cu', 'WorkerNames'],
+						'title': '检验人员',
+						'type': 'workerList',
+					}, {
+						'id': ['u', 'Content'],
+						'title': '检验结论',
+						'type': 'text',
+					}, {
+						'id': ['u', 'Att'],
+						'title': '检验报告',
+						'type': 'imageList',
+					}, ],
+					'checkPrefix': 'icu',
 					'type': 'installTaskInfo',
-					'picInt': 11
 				}, {
-					'id': 'itkModeAnti',
-					'title': '安装防腐作业',
-					'idPrefix': 'itkAnti',
-					'itemTitles': {'Date':'防腐作业时间', 'Content': '防腐作业内容', 'User': '作业人员', 'Att': '防腐过程照片'},
-					// titlePrefix: '焊接作业',
-					'checkPrefix': 'itk',
+					'id': 'itkSupervisionUnit',
+					'title': '监理单位',
+					'idPrefix': 'isu',
+					'itemTitles': [{
+						'id': ['', 'Date'],
+						'title': '监理时间',
+						'type': 'date',
+					}, {
+						'id': ['', 'WorkerNames'],
+						'title': '监理人员',
+						'type': 'workerList',
+					}, {
+						'id': ['', 'Content'],
+						'title': '监理结论',
+						'type': 'text',
+					}, ],
+					'checkPrefix': 'isu',
 					'type': 'installTaskInfo',
-					'picInt': 12
 				}, {
-					'id': 'itkModeTask',
-					'title': '安装作业信息',
-					'idPrefix': 'itkTask',
-					'itemTitles': {'Date':'加工作业时间', 'Content': '加工作业内容', 'User': '作业人员', 'Att': '加工过程照片'},
-					// titlePrefix: '焊接作业',
-					'checkPrefix': 'itk',
+					'id': 'itkThirdCheck',
+					'title': '第三方检测',
+					'idPrefix': 'itc',
+					'itemTitles': [{
+						'id': ['', 'Date'],
+						'title': '检测时间',
+						'type': 'date',
+					}, {
+						'id': ['', 'WorkerNames'],
+						'title': '检测人员',
+						'type': 'workerList',
+					}, {
+						'id': ['', 'Device'],
+						'title': '检测设备',
+						'type': 'text',
+					}, {
+						'id': ['', 'Content'],
+						'title': '检测结论',
+						'type': 'text',
+					}, ],
+					'checkPrefix': 'itc',
 					'type': 'installTaskInfo',
-					'picInt': 13
-				},     {
-					'id': 'ickModeInstall',
-					'title': '安装检验信息',
-					'idPrefix': 'ickInstall',
-					'itemTitles': {'Date':'安装检验时间', 'Content': '安装检验结论', 'User': '检验人员', 'Att': '安装检验照片'},
-					// titlePrefix: '焊接作业',
-					'checkPrefix': 'ick',
-					'type': 'installCheckInfo',
-					'picInt': 14
 				}, {
-					'id': 'ickManageWelding',
-					'title': '焊接旁站监理',
-					'idPrefix': 'ickManageWelding',
-					'itemTitles': {'Date':'焊接旁站时间', 'Content': '焊接旁站结论', 'User': '监理工程师', 'Att': '焊接旁站照片'},
-					// titlePrefix: '焊接作业',
-					'checkPrefix': 'ick',
-					'type': 'installCheckInfo',
-					'picInt': 15
-				}, {
-					'id': 'ickManageAnti',
-					'title': '防腐旁站监理',
-					'idPrefix': 'ickManageAnti',
-					'itemTitles': {'Date':'防腐旁站时间', 'Content': '防腐旁站结论', 'User': '监理工程师', 'Att': '防腐旁站照片'},
-					// titlePrefix: '焊接作业',
-					'checkPrefix': 'ick',
-					'type': 'installCheckInfo',
-					'picInt': 16
-				}, {
-					'id': 'ickThirdWelding',
-					'title': '三方焊接检测',
-					'idPrefix': 'ickThirdWelding',
-					'itemTitles': {'Date':'三方焊接检测时间', 'Content': '三方焊接检测结论', 'User': '检验人员', 'Att': '三方焊接检测照片'},
-					// titlePrefix: '焊接作业',
-					'checkPrefix': 'ick',
-					'type': 'installCheckInfo',
-					'picInt': 17
-				}, {
-					'id': 'ickThirdAnti',
-					'title': '三方防腐检测',
-					'idPrefix': 'ickThirdAnti',
-					'itemTitles': {'Date':'三方防腐检测时间', 'Content': '三方防腐检测结论', 'User': '检验人员', 'Att': '三方防腐检测照片'},
-					// titlePrefix: '焊接作业',
-					'checkPrefix': 'ick',
-					'type': 'installCheckInfo',
-					'picInt': 18
-				}, {
-					'id': 'ickModeOwner',
+					'id': 'itkOwner',
 					'title': '业主代表',
-					'idPrefix': 'ickOwner',
-					'itemTitles': {'Date':'业主检测时间', 'Content': '业主检测结论', 'User': '业主代表', 'Att': '业主检测照片'},
-					// titlePrefix: '焊接作业',
-					'checkPrefix': 'ick',
-					'type': 'installCheckInfo',
-					'picInt': 19
-				}],
+					'idPrefix': 'io',
+					'itemTitles': [{
+						'id': ['', 'WorkerNames'],
+						'title': '业主代表',
+						'type': 'workerList',
+					}, ],
+					'checkPrefix': 'io',
+					'type': 'installTaskInfo',
+				}, ],
 				'tableList': [],
 				'workers': [],
 				'installCommitObject': {},                                    // 提交对象
@@ -185,45 +206,30 @@
 				if (this.rawProductData.productCategory !== null && this.rawProductData.productCategory !== undefined) {
 					if (this.rawProductData.productInstall !== null && this.rawProductData.productInstall !== undefined) {
 						this.mode.forEach(item => {
-							if (this.rawProductData.productCategory[item.id] != 0 && this.rawProductData.productCategory[item.type] != 0) {
-								// 生成行数据
+							let data = this.rawProductData;
+							if (item.special || (data.productCategory[item.id] != 0 && data.productCategory[item.type] != 0)) {
+								// 生成数据
 								let itemData = [];
-								if (this.rawProductData.productCategory[item.checkPrefix + 'Date'] != 0) {  // 时间
-									itemData.push({
-										'id': item.idPrefix + 'Date',
-										'title': item.itemTitles.Date,
-										'value': this.rawProductData.productInstall[item.idPrefix + 'Date'],
-										'type': 'date'
-									});
-								}
-								if (this.rawProductData.productCategory[item.checkPrefix + 'Content'] != 0) {  // 内容
-									itemData.push({
-										'id': item.idPrefix + 'Content',
-										'title': item.itemTitles.Content,
-										'value': this.rawProductData.productInstall[item.idPrefix + 'Content'],
-										'type': 'text'
-									});
-								}
-								if (this.rawProductData.productCategory[item.checkPrefix + 'User'] != 0) {  // 人员
-									itemData.push({
-										'id': item.idPrefix + 'WorkerId',
-										'title': item.itemTitles.User,
-										'value': this.rawProductData.productInstall[item.idPrefix + 'WorkerId'],
-										'type': 'worker'
-									});
-								}
-								if (this.rawProductData.productCategory[item.checkPrefix + 'Att'] != 0) {  // 图片
-									itemData.push({
-										'id': item.idPrefix + 'Att',
-										'title': item.itemTitles.Att,
-										'value': this.rawProductData.productInstall[item.idPrefix + 'Att'],
-										'type': 'image'
-									});
-								}
+								item.itemTitles.forEach(childTitle => {
+									// 生成key
+									let childTitleKey = 
+										childTitle.id[0] + 
+										(childTitle.id[0] == ''? item.idPrefix.toLowerCase(): item.idPrefix) + 
+										childTitle.id[1];
+									let childTitleData = data.productMade[childTitleKey];
+									switch(childTitle.type) {
+										case "workerList":
+										case "imageList":
+										childTitleData = childTitleData? childTitleData.split(","): [];
+										break;
+									}
+									childTitleData = {'id': childTitleKey, 'title': childTitle.title, 'value': childTitleData, 'type': childTitle.type};
+									itemData.push(childTitleData);
+								});
 								this.tableList.push({
 									'itemData': itemData,
 									'title':  item.title,
-									'picInt': item.picInt
+									'picInt': 123,
 								});
 							}
 						});
