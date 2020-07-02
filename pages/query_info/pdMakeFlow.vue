@@ -45,27 +45,27 @@
 					'itemTitles': [{
 						'id': ['mck', 'Date'],
 						'title': '水压检测时间',
-						'type': '',
+						'type': 'text',
 					}, {
 						'id': ['mck', 'WorkerNames'],
 						'title': '水压检测人员',
-						'type': '',
+						'type': 'textList',
 					}, {
 						'id': ['mck', 'Content'],
 						'title': '水压检测结论',
-						'type': '',
+						'type': 'text',
 					}, {
 						'id': ['', 'Att'],
 						'title': '水压检测报告',
-						'type': '',
+						'type': 'imageList',
 					}, {
 						'id': ['msk', 'WorkerNames'],
 						'title': '监造人员',
-						'type': '',
+						'type': 'textList',
 					}, {
 						'id': ['msk', 'Content'],
 						'title': '监造结论',
-						'type': '',
+						'type': 'text',
 					}],
 					'checkPrefix': 'mtk',
 					'type': 'makeTaskInfo'
@@ -76,27 +76,27 @@
 					'itemTitles': [{
 						'id': ['mtk', 'Date'],
 						'title': '蒸汽养护时间',
-						'type': '',
+						'type': 'text',
 					}, {
 						'id': ['mck', 'WorkerNames'],
 						'title': '蒸汽养护人员',
-						'type': '',
+						'type': 'textList',
 					}, {
 						'id': ['mck', 'Content'],
 						'title': '蒸汽养护结论',
-						'type': '',
+						'type': 'text',
 					}, {
 						'id': ['', 'Att'],
 						'title': '蒸汽养护报告',
-						'type': '',
+						'type': 'imageList',
 					}, {
 						'id': ['msk', 'WorkerNames'],
 						'title': '监造人员',
-						'type': '',
+						'type': 'textList',
 					}, {
 						'id': ['msk', 'Content'],
 						'title': '监造结论',
-						'type': '',
+						'type': 'text',
 					}],
 					'checkPrefix': 'mtk',
 					'type': 'makeTaskInfo'
@@ -107,31 +107,31 @@
 					'itemTitles': [{
 						'id': ['mtk', 'Date'],
 						'title': '缠丝作业时间',
-						'type': '',
+						'type': 'text',
 					}, {
 						'id': ['mtk', 'WorkerNames'],
 						'title': '缠丝作业人员',
-						'type': '',
+						'type': 'textList',
 					}, {
 						'id': ['mck', 'WorkerNames'],
 						'title': '缠丝检验人员',
-						'type': '',
+						'type': 'textList',
 					}, {
 						'id': ['mck', 'Content'],
 						'title': '缠丝检验结论',
-						'type': '',
+						'type': 'text',
 					}, {
 						'id': ['', 'Att'],
 						'title': '缠丝检验报告',
-						'type': '',
+						'type': 'imageList',
 					}, {
 						'id': ['msk', 'WorkerNames'],
 						'title': '监造人员',
-						'type': '',
+						'type': 'textList',
 					}, {
 						'id': ['msk', 'Content'],
 						'title': '监造结论',
-						'type': '',
+						'type': 'text',
 					}],
 					'checkPrefix': 'mtk',
 					'type': 'makeTaskInfo'
@@ -142,31 +142,31 @@
 					'itemTitles': [{
 						'id': ['mtk', 'Date'],
 						'title': '辊射作业时间',
-						'type': '',
+						'type': 'text',
 					}, {
 						'id': ['mtk', 'WorkerNames'],
 						'title': '辊射作业人员',
-						'type': '',
+						'type': 'textList',
 					}, {
 						'id': ['mck', 'WorkerNames'],
 						'title': '辊射检验人员',
-						'type': '',
+						'type': 'textList',
 					}, {
 						'id': ['mck', 'Content'],
 						'title': '辊射检验结论',
-						'type': '',
+						'type': 'text',
 					}, {
 						'id': ['', 'Att'],
 						'title': '辊射检验报告',
-						'type': '',
+						'type': 'imageList',
 					}, {
 						'id': ['msk', 'WorkerNames'],
 						'title': '监造人员',
-						'type': '',
+						'type': 'textList',
 					}, {
 						'id': ['msk', 'Content'],
 						'title': '监造结论',
-						'type': '',
+						'type': 'text',
 					}],
 					'checkPrefix': 'mtk',
 					'type': 'makeTaskInfo'
@@ -178,35 +178,35 @@
 					'itemTitles': [{
 						'id': ['mtk', 'Date'],
 						'title': '焊接作业时间',
-						'type': '',
+						'type': 'text',
 					}, {
 						'id': ['mtk', 'WorkerNames'],
 						'title': '焊接作业人员',
-						'type': '',
+						'type': 'textList',
 					}, {
 						'id': ['mck', 'WorkerNames'],
 						'title': '焊缝检验人员',
-						'type': '',
+						'type': 'textList',
 					}, {
 						'id': ['mck', 'Content'],
 						'title': '焊缝检验结论',
-						'type': '',
+						'type': 'text',
 					}, {
 						'id': ['', 'AttOne'],
 						'title': '焊缝外观检测报告',
-						'type': '',
+						'type': 'imageList',
 					}, {
 						'id': ['', 'AttTwo'],
 						'title': '焊缝探伤检测报告',
-						'type': '',
+						'type': 'imageList',
 					}, {
 						'id': ['msk', 'WorkerNames'],
 						'title': '监造人员',
-						'type': '',
+						'type': 'textList',
 					}, {
-						'id': ['msk', 'content'],
+						'id': ['msk', 'Content'],
 						'title': '监造结论',
-						'type': '',
+						'type': 'text',
 					}, ],
 					'checkPrefix': 'mtk',
 					'type': 'makeTaskInfo'
@@ -217,31 +217,31 @@
 					'itemTitles': [{
 						'id': ['mtk', 'Date'],
 						'title': '防腐作业时间',
-						'type': '',
+						'type': 'text',
 					}, {
 						'id': ['mtk', 'WorkerNames'],
 						'title': '防腐作业人员',
-						'type': '',
+						'type': 'textList',
 					}, {
 						'id': ['mck', 'WorkerNames'],
 						'title': '防腐检验人员',
-						'type': '',
+						'type': 'textList',
 					}, {
 						'id': ['mck', 'Content'],
 						'title': '防腐检验结论',
-						'type': '',
+						'type': 'text',
 					}, {
 						'id': ['', 'Att'],
 						'title': '防腐检验报告',
-						'type': '',
+						'type': 'imageList',
 					}, {
 						'id': ['msk', 'WorkerNames'],
 						'title': '监造人员',
-						'type': '',
+						'type': 'textList',
 					}, {
 						'id': ['msk', 'Content'],
 						'title': '监造结论',
-						'type': '',
+						'type': 'text',
 					},],
 					'checkPrefix': 'mtk',
 					'type': 'makeTaskInfo'
@@ -271,36 +271,48 @@
 					if (data.productMade !== null && data.productMade !== undefined) {
 						this.mode[data.productCategory.name].forEach(item => {
 							if (data.productCategory[item.id] != 0 && data.productCategory[item.type] != 0) {
-								// 生成行数据
+								// 生成数据
 								let rowsAfterTitle = [];
 								let rawData = {};
-								if (data.productCategory[item.checkPrefix + 'Date'] != 0) {  // 时间
-									rowsAfterTitle.push(new TableEgAElem(item.itemTitles.Date, data.productMade[item.idPrefix + 'Date'], '30%', '70%', '#f2f2f2', 'white'));
-									rawData[item.idPrefix + 'Date'] = data.productMade[item.idPrefix + 'Date'];
-								}
-								if (data.productCategory[item.checkPrefix + 'Content'] != 0) {  // 内容
-									rowsAfterTitle.push(new TableEgAElem(item.itemTitles.Content, data.productMade[item.idPrefix + 'Content'], '30%', '70%', '#f2f2f2', 'white'));
-									rawData[item.idPrefix + 'Content'] = data.productMade[item.idPrefix + 'Content'];
-								}
-								if (data.productCategory[item.checkPrefix + 'User'] != 0) {  // 人员
-									rowsAfterTitle.push(new TableEgAElem(item.itemTitles.User, data.productMade[item.idPrefix + 'WorkerName'], '30%', '70%', '#f2f2f2', 'white'));
-									rawData[item.idPrefix + 'WorkerName'] = data.productMade[item.idPrefix + 'WorkerName'];
-									rawData[item.idPrefix + 'WorkerId'] = data.productMade[item.idPrefix + 'WorkerId'];
-								}
-								if (data.productCategory[item.checkPrefix + 'Att'] != 0) {  // 图片
-									rowsAfterTitle.push(new TableEgAElem(item.itemTitles.Att, (
-										data.productMade[item.idPrefix + 'Att'] == null || data.productMade[item.idPrefix + 'Att'] == ''? 
-										'': 
-										Url.resBaseUrl + data.productMade[item.idPrefix + 'Att']
-									), '30%', '70%', '#f2f2f2', 'white', 'image'));
-									rawData[item.idPrefix + 'Att'] = data.productMade[item.idPrefix + 'Att'];
-								}
+								item.itemTitles.forEach(childTitle => {
+									// 生成key
+									let childTitleKey = 
+										childTitle.id[0] + 
+										(childTitle.id[0] == ''? item.idPrefix.toLowerCase(): item.idPrefix) + 
+										childTitle.id[1];
+									let childTitleData = "";
+									switch(childTitle.type) {
+										case "text":
+										childTitleData = data.productMade[childTitleKey]
+										break;
+										case "image":
+										childTitleData = data.productMade[childTitleKey]?  Url.resBaseUrl + data.productMade[childTitleKey]: data.productMade[childTitleKey];
+										break;
+										case "textList":
+										childTitleData = data.productMade[childTitleKey]? data.productMade[childTitleKey].split(","): [];
+										break;
+										case "imageList":
+										if (data.productMade[childTitleKey]) {
+											childTitleData = data.productMade[childTitleKey].split(",");
+											let childTitleIndex = 0;
+											for (; childTitleIndex < childTitleData.length; childTitleIndex++) {
+												childTitleData[childTitleIndex] = Url.resBaseUrl + childTitleData[childTitleIndex];
+											}
+										}
+										else {
+											childTitleData = [];
+										}
+									}
+									rowsAfterTitle.push(new TableEgAElem(childTitle.title, childTitleData, '30%', '70%', '#f2f2f2', 'white', childTitle.type));
+									rawData[childTitleKey] = childTitleData;
+								});
 								this.tableList.push({
 									'rowsBeforeTitle': [],
 									'title': {color: '#5c9ed6', value: item.title},
 									'rowsAfterTitle': rowsAfterTitle,
 									'rawData': rawData
 								});
+								console.log(this.tableList);
 							}
 						});
 					}
