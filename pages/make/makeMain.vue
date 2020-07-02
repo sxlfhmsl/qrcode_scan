@@ -315,6 +315,8 @@
 					if (data !== null) {
 						this.title = data.product.code;
 						this.pdBaseInfoData = data.product;
+						this.loadSourceData();
+						this.loadChoosedSource();
 						uni.setStorage({
 							key: 'pdBaseInfoData',
 							data: JSON.stringify(this.pdBaseInfoData)
@@ -457,8 +459,6 @@
 			
 			this.productId = (option.productId? option.productId: this.productId);
 			this.loadProductInfo();
-			this.loadSourceData();
-			this.loadChoosedSource();
 		},
 		mounted:function(){
 			this.TabPage_tabInfo.TabItems = [{
