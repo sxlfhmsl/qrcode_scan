@@ -37,14 +37,29 @@
 					@tap="pictureChooseList(picInt, item.title, item.id)"
 					:id="item.id"
 				></image>
+				
 				<picker v-if="item.type == 'date'" :value="item.value" mode="date" @change="dateChange($event)" :id="item.id" style="height: 100%; width: 100%;">
 					<input v-model="item.value" disabled="true" style="height: 100%; width: 100%;"/>
 				</picker>
+				
 				<picker v-if="item.type == 'worker'" @change="workerPickerChange($event, item.id)" range-key="label" :value="workerIndex" :range="workersLocal" style="height: 100%; width: 100%;" :id="item.id">
 					<view class="picker">
 						{{workerIndex == null? '': workers[workerIndex].workerName + '-' + workers[workerIndex].dictName + '（' + workers[workerIndex].deptName + '）'}}
 					</view>
 				</picker>
+				
+				<swiper v-if="item.type == 'imageList'" class="screen-swiper square-dot" :indicator-dots="true" :circular="true"
+				 :autoplay="true" interval="5000" duration="500">
+					<swiper-item @tap="imagePreview(showPictureListObj[item.id])" v-for="(param, imageListIndex) in showPictureListObj[item.id]" :key="'bImageList' + index + '-' + imageListIndex">
+						<image :src="Url.resBaseUrl + param" mode="aspectFill" :id="'imageb' + index + '-' + imageListIndex"></image>
+						<button @tap.stop="removePicture(item.id, imageListIndex)" class="cu-btn bg-red" style="position: absolute; z-index: 999; top: 0rpx; left: 0rpx;">删除</button>
+					</swiper-item>
+					<swiper-item>
+						<view class="text-center font-title-simkai" style="width: 100%; height: 100%;">
+							<button @tap="pictureChoose(item.id, item.type)" class="cu-btn line-blue round lg shadow" style="margin-top: 32%;">上传</button>
+						</view>
+					</swiper-item>
+				</swiper>
 			</view>
 		</view>
 	</view>
@@ -96,10 +111,23 @@
 				'Url': Url,
 				workersLocal: [],
 				pictureEventName: '',
-				showPictureObj: {}
+				showPictureObj: {},
+				showPictureListObj: {},
 			}
 		},
 		methods: {
+			/**
+			 * @description 图片预览
+			 */
+			imagePreview: function(urls) {
+				let newUrls = [];
+				urls.forEach(item => {
+					newUrls.push(Url.resBaseUrl + item);
+				});
+				uni.previewImage({
+					urls: newUrls
+				});
+			},
 			pictureChangeResponse: function(picInfo) {
 				if (this.pictureEventName == picInfo.id) {
 					this.applyChange(picInfo.id, picInfo.att);
@@ -115,20 +143,29 @@
 					'url': '/pages/components/imageChoose?type=' + type + '&title=' + title + '&id=' + this.pictureEventName
 				});
 			},
-			pictureChoose: function(id, srcValue) {
+			pictureChoose: function(id, eleType) {
 				uni.chooseImage({
 				    count: 1,
 				    success: res => {
 						this.systemRequest.attUpload(res.tempFilePaths[0], result => {
-							this.applyChange(id, result);
+							let dataAtt = result;
+							if (eleType == 'imageList') {
+								this.showPictureListObj[id].push(dataAtt);
+								dataAtt = this.showPictureListObj[id].join(",");
+							}
+							this.applyChange(id, dataAtt);
 							this.viewData.itemData.forEach(item => {
 								if (item.id == id) {
-									item.value = result;
+									item.value = dataAtt;
 								}
 							});
 						})
 				    }
 				});
+			},
+			removePicture: function(id, index) {
+				this.showPictureListObj[id].splice(index, 1);
+				this.applyChange(id, this.showPictureListObj[id].join(","));
 			},
 			inputChange: function(id, value) {
 				this.applyChange(id, value);
@@ -160,6 +197,10 @@
 				this.viewData.itemData.forEach(item => {
 					if (item.type == 'image') {
 						this.$set(this.showPictureObj, item.id, item.value);
+					}
+					
+					if (item.type == 'imageList') {
+						this.$set(this.showPictureListObj, item.id, item.value);
 					}
 					
 					if (item.type == 'worker') {
