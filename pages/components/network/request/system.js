@@ -30,12 +30,10 @@ class SystemRequest extends BaseRequest {
 	
 	/**
 	 * @description 上传图片
-	 * @param {Object} type 类型
 	 * @param {Object} filePath 文件路径
 	 * @param {Object} successCallback 成功回调
 	 */
-	attUpload(type, filePath, successCallback) {
-		this.attUploadUrl.pathParams = [type];
+	attUpload(filePath, successCallback) {
 		this.baseUpload(
 			this.attUploadUrl,
 			filePath,

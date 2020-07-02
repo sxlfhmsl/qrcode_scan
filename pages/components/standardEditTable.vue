@@ -119,7 +119,7 @@
 				uni.chooseImage({
 				    count: 1,
 				    success: res => {
-						this.systemRequest.attUpload(this.picInt, res.tempFilePaths[0], result => {
+						this.systemRequest.attUpload(res.tempFilePaths[0], result => {
 							this.applyChange(id, result);
 							this.viewData.itemData.forEach(item => {
 								if (item.id == id) {

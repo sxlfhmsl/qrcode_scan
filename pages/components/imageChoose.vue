@@ -54,7 +54,7 @@
 				uni.chooseImage({
 				    count: 1,
 				    success: res => {
-						this.systemRequest.attUpload(this.type, res.tempFilePaths[0], result => {
+						this.systemRequest.attUpload(res.tempFilePaths[0], result => {
 							this.choosePicture(result);
 						})
 				    }
