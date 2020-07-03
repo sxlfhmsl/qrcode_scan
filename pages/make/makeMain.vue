@@ -59,11 +59,11 @@
 				>
 					<view class="content margin-left margin-top margin-bottom">
 						<view class="text-black margin-bottom-sm font-title-simhei">
-							名称:
+							品种名称:
 							<text class="font-content-simsun">{{item.materialName}}</text>
 						</view>
 						<view class="text-black margin-top-sm font-title-simhei">
-							编号:
+							批次号:
 							<text class="font-content-simsun">{{item.materialCode}}</text>
 						</view>
 					</view>
@@ -74,8 +74,8 @@
 					
 					<view class="action margin-top margin-bottom">
 						<view class="text-black text-right margin-bottom-sm font-title-simhei" style="line-height: 1.75em;">
-							规格:
-							<text class="font-content-simsun">{{item.materialSpecs}}</text>
+							<!-- 规格: -->
+							<text class="text-white" style="color: #f2f2f2;">asshole</text>
 						</view>
 						<view class="text-black text-right margin-top-sm font-title-simhei" style="line-height: 1.75em;">
 							<text class="text-white" style="color: #f2f2f2;">asshole</text>

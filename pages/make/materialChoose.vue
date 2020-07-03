@@ -20,7 +20,7 @@
 			" :style="'top:' + CustomBar + 'px'">
 				<pdBaseInfo :itemData="pdBaseInfoData"></pdBaseInfo>
 				<view class="text-center flex">
-					<input @change="searchFilterChange" class="radius margin font-content-simhei" placeholder="材料编号" style="max-width: 30%; border-bottom: grey solid 1px;" v-model="code"/>
+					<input @change="searchFilterChange" class="radius margin font-content-simhei" placeholder="批次号" style="max-width: 30%; border-bottom: grey solid 1px;" v-model="code"/>
 					<input @change="searchFilterChange" class="radius margin font-content-simhei" placeholder="品种名称" style="max-width: 30%; border-bottom: grey solid 1px;" v-model="materialType"/>
 					<picker class="font-content-simhei" mode="date" @change="dateChange" style="width: 60%;">
 						<input class="radius margin font-content-simhei" placeholder="进场时间" style="max-width: 100%; border-bottom: grey solid 1px;" v-model="enterDate" disabled="true"/>
@@ -48,11 +48,11 @@
 				>
 					<view class="content margin-top margin-bottom">
 						<view class="text-black margin-bottom-sm font-title-simhei">
-							品种:
+							品种名称:
 							<text class="font-content-simsun">{{item.materialType}}</text>
 						</view>
 						<view class="text-black margin-top-sm font-title-simhei">
-							编号:
+							批次号:
 							<text class="font-content-simsun">{{item.code}}</text>
 						</view>
 					</view>
@@ -63,8 +63,8 @@
 					
 					<view class="action margin-top margin-bottom">
 						<view class="text-black text-right margin-bottom-sm font-title-simhei" style="line-height: 1.75em;">
-							规格:
-							<text class="font-content-simsun">{{item.specs}}</text>
+							<!-- 规格: -->
+							<text class="text-white" style="color: #f2f2f2;">asshole</text>
 						</view>
 						<view class="text-black text-right margin-top-sm font-title-simhei" style="line-height: 1.75em;">
 							时间:

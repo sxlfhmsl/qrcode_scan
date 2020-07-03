@@ -9,12 +9,12 @@ class Url {
 		this._urlParams = {};
 	};
 	
-	static get baseUrl() {
-		return 'http://47.108.78.92:8180/cmpApi/';
+	static get baseUrl() {// 47.108.78.92
+		return 'http://47.108.70.55:8180/cmpApi/';
 	};
 	
-	static get resBaseUrl() {
-		return 'http://47.108.78.92:8180';
+	static get resBaseUrl() {// 47.108.78.92
+		return 'http://47.108.70.55:8180';
 	};
 	
 	get url() {

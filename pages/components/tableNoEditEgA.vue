@@ -24,7 +24,7 @@
 				:style="'width:' + rowBeforeTitle.contentWidth + ';background-color:' + rowBeforeTitle.contentColor + ';'"
 			>
 				<text v-if="rowBeforeTitle.contentType == 'text'">{{rowBeforeTitle.content}}</text>
-				<image v-if="rowBeforeTitle.contentType == 'image'" @tap="imagePreview(rowBeforeTitle.content)" :src="rowBeforeTitle.content" mode="widthFix" :id="'imageb' + index"></image>
+				<image v-if="rowBeforeTitle.contentType == 'image'" @tap="imagePreview([rowBeforeTitle.content])" :src="rowBeforeTitle.content" mode="widthFix" :id="'imageb' + index"></image>
 				
 				<view v-if="rowBeforeTitle.contentType == 'textList'" v-for="(param, textListIndex) in rowBeforeTitle.content" :key="'bTextList' + index + '-' + textListIndex" class="margin-bottom-sm">
 					<text>{{param}}</text>
@@ -76,7 +76,7 @@
 				:style="'width:' + rowAfterTitle.contentWidth + ';background-color:' + rowAfterTitle.contentColor + ';'"
 			>
 				<text v-if="rowAfterTitle.contentType == 'text'">{{rowAfterTitle.content}}</text>
-				<image v-if="rowAfterTitle.contentType == 'image'" @tap="imagePreview(rowAfterTitle.content)" :src="rowAfterTitle.content" mode="widthFix" :id="'imagea' + index"></image>
+				<image v-if="rowAfterTitle.contentType == 'image'" @tap="imagePreviewSingle(rowAfterTitle.content)" :src="rowAfterTitle.content" mode="widthFix" :id="'imagea' + index"></image>
 				
 				<view v-if="rowAfterTitle.contentType == 'textList'" @tap="jumpToPersonalDetails(textListIndex, rowAfterTitle.content)" v-for="(param, textListIndex) in rowAfterTitle.content.value" :key="'aTextList' + index + '-' + textListIndex" class="margin-bottom-sm">
 					<text>{{param}}</text>
@@ -131,6 +131,11 @@
 			imagePreview: function(urls) {
 				uni.previewImage({
 					urls: urls
+				});
+			},
+			imagePreviewSingle: function(url) {
+				uni.previewImage({
+					urls: [url]
 				});
 			},
 			jumpToPersonalDetails: function(index, content) {
