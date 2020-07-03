@@ -152,12 +152,16 @@
 				'mode': {},
 				'modePccp': [{
 					'id': 'mtkHydrostatic',
-					'title': '水压检测',
+					'title': '水压检测信息',
 					'idPrefix': 'Hydr',
 					'itemTitles': [{
 						'id': ['mck', 'Date'],
-						'title': '水压检测时间',
+						'title': '水压作业时间',
 						'type': 'date',
+					}, {
+						'id': ['mtk', 'WorkerIds'],
+						'title': '水压作业人员',
+						'type': 'workerList',
 					}, {
 						'id': ['mck', 'WorkerIds'],
 						'title': '水压检测人员',
@@ -183,23 +187,27 @@
 					'type': 'makeTaskInfo'
 				}, {
 					'id': 'mtkSteamCuring',
-					'title': '蒸汽养护',
+					'title': '蒸汽检测信息',
 					'idPrefix': 'Sc',
 					'itemTitles': [{
 						'id': ['mtk', 'Date'],
-						'title': '蒸汽养护时间',
+						'title': '蒸汽作业时间',
 						'type': 'date',
+					},  {
+						'id': ['mtk', 'WorkerIds'],
+						'title': '蒸汽作业人员',
+						'type': 'workerList',
 					}, {
 						'id': ['mck', 'WorkerIds'],
-						'title': '蒸汽养护人员',
+						'title': '蒸汽检测人员',
 						'type': 'workerList',
 					}, {
 						'id': ['mck', 'Content'],
-						'title': '蒸汽养护结论',
+						'title': '蒸汽检测结论',
 						'type': 'text',
 					}, {
 						'id': ['', 'Att'],
-						'title': '蒸汽养护报告',
+						'title': '蒸汽检测报告',
 						'type': 'imageList',
 					}, {
 						'id': ['msk', 'WorkerIds'],
@@ -214,7 +222,7 @@
 					'type': 'makeTaskInfo'
 				}, {
 					'id': 'mtkWrappingWire',
-					'title': '缠丝',
+					'title': '缠丝信息',
 					'idPrefix': 'Ww',
 					'itemTitles': [{
 						'id': ['mtk', 'Date'],
