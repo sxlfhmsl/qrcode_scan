@@ -195,19 +195,15 @@ class ProductRequest extends BaseRequest {
 	 * @param {Object} deliveryCode 发货编号
 	 * @param {Object} recevieDeptId 客户单位id
 	 * @param {Object} recevieDeptName 客户单位
-	 * @param {Object} deliveryAddress 发货地址
-	 * @param {Object} recevieAddress 收货地址
 	 * @param {Object} successCallback 成功回调
 	 */
-	delivery(productId, deliveryDate, deliveryCode, recevieDeptId, recevieDeptName, deliveryAddress, recevieAddress, successCallback) {
+	delivery(productId, deliveryDate, deliveryCode, recevieDeptId, recevieDeptName, successCallback) {
 		this.deliveryUrl.urlParams = {
 			'productId': productId,
 			'deliveryDate': deliveryDate,
 			'deliveryCode': deliveryCode,
 			'recevieDeptId': recevieDeptId,
 			'recevieDeptName': recevieDeptName,
-			'deliveryAddress': deliveryAddress,
-			'recevieAddress': recevieAddress
 		};
 		this.basePost(
 			this.deliveryUrl,

@@ -62,7 +62,7 @@
 				</view>
 			</view>
 			
-			<view class="flex margin-left-sm margin-right-sm solid-left solid-bottom solid-top">
+			<view class="flex margin-left-sm margin-right-sm solid-left solid-bottom solid-top" v-if="false">
 				<view 
 					class="font-title-simhei-nocolor padding-sm col-auto-line text-white text-center solid-right bg-gradual-blue" 
 					style="flex: auto; width: 25%;"
@@ -87,7 +87,7 @@
 				</view>
 			</view>
 			
-			<view class="flex margin-left-sm margin-right-sm solid-left solid-bottom solid-top">
+			<view class="flex margin-left-sm margin-right-sm solid-left solid-bottom solid-top"  v-if="false">
 				<view 
 					class="font-title-simhei-nocolor padding-sm col-auto-line text-white text-center solid-right bg-gradual-blue" 
 					style="flex: auto; width: 25%;"
@@ -253,8 +253,7 @@
 					else {
 						this.productRequest.delivery(this.productId, 
 							this.sendData.date, undefined, this.sendData.unit.id, 
-							this.sendData.unit.name, this.sendData.sendAddr, 
-							this.sendData.recvAddr, result => {
+							this.sendData.unit.name, result => {
 								uni.showToast({
 									title: '发货完成'
 								});

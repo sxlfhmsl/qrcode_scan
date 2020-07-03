@@ -45,8 +45,8 @@
 				if (data !== null && data !== undefined) {
 					this.rowsAfterTitle.push(new TableEgAElem('入库时间', data.enterDate, '30%', '70%', '#f2f2f2;', 'white'));
 					this.rowsAfterTitle.push(new TableEgAElem('负责人', data.leaderName, '30%', '70%', '#f2f2f2;', 'white'));
-					this.rowsAfterTitle.push(new TableEgAElem('合格证编号', data.certificateCode, '30%', '70%', '#f2f2f2;', 'white'));
-					this.rowsAfterTitle.push(new TableEgAElem('合格证照片', data.certificateAtt? Url.resBaseUrl + data.certificateAtt: '', '30%', '70%', '#f2f2f2;', 'white', 'image'));
+					//this.rowsAfterTitle.push(new TableEgAElem('合格证编号', data.certificateCode, '30%', '70%', '#f2f2f2;', 'white'));
+					this.rowsAfterTitle.push(new TableEgAElem('合格证', data.certificateAtt? Url.resBaseUrl + data.certificateAtt: '', '30%', '70%', '#f2f2f2;', 'white', 'image'));
 					this.rawData = data;
 				}
 			}
