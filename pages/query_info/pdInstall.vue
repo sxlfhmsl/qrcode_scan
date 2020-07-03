@@ -154,7 +154,7 @@
 								let rawData = {};
 								item.itemTitles.forEach(childTitle => {
 									// 生成key
-									let childTitleKey = item.special? childTitle.id: childTitle.id[0] + item.idPrefix + childTitle.id[1];
+									let childTitleKey = item.special? childTitle.id: item.idPrefix + childTitle.id[0]  + childTitle.id[1];
 									let childTitleData = "";
 									switch(childTitle.type) {
 										case "text":

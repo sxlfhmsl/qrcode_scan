@@ -72,6 +72,10 @@
             "path" : "pages/make/materialChoose",
             "style" : {}
         }
+        ,{
+            "path" : "pages/components/workerSelecter",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"mp-alipay": {

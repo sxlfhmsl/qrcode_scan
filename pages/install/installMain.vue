@@ -212,11 +212,8 @@
 								let itemData = [];
 								item.itemTitles.forEach(childTitle => {
 									// 生成key
-									let childTitleKey = 
-										childTitle.id[0] + 
-										(childTitle.id[0] == ''? item.idPrefix.toLowerCase(): item.idPrefix) + 
-										childTitle.id[1];
-									let childTitleData = data.productMade[childTitleKey];
+									let childTitleKey = item.idPrefix + childTitle.id[0] + childTitle.id[1];
+									let childTitleData = data.productInstall[childTitleKey];
 									switch(childTitle.type) {
 										case "workerList":
 										case "imageList":
@@ -263,6 +260,10 @@
 			// 获取工作者
 			this.productRequest.selectWorker(data => {
 				this.workers = data;
+				uni.setStorage({
+					key: 'workers',
+					data: JSON.stringify(data),
+				});
 			});
 		}
 	}

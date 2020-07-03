@@ -124,8 +124,26 @@
 			}
 		},
 		methods: {
+			workersChange: function(params) {
+				this.workerListObj[params.targetId] = params.targetValue;
+				this.applyChange(params.targetId, params.targetValue.join(","));
+				let workerNamesKey = params.targetId.substring(0, params.targetId.indexOf('WorkerIds')) + 'WorkerNames';
+				let workerNamesValue = [];
+				params.targetValue.forEach(item => {
+					workerNamesValue.push(this.workerObjs[item].workerName + "-" + this.workerObjs[item].dictName);
+				});
+				this.applyChange(workerNamesKey, workerNamesValue.join(","));
+				
+			},
+			workersSelecterClose: function(id) {
+				uni.$off(id, this.workersChange);
+			},
 			changeWorkerList: function(id) {
-				console.log(id);
+				uni.setStorageSync("workers", JSON.stringify(this.workers));
+				uni.navigateTo({
+					url: "/pages/components/workerSelecter?targetId=" + id + "&targetValue=" +  this.workerListObj[id].join("-"),
+				});
+				uni.$on(id, this.workersChange);
 			},
 			/**
 			 * @description 图片预览
@@ -191,6 +209,7 @@
 				this.applyChange(e.currentTarget.id, e.detail.value);
 			},
 			applyChange: function(id, value) {
+				console.log(id, value);
 				this.$emit('itemChange', {'id': id, 'value': value});
 			},
 			workerPickerChange: function(e, id) {
@@ -235,9 +254,12 @@
 					this.workersLocal[index].label = item.workerName + '-' + item.dictName + '（' + item.deptName + '）';
 				});
 			});
+			
+			uni.$on("workersSelecterClose", this.workersSelecterClose);
 		},
 		destroyed: function() {
 			uni.$off(this.pictureEventName, this.pictureChangeResponse);
+			uni.$off("workersSelecterClose", this.workersSelecterClose);
 		}
 	}
 </script>

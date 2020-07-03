@@ -602,6 +602,10 @@
 			else {
 				this.productRequest.selectWorker(data => {
 					this.workers = data;
+					uni.setStorage({
+						key: 'workers',
+						data: JSON.stringify(data),
+					});
 				});
 			}
 			
