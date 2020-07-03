@@ -73,11 +73,13 @@
 				<view
 					class="padding-sm col-auto-line bg-white"
 					style="flex: auto; width: calc(75% - 60rpx); background-color: white"
+					:style="'width: calc(75% - ' + (softwareInfo.showMap? 60: 0) + 'px)'"
 				>
 					<input class="font-content-simsun" v-model="sendData.sendAddr" style="height: 100%; width: 100%;"/>
 				</view>
 				
 				<view
+					v-if="softwareInfo.showMap"
 					class="col-auto-line bg-white solid-right padding-bottom-sm padding-top-sm"
 					style="flex: auto; width: 60rpx; background-color: white"
 				>
@@ -96,11 +98,13 @@
 				<view
 					class="padding-sm col-auto-line bg-white"
 					style="flex: auto; width: calc(75% - 60rpx); background-color: white"
+					:style="'width: calc(75% - ' + (softwareInfo.showMap? 60: 0) + 'px)'"
 				>
 					<input class="font-content-simsun" v-model="sendData.recvAddr" style="height: 100%; width: 100%"/>
 				</view>
 				
 				<view
+					v-if="softwareInfo.showMap"
 					class="col-auto-line bg-white solid-right padding-bottom-sm padding-top-sm"
 					style="flex: auto; width: 60rpx; background-color: white"
 				>

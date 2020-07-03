@@ -14,7 +14,8 @@ Vue.component('personal',personal);
 Vue.prototype.softwareInfo = {
 	'defaultTitle': '产品数字化管理系统',                         // 系统默认标题
 	'version': 'debug_version',                                 // 版本号
-	'owner': 'LuSheng'                                          // 版权所属
+	'owner': 'LuSheng'                                          ,// 版权所属
+	'showMap': false
 };
 
 // #ifdef APP-PLUS || APP-PLUS-NVUE

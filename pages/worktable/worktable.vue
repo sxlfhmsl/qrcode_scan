@@ -1,22 +1,37 @@
 <template name="worktable">
 	<view>
-		<cu-custom bgColor="bg-gradual-blue" :isBack="false">
-			<block slot="content">
+		<!-- <cu-custom bgColor="bg-gradual-blue" :isBack="false"> -->
+			<!-- <block slot="content"> -->
 				<!-- 李家岩水库输水管道 -->
-				{{this.softwareInfo.defaultTitle}}
-			</block>
+				<!-- {{this.softwareInfo.defaultTitle}} -->
+			<!-- </block> -->
 			<!-- <block slot="right">
 				<text class="padding-left-sm">李家岩水库</text>
 				<text class="padding-right-sm">输水管道</text>
 			</block> -->
-		</cu-custom>
+		<!-- </cu-custom> -->
+		
+		<view>
+			<view class="cu-custom font-title-simhei" :style="[{height:(CustomBar+30) + 'px'}]">
+				<view class="cu-bar fixed bg-gradual-blue" :style="style">
+					<view class="content" :style="[{top:(StatusBar - 20) + 'px'}]">
+						{{this.softwareInfo.defaultTitle}}
+					</view>
+					
+					<view class="content" :style="'top: calc(3em + ' + (StatusBar - 20) + 'px)'">
+						李家岩水库输水管道
+					</view>
+				</view>
+			</view>
+		</view>
+		
 		<image 
 			src="../../static/background/02.jpg" 
 			mode="aspectFill" 
 			style="width: 100vw; position: fixed; z-index: 1;" 
 			:style="'height: calc(100vh - ' + CustomBar + 'rpx)'"
 		></image>
-		<view class="text-center text-white font-content-simkai" style="width: 100vw; font-size: 2em; position: fixed; z-index: 99; margin-top: 8vh">李家岩水库输水管道工程</view>
+		<!-- <view class="text-center text-white font-content-simkai" style="width: 100vw; font-size: 2em; position: fixed; z-index: 99; margin-top: 8vh">李家岩水库输水管道工程</view> -->
 		<!-- 所有的按钮 -->
 		<scroll-view scroll-y class="page">
 			<view class="nav-list">
@@ -74,6 +89,14 @@
 				}]
 			}
 		},
+		computed: {
+			style() {
+				var StatusBar= this.StatusBar;
+				var CustomBar= this.CustomBar;
+				var style = `height:${CustomBar + 30}px;padding-top:${StatusBar}px;`;
+				return style
+			}
+		},
 		methods: {
 			/**
 			 * @description 校验模块权限
@@ -95,6 +118,7 @@
 		},
 		mounted:function(){
 			this.checkModePermission();
+			console.log(this.StatusBar)
 		}
 	}
 </script>

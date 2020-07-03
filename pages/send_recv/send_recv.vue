@@ -201,16 +201,16 @@
 			 */
 			flushDataSend: function(stopFlushCallback) {
 				// 2
-				this.productRequest.madeList(
-					undefined, 2, 
+				this.productRequest.unDeliveryList(
 					this.pageInfo.send.page, this.pageInfo.send.pageLimit, 
 					data => {
 						if (stopFlushCallback !== null && stopFlushCallback !== undefined) {
 							stopFlushCallback();
 						}
+						console.log(data);
 						if (data !== null && data !== undefined) {
-							this.pageInfo.send.total = data.total;
-							this.projectItems.send = this.projectItems.send.concat(data.records);
+							this.pageInfo.send.total = data.count;
+							this.projectItems.send = this.projectItems.send.concat(data.data);
 						}
 				});
 			}

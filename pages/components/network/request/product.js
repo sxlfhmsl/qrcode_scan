@@ -21,6 +21,7 @@ class ProductRequest extends BaseRequest {
 		this.receiveUrl = new Url('product/receive', RequestType.NORMAL | RequestType.NEED_TOKEN);
 		this.deptTreeUrl = new Url('product/deptTree', RequestType.NORMAL | RequestType.NEED_TOKEN);
 		this.workerInfoUrl = new Url('product/workerInfo', RequestType.NORMAL | RequestType.NEED_TOKEN);
+		this.unDeliveryListUrl = new Url('product/unDeliveryList', RequestType.NORMAL | RequestType.NEED_TOKEN);
 	};
 	
 	/**
@@ -265,6 +266,28 @@ class ProductRequest extends BaseRequest {
 			{},
 			(result) => {
 				this.baseResultProcess(result, successCallback);
+			}
+		);
+	};
+	
+	/**
+	 * @description 列表
+	 * @param {Object} page 页
+	 * @param {Object} limit 每页数量
+	 * @param {Object} successCallback 成功回调
+	 */
+	unDeliveryList(page, limit, successCallback) {
+		this.unDeliveryListUrl.urlParams = {
+			'page': page,
+			'limit': limit
+		};
+		this.basePost(
+			this.unDeliveryListUrl,
+			{},
+			(result) => {
+				if (result.data.code == 200 || result.data.code == 0) {
+					successCallback(result.data);
+				}
 			}
 		);
 	};
