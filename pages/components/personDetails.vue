@@ -17,6 +17,7 @@
 	import ProductRequest from "@/pages/components/network/request/product.js";
 	import TableEgAElem from "@/pages/components/tableEgAElem";
 	import tableNoEditEgA from "@/pages/components/tableNoEditEgA";
+	import Url from "@/pages/components/network/request/url.js";
 	
 	export default {
 		components: {
@@ -35,7 +36,7 @@
 				this.rowsAfterTitle.push(new TableEgAElem("用户名", data.workerName, '30%', '70%', '#f2f2f2', 'white', "text"));
 				this.rowsAfterTitle.push(new TableEgAElem("工种", data.dictName, '30%', '70%', '#f2f2f2', 'white', "text"));
 				this.rowsAfterTitle.push(new TableEgAElem("所属单位", data.deptName, '30%', '70%', '#f2f2f2', 'white', "text"));
-				this.rowsAfterTitle.push(new TableEgAElem("资质证书", data.att, '30%', '70%', '#f2f2f2', 'white', "image"));
+				this.rowsAfterTitle.push(new TableEgAElem("资质证书", Url.resBaseUrl + data.att, '30%', '70%', '#f2f2f2', 'white', "image"));
 			});
 		},
 		methods: {
