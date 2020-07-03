@@ -76,6 +76,10 @@
             "path" : "pages/components/workerSelecter",
             "style" : {}
         }
+        ,{
+            "path" : "pages/components/personDetails",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"mp-alipay": {

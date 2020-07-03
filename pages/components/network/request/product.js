@@ -256,7 +256,7 @@ class ProductRequest extends BaseRequest {
 	 * @param {Object} successCallback 执行回调
 	 */
 	workerInfo(uId, successCallback) {
-		this.workerInfoUrl.urlParams = {'Id': uId};
+		this.workerInfoUrl.urlParams = {'id': uId};
 		this.basePost(
 			this.workerInfoUrl,
 			{},

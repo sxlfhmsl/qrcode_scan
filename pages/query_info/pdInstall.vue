@@ -164,7 +164,16 @@
 										childTitleData = data.productInstall[childTitleKey]?  Url.resBaseUrl + data.productInstall[childTitleKey]: data.productInstall[childTitleKey];
 										break;
 										case "textList":
-										childTitleData = data.productInstall[childTitleKey]? data.productInstall[childTitleKey].split(","): [];
+										childTitleData = {
+											'value': data.productInstall[childTitleKey]? data.productInstall[childTitleKey].split(","): [],
+											'type': 'normal'
+											}
+										if (childTitleKey.indexOf("WorkerNames") != -1) {
+											let keybuf = childTitleKey.substring(0, childTitleKey.indexOf('WorkerNames')) + 'WorkerIds'
+											childTitleData['type'] = 'worker';
+											childTitleData['extend'] = data.productInstall[keybuf]? data.productInstall[keybuf].split(","): [];
+											childTitleData['productId'] = data.pdBaseInfo.id;
+										}
 										break;
 										case "imageList":
 										if (data.productInstall[childTitleKey]) {

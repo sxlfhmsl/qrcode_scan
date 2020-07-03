@@ -45,7 +45,7 @@
 					class="font-title-simhei-nocolor padding-sm col-auto-line text-white text-center solid-right bg-gradual-blue" 
 					style="flex: auto; width: 25%;"
 				>
-					*客户单位:
+					*收货单位:
 				</view>
 				
 				<view

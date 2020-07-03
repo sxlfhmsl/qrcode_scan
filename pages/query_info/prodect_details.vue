@@ -190,13 +190,13 @@
 				this.title = this.productData.product.code;
 				this.viewData.pdBaseInfo = this.productData.product;
 				this.viewData.pdSourceInfo = (this.productData.materialList? this.productData.materialList: []);
-				this.viewData.pdMakeFlow = {'productCategory': this.productData.productCategory, 'productMade': this.productData.productMade};
+				this.viewData.pdMakeFlow = {'pdBaseInfo': this.productData.product, 'productCategory': this.productData.productCategory, 'productMade': this.productData.productMade};
 				this.viewData.pdInBankInfo = (this.productData.productStorage? this.productData.productStorage: null);
 				this.viewData.pdSendRecv = (this.productData.productDelivery? this.productData.productDelivery: null);
 				if (this.viewData.pdSendRecv) {
 					this.$set(this.viewData.pdSendRecv, 'place', this.productData.productInstall.place);
 				}
-				this.viewData.pdInstall = {'productCategory': this.productData.productCategory, 'productInstall': this.productData.productInstall};
+				this.viewData.pdInstall = {'pdBaseInfo': this.productData.product, 'productCategory': this.productData.productCategory, 'productInstall': this.productData.productInstall};
 			}
 		},
 		onLoad:function(option){

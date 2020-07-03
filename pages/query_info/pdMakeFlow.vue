@@ -297,7 +297,16 @@
 										childTitleData = data.productMade[childTitleKey]?  Url.resBaseUrl + data.productMade[childTitleKey]: data.productMade[childTitleKey];
 										break;
 										case "textList":
-										childTitleData = data.productMade[childTitleKey]? data.productMade[childTitleKey].split(","): [];
+										childTitleData = {
+											'value': data.productMade[childTitleKey]? data.productMade[childTitleKey].split(","): [],
+											'type': 'normal'
+											}
+										if (childTitleKey.indexOf("WorkerNames") != -1) {
+											let keybuf = childTitleKey.substring(0, childTitleKey.indexOf('WorkerNames')) + 'WorkerIds'
+											childTitleData['type'] = 'worker';
+											childTitleData['extend'] = data.productMade[keybuf]? data.productMade[keybuf].split(","): [];
+											childTitleData['productId'] = data.pdBaseInfo.id;
+										}
 										break;
 										case "imageList":
 										if (data.productMade[childTitleKey]) {

@@ -78,7 +78,7 @@
 				<text v-if="rowAfterTitle.contentType == 'text'">{{rowAfterTitle.content}}</text>
 				<image v-if="rowAfterTitle.contentType == 'image'" @tap="imagePreview(rowAfterTitle.content)" :src="rowAfterTitle.content" mode="widthFix" :id="'imagea' + index"></image>
 				
-				<view v-if="rowAfterTitle.contentType == 'textList'" v-for="(param, textListIndex) in rowAfterTitle.content" :key="'aTextList' + index + '-' + textListIndex" class="margin-bottom-sm">
+				<view v-if="rowAfterTitle.contentType == 'textList'" @tap="jumpToPersonalDetails(textListIndex, rowAfterTitle.content)" v-for="(param, textListIndex) in rowAfterTitle.content.value" :key="'aTextList' + index + '-' + textListIndex" class="margin-bottom-sm">
 					<text>{{param}}</text>
 				</view>
 				
@@ -95,6 +95,8 @@
 </template>
 
 <script>
+	import PermissionRequest from "@/pages/components/network/request/permission.js";
+	
 	export default {
 		name: 'tableNoEditEgA',
 		props: {
@@ -119,6 +121,7 @@
 		},
 		data() {
 			return {
+				permissionRequest: new PermissionRequest(),
 			}
 		},
 		methods: {
@@ -129,6 +132,19 @@
 				uni.previewImage({
 					urls: urls
 				});
+			},
+			jumpToPersonalDetails: function(index, content) {
+				this.permissionRequest.data(
+					6,
+					content.productId,
+					result => {
+						if (result) {
+							uni.navigateTo({
+								url: "/pages/components/personDetails?workerId=" + content.extend[index],
+							})
+						}
+					}
+				);
 			}
 		}
 	}
