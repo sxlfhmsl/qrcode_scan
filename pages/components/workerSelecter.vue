@@ -7,18 +7,23 @@
 		</cu-custom>
 		<view class="cu-form-group margin-top" v-for="(param, index) in workers" :key="index">
 			<view class="title">{{param.workerName + '-' + param.dictName}}</view>
-			<switch @change="switchChange(param.id, $event)" :class="targetValue.indexOf(param.id) != -1?'checked':''" :checked="targetValue.indexOf(param.id) != -1"></switch>
+			<switch @change="switchChange(param.id, $event)" :class="selected[param.id]?'checked':''" :checked="selected[param.id]" :disabled="disabled[param.id]"></switch>
 		</view>
 	</view>
 </template>
 
 <script>
+	import ProductRequest from "@/pages/components/network/request/product.js"
+	
 	export default {
 		data() {
 			return {
 				targetId: null,
 				targetValue: null,
 				workers: null,
+				productRequest: new ProductRequest(),
+				selected: {},
+				disabled: {}
 			}
 		},
 		onLoad:function(options){
@@ -31,29 +36,60 @@
 				this.targetValue = [];
 			}
 			this.targetValue.forEach((item, index) => {
-				this.targetValue[index] = Number(item);
+				this.$set(this.selected, item, true);
+				this.$set(this.disabled, item, false);
 			});
-			this.workers = JSON.parse(uni.getStorageSync("workers"));
+			this.productRequest.selectWorker(data => {
+				this.workers = data;
+				this.workers.forEach(item => {
+					if (!this.selected[item.id]) {
+						this.$set(this.selected, item.id, false);
+						if (this.targetValue.length >= 3) {
+							this.$set(this.disabled, item.id, true);
+						}
+						else {
+							this.$set(this.disabled, item.id, false);
+						}
+					}
+					else {
+						this.$set(this.disabled, item.id, false);
+					}
+				});
+				uni.setStorage({
+					key: 'workers',
+					data: JSON.stringify(data),
+				});
+			});
 		},
 		methods: {
 			switchChange: function(id, e) {
-				id = Number(id);
-				let selectIndex = this.targetValue.indexOf(id);
+				let selectIndex = this.targetValue.indexOf(id.toString());
 				if (e.detail.value && selectIndex == -1) {
-					this.targetValue.push(id);
+					this.targetValue.push(id.toString());
+					this.selected[id] = true;
 				}
 				else if (selectIndex != -1){
 					this.targetValue.splice(selectIndex, 1);
+					this.selected[id] = false;
 				}
-				
-				this.targetValue.forEach((item, index) => {
-					this.targetValue[index] = Number(item);
-				});
 				
 				uni.$emit(this.targetId, {
 					'targetId': this.targetId,
 					'targetValue': this.targetValue,
 				});
+				
+				this.workers.forEach(item => {
+					if (this.targetValue.length >= 3) {
+						if (!this.selected[item.id]) {
+							this.$set(this.disabled, item.id, true);
+						}
+					}
+					else {
+						this.$set(this.disabled, item.id, false);
+					}
+				});
+				
+				
 			}
 		},
 		beforeDestroy:function(){
