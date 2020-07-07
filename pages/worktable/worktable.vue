@@ -14,12 +14,11 @@
 		<view>
 			<view class="cu-custom font-title-simhei" :style="[{height:(CustomBar+30) + 'px'}]">
 				<view class="cu-bar fixed bg-gradual-blue" :style="style">
-					<view class="content" :style="[{top:(StatusBar - 20) + 'px'}]">
-						{{this.softwareInfo.defaultTitle}}
+					<view class="content text-center" style="width: 100%;" :style="[{top:(StatusBar - 20) + 'px'}]">
+						李家岩水库输水管道工程
 					</view>
-					
-					<view class="content" :style="'top: calc(3em + ' + (StatusBar - 20) + 'px)'">
-						李家岩水库输水管道
+					<view class="content text-center" style="letter-spacing: 0.25em; width: 100%; text-indent:0.25em;" :style="'top: calc(3em + ' + (StatusBar - 20) + 'px)'">
+						{{this.softwareInfo.defaultTitle}}
 					</view>
 				</view>
 			</view>

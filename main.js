@@ -12,7 +12,7 @@ Vue.component('personal',personal);
 
 // 定义全局变量
 Vue.prototype.softwareInfo = {
-	'defaultTitle': '产品数字化管理系统',                         // 系统默认标题
+	'defaultTitle': '管道信息化管理系统',                         // 系统默认标题
 	'version': 'debug_version',                                 // 版本号
 	'owner': 'LuSheng'                                          ,// 版权所属
 	'showMap': false
