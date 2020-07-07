@@ -1,9 +1,9 @@
 {
-    "name" : "产品数字化",
+    "name" : "管道信息化",
     "appid" : "__UNI__0A2A211",
-    "description" : "产品数字化管理系统",
+    "description" : "管道信息化管理系统",
     "versionName" : "0.1.68",
-    "versionCode" : 20200707,
+    "versionCode" : 2020070717,
     "transformPx" : false,
     /* 5+App特有相关 */
     "app-plus" : {
