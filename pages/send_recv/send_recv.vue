@@ -207,7 +207,6 @@
 						if (stopFlushCallback !== null && stopFlushCallback !== undefined) {
 							stopFlushCallback();
 						}
-						console.log(data);
 						if (data !== null && data !== undefined) {
 							this.pageInfo.send.total = data.count;
 							this.projectItems.send = this.projectItems.send.concat(data.data);
