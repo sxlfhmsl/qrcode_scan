@@ -53,7 +53,7 @@
 					v-for="(item, index) in choosedSouceList"
 					:key="index"
 					:id="item.id" 
-					@tap="jumpToMaterialDetail(item.id)"
+					@tap="jumpToMaterialDetail(item.materialId)"
 					@longpress="removeMaterial(item.id)"
 					@touchstart="ListTouchStart" @touchmove="ListTouchMove" @touchend="ListTouchEnd" :data-target="'move-box-' + index"
 					style="padding-left: 2rpx; padding-right: 2rpx; background-color: #f2f2f2;"

@@ -13,6 +13,7 @@
 	import tableNoEditEgA from "@/pages/components/tableNoEditEgA";
 	import TableEgAElem from "@/pages/components/tableEgAElem";
 	import Url from "@/pages/components/network/request/url";
+	import MaterialRequest from "@/pages/components/network/request/material.js";
 	
 	export default {
 		components: {
@@ -24,11 +25,14 @@
 				'rowsAfterTitle': [],
 				'rawData': [],
 				'itemId': null,
+				'materialRequest': new MaterialRequest(),
 			}
 		},
 		onLoad: function(options){
 			if (options.id !== null && options.id !== undefined) {
-				
+				this.materialRequest.getMaterial(options.id, result => {
+					this.flushData(result);
+				});
 			}
 		},
 		methods: {
@@ -41,10 +45,9 @@
 					this.rowsAfterTitle.push(new TableEgAElem('品种名称', data.materialType, '30%', '70%', '#f2f2f2;', 'white'));
 					this.rowsAfterTitle.push(new TableEgAElem('所属单位', data.origin, '30%', '70%', '#f2f2f2;', 'white'));
 					this.rowsAfterTitle.push(new TableEgAElem('生产厂家', data.deptName, '30%', '70%', '#f2f2f2;', 'white'));
-					this.rowsAfterTitle.push(new TableEgAElem('状态', data.statusName, '30%', '70%', '#f2f2f2;', 'white'));
 					this.rowsAfterTitle.push(new TableEgAElem('负责人', data.workerName, '30%', '70%', '#f2f2f2;', 'white'));
-					this.rowsAfterTitle.push(new TableEgAElem('抽检报告', Url.resBaseUrl + data.checkAtt, '30%', '70%', '#f2f2f2;', 'white', 'image'));
-					this.rowsAfterTitle.push(new TableEgAElem('材质证明', Url.resBaseUrl + data.certificateAtt, '30%', '70%', '#f2f2f2;', 'white', 'image'));
+					this.rowsAfterTitle.push(new TableEgAElem('抽检报告', data.checkImg? Url.resBaseUrl + data.checkImg: data.checkImg, '30%', '70%', '#f2f2f2;', 'white', 'image'));
+					this.rowsAfterTitle.push(new TableEgAElem('材质证明', data.certImg? Url.resBaseUrl + data.certImg: data.certImg, '30%', '70%', '#f2f2f2;', 'white', 'image'));
 					this.rawData = data;
 				}
 			} 

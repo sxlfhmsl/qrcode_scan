@@ -5,7 +5,7 @@
 			<view class="flex-twice padding-sm col-auto-line solid-left solid-bottom solid-top" style="width: 50%;">批次号</view>
 			<!-- <view class="flex-treble padding-sm col-auto-line solid" style="width: 40%;">规格</view> -->
 		</view>
-		<view class="flex" v-for="(item,index) in itemData" :key="index" @tap="jumpToDetail(item.id)">
+		<view class="flex" v-for="(item,index) in itemData" :key="index" @tap="jumpToDetail(item.materialId)">
 			<view class="flex-twice padding-sm col-auto-line solid-left solid-bottom" style="width: 50%;">{{item.materialName}}</view>
 			<view class="flex-twice padding-sm col-auto-line solid-left solid-bottom" style="width: 50%;">{{item.materialCode}}</view>
 			<!-- <view class="flex-treble padding-sm col-auto-line solid-left solid-bottom solid-right" style="width: 40%;">{{item.materialSpecs}}</view> -->

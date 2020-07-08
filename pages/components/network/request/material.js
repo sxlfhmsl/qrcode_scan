@@ -13,6 +13,7 @@ class MaterialRequest extends BaseRequest {
 		this.listUrl = new Url('productMaterial/list', RequestType.NORMAL | RequestType.NEED_TOKEN);
 		this.addUrl = new Url('productMaterial/add', RequestType.NORMAL | RequestType.NEED_TOKEN);
 		this.delUrl = new Url('productMaterial/delete', RequestType.NORMAL | RequestType.NEED_TOKEN);
+		this.getMaterialUrl = new Url('productMaterial/getMaterial', RequestType.NORMAL | RequestType.NEED_TOKEN);
 	};
 	
 	/**
@@ -66,6 +67,22 @@ class MaterialRequest extends BaseRequest {
 		this.delUrl.urlParams = {'productMaterialId': productMaterialId};
 		this.basePost(
 			this.delUrl,
+			{},
+			(result) => {
+				this.baseResultProcess(result, successCallback);
+			}
+		);
+	};
+	
+	/**
+	 * @description 获取原材料
+	 * @param {Object} materialId
+	 * @param {Object} successCallback
+	 */
+	getMaterial(materialId, successCallback) {
+		this.getMaterialUrl.urlParams = {'materialId': materialId};
+		this.basePost(
+			this.getMaterialUrl,
 			{},
 			(result) => {
 				this.baseResultProcess(result, successCallback);

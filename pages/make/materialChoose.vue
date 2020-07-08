@@ -87,6 +87,7 @@
 					</view>
 				</view>
 			</view>
+			<view v-show="pullup.show" class="text-center font-title-simkai" style="font-style: italic">{{pullup.text}}</view>
 		</you-scroll>
 	</view>
 </template>
@@ -233,7 +234,7 @@
 			 */
 			flushData: function(stopFlushCallback, flushType) {
 				if (flushType === 'up') {
-					if (this.total > (this.page * this.limit)) {
+					if (this.total > (this.page * this.pageLimit)) {
 						this.page ++;
 						this.pullup.text = '正在努力加载中......';
 						this.pullup.show = true;
@@ -264,7 +265,7 @@
 						}
 						
 						if (data != null) {
-							this.souceList = data.records;
+							this.souceList = this.souceList.concat(data.records);
 							this.total = data.total;
 						}
 				});
