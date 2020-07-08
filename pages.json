@@ -80,6 +80,10 @@
             "path" : "pages/components/personDetails",
             "style" : {}
         }
+        ,{
+            "path" : "pages/components/materialDetail",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"mp-alipay": {

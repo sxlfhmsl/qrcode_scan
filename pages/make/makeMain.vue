@@ -53,6 +53,7 @@
 					v-for="(item, index) in choosedSouceList"
 					:key="index"
 					:id="item.id" 
+					@tap="jumpToMaterialDetail(item.id)"
 					@longpress="removeMaterial(item.id)"
 					@touchstart="ListTouchStart" @touchmove="ListTouchMove" @touchend="ListTouchEnd" :data-target="'move-box-' + index"
 					style="padding-left: 2rpx; padding-right: 2rpx; background-color: #f2f2f2;"
@@ -88,14 +89,14 @@
 					>
 						<button 
 							class="cu-btn shadow round font-title-simkai-nocolor bg-red"
-							@tap="removeMaterial(item.id)"
+							@tap.stop="removeMaterial(item.id)"
 						>删除</button>
 						<!-- <button class="cu-btn shadow round font-title-simkai-nocolor" :class="choosedSouceIds.indexOf(item.id) !== -1? 'bg-red': 'bg-blue'">{{choosedSouceIds.indexOf(item.id) !== -1? '删除': '添加'}}</button> -->
 					</view>
 					
 					<view v-if="productShowType == 'slide'" class="move">
 						<!-- <view class="bg-blue" @tap="addMaterial(item.id, item.materialType, item.code, item.specs)">添加</view> -->
-						<view class="bg-red" @tap="removeMaterial(item.id)">删除</view>
+						<view class="bg-red" @tap.stop="removeMaterial(item.id)">删除</view>
 					</view>
 				</view>
 			</view>
@@ -376,6 +377,11 @@
 			this.loadChoosedSource();
 		},
 		methods: {
+			jumpToMaterialDetail: function(id) {
+				uni.navigateTo({
+					url: '/pages/components/materialDetail?id=' + id,
+				});
+			},
 			/**
 			 * @description 编辑原材料
 			 */

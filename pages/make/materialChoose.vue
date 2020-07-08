@@ -29,7 +29,7 @@
 			</view>
 		</view>
 		
-		<you-scroll :style="'height: calc(100vh - ' + (frontBarHeight + CustomBar) + 'rpx)'" ref="scroll" @onPullDown="onPullDown" @onScroll="onScroll" @onLoadMore="onLoadMore">
+		<you-scroll :style="'height: calc(100vh - ' + (frontBarHeight + CustomBar * 2) + 'rpx)'" ref="scroll" @onPullDown="onPullDown" @onScroll="onScroll" @onLoadMore="onLoadMore">
 			<!-- 原材料 -->
 			<view class="cu-list menu">
 				<view 
@@ -41,6 +41,7 @@
 					v-for="(item, index) in souceList"
 					:key="index"
 					:id="item.id" 
+					@tap="jumpToMaterialDetail(item.id)"
 					@longpress="longpress(item.id, item.materialType, item.code, item.specs, 'longpress')"
 					@touchstart="ListTouchStart" @touchmove="ListTouchMove" @touchend="ListTouchEnd" :data-target="'move-box-' + index"
 					style="padding-left: 2rpx; padding-right: 2rpx; background-color: #f2f2f2;"
@@ -75,14 +76,14 @@
 					<view 
 						v-if="productShowType == 'button'"
 						class="action margin-top margin-bottom margin-left margin-right"
-						@tap="longpress(item.id, item.materialType, item.code, item.specs)"
+						@tap.stop="longpress(item.id, item.materialType, item.code, item.specs)"
 					>
 						<button class="cu-btn shadow round font-title-simkai-nocolor" :class="choosedSouceIds.indexOf(item.id) !== -1? 'bg-red': 'bg-blue'">{{choosedSouceIds.indexOf(item.id) !== -1? '删除': '添加'}}</button>
 					</view>
 					
 					<view v-if="productShowType == 'slide'" class="move">
-						<view class="bg-blue" @tap="addMaterial(item.id, item.materialType, item.code, item.specs)">添加</view>
-						<view class="bg-red" @tap="removeMaterial(item.id)">删除</view>
+						<view class="bg-blue" @tap.stop="addMaterial(item.id, item.materialType, item.code, item.specs)">添加</view>
+						<view class="bg-red" @tap.stop="removeMaterial(item.id)">删除</view>
 					</view>
 				</view>
 			</view>
@@ -129,6 +130,11 @@
 			}
 		},
 		methods: {
+			jumpToMaterialDetail: function(id) {
+				uni.navigateTo({
+					url: '/pages/components/materialDetail?id=' + id,
+				});
+			},
 			stopFlushUp: function() {
 				this.pullup.text = '正在努力加载中......';
 				this.pullup.show = false;
