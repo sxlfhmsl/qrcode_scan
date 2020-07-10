@@ -178,6 +178,17 @@
 					}],
 					'checkPrefix': 'mtk',
 					'type': 'makeTaskInfo'
+				}, {
+					'id': 'itkOwner',
+					'title': '业主代表',
+					'idPrefix': 'mo',
+					'itemTitles': [{
+						'id': ['', 'WorkerNames'],
+						'title': '业主代表',
+						'type': 'textList',
+					}, ],
+					'checkPrefix': 'io',
+					'type': 'makeTaskInfo',
 				}],
 				'modeSteelPipe': [{
 					'id': 'mtkWelding',
@@ -253,6 +264,17 @@
 					},],
 					'checkPrefix': 'mtk',
 					'type': 'makeTaskInfo'
+				}, {
+					'id': 'itkOwner',
+					'title': '业主代表',
+					'idPrefix': 'mo',
+					'itemTitles': [{
+						'id': ['', 'WorkerNames'],
+						'title': '业主代表',
+						'type': 'textList',
+					}, ],
+					'checkPrefix': 'io',
+					'type': 'makeTaskInfo',
 				}]
 			}
 		},
