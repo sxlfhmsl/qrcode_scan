@@ -1,6 +1,6 @@
 <template>
 	<uni-collapse class="warp">
-		<uni-collapse-item class="font-title-simhei" open="true" show-animation="true" :title="'批次号:' + rawData.code">
+		<uni-collapse-item class="font-title-simhei" :open="true" :show-animation="true" :title="'批次号:' + rawData.code">
 			<tableNoEditEgA :rowsAfterTitle="rowsAfterTitle" :rawData="rawData"></tableNoEditEgA>
 		</uni-collapse-item>
 	</uni-collapse>

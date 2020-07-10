@@ -65,7 +65,7 @@
 					'idPrefix': 'ic',
 					'itemTitles': [{
 						'id': ['u', 'Date'],
-						'title': '作业时间',
+						'title': '施工作业时间',
 						'type': 'text',
 					}, {
 						'id': ['u', 'WorkerNames'],
@@ -73,11 +73,11 @@
 						'type': 'textList',
 					}, {
 						'id': ['cu', 'WorkerNames'],
-						'title': '检验人员',
+						'title': '自检人员',
 						'type': 'textList',
 					}, {
 						'id': ['u', 'Content'],
-						'title': '检验结论',
+						'title': '自检结论',
 						'type': 'text',
 					}, {
 						'id': ['u', 'Att'],
@@ -92,11 +92,11 @@
 					'idPrefix': 'isu',
 					'itemTitles': [{
 						'id': ['', 'Date'],
-						'title': '监理时间',
+						'title': '监理旁站时间',
 						'type': 'text',
 					}, {
 						'id': ['', 'WorkerNames'],
-						'title': '监理人员',
+						'title': '监理旁站人员',
 						'type': 'textList',
 					}, {
 						'id': ['', 'Content'],
@@ -107,23 +107,23 @@
 					'type': 'installTaskInfo',
 				}, {
 					'id': 'itkThirdCheck',
-					'title': '第三方检测',
+					'title': '第三方检测单位',
 					'idPrefix': 'itc',
 					'itemTitles': [{
 						'id': ['', 'Date'],
-						'title': '检测时间',
+						'title': '三方检测时间',
 						'type': 'text',
 					}, {
 						'id': ['', 'WorkerNames'],
-						'title': '检测人员',
+						'title': '三方检测人员',
 						'type': 'textList',
 					}, {
 						'id': ['', 'Device'],
-						'title': '检测设备',
+						'title': '三方检测设备',
 						'type': 'text',
 					}, {
 						'id': ['', 'Content'],
-						'title': '检测结论',
+						'title': '三方检测结论',
 						'type': 'text',
 					}, ],
 					'checkPrefix': 'itc',
