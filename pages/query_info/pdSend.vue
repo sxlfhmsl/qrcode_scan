@@ -74,8 +74,18 @@
 						'rowsAfterTitle': [
 							new TableEgAElem('发货时间', data.deliveryDate, '30%', '70%', '#f2f2f2', 'white'),
 							new TableEgAElem('收货单位', data.recevieDeptName, '30%', '70%', '#f2f2f2', 'white'),
+							new TableEgAElem('监理监造人员', data.supervisorWorkerNames? data.supervisorWorkerNames.split(','): [], '30%', '70%', '#f2f2f2', 'white', 'textList'),
 							// new TableEgAElem('发货地址', data.deliveryAddress, '30%', '70%', '#f2f2f2', 'white'),
 							// new TableEgAElem('收货地址', data.recevieAddress, '30%', '70%', '#f2f2f2', 'white')
+						],
+						'rawData': data
+					});
+					
+					this.tableList.push({
+						'rowsBeforeTitle': [],
+						'title': {'color': '#5c9ed6', 'value': '业主代表'},
+						'rowsAfterTitle': [
+							new TableEgAElem('业主代表', data.moWorkerNames, '30%', '70%', '#f2f2f2', 'white'),
 						],
 						'rawData': data
 					});

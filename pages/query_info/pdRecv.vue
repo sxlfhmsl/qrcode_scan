@@ -75,7 +75,7 @@
 						'rowsAfterTitle': [
 							new TableEgAElem('收货时间', data.recevieDate, '30%', '70%', '#f2f2f2', 'white'),
 							new TableEgAElem('收货人', data.recevieLeader, '30%', '70%', '#f2f2f2', 'white'),
-							new TableEgAElem('实际使用部位', data.place, '30%', '70%', '#f2f2f2', 'white'),
+							new TableEgAElem('实际使用位置', data.place, '30%', '70%', '#f2f2f2', 'white'),
 						],
 						'rawData': data
 					});

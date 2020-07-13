@@ -193,8 +193,9 @@
 				this.viewData.pdMakeFlow = {'pdBaseInfo': this.productData.product, 'productCategory': this.productData.productCategory, 'productMade': this.productData.productMade};
 				this.viewData.pdInBankInfo = (this.productData.productStorage? this.productData.productStorage: null);
 				this.viewData.pdSendRecv = (this.productData.productDelivery? this.productData.productDelivery: null);
-				if (this.viewData.pdSendRecv) {
+				if (this.viewData.pdSendRecv) {//moWorkerNames
 					this.$set(this.viewData.pdSendRecv, 'place', this.productData.productInstall.place);
+					this.$set(this.viewData.pdSendRecv, 'moWorkerNames', this.productData.productMade.moWorkerNames);
 				}
 				this.viewData.pdInstall = {'pdBaseInfo': this.productData.product, 'productCategory': this.productData.productCategory, 'productInstall': this.productData.productInstall};
 			}
