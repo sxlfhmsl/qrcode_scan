@@ -45,7 +45,7 @@
 					this.rowsAfterTitle.push(new TableEgAElem('品种名称', data.materialType, '30%', '70%', '#f2f2f2;', 'white'));
 					this.rowsAfterTitle.push(new TableEgAElem('所属单位', data.deptName, '30%', '70%', '#f2f2f2;', 'white'));
 					this.rowsAfterTitle.push(new TableEgAElem('生产厂家', data.origin, '30%', '70%', '#f2f2f2;', 'white'));
-					this.rowsAfterTitle.push(new TableEgAElem('负责人', data.workerName, '30%', '70%', '#f2f2f2;', 'white'));
+					// this.rowsAfterTitle.push(new TableEgAElem('负责人', data.workerName, '30%', '70%', '#f2f2f2;', 'white'));
 					this.rowsAfterTitle.push(new TableEgAElem('抽检报告', data.checkImg? Url.resBaseUrl + data.checkImg: data.checkImg, '30%', '70%', '#f2f2f2;', 'white', 'image'));
 					this.rowsAfterTitle.push(new TableEgAElem('材质证明', data.certImg? Url.resBaseUrl + data.certImg: data.certImg, '30%', '70%', '#f2f2f2;', 'white', 'image'));
 					this.rawData = data;
