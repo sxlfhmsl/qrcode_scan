@@ -2,8 +2,8 @@
     "name" : "管道信息化管理系统",
     "appid" : "__UNI__0A2A211",
     "description" : "管道信息化管理系统",
-    "versionName" : "0.2.69",
-    "versionCode" : 2020071312,
+    "versionName" : "0.2.80",
+    "versionCode" : 2020071388,
     "transformPx" : false,
     /* 5+App特有相关 */
     "app-plus" : {
