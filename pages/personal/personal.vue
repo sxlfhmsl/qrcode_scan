@@ -20,7 +20,7 @@
 		
 		<view class="grid margin col-2" style="background-color: #f2f2f2; border-radius: 50rpx; margin-top: 70rpx;">
 			<view class="padding">
-				<view class="font-title-simhei dept" style="margin-bottom: 150rpx;">
+				<view @tap="showDetails(userInfo.dept.simpleName)" class="font-title-simhei dept" style="margin-bottom: 150rpx;">
 					{{userInfo.dept.simpleName? (userInfo.dept.simpleName.length <= 6? userInfo.dept.simpleName: userInfo.dept.simpleName.substring(0, 6) + ' ...'): ''}}
 				</view>
 				<view class="cu-avatar text-black" style="font-size: 100rpx; width: auto; height: auto; background-color: #f2f2f2;">
@@ -113,6 +113,11 @@
 			}
 		},
 		methods: {
+			showDetails: function(content) {
+				uni.showModal({
+					'content': content
+				});
+			},
 			ToSettingPage: function(e) {
 				uni.navigateTo({
 					'url': '/pages/personal/setting'
