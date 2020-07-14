@@ -6,14 +6,15 @@
 			</block>
 		</cu-custom>
 		<view class="cu-form-group margin-top" v-for="(param, index) in workers" :key="index">
-			<view class="title">{{param.workerName + '-' + param.dictName}}</view>
+			<view class="title" @tap="jumpToDetails(param.id)">{{param.workerName + '-' + param.dictName}}</view>
 			<switch @change="switchChange(param.id, $event)" :class="selected[param.id]?'checked':''" :checked="selected[param.id]" :disabled="disabled[param.id]"></switch>
 		</view>
 	</view>
 </template>
 
 <script>
-	import ProductRequest from "@/pages/components/network/request/product.js"
+	import PermissionRequest from "@/pages/components/network/request/permission.js";
+	import ProductRequest from "@/pages/components/network/request/product.js";
 	
 	export default {
 		data() {
@@ -23,7 +24,8 @@
 				workers: null,
 				productRequest: new ProductRequest(),
 				selected: {},
-				disabled: {}
+				disabled: {},
+				permissionRequest: new PermissionRequest(),
 			}
 		},
 		onLoad:function(options){
@@ -62,6 +64,15 @@
 			});
 		},
 		methods: {
+			/**
+			 * @description 跳转至人员详情页面
+			 * @param {Object} id 人员id
+			 */
+			jumpToDetails: function(id) {
+				uni.navigateTo({
+					url: "/pages/components/personDetails?workerId=" + id,
+				});
+			},
 			switchChange: function(id, e) {
 				let selectIndex = this.targetValue.indexOf(id.toString());
 				if (e.detail.value && selectIndex == -1) {

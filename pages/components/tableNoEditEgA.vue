@@ -140,6 +140,7 @@
 			},
 			jumpToPersonalDetails: function(index, content) {
 				this.permissionRequest.data(
+				// 可能存在性能影响
 					6,
 					content.productId,
 					result => {
