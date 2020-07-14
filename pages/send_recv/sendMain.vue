@@ -349,9 +349,9 @@
 			}
 		},
 		onLoad: function(option) {
-			this.productRequest.selectWorker(data => {
-				this.workerObjs = data;
-			});
+			// this.productRequest.selectWorker(data => {
+			// 	this.workerObjs = data;
+			// });
 			
 			this.productId = (option.productId? option.productId: this.productId);
 			this.loadProductInfo();
