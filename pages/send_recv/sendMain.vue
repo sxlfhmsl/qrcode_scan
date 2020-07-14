@@ -62,7 +62,7 @@
 				</view>
 			</view>
 			
-			<view class="flex margin-left-sm margin-right-sm solid-left solid-bottom solid-top">
+			<view v-if="false" class="flex margin-left-sm margin-right-sm solid-left solid-bottom solid-top">
 				<view 
 					class="font-title-simhei-nocolor padding-sm col-auto-line text-white text-center solid-right bg-gradual-blue" 
 					style="flex: auto; width: 25%;"
