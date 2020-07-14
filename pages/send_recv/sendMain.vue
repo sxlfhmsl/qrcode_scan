@@ -62,6 +62,24 @@
 				</view>
 			</view>
 			
+			<view class="flex margin-left-sm margin-right-sm solid-left solid-bottom solid-top">
+				<view 
+					class="font-title-simhei-nocolor padding-sm col-auto-line text-white text-center solid-right bg-gradual-blue" 
+					style="flex: auto; width: 25%;"
+				>
+					监理监造人员:
+				</view>
+				
+				<view
+					class="padding-sm col-auto-line bg-white solid-right"
+					style="flex: auto; width: 75%; background-color: white"
+				>
+					<view class="margin-bottom-sm" v-if="Object.keys(workerObjs).length > 0"  v-for="(param, textListIndex) in workerListObj" :key="'bTextList' + '-' + textListIndex">
+						{{workerObjs[param].workerName + '-' + workerObjs[param].dictName /*+ '（' + workerObjs[param].deptName + '）'*/}}
+					</view>
+				</view>
+			</view>
+			
 			<view class="flex margin-left-sm margin-right-sm solid-left solid-bottom solid-top" v-if="false">
 				<view 
 					class="font-title-simhei-nocolor padding-sm col-auto-line text-white text-center solid-right bg-gradual-blue" 
@@ -153,6 +171,8 @@
 				multiIndexBuffer: [0, 0, 0],
 				deptFormatData: {},
 				'frontBarHeight': 400,
+				'workerObjs': [],                                                     // 所有目标
+				'workerListObj': [],                                                  // 选中列表ids
 			}
 		},
 		methods: {
@@ -329,6 +349,10 @@
 			}
 		},
 		onLoad: function(option) {
+			this.productRequest.selectWorker(data => {
+				this.workerObjs = data;
+			});
+			
 			this.productId = (option.productId? option.productId: this.productId);
 			this.loadProductInfo();
 			this.loadDeptData();
