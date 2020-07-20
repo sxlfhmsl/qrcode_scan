@@ -138,7 +138,11 @@
 						'id': ['', 'Content'],
 						'title': '检测结论',
 						'type': 'text',
-					}, ],
+					}, {
+						'id': ['', 'Att'],
+						'title': '检测报告',
+						'type': 'imageList',
+					},],
 					'checkPrefix': 'itc',
 					'type': 'installTaskInfo',
 				}, {

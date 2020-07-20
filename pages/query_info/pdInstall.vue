@@ -125,7 +125,11 @@
 						'id': ['', 'Content'],
 						'title': '三方检测结论',
 						'type': 'text',
-					}, ],
+					}, {
+						'id': ['', 'Att'],
+						'title': '三方检测报告',
+						'type': 'imageList',
+					},],
 					'checkPrefix': 'itc',
 					'type': 'installTaskInfo',
 				}, {
