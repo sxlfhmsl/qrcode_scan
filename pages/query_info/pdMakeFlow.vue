@@ -296,7 +296,7 @@
 			// 	});
 			// }
 			flushData: function(data) {
-				this.tableList = [];
+				this.tableList.splice(0, this.tableList.length);
 				if (data.productCategory !== null && data.productCategory !== undefined) {
 					if (data.productMade !== null && data.productMade !== undefined) {
 						this.mode[data.productCategory.name].forEach(item => {

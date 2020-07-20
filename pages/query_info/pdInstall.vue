@@ -144,7 +144,7 @@
 		},
 		methods: {
 			flushData: function(data) {
-				this.tableList = [];
+				this.tableList.splice(0, this.tableList.length);
 				if (data.productCategory !== null && data.productCategory !== undefined) {
 					if (data.productInstall !== null && data.productInstall !== undefined) {
 						this.mode.forEach((item, index) => {

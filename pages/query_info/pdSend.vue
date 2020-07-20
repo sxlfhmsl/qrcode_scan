@@ -66,6 +66,7 @@
 			// 	});
 			// }
 			flushData: function(data) {
+				this.tableList.splice(0, this.tableList.length);
 				if (data !== null && data !== undefined) {
 					// 发货信息
 					this.tableList.push({

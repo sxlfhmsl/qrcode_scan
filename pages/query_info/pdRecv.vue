@@ -66,8 +66,8 @@
 			// 	});
 			// }
 			flushData: function(data) {
+				this.tableList.splice(0, this.tableList.length);
 				if (data !== null && data !== undefined) {
-					
 					// 收货信息
 					this.tableList.push({
 						'rowsBeforeTitle': [],
