@@ -189,6 +189,41 @@
 					}, ],
 					'checkPrefix': 'io',
 					'type': 'makeTaskInfo',
+				}, {
+					'id': 'mtkAnti',
+					'title': '防腐信息',
+					'idPrefix': 'Anti',
+					'itemTitles': [{
+						'id': ['mtk', 'Date'],
+						'title': '防腐作业时间',
+						'type': 'text',
+					}, {
+						'id': ['mtk', 'WorkerNames'],
+						'title': '防腐作业人员',
+						'type': 'textList',
+					}, {
+						'id': ['mck', 'WorkerNames'],
+						'title': '防腐检验人员',
+						'type': 'textList',
+					}, {
+						'id': ['mck', 'Content'],
+						'title': '防腐检验结论',
+						'type': 'text',
+					}, {
+						'id': ['', 'Att'],
+						'title': '防腐检验报告',
+						'type': 'imageList',
+					}, {
+						'id': ['msk', 'WorkerNames'],
+						'title': '监造人员',
+						'type': 'textList',
+					}, {
+						'id': ['msk', 'Content'],
+						'title': '监造结论',
+						'type': 'text',
+					},],
+					'checkPrefix': 'mtk',
+					'type': 'makeTaskInfo'
 				}],
 				'modeSteelPipe': [{
 					'id': 'mtkWelding',

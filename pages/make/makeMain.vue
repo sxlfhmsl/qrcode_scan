@@ -292,6 +292,41 @@
 					'checkPrefix': 'mtk',
 					'type': 'makeTaskInfo'
 				}, {
+					'id': 'mtkAnti',
+					'title': '防腐信息',
+					'idPrefix': 'Anti',
+					'itemTitles': [{
+						'id': ['mtk', 'Date'],
+						'title': '防腐作业时间',
+						'type': 'date',
+					}, {
+						'id': ['mtk', 'WorkerIds'],
+						'title': '防腐作业人员',
+						'type': 'workerList',
+					}, {
+						'id': ['mck', 'WorkerIds'],
+						'title': '防腐检验人员',
+						'type': 'workerList',
+					}, {
+						'id': ['mck', 'Content'],
+						'title': '防腐检验结论',
+						'type': 'text',
+					}, {
+						'id': ['', 'Att'],
+						'title': '防腐检验报告',
+						'type': 'imageList',
+					}, {
+						'id': ['msk', 'WorkerIds'],
+						'title': '监造人员',
+						'type': 'workerList',
+					}, {
+						'id': ['msk', 'Content'],
+						'title': '监造结论',
+						'type': 'text',
+					},],
+					'checkPrefix': 'mtk',
+					'type': 'makeTaskInfo'
+				}, {
 					'id': 'itkOwner',
 					'title': '业主代表',
 					'idPrefix': 'mo',

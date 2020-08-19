@@ -47,7 +47,7 @@
 					this.rowsAfterTitle.push(new TableEgAElem('制造单位', data.deptName, '30%', '70%', '#f2f2f2;', 'white'));
 					this.rowsAfterTitle.push(new TableEgAElem('工程名称', data.projectName, '30%', '70%', '#f2f2f2;', 'white'));
 					this.rowsAfterTitle.push(new TableEgAElem('产品规格', data.specs, '30%', '70%', '#f2f2f2;', 'white'));
-					this.rowsAfterTitle.push(new TableEgAElem('牌号', data.brandNum, '30%', '70%', '#f2f2f2;', 'white'));
+					this.rowsAfterTitle.push(new TableEgAElem('牌号/生产编号', data.brandNum, '30%', '70%', '#f2f2f2;', 'white'));
 					this.rowsAfterTitle.push(new TableEgAElem('制作标准', data.standard, '30%', '70%', '#f2f2f2;', 'white'));
 					this.rowsAfterTitle.push(new TableEgAElem('生产日期', data.productDate, '30%', '70%', '#f2f2f2;', 'white'));
 					this.rowsAfterTitle.push(new TableEgAElem('计划使用位置', data.place, '30%', '70%', '#f2f2f2;', 'white'));
